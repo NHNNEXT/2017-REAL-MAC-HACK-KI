@@ -17,7 +17,7 @@
 .demo-ribbon {
   width: 100%;
   height: 40vh;
-  background-color: #3F51B5;
+  background-color: #FFF;
   -webkit-flex-shrink: 0;
       -ms-flex-negative: 0;
           flex-shrink: 0;
@@ -45,6 +45,7 @@
   border-radius: 2px;
   padding: 80px 56px;
   margin-bottom: 80px;
+  background-color: #fafafa !important;
 }
 
 .demo-layout.is-small-screen .demo-content {
@@ -61,4 +62,25 @@
 
 .demo-footer .mdl-mini-footer--link-list a {
   font-size: 13px;
+}
+
+header > div > span {
+  color: #00b65a;
+}
+
+#gender_label {
+  font-size: 16px;
+  font-family: "Helvetica","Arial",sans-serif;
+  font-weight: 100;
+  color: #ccc;
+  display: inline;
+  margin-right: 18px;
+}
+
+span.mdl-radio__label {
+  margin-right: 9px;
+}
+
+#submit-btn {
+  color: white;
 }
