@@ -1,6 +1,7 @@
 package com.zimincom.amigo
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
@@ -12,6 +13,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.intro)
+        videoView.setVideoURI(uri)
+        videoView.start()
+
 
         btn_apply.setOnClickListener {
             val email = input_email.text.toString()
