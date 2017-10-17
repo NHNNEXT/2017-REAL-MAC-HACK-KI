@@ -1,5 +1,6 @@
 package com.zimincom.amigo
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
@@ -16,7 +17,8 @@ class MainActivity : AppCompatActivity() {
             val email = input_email.text.toString()
 
             if (isEmailValid(email)) {
-               Toast.makeText(this, "apply done", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "apply done", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(MainActivity@this, NewPartyActivity::class.java))
             } else {
                input_email.error = "wrong email!"
             }
