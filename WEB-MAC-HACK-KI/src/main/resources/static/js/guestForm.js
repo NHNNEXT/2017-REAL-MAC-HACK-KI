@@ -25,9 +25,7 @@ class GuestForm {
       'nation' : document.querySelector('#nation').value,
       'theme' : document.querySelector('#theme').value,
       'attraction' : document.querySelector('#attraction').value
-    }
-
-    console.log(guestData);
+    };
 
     fetch('/party/guest', {
       method: 'POST',
@@ -37,7 +35,7 @@ class GuestForm {
       },
       body: JSON.stringify(guestData)
     }).then(res => {
-      console.log('send success');
+      console.log('ddd: ', res);
       return res.json();
     }).then(json => {
       console.log('res: ', json);

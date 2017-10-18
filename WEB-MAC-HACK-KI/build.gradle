@@ -36,6 +36,7 @@ dependencies {
 	compile('org.apache.tomcat.embed:tomcat-embed-jasper')
 	compile('javax.servlet:jstl:1.2')
 	compile('pl.allegro.tech.boot:handlebars-spring-boot-starter:0.2.15')
+	compile('org.webjars.bower:jquery:3.2.1')
 
 	runtime('com.h2database:h2')
 	runtime('mysql:mysql-connector-java')
