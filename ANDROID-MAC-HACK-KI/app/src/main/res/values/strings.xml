@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Amigo</string>
+    <string name="login_hint_name">Name</string>
+    <string name="login_hint_age">age</string>
+    <string name="login_message">please give some information</string>
+    <string name="login_btn_confirm">confirm</string>
+</resources>
