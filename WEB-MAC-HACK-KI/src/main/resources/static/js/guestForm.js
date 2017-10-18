@@ -12,6 +12,7 @@ class GuestForm {
     document.querySelector('.mdl-button__ripple-container').addEventListener('click', (e) => {
       this.postForm(e);
     });
+    this.setCalendar();
   }
 
   postForm(e) {
@@ -23,6 +24,7 @@ class GuestForm {
       'age' : document.querySelector('#age').value,
       'gender' : document.querySelector('input[name="gender"]:checked').dataset.id,
       'nation' : document.querySelector('#nation').value,
+      'date' : document.querySelector('#date').value,
       'theme' : document.querySelector('#theme').value,
       'attraction' : document.querySelector('#attraction').value
     };
@@ -40,6 +42,14 @@ class GuestForm {
     }).then(json => {
       console.log('res: ', json);
     });
+  }
+
+  setCalendar() {
+    const nowDay = new Date();
+    const year = nowDay.getFullYear();
+    const month = nowDay.getMonth() + 1;
+    const date = nowDay.getDate();
+    document.querySelector('#date').setAttribute('min', year + '-' + month  + '-' + date);
   }
 }
 

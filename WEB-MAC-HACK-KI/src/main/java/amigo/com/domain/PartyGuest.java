@@ -38,6 +38,10 @@ public class PartyGuest {
     @Getter
     private String nation;
 
+    @Getter
+    @Setter
+    private String date;
+
     @Setter
     @Getter
     private String theme;
