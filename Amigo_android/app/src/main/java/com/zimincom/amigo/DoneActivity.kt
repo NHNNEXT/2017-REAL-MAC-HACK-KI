@@ -1,24 +1,19 @@
 package com.zimincom.amigo
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_new_party.*
+import kotlinx.android.synthetic.main.activity_done.*
 
-class NewPartyActivity : AppCompatActivity() {
+class DoneActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_new_party)
+        setContentView(R.layout.activity_done)
 
         setSupportActionBar(toolbar)
 
-        supportActionBar?.title = "Amigo"
+        supportActionBar?.title = "congraturation!"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        btn_submit.setOnClickListener {
-            startActivity(Intent(NewPartyActivity@this, DoneActivity::class.java))
-        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

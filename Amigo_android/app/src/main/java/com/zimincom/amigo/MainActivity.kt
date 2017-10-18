@@ -14,9 +14,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.intro)
-        videoView.setVideoURI(uri)
-        videoView.start()
+
 
 
         btn_apply.setOnClickListener {
@@ -31,6 +29,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        val uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.intro)
+        videoView.setVideoURI(uri)
+        videoView.start()
+    }
     fun isEmailValid(email: String): Boolean {
 
         val expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$"

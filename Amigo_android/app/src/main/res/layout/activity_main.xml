@@ -22,7 +22,7 @@
         android:layout_height="0dp"
         android:layout_marginBottom="0dp"
         android:layout_marginStart="0dp"
-        android:background="#55000000"
+        android:background="#88000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:background="@color/colorPrimary"
-        android:text="send"
+        android:text="next"
         android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -93,6 +93,8 @@
             android:layout_height="wrap_content"
             android:focusedByDefault="false"
             android:hint="please input your email"
+            android:textColorHighlight="#FFFFFF"
+            android:textColor="#FFFFFF"
             android:inputType="textEmailAddress" />
     </android.support.design.widget.TextInputLayout>
 
