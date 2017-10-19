@@ -37,8 +37,9 @@
 
     <div class="android-header mdl-layout__header mdl-layout__header--waterfall">
         <div class="mdl-layout__header-row">
-            <img class="amigo-logo" src="/images/amigo-logo-green.png">
-            <h1>Amigo</h1>
+            <a href="/" class="logo-link">
+                <img class="amigo-logo" src="/images/amigo-logo-green-letter.png">
+            </a>
             <!-- Add spacer, to align navigation to the right in desktop -->
             <div class="android-header-spacer mdl-layout-spacer"></div>
         </div>
@@ -49,11 +50,11 @@
     <div class="android-content mdl-layout__content">
         <a name="top"></a>
 
-
+        <!--1 page-->
         <div class="android-wear-section">
             <div class="android-wear-band">
                 <div class="android-wear-band-text">
-                    <div class="mdl-typography--display-2 mdl-typography--font-thin">Amigo! I'll be your travel mate:)</div>
+                    <div class="mdl-typography--display-2 mdl-typography--font-thin">Amigo! I'll be your travel mate :)</div>
                     <p class="mdl-typography--headline mdl-typography--font-thin">
                         Even if it's your first trip alone, you will not be afraid to be with friends.<br>
                         Amigo helps you meet new local friends while traveling!
@@ -66,9 +67,24 @@
                 </div>
             </div>
         </div>
-
-
+        <!--/1 page-->
+        <!--2 page-->
+        <div class="android-customized-section">
+            <div class="android-customized-section-text">
+                <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">How to use the service</div>
+                <p class="mdl-typography--font-light">
+                    If you are planning a trip to Korea, and need a friend to accompany you,
+                    <br>
+                    Please fill out the form below. Amigo will match you travel mate!
+                </p>
+            </div>
+            <div class="android-customized-section-image"></div>
+        </div>
+        <!--/2 page-->
+        <!--3 page-->
         <div class="android-screen-section mdl-typography--text-center">
+            <h4 class="mdl-typography--display-2 mdl-typography--font-thin">Are you planning a trip to Seoul?<br>
+                <bold>Join us!</bold></h4>
             <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
                 <form id="guest_info" action="#">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -152,59 +168,48 @@
                     <br>
                     <div style="text-align: center;">
                         <button id="submit-btn"
-                                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--light-blue-300">
+                                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
                             Submit
                         </button>
                     </div>
                 </form>
             </div>
         </div>
+        <!--/3page-->
 
+        <footer>
+            <div class="android-footer mdl-mega-footer">
+                <div class="mdl-mega-footer--top-section">
+                    <div class="mdl-mega-footer--left-section">
+                        <button class="mdl-mega-footer--social-btn"></button>
+                        &nbsp;
+                        <button class="mdl-mega-footer--social-btn"></button>
+                        &nbsp;
+                        <button class="mdl-mega-footer--social-btn"></button>
+                    </div>
+                </div>
 
-        <div class="android-footer mdl-mega-footer">
-            <div class="mdl-mega-footer--top-section">
-                <div class="mdl-mega-footer--left-section">
-                    <button class="mdl-mega-footer--social-btn"></button>
-                    &nbsp;
-                    <button class="mdl-mega-footer--social-btn"></button>
-                    &nbsp;
-                    <button class="mdl-mega-footer--social-btn"></button>
+                <div class="mdl-mega-footer--middle-section">
+                    <p class="mdl-typography--font-light">© 2017 Mac-hack-ki, NHN NEXT</p>
+                    <p class="mdl-typography--font-light">email: dev.yongjai@gmail.com</p>
+                </div>
+
+                <div class="mdl-mega-footer--bottom-section">
+                    <a class="android-link android-link-menu mdl-typography--font-light" id="developers-dropdown">
+                        For Developers
+                        <i class="material-icons">arrow_drop_up</i>
+                    </a>
+                    <ul class="mdl-menu mdl-js-menu mdl-menu--top-left mdl-js-ripple-effect" for="developers-dropdown">
+                        <li class="mdl-menu__item">App developer resources</li>
+                        <li class="mdl-menu__item">Android Open Source Project</li>
+                        <li class="mdl-menu__item">Android SDK</li>
+                        <li class="mdl-menu__item">Android for Work</li>
+                    </ul>
+                    <a class="android-link mdl-typography--font-light" href="">Facebook</a>
                 </div>
             </div>
-
-            <div class="mdl-mega-footer--middle-section">
-                <p class="mdl-typography--font-light">Satellite imagery: © 2014 Astrium, DigitalGlobe</p>
-                <p class="mdl-typography--font-light">Some features and devices may not be available in all
-                    areas</p>
-            </div>
-
-            <div class="mdl-mega-footer--bottom-section">
-                <a class="android-link android-link-menu mdl-typography--font-light" id="version-dropdown">
-                    Versions
-                    <i class="material-icons">arrow_drop_up</i>
-                </a>
-                <ul class="mdl-menu mdl-js-menu mdl-menu--top-left mdl-js-ripple-effect" for="version-dropdown">
-                    <li class="mdl-menu__item">5.0 Lollipop</li>
-                    <li class="mdl-menu__item">4.4 KitKat</li>
-                    <li class="mdl-menu__item">4.3 Jelly Bean</li>
-                    <li class="mdl-menu__item">Android History</li>
-                </ul>
-                <a class="android-link android-link-menu mdl-typography--font-light" id="developers-dropdown">
-                    For Developers
-                    <i class="material-icons">arrow_drop_up</i>
-                </a>
-                <ul class="mdl-menu mdl-js-menu mdl-menu--top-left mdl-js-ripple-effect" for="developers-dropdown">
-                    <li class="mdl-menu__item">App developer resources</li>
-                    <li class="mdl-menu__item">Android Open Source Project</li>
-                    <li class="mdl-menu__item">Android SDK</li>
-                    <li class="mdl-menu__item">Android for Work</li>
-                </ul>
-                <a class="android-link mdl-typography--font-light" href="">Blog</a>
-                <a class="android-link mdl-typography--font-light" href="">Privacy Policy</a>
-            </div>
-        </div>
+        </footer>
     </div>
-    </footer>
 </div>
 
 <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
