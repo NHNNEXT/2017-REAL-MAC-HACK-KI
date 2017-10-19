@@ -1,1 +1,1 @@
-INSERT INTO party_guest (name, email, age, gender, nation, theme, attraction) VALUES ('Adam', 'email', 22, 'male', 'nation', 'theme', 'attraction');
+INSERT INTO party_guest (name, email, age, gender, language, theme, attraction) VALUES ('Adam', 'email', 22, 'male', 'English', 'theme', 'attraction');
