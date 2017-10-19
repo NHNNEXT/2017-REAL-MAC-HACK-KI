@@ -15,406 +15,199 @@
   See the License for the specific language governing permissions and
   limitations under the License
 -->
+
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="description" content="Introducing Lollipop, a sweet new take on Android.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>Amigo</title>
+    <title>Amigo!</title>
 
-    <!-- Add to homescreen for Chrome on Android -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <link rel="icon" sizes="192x192" href="../../../../../../../../Downloads/mdl-template-article/images/android-desktop.png">
-
-    <!-- Add to homescreen for Safari on iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
-    <link rel="apple-touch-icon-precomposed" href="../../../../../../../../Downloads/mdl-template-article/images/ios-desktop.png">
-
-    <!-- Tile icon for Win8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
-    <meta name="msapplication-TileColor" content="#3372DF">
-
-    <link rel="shortcut icon" href="../../../../../../../../Downloads/mdl-template-article/images/favicon.png">
-
-    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
-    <!--
-    <link rel="canonical" href="http://www.example.com/">
-    -->
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <!-- Page styles -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-light_blue.min.css" />
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.min.css">
     <link rel="stylesheet" href="/css/styles.css">
-  </head>
-  <body>
-    <div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
-      <header class="demo-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
+    <link rel="stylesheet" href="/css/guestForm.css">
+</head>
+<body>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+    <div class="android-header mdl-layout__header mdl-layout__header--waterfall">
         <div class="mdl-layout__header-row">
-          <span class="mdl-layout-title">Amigo!</span>
-          <div class="mdl-layout-spacer"></div>
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-            <div class="mdl-textfield__expandable-holder">
-              <input class="mdl-textfield__input" type="text" id="search">
-              <label class="mdl-textfield__label" for="search">Enter your query...</label>
-            </div>
-          </div>
+            <img class="amigo-logo" src="/images/amigo-logo-green.png">
+            <h1>Amigo</h1>
+            <!-- Add spacer, to align navigation to the right in desktop -->
+            <div class="android-header-spacer mdl-layout-spacer"></div>
         </div>
-      </header>
-      <div class="demo-ribbon"></div>
-      <main class="demo-main mdl-layout__content">
-        <div class="demo-container mdl-grid">
-          <!--<div class="mdl-cell mdl-cell&#45;&#45;2-col mdl-cell&#45;&#45;hide-tablet mdl-cell&#45;&#45;hide-phone"></div>-->
-          <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
-            <!-- 본문 여기 -->
-            <form id="guest_info" action="#">
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" id="name">
-                <label class="mdl-textfield__label" for="name">Name...</label>
-              </div>
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" id="email">
-                <label class="mdl-textfield__label" for="email">Email...</label>
-              </div>
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <!--<input class="mdl-textfield__input" type="text" id="age">-->
-                <!--<label class="mdl-textfield__label" for="age">Age...</label>-->
-                <p class="labels" id="age_label">Age</p>
-                <select id="age">
-                  <option value="16">16</option>
-                  <option value="17">17</option>
-                  <option value="18">18</option>
-                  <option value="19">19</option>
-                  <option value="20">20</option>
-                  <option value="21">21</option>
-                  <option value="22">22</option>
-                  <option value="23">23</option>
-                  <option value="24">24</option>
-                  <option value="25">25</option>
-                  <option value="26">26</option>
-                  <option value="27">27</option>
-                  <option value="28">28</option>
-                  <option value="29">29</option>
-                  <option value="30">30</option>
-                  <option value="31">31</option>
-                  <option value="32">32</option>
-                  <option value="33">33</option>
-                  <option value="34">34</option>
-                  <option value="35">35</option>
-                  <option value="36">36</option>
-                  <option value="37">37</option>
-                  <option value="38">38</option>
-                  <option value="39">39</option>
-                  <option value="40">40</option>
-                </select>
-              </div>
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="genderInput">
-                <p class="labels" id="gender_label">Gender</p>
-                <label class = "mdl-radio mdl-js-radio checkbox-inline" for = "option1">
-                    <input type = "radio" id = "option1" name = "gender"
-                           class = "mdl-radio__button" data-id = "male">
-                    <span class = "mdl-radio__label">Male</span>
-                </label>
-                <label class = "mdl-radio mdl-js-radio checkbox-inline" for = "option2">
-                  <input type = "radio" id = "option2" name = "gender"
-                         class = "mdl-radio__button" data-id = "female">
-                  <span class = "mdl-radio__label">Female</span>
-                </label>
-              </div>
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <!--<input class="mdl-textfield__input" type="text" id="nation">-->
-                <!--<label class="mdl-textfield__label" for="nation">Nation...</label>-->
-                <p class="labels" id="nation_label">Nation</p>
-                <select id="nation">
-                  <option value="AF">Afghanistan</option>
-                  <option value="AX">Åland Islands</option>
-                  <option value="AL">Albania</option>
-                  <option value="DZ">Algeria</option>
-                  <option value="AS">American Samoa</option>
-                  <option value="AD">Andorra</option>
-                  <option value="AO">Angola</option>
-                  <option value="AI">Anguilla</option>
-                  <option value="AQ">Antarctica</option>
-                  <option value="AG">Antigua and Barbuda</option>
-                  <option value="AR">Argentina</option>
-                  <option value="AM">Armenia</option>
-                  <option value="AW">Aruba</option>
-                  <option value="AU">Australia</option>
-                  <option value="AT">Austria</option>
-                  <option value="AZ">Azerbaijan</option>
-                  <option value="BS">Bahamas</option>
-                  <option value="BH">Bahrain</option>
-                  <option value="BD">Bangladesh</option>
-                  <option value="BB">Barbados</option>
-                  <option value="BY">Belarus</option>
-                  <option value="BE">Belgium</option>
-                  <option value="BZ">Belize</option>
-                  <option value="BJ">Benin</option>
-                  <option value="BM">Bermuda</option>
-                  <option value="BT">Bhutan</option>
-                  <option value="BO">Bolivia, Plurinational State of</option>
-                  <option value="BQ">Bonaire, Sint Eustatius and Saba</option>
-                  <option value="BA">Bosnia and Herzegovina</option>
-                  <option value="BW">Botswana</option>
-                  <option value="BV">Bouvet Island</option>
-                  <option value="BR">Brazil</option>
-                  <option value="IO">British Indian Ocean Territory</option>
-                  <option value="BN">Brunei Darussalam</option>
-                  <option value="BG">Bulgaria</option>
-                  <option value="BF">Burkina Faso</option>
-                  <option value="BI">Burundi</option>
-                  <option value="KH">Cambodia</option>
-                  <option value="CM">Cameroon</option>
-                  <option value="CA">Canada</option>
-                  <option value="CV">Cape Verde</option>
-                  <option value="KY">Cayman Islands</option>
-                  <option value="CF">Central African Republic</option>
-                  <option value="TD">Chad</option>
-                  <option value="CL">Chile</option>
-                  <option value="CN">China</option>
-                  <option value="CX">Christmas Island</option>
-                  <option value="CC">Cocos (Keeling) Islands</option>
-                  <option value="CO">Colombia</option>
-                  <option value="KM">Comoros</option>
-                  <option value="CG">Congo</option>
-                  <option value="CD">Congo, the Democratic Republic of the</option>
-                  <option value="CK">Cook Islands</option>
-                  <option value="CR">Costa Rica</option>
-                  <option value="CI">Côte d'Ivoire</option>
-                  <option value="HR">Croatia</option>
-                  <option value="CU">Cuba</option>
-                  <option value="CW">Curaçao</option>
-                  <option value="CY">Cyprus</option>
-                  <option value="CZ">Czech Republic</option>
-                  <option value="DK">Denmark</option>
-                  <option value="DJ">Djibouti</option>
-                  <option value="DM">Dominica</option>
-                  <option value="DO">Dominican Republic</option>
-                  <option value="EC">Ecuador</option>
-                  <option value="EG">Egypt</option>
-                  <option value="SV">El Salvador</option>
-                  <option value="GQ">Equatorial Guinea</option>
-                  <option value="ER">Eritrea</option>
-                  <option value="EE">Estonia</option>
-                  <option value="ET">Ethiopia</option>
-                  <option value="FK">Falkland Islands (Malvinas)</option>
-                  <option value="FO">Faroe Islands</option>
-                  <option value="FJ">Fiji</option>
-                  <option value="FI">Finland</option>
-                  <option value="FR">France</option>
-                  <option value="GF">French Guiana</option>
-                  <option value="PF">French Polynesia</option>
-                  <option value="TF">French Southern Territories</option>
-                  <option value="GA">Gabon</option>
-                  <option value="GM">Gambia</option>
-                  <option value="GE">Georgia</option>
-                  <option value="DE">Germany</option>
-                  <option value="GH">Ghana</option>
-                  <option value="GI">Gibraltar</option>
-                  <option value="GR">Greece</option>
-                  <option value="GL">Greenland</option>
-                  <option value="GD">Grenada</option>
-                  <option value="GP">Guadeloupe</option>
-                  <option value="GU">Guam</option>
-                  <option value="GT">Guatemala</option>
-                  <option value="GG">Guernsey</option>
-                  <option value="GN">Guinea</option>
-                  <option value="GW">Guinea-Bissau</option>
-                  <option value="GY">Guyana</option>
-                  <option value="HT">Haiti</option>
-                  <option value="HM">Heard Island and McDonald Islands</option>
-                  <option value="VA">Holy See (Vatican City State)</option>
-                  <option value="HN">Honduras</option>
-                  <option value="HK">Hong Kong</option>
-                  <option value="HU">Hungary</option>
-                  <option value="IS">Iceland</option>
-                  <option value="IN">India</option>
-                  <option value="ID">Indonesia</option>
-                  <option value="IR">Iran, Islamic Republic of</option>
-                  <option value="IQ">Iraq</option>
-                  <option value="IE">Ireland</option>
-                  <option value="IM">Isle of Man</option>
-                  <option value="IL">Israel</option>
-                  <option value="IT">Italy</option>
-                  <option value="JM">Jamaica</option>
-                  <option value="JP">Japan</option>
-                  <option value="JE">Jersey</option>
-                  <option value="JO">Jordan</option>
-                  <option value="KZ">Kazakhstan</option>
-                  <option value="KE">Kenya</option>
-                  <option value="KI">Kiribati</option>
-                  <option value="KP">Korea, Democratic People's Republic of</option>
-                  <option value="KR">Korea, Republic of</option>
-                  <option value="KW">Kuwait</option>
-                  <option value="KG">Kyrgyzstan</option>
-                  <option value="LA">Lao People's Democratic Republic</option>
-                  <option value="LV">Latvia</option>
-                  <option value="LB">Lebanon</option>
-                  <option value="LS">Lesotho</option>
-                  <option value="LR">Liberia</option>
-                  <option value="LY">Libya</option>
-                  <option value="LI">Liechtenstein</option>
-                  <option value="LT">Lithuania</option>
-                  <option value="LU">Luxembourg</option>
-                  <option value="MO">Macao</option>
-                  <option value="MK">Macedonia, the former Yugoslav Republic of</option>
-                  <option value="MG">Madagascar</option>
-                  <option value="MW">Malawi</option>
-                  <option value="MY">Malaysia</option>
-                  <option value="MV">Maldives</option>
-                  <option value="ML">Mali</option>
-                  <option value="MT">Malta</option>
-                  <option value="MH">Marshall Islands</option>
-                  <option value="MQ">Martinique</option>
-                  <option value="MR">Mauritania</option>
-                  <option value="MU">Mauritius</option>
-                  <option value="YT">Mayotte</option>
-                  <option value="MX">Mexico</option>
-                  <option value="FM">Micronesia, Federated States of</option>
-                  <option value="MD">Moldova, Republic of</option>
-                  <option value="MC">Monaco</option>
-                  <option value="MN">Mongolia</option>
-                  <option value="ME">Montenegro</option>
-                  <option value="MS">Montserrat</option>
-                  <option value="MA">Morocco</option>
-                  <option value="MZ">Mozambique</option>
-                  <option value="MM">Myanmar</option>
-                  <option value="NA">Namibia</option>
-                  <option value="NR">Nauru</option>
-                  <option value="NP">Nepal</option>
-                  <option value="NL">Netherlands</option>
-                  <option value="NC">New Caledonia</option>
-                  <option value="NZ">New Zealand</option>
-                  <option value="NI">Nicaragua</option>
-                  <option value="NE">Niger</option>
-                  <option value="NG">Nigeria</option>
-                  <option value="NU">Niue</option>
-                  <option value="NF">Norfolk Island</option>
-                  <option value="MP">Northern Mariana Islands</option>
-                  <option value="NO">Norway</option>
-                  <option value="OM">Oman</option>
-                  <option value="PK">Pakistan</option>
-                  <option value="PW">Palau</option>
-                  <option value="PS">Palestinian Territory, Occupied</option>
-                  <option value="PA">Panama</option>
-                  <option value="PG">Papua New Guinea</option>
-                  <option value="PY">Paraguay</option>
-                  <option value="PE">Peru</option>
-                  <option value="PH">Philippines</option>
-                  <option value="PN">Pitcairn</option>
-                  <option value="PL">Poland</option>
-                  <option value="PT">Portugal</option>
-                  <option value="PR">Puerto Rico</option>
-                  <option value="QA">Qatar</option>
-                  <option value="RE">Réunion</option>
-                  <option value="RO">Romania</option>
-                  <option value="RU">Russian Federation</option>
-                  <option value="RW">Rwanda</option>
-                  <option value="BL">Saint Barthélemy</option>
-                  <option value="SH">Saint Helena, Ascension and Tristan da Cunha</option>
-                  <option value="KN">Saint Kitts and Nevis</option>
-                  <option value="LC">Saint Lucia</option>
-                  <option value="MF">Saint Martin (French part)</option>
-                  <option value="PM">Saint Pierre and Miquelon</option>
-                  <option value="VC">Saint Vincent and the Grenadines</option>
-                  <option value="WS">Samoa</option>
-                  <option value="SM">San Marino</option>
-                  <option value="ST">Sao Tome and Principe</option>
-                  <option value="SA">Saudi Arabia</option>
-                  <option value="SN">Senegal</option>
-                  <option value="RS">Serbia</option>
-                  <option value="SC">Seychelles</option>
-                  <option value="SL">Sierra Leone</option>
-                  <option value="SG">Singapore</option>
-                  <option value="SX">Sint Maarten (Dutch part)</option>
-                  <option value="SK">Slovakia</option>
-                  <option value="SI">Slovenia</option>
-                  <option value="SB">Solomon Islands</option>
-                  <option value="SO">Somalia</option>
-                  <option value="ZA">South Africa</option>
-                  <option value="GS">South Georgia and the South Sandwich Islands</option>
-                  <option value="SS">South Sudan</option>
-                  <option value="ES">Spain</option>
-                  <option value="LK">Sri Lanka</option>
-                  <option value="SD">Sudan</option>
-                  <option value="SR">Suriname</option>
-                  <option value="SJ">Svalbard and Jan Mayen</option>
-                  <option value="SZ">Swaziland</option>
-                  <option value="SE">Sweden</option>
-                  <option value="CH">Switzerland</option>
-                  <option value="SY">Syrian Arab Republic</option>
-                  <option value="TW">Taiwan, Province of China</option>
-                  <option value="TJ">Tajikistan</option>
-                  <option value="TZ">Tanzania, United Republic of</option>
-                  <option value="TH">Thailand</option>
-                  <option value="TL">Timor-Leste</option>
-                  <option value="TG">Togo</option>
-                  <option value="TK">Tokelau</option>
-                  <option value="TO">Tonga</option>
-                  <option value="TT">Trinidad and Tobago</option>
-                  <option value="TN">Tunisia</option>
-                  <option value="TR">Turkey</option>
-                  <option value="TM">Turkmenistan</option>
-                  <option value="TC">Turks and Caicos Islands</option>
-                  <option value="TV">Tuvalu</option>
-                  <option value="UG">Uganda</option>
-                  <option value="UA">Ukraine</option>
-                  <option value="AE">United Arab Emirates</option>
-                  <option value="GB">United Kingdom</option>
-                  <option value="US">United States</option>
-                  <option value="UM">United States Minor Outlying Islands</option>
-                  <option value="UY">Uruguay</option>
-                  <option value="UZ">Uzbekistan</option>
-                  <option value="VU">Vanuatu</option>
-                  <option value="VE">Venezuela, Bolivarian Republic of</option>
-                  <option value="VN">Viet Nam</option>
-                  <option value="VG">Virgin Islands, British</option>
-                  <option value="VI">Virgin Islands, U.S.</option>
-                  <option value="WF">Wallis and Futuna</option>
-                  <option value="EH">Western Sahara</option>
-                  <option value="YE">Yemen</option>
-                  <option value="ZM">Zambia</option>
-                  <option value="ZW">Zimbabwe</option>
-                </select>
-              </div>
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <p class="labels" id="date_label">Desired date</p>
-                <input class="mdl-textfield__input" type="date" id="date">
-              </div>
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" id="theme">
-                <label class="mdl-textfield__label" for="theme">Theme... (e.g., Food, Leisure, Sightseeing)</label>
-              </div>
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" id="attraction">
-                <label class="mdl-textfield__label" for="attraction">Attraction... (place you want to visit)</label>
-              </div>
-              <br>
-              <div style="text-align: center;">
-                <button id="submit-btn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--light-blue-300">
-                  Submit
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-        <footer class="demo-footer mdl-mini-footer">
-          <div class="mdl-mini-footer--left-section">
-            <ul class="mdl-mini-footer--link-list">
-              <li><a href="#">Help</a></li>
-              <li><a href="#">Privacy and Terms</a></li>
-              <li><a href="#">User Agreement</a></li>
-            </ul>
-          </div>
-        </footer>
-      </main>
     </div>
 
-    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <script src="/js/guestForm.js"></script>
-    <script src="webjars/jquery/3.2.1/dist/jquery.min.js"></script>
-  </body>
+
+
+    <div class="android-content mdl-layout__content">
+        <a name="top"></a>
+
+
+        <div class="android-wear-section">
+            <div class="android-wear-band">
+                <div class="android-wear-band-text">
+                    <div class="mdl-typography--display-2 mdl-typography--font-thin">Amigo! I'll be your travel mate:)</div>
+                    <p class="mdl-typography--headline mdl-typography--font-thin">
+                        Even if it's your first trip alone, you will not be afraid to be with friends.<br>
+                        Amigo helps you meet new local friends while traveling!
+                    </p>
+                    <p>
+                        <a class="mdl-typography--font-regular mdl-typography--text-uppercase android-alt-link" href="">
+                            See what's new in the Play Store&nbsp;<i class="material-icons">chevron_right</i>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="android-screen-section mdl-typography--text-center">
+            <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+                <form id="guest_info" action="#">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="name">
+                        <label class="mdl-textfield__label" for="name">Name...</label>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="email">
+                        <label class="mdl-textfield__label" for="email">Email...</label>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <!--<input class="mdl-textfield__input" type="text" id="age">-->
+                        <!--<label class="mdl-textfield__label" for="age">Age...</label>-->
+                        <p class="labels" id="age_label">Age</p>
+                        <select id="age">
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                            <option value="31">31</option>
+                            <option value="32">32</option>
+                            <option value="33">33</option>
+                            <option value="34">34</option>
+                            <option value="35">35</option>
+                            <option value="36">36</option>
+                            <option value="37">37</option>
+                            <option value="38">38</option>
+                            <option value="39">39</option>
+                            <option value="40">40</option>
+                        </select>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="genderInput">
+                        <p class="labels" id="gender_label">Gender</p>
+                        <label class="mdl-radio mdl-js-radio checkbox-inline" for="option1">
+                            <input type="radio" id="option1" name="gender"
+                                   class="mdl-radio__button" data-id="male">
+                            <span class="mdl-radio__label">Male</span>
+                        </label>
+                        <label class="mdl-radio mdl-js-radio checkbox-inline" for="option2">
+                            <input type="radio" id="option2" name="gender"
+                                   class="mdl-radio__button" data-id="female">
+                            <span class="mdl-radio__label">Female</span>
+                        </label>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <!--<input class="mdl-textfield__input" type="text" id="nation">-->
+                        <!--<label class="mdl-textfield__label" for="nation">Nation...</label>-->
+                        <p class="labels" id="nation_label">Languate</p>
+                        <select id="language">
+                            <option value="English">English</option>
+                            <option value="Korean">Korean</option>
+                            <option value="Chinese">Chinese</option>
+                            <option value="Japanese">Japanese</option>
+                        </select>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <p class="labels" id="date_label">Desired date</p>
+                        <input class="mdl-textfield__input" type="date" id="date">
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="theme">
+                        <label class="mdl-textfield__label" for="theme">Theme... (e.g., Food, Leisure,
+                            Sightseeing)</label>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="attraction">
+                        <label class="mdl-textfield__label" for="attraction">Attraction... (place you want to
+                            visit)</label>
+                    </div>
+                    <br>
+                    <div style="text-align: center;">
+                        <button id="submit-btn"
+                                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--light-blue-300">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <div class="android-footer mdl-mega-footer">
+            <div class="mdl-mega-footer--top-section">
+                <div class="mdl-mega-footer--left-section">
+                    <button class="mdl-mega-footer--social-btn"></button>
+                    &nbsp;
+                    <button class="mdl-mega-footer--social-btn"></button>
+                    &nbsp;
+                    <button class="mdl-mega-footer--social-btn"></button>
+                </div>
+            </div>
+
+            <div class="mdl-mega-footer--middle-section">
+                <p class="mdl-typography--font-light">Satellite imagery: © 2014 Astrium, DigitalGlobe</p>
+                <p class="mdl-typography--font-light">Some features and devices may not be available in all
+                    areas</p>
+            </div>
+
+            <div class="mdl-mega-footer--bottom-section">
+                <a class="android-link android-link-menu mdl-typography--font-light" id="version-dropdown">
+                    Versions
+                    <i class="material-icons">arrow_drop_up</i>
+                </a>
+                <ul class="mdl-menu mdl-js-menu mdl-menu--top-left mdl-js-ripple-effect" for="version-dropdown">
+                    <li class="mdl-menu__item">5.0 Lollipop</li>
+                    <li class="mdl-menu__item">4.4 KitKat</li>
+                    <li class="mdl-menu__item">4.3 Jelly Bean</li>
+                    <li class="mdl-menu__item">Android History</li>
+                </ul>
+                <a class="android-link android-link-menu mdl-typography--font-light" id="developers-dropdown">
+                    For Developers
+                    <i class="material-icons">arrow_drop_up</i>
+                </a>
+                <ul class="mdl-menu mdl-js-menu mdl-menu--top-left mdl-js-ripple-effect" for="developers-dropdown">
+                    <li class="mdl-menu__item">App developer resources</li>
+                    <li class="mdl-menu__item">Android Open Source Project</li>
+                    <li class="mdl-menu__item">Android SDK</li>
+                    <li class="mdl-menu__item">Android for Work</li>
+                </ul>
+                <a class="android-link mdl-typography--font-light" href="">Blog</a>
+                <a class="android-link mdl-typography--font-light" href="">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+    </footer>
+</div>
+
+<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<script src="/js/guestForm.js"></script>
+</body>
 </html>
