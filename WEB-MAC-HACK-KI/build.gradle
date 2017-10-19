@@ -37,6 +37,8 @@ dependencies {
 	compile('javax.servlet:jstl:1.2')
 	compile('pl.allegro.tech.boot:handlebars-spring-boot-starter:0.2.15')
 	compile('org.webjars.bower:jquery:3.2.1')
+	compile('mysql:mysql-connector-java:5.1.44')
+
 
 	runtime('com.h2database:h2')
 	runtime('mysql:mysql-connector-java')
