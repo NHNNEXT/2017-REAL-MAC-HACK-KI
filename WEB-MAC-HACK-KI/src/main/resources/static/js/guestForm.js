@@ -23,7 +23,7 @@ class GuestForm {
       'email' : document.querySelector('#email').value,
       'age' : document.querySelector('#age').value,
       'gender' : document.querySelector('input[name="gender"]:checked').dataset.id,
-      'nation' : document.querySelector('#nation').value,
+      'language' : document.querySelector('#language').value,
       'date' : document.querySelector('#date').value,
       'theme' : document.querySelector('#theme').value,
       'attraction' : document.querySelector('#attraction').value

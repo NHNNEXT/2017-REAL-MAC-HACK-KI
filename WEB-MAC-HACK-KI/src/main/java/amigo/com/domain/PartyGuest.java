@@ -36,7 +36,7 @@ public class PartyGuest {
 
     @Setter
     @Getter
-    private String nation;
+    private String language;
 
     @Getter
     @Setter
