@@ -40,15 +40,19 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(Intent(MainActivity@ this, PartiesActivity::class.java))
 
             }
-            btn_apply -> {
-                val email = input_email.text.toString()
 
-                if (isEmailValid(email)) {
-                    Toast.makeText(this, "apply done", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(MainActivity@ this, NewPartyActivity::class.java))
-                } else {
-                    input_email.error = "wrong email!"
-                }
+            btn_apply -> {
+                // code for sign up
+//                val email = input_email.text.toString()
+//
+//                if (isEmailValid(email)) {
+//                    Toast.makeText(this, "apply done", Toast.LENGTH_SHORT).show()
+//                    startActivity(Intent(MainActivity@ this, NewPartyActivity::class.java))
+//                } else {
+//                    input_email.error = "wrong email!"
+//                }
+                val intent = Intent(SignInActivity@this, SearchActivity::class.java)
+                startActivity(intent)
             }
         }
     }

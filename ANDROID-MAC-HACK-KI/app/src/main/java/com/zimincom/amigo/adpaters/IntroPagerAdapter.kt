@@ -11,7 +11,7 @@ import com.zimincom.amigo.fragments.IntroPage2Fragment
  */
 class IntroPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
 
-    val introPageList = listOf(IntroPage1Fragment(), IntroPage2Fragment())
+    private val introPageList = listOf(IntroPage1Fragment(), IntroPage2Fragment())
 
     override fun getItem(position: Int): Fragment = introPageList[position]
 

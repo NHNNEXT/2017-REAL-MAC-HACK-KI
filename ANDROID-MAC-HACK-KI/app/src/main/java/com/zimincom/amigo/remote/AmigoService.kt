@@ -35,7 +35,7 @@ interface AmigoService {
             return retrofit.create(java)
         }
 
-        fun createOkHttpClient(): OkHttpClient {
+        private fun createOkHttpClient(): OkHttpClient {
             val builder = OkHttpClient.Builder()
             val intercepter = HttpLoggingInterceptor()
 
