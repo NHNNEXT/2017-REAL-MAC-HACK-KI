@@ -23,7 +23,7 @@ interface AmigoService {
 
 
     companion object {
-        fun  getService(java: Class<AmigoService>): AmigoService {
+        fun getService(java: Class<AmigoService>): AmigoService {
 
             val retrofit =
                     Retrofit.Builder()

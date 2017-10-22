@@ -21,7 +21,7 @@ class PartiesActivity : AppCompatActivity() {
 
         val call = amigoService.showParties()
 
-        call.enqueue(object: Callback<List<Party>>{
+        call.enqueue(object : Callback<List<Party>> {
             override fun onResponse(call: Call<List<Party>>?, response: Response<List<Party>>?) {
                 if (response!!.isSuccessful) {
                     Log.d("parties", "success")

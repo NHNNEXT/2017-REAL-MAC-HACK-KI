@@ -10,7 +10,7 @@ import com.zimincom.amigo.adpaters.IntroPagerAdapter
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import java.util.regex.Pattern
 
-class SignInActivity : AppCompatActivity(), View.OnClickListener{
+class SignInActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +38,7 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener{
 
                 if (isEmailValid(email)) {
                     Toast.makeText(this, "apply done", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(MainActivity@this, PartiesActivity::class.java))
+                    startActivity(Intent(MainActivity@ this, PartiesActivity::class.java))
                 } else {
                     input_email.error = "wrong email!"
                 }
@@ -48,7 +48,7 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener{
 
                 if (isEmailValid(email)) {
                     Toast.makeText(this, "apply done", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(MainActivity@this, NewPartyActivity::class.java))
+                    startActivity(Intent(MainActivity@ this, NewPartyActivity::class.java))
                 } else {
                     input_email.error = "wrong email!"
                 }

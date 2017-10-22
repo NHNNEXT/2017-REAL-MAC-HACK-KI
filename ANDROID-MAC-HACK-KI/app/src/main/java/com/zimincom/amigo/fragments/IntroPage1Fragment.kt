@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.fragment_intro.*
 /**
  * Created by Zimincom on 2017. 10. 22..
  */
-class IntroPage1Fragment : Fragment(){
+class IntroPage1Fragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.fragment_intro, container, false)
@@ -20,7 +20,7 @@ class IntroPage1Fragment : Fragment(){
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
 
-        val uri = Uri.parse("android.resource://"+context.packageName+"/"+ R.raw.intro)
+        val uri = Uri.parse("android.resource://" + context.packageName + "/" + R.raw.intro)
 
         video_intro.setVideoURI(uri)
         video_intro.isSoundEffectsEnabled = false
