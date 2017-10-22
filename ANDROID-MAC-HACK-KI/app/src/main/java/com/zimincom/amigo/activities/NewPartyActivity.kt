@@ -4,9 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import com.zimincom.amigo.remote.AmigoService
-import com.zimincom.amigo.datas.Party
 import com.zimincom.amigo.R
+import com.zimincom.amigo.datas.Party
+import com.zimincom.amigo.remote.AmigoService
 import kotlinx.android.synthetic.main.activity_new_party.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -45,10 +45,8 @@ class NewPartyActivity : AppCompatActivity() {
         })
 
         btn_submit.setOnClickListener {
-            startActivity(Intent(NewPartyActivity@this, DoneActivity::class.java))
+            startActivity(Intent(NewPartyActivity@ this, DoneActivity::class.java))
         }
-
-
     }
 
     override fun onSupportNavigateUp(): Boolean {

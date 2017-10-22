@@ -3,7 +3,7 @@ package com.zimincom.amigo.datas
 /**
  * Created by Zimincom on 2017. 10. 19..
  */
-data class Party (
+data class Party(
         var name: String,
         var email: String,
         var age: Int,

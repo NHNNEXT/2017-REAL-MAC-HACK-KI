@@ -23,7 +23,7 @@ interface AmigoService {
 
 
     companion object {
-        fun  getService(java: Class<AmigoService>): AmigoService {
+        fun getService(java: Class<AmigoService>): AmigoService {
 
             val retrofit =
                     Retrofit.Builder()
@@ -35,24 +35,14 @@ interface AmigoService {
             return retrofit.create(java)
         }
 
-        fun createOkHttpClient(): OkHttpClient {
+        private fun createOkHttpClient(): OkHttpClient {
             val builder = OkHttpClient.Builder()
             val intercepter = HttpLoggingInterceptor()
-
-//            val spec = ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
-//                    .tlsVersions(TlsVersion.TLS_1_2)
-//                    .cipherSuites(
-//                            CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
-//                            CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
-//                            CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
-//                    )
-//                    .build()
 
             intercepter.level = HttpLoggingInterceptor.Level.BODY
             builder.addInterceptor(intercepter)
 
             return builder.build()
-            //return builder.connectionSpecs(Collections.singletonList(spec)).build()
         }
 
     }
