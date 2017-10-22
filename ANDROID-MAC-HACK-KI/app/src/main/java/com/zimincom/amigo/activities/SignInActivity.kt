@@ -1,30 +1,25 @@
 package com.zimincom.amigo.activities
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
 import com.zimincom.amigo.R
-import kotlinx.android.synthetic.main.activity_main.*
+import com.zimincom.amigo.adpaters.IntroPagerAdapter
+import kotlinx.android.synthetic.main.activity_sign_in.*
 import java.util.regex.Pattern
 
 class SignInActivity : AppCompatActivity(), View.OnClickListener{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_sign_in)
 
         btn_view.setOnClickListener(this)
         btn_apply.setOnClickListener(this)
-    }
 
-    override fun onResume() {
-        super.onResume()
-        val uri = Uri.parse("android.resource://"+getPackageName()+"/"+ R.raw.intro)
-        videoView.setVideoURI(uri)
-        videoView.start()
+        pager_intro.adapter = (IntroPagerAdapter(supportFragmentManager))
     }
 
     fun isEmailValid(email: String): Boolean {
