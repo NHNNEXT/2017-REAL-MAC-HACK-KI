@@ -1,9 +1,12 @@
-package com.zimincom.amigo
+package com.zimincom.amigo.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import com.zimincom.amigo.remote.AmigoService
+import com.zimincom.amigo.datas.Party
+import com.zimincom.amigo.R
 import kotlinx.android.synthetic.main.activity_new_party.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,7 +26,7 @@ class NewPartyActivity : AppCompatActivity() {
         val amigoService = AmigoService.getService(AmigoService::class.java)
 
         val party =
-                Party("zimin", "aaa@naver.com",  24, "female", "korea", "12/24", "seoul", "lotte")
+                Party("zimin", "aaa@naver.com", 24, "female", "korea", "12/24", "seoul", "lotte")
 
         val call = amigoService.newParty(party)
 

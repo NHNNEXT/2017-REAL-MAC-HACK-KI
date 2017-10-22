@@ -1,8 +1,11 @@
-package com.zimincom.amigo
+package com.zimincom.amigo.activities
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import com.zimincom.amigo.R
+import com.zimincom.amigo.datas.Party
+import com.zimincom.amigo.remote.AmigoService
 import kotlinx.android.synthetic.main.activity_parties.*
 import retrofit2.Call
 import retrofit2.Callback

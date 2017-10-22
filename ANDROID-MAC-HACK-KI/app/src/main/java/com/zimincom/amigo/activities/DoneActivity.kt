@@ -1,7 +1,8 @@
-package com.zimincom.amigo
+package com.zimincom.amigo.activities
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.zimincom.amigo.R
 import kotlinx.android.synthetic.main.activity_done.*
 
 class DoneActivity : AppCompatActivity() {
