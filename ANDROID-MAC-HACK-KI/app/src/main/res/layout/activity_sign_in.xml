@@ -59,13 +59,15 @@
             android:focusedByDefault="false"
             android:hint="please input your email"
             android:inputType="textEmailAddress"
+            android:textColorHint="@color/colorPrimary"
+            android:textColorLink="@color/colorPrimary"
             android:textColor="#FFFFFF"
             android:textColorHighlight="#FFFFFF" />
     </android.support.design.widget.TextInputLayout>
 
     <Button
         android:id="@+id/btn_view"
-        android:layout_width="wrap_content"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:text="do later"
@@ -76,7 +78,7 @@
 
     <Button
         android:id="@+id/btn_apply"
-        android:layout_width="wrap_content"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:background="@color/colorPrimary"

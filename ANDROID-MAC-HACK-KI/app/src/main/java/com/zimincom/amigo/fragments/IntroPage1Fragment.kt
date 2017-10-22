@@ -26,4 +26,9 @@ class IntroPage1Fragment : Fragment() {
         video_intro.isSoundEffectsEnabled = false
         video_intro.start()
     }
+
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
+
+    }
 }

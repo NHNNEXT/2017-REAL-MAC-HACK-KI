@@ -47,8 +47,6 @@ class NewPartyActivity : AppCompatActivity() {
         btn_submit.setOnClickListener {
             startActivity(Intent(NewPartyActivity@ this, DoneActivity::class.java))
         }
-
-
     }
 
     override fun onSupportNavigateUp(): Boolean {

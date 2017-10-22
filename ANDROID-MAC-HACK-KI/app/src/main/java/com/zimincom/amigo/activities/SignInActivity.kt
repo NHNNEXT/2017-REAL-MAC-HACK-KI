@@ -20,6 +20,7 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener {
         btn_apply.setOnClickListener(this)
 
         pager_intro.adapter = (IntroPagerAdapter(supportFragmentManager))
+        pager_intro.offscreenPageLimit = 0
     }
 
     fun isEmailValid(email: String): Boolean {
@@ -34,14 +35,10 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View?) {
         when (view) {
             btn_view -> {
-                val email = input_email.text.toString()
 
-                if (isEmailValid(email)) {
-                    Toast.makeText(this, "apply done", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(MainActivity@ this, PartiesActivity::class.java))
-                } else {
-                    input_email.error = "wrong email!"
-                }
+                Toast.makeText(this, "apply done", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(MainActivity@ this, PartiesActivity::class.java))
+
             }
             btn_apply -> {
                 val email = input_email.text.toString()
