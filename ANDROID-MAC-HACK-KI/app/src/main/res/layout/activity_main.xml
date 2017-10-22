@@ -29,6 +29,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
     </FrameLayout>
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="129dp"
@@ -39,27 +40,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_logo_green" />
 
-    <Button
-        android:id="@+id/btn_apply"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:background="@color/colorPrimary"
-        android:text="next"
-        android:textColor="@android:color/background_light"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Welcome to Amigo!"
-        android:textSize="30sp"
         android:textColor="#ffffff"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,8 +58,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:textColor="#ffffff"
         android:text="True travel mate"
+        android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,9 +81,31 @@
             android:layout_height="wrap_content"
             android:focusedByDefault="false"
             android:hint="please input your email"
-            android:textColorHighlight="#FFFFFF"
+            android:inputType="textEmailAddress"
             android:textColor="#FFFFFF"
-            android:inputType="textEmailAddress" />
+            android:textColorHighlight="#FFFFFF" />
     </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="56dp"
+        android:text="view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btn_apply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="60dp"
+        android:background="@color/colorPrimary"
+        android:text="next"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
