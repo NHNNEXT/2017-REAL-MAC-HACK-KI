@@ -10,6 +10,8 @@ services:
       - "80:80"
   amigo:
     image: real/amigo
+    ports:
+      - "8002:8080"
     links:
       - db:db
     volumes:
