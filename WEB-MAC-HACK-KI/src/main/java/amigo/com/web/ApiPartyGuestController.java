@@ -2,6 +2,7 @@ package amigo.com.web;
 
 import amigo.com.domain.PartyGuest;
 import amigo.com.domain.PartyGuestRepository;
+import amigo.com.mail.AmigoMailSender;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import jdk.nashorn.internal.ir.ObjectNode;
@@ -20,6 +21,8 @@ import java.awt.*;
 @RestController
 @Slf4j
 public class ApiPartyGuestController {
+    public AmigoMailSender amigoMailSender = new AmigoMailSender();
+
     @Resource(name = "partyGuestRepository")
     private PartyGuestRepository partyGuestRepository;
 
@@ -35,6 +38,7 @@ public class ApiPartyGuestController {
     public PartyGuest makePartyGuest(@RequestBody PartyGuest partyGuest) {
         PartyGuest savedPartyGuest = partyGuestRepository.save(partyGuest);
         log.info("saved party guest: {}", savedPartyGuest);
+        amigoMailSender.sendPartyGuestFormMail(savedPartyGuest);
         return savedPartyGuest;
     }
 }
