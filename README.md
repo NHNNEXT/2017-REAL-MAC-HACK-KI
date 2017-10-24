@@ -26,9 +26,9 @@ One Paragraph of project description goes here
 ## Authors
 
 * **Dae Hoon Kim** - *Server* - [bbq923](https://github.com/bbq923)
-* **Woo Hyeun Jang** - *Initial work* - [wkddngus5](https://github.com/wkddngus5)
-* **Yong Jai ** - *Initial work* - [Yongjai](https://github.com/Yongjai)
-* **Zimin Byun** - *Initial work* - [wlals822](https://github.com/wlals822)
+* **Woo Hyeun Jang** - *Web front* - [wkddngus5](https://github.com/wkddngus5)
+* **Yong Jai** - *iOS client* - [Yongjai](https://github.com/Yongjai)
+* **Zimin Byun** - *Android client* - [wlals822](https://github.com/wlals822)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
