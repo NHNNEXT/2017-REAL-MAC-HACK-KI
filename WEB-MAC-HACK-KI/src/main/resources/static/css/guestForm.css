@@ -111,3 +111,24 @@ select {
 #guest_info > div {
   display: block;
 }
+
+.submit-success {
+  display: none;
+  position: fixed;
+  top: 35%;
+  left: 35%;
+  width: 30%;
+  height: 30%;
+}
+
+.submit-success.is-visible {
+  display: block;
+  z-index: 100;
+  background-color: white;
+}
+
+.loading {
+  height: auto;
+  max-width: 100%;
+}
+

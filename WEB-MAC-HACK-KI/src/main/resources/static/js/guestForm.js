@@ -8,7 +8,6 @@ class GuestForm {
   }
 
   init() {
-    console.log(document.querySelector('.mdl-button__ripple-container'));
     document.querySelector('.mdl-button__ripple-container').addEventListener('click', (e) => {
       this.postForm(e);
     });
@@ -29,6 +28,9 @@ class GuestForm {
       'attraction' : document.querySelector('#attraction').value
     };
 
+    document.querySelector('.mdl-layout__obfuscator').classList.add("is-visible");
+    document.querySelector('.submit-success').classList.add("is-visible");
+
     fetch('/party/guest', {
       method: 'POST',
       headers: {
@@ -37,9 +39,12 @@ class GuestForm {
       },
       body: JSON.stringify(guestData)
     }).then(res => {
-      console.log('ddd: ', res);
       return res.json();
     }).then(json => {
+      document.querySelector('.submit-success.is-visible').innerHTML = '<h4>Thank you for using. <br>' +
+        'Your request was successfully sent! <br>' +
+        'Please check your email.</h4>';
+
       console.log('res: ', json);
     });
   }
