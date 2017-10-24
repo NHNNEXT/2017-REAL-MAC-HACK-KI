@@ -4,4 +4,16 @@
     <string name="login_hint_age">age</string>
     <string name="login_message">please give some information</string>
     <string name="login_btn_confirm">confirm</string>
+    <string name="sign_in_success">Success!</string>
+    <string name="done_message">We email to you when party succesfully joined.</string>
+    <string name="new_party_submit">submit</string>
+    <string name="new_party_gender">Gender</string>
+    <string name="gender_male">Male</string>
+    <string name="gender_female">Female</string>
+    <string name="theme">Theme</string>
+    <string name="attraction">Attraction</string>
+    <string name="nation">Nation</string>
+    <string name="sign_in_email_hint">please input your email</string>
+    <string name="sign_in_later">do later</string>
+    <string name="sign_in">sign in</string>
 </resources>

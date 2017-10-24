@@ -373,7 +373,7 @@ a img{
   }
 
 .android-customized-section-image {
-  background: url('/images/devices.jpg') center top no-repeat;
+  background: url('/images/korean-friend.jpg') center top no-repeat;
   background-size: cover;
   height: 400px;
 }
@@ -567,4 +567,26 @@ h1 {
   color: #00B465;
   margin: 0px 10px;
   font-size: 45px;
+}
+
+.android-screen-section.mdl-typography--text-center {
+  padding: 20px 0px;
+}
+
+bold {
+  font-weight: bold;
+  color: #336AB5;
+}
+
+#submit-btn {
+  background-color: #EC5878;
+  color: white;
+}
+
+.demo-content.mdl-color--white.mdl-shadow--4dp.content.mdl-color-text--grey-800.mdl-cell.mdl-cell--8-col {
+  padding: 4% 7%;
+}
+
+.logo-link {
+  height: 100%;
 }
