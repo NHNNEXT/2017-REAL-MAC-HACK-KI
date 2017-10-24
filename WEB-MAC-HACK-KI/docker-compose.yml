@@ -10,3 +10,18 @@ services:
       - "80:80"
   amigo:
     image: real/amigo
+    ports:
+      - "8002:8080"
+    links:
+      - db:db
+  db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_USER: dev
+      MYSQL_PASSWORD: 123456
+      MYSQL_DATABASE: amigobase
+    volumes:
+      - amigo-datavolume:/var/lib/mysql
+volumes:
+  amigo-datavolume:

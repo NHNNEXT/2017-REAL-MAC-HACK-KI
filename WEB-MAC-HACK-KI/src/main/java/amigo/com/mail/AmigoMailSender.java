@@ -58,7 +58,7 @@ public class AmigoMailSender {
         try {
             // 메일보내기
             postMail(emailList, emailSubjectTxt, emailMsgTxt, emailFromAddress);
-            log.debug("mail sended to {}", emailList);
+            log.debug("mail sended to {}", (Object) emailList);
         } catch (MessagingException e) {
             e.printStackTrace();
         }
