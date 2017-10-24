@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.zimincom.amigo">
+    package="com.amigotrip.amigo">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activities.SignInActivity"
+            android:name="com.amigotrip.amigo.activities.SignInActivity"
             android:theme="@style/SignInTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,13 +20,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.NewPartyActivity" />
-        <activity android:name=".activities.DoneActivity" />
-        <activity android:name=".activities.PartiesActivity" />
-        <activity android:name=".activities.SearchActivity" />
-        <activity android:name=".activities.ProfileActivity" />
-        <activity android:name=".activities.IntroActivity" />
-        <activity android:name=".activities.MessagesActivity"></activity>
+        <activity android:name="com.amigotrip.amigo.activities.NewPartyActivity" />
+        <activity android:name="com.amigotrip.amigo.activities.DoneActivity" />
+        <activity android:name="com.amigotrip.amigo.activities.PartiesActivity" />
+        <activity android:name="com.amigotrip.amigo.activities.SearchActivity" />
+        <activity android:name="com.amigotrip.amigo.activities.ProfileActivity" />
+        <activity android:name="com.amigotrip.amigo.activities.IntroActivity" />
+        <activity android:name="com.amigotrip.amigo.activities.MessagesActivity"></activity>
     </application>
 
 </manifest>

@@ -1,13 +1,13 @@
-package com.zimincom.amigo.activities
+package com.amigotrip.amigo.activities
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.zimincom.amigo.R
+import com.amigotrip.amigo.R
 
-class SearchActivity : AppCompatActivity() {
+class ProfileActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_search)
+        setContentView(R.layout.activity_profile)
     }
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.zimincom.amigo.activities.NewPartyActivity"
+    tools:context="com.amigotrip.amigo.activities.NewPartyActivity"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="81dp">
 
@@ -33,6 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_message">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/input_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/login_hint_name" />
@@ -51,6 +52,7 @@
         app:layout_constraintTop_toBottomOf="@+id/input_name_layout">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/input_age"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/login_hint_age" />
@@ -99,7 +101,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView5">
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/radio_male"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="44dp"
@@ -108,32 +110,32 @@
             app:layout_constraintStart_toEndOf="@+id/textView5" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/radio_female"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="44dp"
             android:text="@string/gender_female"
-            app:layout_constraintBaseline_toBaselineOf="@+id/radioButton"
-            app:layout_constraintStart_toEndOf="@+id/radioButton" />
+            app:layout_constraintBaseline_toBaselineOf="@+id/radio_male"
+            app:layout_constraintStart_toEndOf="@+id/radio_male" />
     </RadioGroup>
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/input_theme"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/theme"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_nation" />
+        app:layout_constraintTop_toBottomOf="@+id/input_lang_layout" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/input_attraction"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -144,16 +146,24 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/input_theme" />
 
-    <TextView
-        android:id="@+id/tv_nation"
-        android:layout_width="wrap_content"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_lang_layout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/nation"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/input_lang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="language" />
+    </android.support.design.widget.TextInputLayout>
 
 </android.support.constraint.ConstraintLayout>
