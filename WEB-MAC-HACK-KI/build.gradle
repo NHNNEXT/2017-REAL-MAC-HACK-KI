@@ -7,16 +7,23 @@ buildscript {
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath('se.transmode.gradle:gradle-docker:1.2')
 	}
 }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'docker'
 
-group = 'amigo.com'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 1.8
+//group = 'amigo.com'
+//version = '0.0.1-SNAPSHOT'
+//sourceCompatibility = 1.8
+
+jar {
+	baseName = 'amigo'
+	version = '1.0.0'
+}
 
 repositories {
 	mavenCentral()
@@ -29,9 +36,22 @@ dependencies {
 	compile('org.apache.tomcat.embed:tomcat-embed-jasper')
 	compile('javax.servlet:jstl:1.2')
 	compile('pl.allegro.tech.boot:handlebars-spring-boot-starter:0.2.15')
+	compile('org.webjars.bower:jquery:3.2.1')
 
 	runtime('com.h2database:h2')
 	runtime('mysql:mysql-connector-java')
 	compileOnly('org.projectlombok:lombok')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+task buildDocker(type: Docker, dependsOn: build) {
+	push = false
+	applicationName = "real/" + jar.baseName
+	dockerfile = file('src/main/docker/Dockerfile')
+	doFirst {
+		copy {
+			from jar
+			into stageDir
+		}
+	}
 }
