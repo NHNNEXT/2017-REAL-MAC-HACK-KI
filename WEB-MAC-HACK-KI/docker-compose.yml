@@ -14,8 +14,6 @@ services:
       - "8002:8080"
     links:
       - db:db
-    volumes:
-      - ./amigo-datavolume:/amigo-datavolume
   db:
     image: mysql
     environment:
