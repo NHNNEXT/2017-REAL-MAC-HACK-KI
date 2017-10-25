@@ -1,11 +1,11 @@
-package com.zimincom.amigo.fragments
+package com.amigotrip.amigo.fragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.zimincom.amigo.R
+import com.amigotrip.amigo.R
 
 /**
  * Created by Zimincom on 2017. 10. 22..

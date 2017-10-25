@@ -1,12 +1,12 @@
-package com.zimincom.amigo.activities
+package com.amigotrip.amigo.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
-import com.zimincom.amigo.R
-import com.zimincom.amigo.adpaters.IntroPagerAdapter
+import com.amigotrip.amigo.R
+import com.amigotrip.amigo.adpaters.IntroPagerAdapter
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import java.util.regex.Pattern
 
@@ -51,7 +51,7 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener {
 //                } else {
 //                    input_email.error = "wrong email!"
 //                }
-                val intent = Intent(SignInActivity@this, SearchActivity::class.java)
+                val intent = Intent(SignInActivity@this, NewPartyActivity::class.java)
                 startActivity(intent)
             }
         }

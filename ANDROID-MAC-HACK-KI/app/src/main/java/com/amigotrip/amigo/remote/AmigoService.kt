@@ -1,6 +1,6 @@
-package com.zimincom.amigo.remote
+package com.amigotrip.amigo.remote
 
-import com.zimincom.amigo.datas.Party
+import com.amigotrip.amigo.datas.Party
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
