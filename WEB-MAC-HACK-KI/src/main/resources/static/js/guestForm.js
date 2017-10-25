@@ -4,19 +4,41 @@
 class GuestForm {
   constructor() {
     this.init();
-    let nowGender;
+    this.nowModal;
   }
 
   init() {
-    document.querySelector('.mdl-button__ripple-container').addEventListener('click', (e) => {
+    document.querySelector('.mdl-button__ripple-container').addEventListener('click', e => {
       this.postForm(e);
+    });
+    document.querySelector('#showVieo').addEventListener('click', e => {
+      this.showVideo(e);
+    });
+    document.querySelector('.mdl-layout__obfuscator').addEventListener('click', e => {
+      this.modalOff(e);
     });
     this.setCalendar();
   }
 
+  showVideo(e) {
+    e.preventDefault();
+    this.nowModal = document.querySelector('.video-modal');
+    document.querySelector('.mdl-layout__obfuscator').classList.add('is-visible');
+    document.querySelector('.video-modal').classList.add('is-visible');
+  }
+
+  modalOff(e) {
+    if (this.nowModal === document.querySelector('.post-result') || this.nowModal === document.querySelector('.loading-modal')) {
+      console.log('Please submit and click button');
+    } else {
+      this.nowModal.classList.remove('is-visible');
+      document.querySelector('.mdl-layout__obfuscator').classList.remove('is-visible');
+      this.nowModal = null;
+    }
+  }
+
   postForm(e) {
     e.preventDefault();
-    console.log(e.target);
     const guestData = {
       'name' : document.querySelector('#name').value,
       'email' : document.querySelector('#email').value,
@@ -28,8 +50,9 @@ class GuestForm {
       'attraction' : document.querySelector('#attraction').value
     };
 
-    document.querySelector('.mdl-layout__obfuscator').classList.add("is-visible");
-    document.querySelector('.submit-success').classList.add("is-visible");
+    this.nowModal = document.querySelector('.loading-modal');
+    document.querySelector('.mdl-layout__obfuscator').classList.add('is-visible');
+    document.querySelector('.loading-modal').classList.add('is-visible');
 
     fetch('/party/guest', {
       method: 'POST',
@@ -41,8 +64,9 @@ class GuestForm {
     }).then(res => {
       return res.json();
     }).then(json => {
-      document.querySelector('.submit-success.is-visible').classList.remove("is-visible");
-      document.querySelector('.post-result').classList.add("is-visible");
+      this.nowModal = document.querySelector('.post-result');
+      document.querySelector('.loading-modal.is-visible').classList.remove('is-visible');
+      document.querySelector('.post-result').classList.add('is-visible');
       console.log('res: ', json);
     });
   }
@@ -56,9 +80,9 @@ class GuestForm {
   }
 }
 
-document.addEventListener("DOMContentLoaded", (e) => {
-  console.log("DOM fully loaded and parsed");
+document.addEventListener('DOMContentLoaded', (e) => {
+  console.log('DOM fully loaded and parsed');
   setTimeout(() => {
     new GuestForm();
-    }, 300);
+    }, 1000);
 });

@@ -622,3 +622,28 @@ bold {
 .mdl-layout__obfuscator {
   position: fixed;
 }
+
+.video-modal {
+  display: none;
+  position: fixed;
+  top: 15%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+}
+
+.video-modal iframe{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.video-modal.is-visible {
+  display: block;
+  z-index: 100;
+}
+
+.travel-video {
+  height: auto;
+  max-width: 100%;
+}
