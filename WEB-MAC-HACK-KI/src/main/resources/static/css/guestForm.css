@@ -123,7 +123,7 @@ select {
   display: block;
 }
 
-.submit-success {
+.loading-modal {
   display: none;
   position: fixed;
   top: 35%;
@@ -132,7 +132,7 @@ select {
   height: 30%;
 }
 
-.submit-success.is-visible {
+.loading-modal.is-visible {
   display: block;
   z-index: 100;
   background-color: white;
