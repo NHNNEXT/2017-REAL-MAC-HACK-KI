@@ -67,13 +67,15 @@ public class AmigoMailSender {
 
     public String sendPartyGuestFormMail(PartyGuest partyGuest) {
         String[] toSend = {partyGuest.getEmail()};
+        String[] slackMail = {"register@machackki.mailclark.ai"};
 
         String emailSubject = "Hi " + partyGuest.getName() + ", this is Amigo!";
+        String slackSubject = "We just got a new registration!";
         String emailTxt = "<h4>Nice to meet you <strong>" + partyGuest.getName() + "</strong>.<br>" +
                 "your request was successfully verified.<br>" +
                 "Amigos on the trip will check the contents and if there is a suitable friend,<br>" +
-                "They will contact you by email. I hope you have a good trip. thank you.<br><br></h4>" +
-
+                "They will contact you by email. I hope you have a good trip. thank you.<br><br></h4>";
+        String emailContent =
                 "<h3>You applied with the following content:</h3><br>" +
                 "<h5>Age: " + partyGuest.getAge() + "<br>" +
                 "Gender: " + partyGuest.getGender() + "<br>" +
@@ -81,7 +83,9 @@ public class AmigoMailSender {
                 "Desired date: " + partyGuest.getDate() + "<br>" +
                 "Theme: " + partyGuest.getTheme() + "<br>" +
                 "Attarction: " + partyGuest.getAttraction() + "</h5>";
-        sendMail(toSend, emailTxt, emailSubject);
+
+        sendMail(toSend, emailTxt + emailContent, emailSubject);
+        sendMail(slackMail, emailContent, slackSubject);
         return "";
     }
 
