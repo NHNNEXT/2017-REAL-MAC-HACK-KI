@@ -76,6 +76,17 @@
   font-size: 13px;
 }
 
+.demo-card-square.mdl-card {
+  width: 320px;
+  height: 160px;
+}
+.demo-card-square > .mdl-card__title {
+  color: #fff;
+  background:
+          url('/images/amigo-logo-green.png') bottom right 15% no-repeat #f5fff2;
+  background-size: contain;
+}
+
 header > div > span {
   color: #00b65a;
 }
@@ -132,3 +143,34 @@ select {
   max-width: 100%;
 }
 
+.post-result {
+  display: none;
+  position: fixed;
+  top: 40%;
+  left: 37%;
+  width: 30%;
+  height: 30%;
+}
+
+.post-result.is-visible {
+  display: block;
+  z-index: 100;
+  background-color: white;
+}
+
+.post-result.mdl-card {
+  min-height: 170px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.post-result > div.mdl-card__actions {
+  text-align: center;
+}
+
+.post-result > div.mdl-card__title > h2 {
+  color: #6ab344;
+}
+
+.post-result > div.mdl-card__title {
+  margin-top: 10px;
+}

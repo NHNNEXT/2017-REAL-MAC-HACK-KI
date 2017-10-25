@@ -41,10 +41,8 @@ class GuestForm {
     }).then(res => {
       return res.json();
     }).then(json => {
-      document.querySelector('.submit-success.is-visible').innerHTML = '<h4>Thank you for using. <br>' +
-        'Your request was successfully sent! <br>' +
-        'Please check your email.</h4>';
-
+      document.querySelector('.submit-success.is-visible').classList.remove("is-visible");
+      document.querySelector('.post-result').classList.add("is-visible");
       console.log('res: ', json);
     });
   }
