@@ -103,21 +103,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-<<<<<<< HEAD
             <point key="canvasLocation" x="-220" y="-383"/>
         </scene>
         <!--Apply View Controller-->
         <scene sceneID="LeK-1t-sVV">
             <objects>
                 <viewController id="t3i-0M-z6G" customClass="ApplyViewController" sceneMemberID="viewController">
-=======
-            <point key="canvasLocation" x="-76" y="73.313343328335833"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="LeK-1t-sVV">
-            <objects>
-                <viewController id="t3i-0M-z6G" sceneMemberID="viewController">
->>>>>>> master
+
                     <view key="view" contentMode="scaleToFill" id="WsK-HW-Y8i">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -163,34 +155,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
-<<<<<<< HEAD
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="language" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B4T-WP-0G7">
-=======
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kHd-9Q-RCA">
-                                        <rect key="frame" x="167" y="144" width="62" height="33"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
-                                        <state key="normal" title="female">
-                                            <color key="titleColor" red="0.98552950390000005" green="0.9996308223" blue="1" alpha="0.54751006520000001" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pTk-ow-BjI">
-                                        <rect key="frame" x="97" y="144" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
-                                        <state key="normal" title="male">
-                                            <color key="titleColor" red="0.98552950390000005" green="0.9996308223" blue="1" alpha="0.54751006520000001" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRe-Qd-Ggx">
-                                        <rect key="frame" x="14" y="144" width="62" height="27"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                        <color key="textColor" red="0.99121498490000004" green="0.99640459219999999" blue="0.99640459219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="nation" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B4T-WP-0G7">
->>>>>>> master
                                         <rect key="frame" x="8" y="194" width="202" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
@@ -204,18 +169,8 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="country-name"/>
                                     </textField>
-<<<<<<< HEAD
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aHe-w0-jIC">
-=======
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="yongjai@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PB1-tK-OZz">
-                                        <rect key="frame" x="8" y="14" width="179" height="27"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                        <color key="textColor" red="0.99121498490000004" green="0.99640459219999999" blue="0.99640459219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="여행 테마 고르기" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aHe-w0-jIC">
->>>>>>> master
+
                                         <rect key="frame" x="8" y="305" width="310" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.99993389844894409" green="1" blue="0.9998818039894104" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -232,18 +187,12 @@
                                             <color key="titleColor" red="0.22510850430000001" green="0.2410278022" blue="0.38025856019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-<<<<<<< HEAD
                                             <action selector="clickedSubmitBtn:" destination="t3i-0M-z6G" eventType="touchUpInside" id="OPr-TM-sVk"/>
                                             <segue destination="fXl-qy-Dy6" kind="presentation" id="VkT-LK-Q7j"/>
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="X8g-ou-mYL">
-=======
-                                            <segue destination="fXl-qy-Dy6" kind="presentation" id="JeE-Zh-QJ5"/>
-                                        </connections>
-                                    </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="특별히 가보고 싶은 장소" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="X8g-ou-mYL">
->>>>>>> master
+
                                         <rect key="frame" x="8" y="397" width="310" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.99993389844894409" green="1" blue="0.9998818039894104" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -251,7 +200,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-<<<<<<< HEAD
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EqR-vp-DGZ">
                                         <rect key="frame" x="8" y="8" width="234" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -266,8 +214,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-=======
->>>>>>> master
+
                                 </subviews>
                                 <color key="backgroundColor" red="0.27462512249999999" green="0.29276031260000002" blue="0.47254788879999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -275,7 +222,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="EsL-Zf-Yjx"/>
                     </view>
-<<<<<<< HEAD
                     <connections>
                         <outlet property="ageTextField" destination="hrr-6y-bMO" id="Ork-I5-BF9"/>
                         <outlet property="attractionTextField" destination="X8g-ou-mYL" id="uKG-De-n1t"/>
@@ -290,12 +236,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R2s-oG-Rk7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="823" y="-384"/>
-=======
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="R2s-oG-Rk7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="790" y="-254"/>
->>>>>>> master
         </scene>
         <!--View Controller-->
         <scene sceneID="HuS-HH-iiU">
@@ -395,11 +335,8 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s0C-7d-W5v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-<<<<<<< HEAD
             <point key="canvasLocation" x="287" y="385"/>
-=======
-            <point key="canvasLocation" x="790" y="582"/>
->>>>>>> master
+
         </scene>
     </scenes>
     <resources>
