@@ -1,6 +1,7 @@
 package amigo.com;
 
 import org.junit.Test;
+import java.io.*;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -76,4 +77,15 @@ public class MailTest {
         }
     }
 
+    @Test
+    public void readFile() {
+        try {
+            BufferedReader in = new BufferedReader(new FileReader("src/main/java/amigo/com/mail/user_info"));
+            String email = in.readLine();
+            String password = in.readLine();
+            System.out.println(email + "\n" + password);
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+    }
 }
