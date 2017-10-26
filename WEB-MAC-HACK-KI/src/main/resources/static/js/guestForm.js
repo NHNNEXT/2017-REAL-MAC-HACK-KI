@@ -8,7 +8,7 @@ class GuestForm {
   }
 
   init() {
-    document.querySelector('.mdl-button__ripple-container').addEventListener('click', e => {
+    document.querySelector('#submit-btn').addEventListener('click', e => {
       this.postForm(e);
     });
     document.querySelector('#showVieo').addEventListener('click', e => {
@@ -82,7 +82,5 @@ class GuestForm {
 
 document.addEventListener('DOMContentLoaded', (e) => {
   console.log('DOM fully loaded and parsed');
-  setTimeout(() => {
-    new GuestForm();
-    }, 1000);
+  new GuestForm();
 });
