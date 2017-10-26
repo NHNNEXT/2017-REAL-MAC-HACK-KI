@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "ApplyViewController.h"
 
 @interface ViewController ()
 
@@ -23,6 +24,27 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"segue"]) {
+        ApplyViewController *vc = segue.destinationViewController;
+        vc.data = _emailTextField.text;
+    }
+}
+
+- (void)openScheme:(NSString *)scheme {
+    UIApplication *application = [UIApplication sharedApplication];
+    NSURL *URL = [NSURL URLWithString:scheme];
+    [application openURL:URL options:@{} completionHandler:^(BOOL success) {
+        if (success) {
+            NSLog(@"Opened %@",scheme);
+        }
+    }];
+}
+
+- (IBAction)clickedGetInfo:(id)sender {
+    [self openScheme:@"http://amigotrip.co.kr/"];
 }
 
 

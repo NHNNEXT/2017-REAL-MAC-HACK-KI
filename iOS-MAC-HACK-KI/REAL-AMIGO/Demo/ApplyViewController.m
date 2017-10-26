@@ -7,15 +7,28 @@
 //
 
 #import "ApplyViewController.h"
+#import "CalendarViewController.h"
+#import "DataModel.h"
 
-@interface ApplyViewController ()
+@interface ApplyViewController () 
 
 @end
 
-@implementation ApplyViewController
+@implementation ApplyViewController {
+    Checkbox *cbox;
+    DataModel *dataModel;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _emailLabel.text = _data;
+    _maleCheckBox.isChecked = FALSE;
+    _femaleCheckBox.isChecked = FALSE;
+    NSNotificationCenter *noti = [NSNotificationCenter defaultCenter];
+    [noti addObserver:self selector:@selector(blurViewhidden) name:@"dismissNoti" object:nil];
+    [noti addObserver:self selector:@selector(getDate:) name:@"dateNoti" object:nil];
+    
+//    calendarViewController = [[[NSBundle mainBundle] loadNibNamed:@"CalendarViewController" owner:self options:nil] objectAtIndex:0];
     // Do any additional setup after loading the view.
 }
 
@@ -34,6 +47,19 @@
 }
 */
 
+- (void)blurViewhidden {
+    _blurView.hidden = YES;
+}
+
+
+- (void)getDate:(NSNotification *)notification{
+//    _dateLabel.text = [notification object];
+    _date = [notification object];
+    _dateLabel.text = [NSString stringWithFormat:@"You come to Korea on %@", notification.object];
+    _blurView.hidden = YES;
+
+}
+
 - (IBAction)clickedSubmitBtn:(id)sender {
     NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject];
@@ -46,11 +72,11 @@
     
     NSDictionary *submitData = @{
                                  @"name" : _nameTextField.text,
-                                 @"email" : _emailTextField.text,
+                                 @"email" : _emailLabel.text,
                                  @"age": _ageTextField.text,
                                  @"gender": _genderTextField.text,
                                  @"language": _languageTextField.text,
-                                 @"date": _dateTextField.text,
+                                 @"date": _date,
                                  @"theme": _themeTextField.text,
                                  @"attraction": _attractionTextField.text
                                  };
@@ -65,5 +91,96 @@
     }];
     [dataTask resume];
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"calendarSegue"]) {
+        CalendarViewController *calendarViewController = [segue destinationViewController];
+        calendarViewController.transitioningDelegate = self;
+        calendarViewController.modalPresentationStyle = UIModalPresentationCustom;
+        _blurView.hidden = NO;
+    }
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
+    ApplyViewController *animator = [[ApplyViewController alloc] init];
+    animator.isShow = YES;
+    return animator;
+}
+
+- (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext {
+    return 1.0;
+}
+
+- (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext {
+    ApplyViewController *viewControllerA = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+    CalendarViewController *viewControllerB = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    UIView *toView = viewControllerB.view;
+    UIView *containerView = [transitionContext containerView];
+    CGRect initialFrame = [transitionContext initialFrameForViewController:viewControllerA];
+    CGRect offscreenRect = CGRectOffset(initialFrame, 0, -[UIScreen mainScreen].bounds.size.height);
+    
+    if (self.isShow) {
+        CGRect viewFrame = CGRectMake(10, 100, 355, 450);
+        
+        toView.frame = offscreenRect;
+        [containerView addSubview:toView];
+        
+        [UIView animateWithDuration:[self transitionDuration:transitionContext]
+                              delay:0
+             usingSpringWithDamping:0.5
+              initialSpringVelocity:1
+                            options:0
+                         animations: ^{
+                             toView.frame = viewFrame;
+                         } completion: ^(BOOL finished) {
+                             [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+                         }];
+    }
+}
+
+- (IBAction)clickedMaleCheckBox:(id)sender {
+    if (_femaleCheckBox.isChecked == TRUE) {
+        _femaleCheckBox.isChecked = FALSE;
+        NSLog(@"female이 투루였다");
+    }
+    _genderString = @"male";
+}
+- (IBAction)clickedFemaleCheckBox:(id)sender {
+    if (_maleCheckBox.isChecked == TRUE) {
+        _maleCheckBox.isChecked = FALSE;
+        NSLog(@"male이 투루였다");
+
+    }
+    _genderString = @"female";
+}
+
+//- (IBAction)clickedMaleCheckBox:(id)sender {
+////    _maleCheckBox.isChecked = YES;
+////    _femaleCheckBox.isChecked = NO;
+//    NSLog(@"dddd");
+//}
+
+//- (IBAction)clickedFemaleCheckBox:(id)sender {
+////    _femaleCheckBox.isChecked = YES;
+////    _maleCheckBox.isChecked = NO;
+//    NSLog(@"22222");
+//
+//}
+
+- (void) checkAction{
+    if (_maleCheckBox.isChecked == true) {
+        cbox.text = @"Checked";
+    }
+    else{
+        cbox.text = @"Unchecked";
+    }
+}
+
+
+
+- (IBAction)clickedBackBtn:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 @end
