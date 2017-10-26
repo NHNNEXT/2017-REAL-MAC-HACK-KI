@@ -28,4 +28,4 @@ nbdist/
 amigo-datavolume/
 
 ### User Information ###
-/src/main/amigo.com/mail/user_info
+src/main/java/amigo/com/mail/user_info
