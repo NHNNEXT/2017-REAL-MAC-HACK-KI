@@ -3,6 +3,8 @@ package amigo.com.mail;
 import amigo.com.domain.PartyGuest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Component;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -14,6 +16,7 @@ import java.util.Properties;
  */
 
 @Slf4j
+@Component
 public class AmigoMailSender {
     String emailFromAddress = "amigotrip82@gmail.com";
 

@@ -5,6 +5,8 @@ class GuestForm {
   constructor() {
     this.init();
     this.nowModal;
+    this.errorMessage;
+    this.regex=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
   }
 
   init() {
@@ -39,11 +41,16 @@ class GuestForm {
 
   postForm(e) {
     e.preventDefault();
+    if(!this.formIsCorrect()) {
+      return;
+    }
+
     const guestData = {
       'name' : document.querySelector('#name').value,
       'email' : document.querySelector('#email').value,
       'age' : document.querySelector('#age').value,
-      'gender' : document.querySelector('input[name="gender"]:checked').dataset.id,
+      'gender' : document.querySelector('input[name="gender"]:checked')?
+        document.querySelector('input[name="gender"]:checked').dataset.id : 'X',
       'language' : document.querySelector('#language').value,
       'date' : document.querySelector('#date').value,
       'theme' : document.querySelector('#theme').value,
@@ -69,6 +76,26 @@ class GuestForm {
       document.querySelector('.post-result').classList.add('is-visible');
       console.log('res: ', json);
     });
+  }
+
+  formIsCorrect() {
+    let errorInput;
+    let correct = true;
+    if(document.querySelector('#name').value === '') {
+      errorInput = document.querySelector('#name');
+      correct = false;
+    } else if(!this.regex.test(document.querySelector('#email').value)) {
+      errorInput = document.querySelector('#email');
+      correct = false;
+    } else if(document.querySelector('#date').value === '') {
+      errorInput = document.querySelector('#date');
+      correct = false;
+    }
+    if(!correct) {
+      errorInput.closest('div').classList.add('is-invalid');
+      errorInput.focus();
+    }
+    return correct;
   }
 
   setCalendar() {
