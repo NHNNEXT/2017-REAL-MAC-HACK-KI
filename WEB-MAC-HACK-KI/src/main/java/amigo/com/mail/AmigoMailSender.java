@@ -9,6 +9,9 @@ import org.springframework.stereotype.Component;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Properties;
 
 /**
@@ -98,8 +101,15 @@ public class AmigoMailSender {
      */
     private class SMTPAuthenticator extends javax.mail.Authenticator {
         public PasswordAuthentication getPasswordAuthentication() {
-            String username =  "amigotrip82@gmail.com"; // gmail 사용자;
-            String password = "machackki"; // 패스워드;
+            String username = "";
+            String password = "";
+            try {
+                BufferedReader in = new BufferedReader(new FileReader("src/main/java/amigo/com/mail/user_info"));
+                username = in.readLine();
+                password = in.readLine();
+            } catch(IOException e) {
+                log.debug("{}", e);
+            }
             return new PasswordAuthentication(username, password);
         }
     }
