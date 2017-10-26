@@ -21,7 +21,8 @@ import java.awt.*;
 @RestController
 @Slf4j
 public class ApiPartyGuestController {
-    public AmigoMailSender amigoMailSender = new AmigoMailSender();
+    @Resource(name = "amigoMailSender")
+    public AmigoMailSender amigoMailSender;
 
     @Resource(name = "partyGuestRepository")
     private PartyGuestRepository partyGuestRepository;
