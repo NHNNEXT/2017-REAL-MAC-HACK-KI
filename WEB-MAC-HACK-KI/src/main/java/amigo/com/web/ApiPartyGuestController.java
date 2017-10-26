@@ -30,7 +30,7 @@ public class ApiPartyGuestController {
     @GetMapping("/party/guest")
     @ResponseStatus(HttpStatus.OK)
     public Iterable<PartyGuest> getParyGuests() {
-        log.info("parties: {}", partyGuestRepository.findAll());
+        log.debug("parties: {}", partyGuestRepository.findAll());
         return partyGuestRepository.findAll();
     }
 
