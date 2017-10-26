@@ -26,3 +26,6 @@ nbdist/
 
 ### Docker Volume ###
 amigo-datavolume/
+
+### User Information ###
+/src/main/amigo.com/mail/user_info
