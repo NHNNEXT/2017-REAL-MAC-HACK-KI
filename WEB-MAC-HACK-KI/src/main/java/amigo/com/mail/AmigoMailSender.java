@@ -68,6 +68,7 @@ public class AmigoMailSender {
         return "Success";
     }
 
+    @Async
     public String sendPartyGuestFormMail(PartyGuest partyGuest) {
         String[] toSend = {partyGuest.getEmail()};
         String[] slackMail = {"register@machackki.mailclark.ai"};
