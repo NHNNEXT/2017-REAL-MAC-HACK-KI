@@ -17,7 +17,10 @@
 		7C92B6531F91775700C3B693 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C92B6521F91775700C3B693 /* main.m */; };
 		7C92B65D1F91775700C3B693 /* REAL_AMIGOTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C92B65C1F91775700C3B693 /* REAL_AMIGOTests.m */; };
 		7C92B6681F91775700C3B693 /* REAL_AMIGOUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C92B6671F91775700C3B693 /* REAL_AMIGOUITests.m */; };
+<<<<<<< HEAD
 		7CCCD1001FA1042F00CFCEC3 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCCD0FF1FA1042F00CFCEC3 /* DataModel.m */; };
+=======
+>>>>>>> master
 		7CE708E41F9873BC0021A412 /* ApplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE708E31F9873BC0021A412 /* ApplyViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -59,8 +62,11 @@
 		7C92B6631F91775700C3B693 /* REAL-AMIGOUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "REAL-AMIGOUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C92B6671F91775700C3B693 /* REAL_AMIGOUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = REAL_AMIGOUITests.m; sourceTree = "<group>"; };
 		7C92B6691F91775700C3B693 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		7CCCD0FE1FA1042F00CFCEC3 /* DataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataModel.h; sourceTree = "<group>"; };
 		7CCCD0FF1FA1042F00CFCEC3 /* DataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
+=======
+>>>>>>> master
 		7CE708E21F9873BC0021A412 /* ApplyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApplyViewController.h; sourceTree = "<group>"; };
 		7CE708E31F9873BC0021A412 /* ApplyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ApplyViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,6 +103,7 @@
 				7C92B6471F91775600C3B693 /* ViewController.m */,
 				7CE708E21F9873BC0021A412 /* ApplyViewController.h */,
 				7CE708E31F9873BC0021A412 /* ApplyViewController.m */,
+<<<<<<< HEAD
 				7C013EEF1F9F93BB00B0FEA0 /* Checkbox.h */,
 				7C013EF01F9F93BB00B0FEA0 /* Checkbox.m */,
 				7C013EEC1F9F733300B0FEA0 /* Demo.storyboard */,
@@ -104,6 +111,8 @@
 				7C22FE101FA04E9B00BF492B /* CalendarViewController.m */,
 				7CCCD0FE1FA1042F00CFCEC3 /* DataModel.h */,
 				7CCCD0FF1FA1042F00CFCEC3 /* DataModel.m */,
+=======
+>>>>>>> master
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -132,12 +141,20 @@
 			isa = PBXGroup;
 			children = (
 				7C0A50EA1F9F56F0008E6BCB /* Demo */,
+<<<<<<< HEAD
+=======
+				7C92B6491F91775700C3B693 /* Main.storyboard */,
+				7C92B64C1F91775700C3B693 /* Assets.xcassets */,
+>>>>>>> master
 				7C92B64E1F91775700C3B693 /* LaunchScreen.storyboard */,
 				7C92B6511F91775700C3B693 /* Info.plist */,
 				7C92B6521F91775700C3B693 /* main.m */,
 				7C92B6431F91775600C3B693 /* AppDelegate.h */,
 				7C92B6441F91775600C3B693 /* AppDelegate.m */,
+<<<<<<< HEAD
 				7C73479E1FA0B9AB00CC7574 /* Images.xcassets */,
+=======
+>>>>>>> master
 			);
 			path = "REAL-AMIGO";
 			sourceTree = "<group>";

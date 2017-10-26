@@ -13,7 +13,6 @@
 
 @interface ApplyViewController : UIViewController  <UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning>
 
-
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *ageTextField;
@@ -26,12 +25,12 @@
 @property NSString *data;
 @property NSString *date;
 
-
 @property (weak, nonatomic) IBOutlet UIView *blurView;
 @property BOOL isShow;
 @property CalendarViewController *calendarViewController;
 
 @property (weak, nonatomic) IBOutlet Checkbox *maleCheckBox;
 @property (weak, nonatomic) IBOutlet Checkbox *femaleCheckBox;
+
 
 @end

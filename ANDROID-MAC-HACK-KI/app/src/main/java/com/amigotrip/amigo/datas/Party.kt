@@ -1,4 +1,4 @@
-package com.zimincom.amigo.datas
+package com.amigotrip.amigo.datas
 
 /**
  * Created by Zimincom on 2017. 10. 19..

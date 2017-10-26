@@ -1,4 +1,4 @@
-package com.zimincom.amigo
+package com.amigotrip.amigo
 
 import org.junit.Test
 

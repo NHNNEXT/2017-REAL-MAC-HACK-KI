@@ -29,6 +29,15 @@
     [noti addObserver:self selector:@selector(getDate:) name:@"dateNoti" object:nil];
     
 //    calendarViewController = [[[NSBundle mainBundle] loadNibNamed:@"CalendarViewController" owner:self options:nil] objectAtIndex:0];
+
+@interface ApplyViewController ()
+
+@end
+
+@implementation ApplyViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
 
@@ -145,6 +154,7 @@
     }
     _genderString = @"male";
 }
+    
 - (IBAction)clickedFemaleCheckBox:(id)sender {
     if (_maleCheckBox.isChecked == TRUE) {
         _maleCheckBox.isChecked = FALSE;
@@ -154,18 +164,7 @@
     _genderString = @"female";
 }
 
-//- (IBAction)clickedMaleCheckBox:(id)sender {
-////    _maleCheckBox.isChecked = YES;
-////    _femaleCheckBox.isChecked = NO;
-//    NSLog(@"dddd");
-//}
 
-//- (IBAction)clickedFemaleCheckBox:(id)sender {
-////    _femaleCheckBox.isChecked = YES;
-////    _maleCheckBox.isChecked = NO;
-//    NSLog(@"22222");
-//
-//}
 
 - (void) checkAction{
     if (_maleCheckBox.isChecked == true) {
