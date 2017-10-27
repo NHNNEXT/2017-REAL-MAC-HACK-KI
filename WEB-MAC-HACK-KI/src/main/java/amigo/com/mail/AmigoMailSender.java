@@ -101,15 +101,15 @@ public class AmigoMailSender {
      */
     private class SMTPAuthenticator extends javax.mail.Authenticator {
         public PasswordAuthentication getPasswordAuthentication() {
-            String username = "";
-            String password = "";
-            try {
-                BufferedReader in = new BufferedReader(new FileReader("src/main/java/amigo/com/mail/user_info"));
-                username = in.readLine();
-                password = in.readLine();
-            } catch(IOException e) {
-                log.debug("{}", e);
-            }
+            String username = "amigotrip82@gmail.com";
+            String password = "machackki";
+//            try {
+//                BufferedReader in = new BufferedReader(new FileReader("src/main/java/amigo/com/mail/user_info"));
+//                username = in.readLine();
+//                password = in.readLine();
+//            } catch(IOException e) {
+//                log.debug("{}", e);
+//            }
             return new PasswordAuthentication(username, password);
         }
     }
