@@ -292,7 +292,7 @@ a img {
 
 .android-wear-section {
     position: relative;
-    background: url('/images/home-top.jpeg') center top no-repeat;
+    background: url('/images/korean-travel.png') no-repeat center center;
     background-size: cover;
     height: 800px;
 }
@@ -363,7 +363,8 @@ a img {
 }
 
 .android-customized-section-image {
-    background: url('/images/korean-friend.jpg') center top no-repeat;
+    position: relative;
+    background: url('/images/travel-mate.png') no-repeat center center;
     background-size: cover;
     height: 400px;
 }
@@ -528,24 +529,12 @@ a img {
         display: none;
     }
 
-    .android-wear-section {
-        /*position: relative;*/
-        background: url('/images/korean-travel.png') no-repeat center center;
-        background-size: cover;
-        height: 800px;
-    }
     .mdl-typography--display-2  {
         font-size: 25px;
     }
 
     .mdl-typography--headline {
         font-size: 16px;
-    }
-
-    .android-customized-section-image {
-        background: url('/images/travel-mate.png') no-repeat center center;
-        background-size: cover;
-        height: 400px;
     }
 }
 
