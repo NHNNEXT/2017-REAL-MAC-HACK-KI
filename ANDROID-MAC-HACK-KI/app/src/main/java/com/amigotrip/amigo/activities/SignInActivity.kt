@@ -23,14 +23,7 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener {
         pager_intro.offscreenPageLimit = 0
     }
 
-    fun isEmailValid(email: String): Boolean {
 
-        val expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$"
-        val pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE)
-        val matcher = pattern.matcher(email)
-
-        return matcher.matches()
-    }
 
     override fun onClick(view: View?) {
         when (view) {
@@ -42,15 +35,8 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             btn_apply -> {
-                // code for sign up
-//                val email = input_email.text.toString()
-//
-//                if (isEmailValid(email)) {
-//                    Toast.makeText(this, "apply done", Toast.LENGTH_SHORT).show()
-//                    startActivity(Intent(MainActivity@ this, NewPartyActivity::class.java))
-//                } else {
-//                    input_email.error = "wrong email!"
-//                }
+
+
                 val intent = Intent(SignInActivity@this, NewPartyActivity::class.java)
                 startActivity(intent)
             }
