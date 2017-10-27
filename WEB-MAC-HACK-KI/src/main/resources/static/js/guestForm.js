@@ -36,6 +36,7 @@ class GuestForm {
       this.nowModal.classList.remove('is-visible');
       document.querySelector('.mdl-layout__obfuscator').classList.remove('is-visible');
       this.nowModal = null;
+      player.stopVideo();
     }
   }
 
