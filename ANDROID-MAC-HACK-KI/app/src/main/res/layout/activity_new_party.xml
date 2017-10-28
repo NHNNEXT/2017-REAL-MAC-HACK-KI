@@ -160,7 +160,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
                 android:text="Desired date"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -180,7 +180,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="24dp"
                 android:text="Age"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -211,9 +211,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="144dp"
-                android:text="choose language"
+                android:text="add language"
                 app:layout_constraintBaseline_toBaselineOf="@+id/textView7"
                 app:layout_constraintStart_toEndOf="@+id/textView7" />
+
+            <TextView
+                android:id="@+id/tv_lang_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="availiable language:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_date" />
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
