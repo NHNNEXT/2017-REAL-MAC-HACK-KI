@@ -17,19 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <FrameLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="#88000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
-
-    </FrameLayout>
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="129dp"
@@ -41,36 +28,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_logo_green" />
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_apply"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="334dp">
-
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/input_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:focusedByDefault="false"
-            android:hint="@string/sign_in_email_hint"
-            android:inputType="textEmailAddress"
-            android:textColorHint="@color/colorPrimary"
-            android:textColorLink="@color/colorPrimary"
-            android:textColor="#FFFFFF"
-            android:textColorHighlight="#FFFFFF" />
-    </android.support.design.widget.TextInputLayout>
-
     <Button
         android:id="@+id/btn_view"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="@string/sign_in_later"
+        android:text="more info"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/pager_intro"
         app:layout_constraintHorizontal_bias="0.5"

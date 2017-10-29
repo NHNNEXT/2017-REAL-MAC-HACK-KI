@@ -4,12 +4,17 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import android.widget.Toast
 import com.amigotrip.amigo.R
 import com.amigotrip.amigo.adpaters.IntroPagerAdapter
+import com.amigotrip.amigo.fragments.IntroPage1Fragment
 import kotlinx.android.synthetic.main.activity_sign_in.*
 
 class SignInActivity : AppCompatActivity(), View.OnClickListener {
+
+    val pagerAdapter: IntroPagerAdapter by lazy {
+        IntroPagerAdapter(supportFragmentManager)
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,23 +23,29 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener {
         btn_view.setOnClickListener(this)
         btn_apply.setOnClickListener(this)
 
-        pager_intro.adapter = (IntroPagerAdapter(supportFragmentManager))
+        addIntroPage(R.drawable.korean_travel, R.string.message_intro1)
+        addIntroPage(R.drawable.travel_mate, R.string.message_intro2)
+
+        pager_intro.adapter = pagerAdapter
         pager_intro.offscreenPageLimit = 0
     }
 
+    fun addIntroPage(imageId: Int, messageId: Int) {
+        val introPage = IntroPage1Fragment()
+        val bundle = Bundle()
+        bundle.putInt("imageId", imageId)
+        bundle.putInt("messageId", messageId)
+        introPage.arguments = bundle
 
+        pagerAdapter.addFragment(introPage)
+    }
     override fun onClick(view: View?) {
         when (view) {
             btn_view -> {
-
-                Toast.makeText(this, "apply done", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(MainActivity@ this, PartiesActivity::class.java))
-
+                startActivity(Intent(SignInActivity@this, WebViewActivity::class.java))
             }
 
             btn_apply -> {
-
-
                 val intent = Intent(SignInActivity@ this, NewPartyActivity::class.java)
                 startActivity(intent)
             }

@@ -5,24 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <VideoView
-        android:id="@+id/video_intro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/iv_intro"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:foreground="#77000000"
+        android:scaleType="centerCrop"
+        android:src="@drawable/korean_travel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="this is page1"
+        android:id="@+id/tv_message"
+        android:layout_width="195dp"
+        android:layout_height="251dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/message_intro1"
+        android:textAlignment="center"
         android:textColor="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@+id/video_intro"
-        app:layout_constraintEnd_toStartOf="@+id/video_intro"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/video_intro"
-        app:layout_constraintTop_toBottomOf="@+id/video_intro" />
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/iv_intro"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.587" />
+
 </android.support.constraint.ConstraintLayout>

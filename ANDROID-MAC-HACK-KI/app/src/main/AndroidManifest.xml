@@ -28,7 +28,8 @@
         <activity android:name=".activities.ProfileActivity" />
         <activity android:name=".activities.IntroActivity" />
         <activity android:name=".activities.MessagesActivity" />
-        <activity android:name=".activities.ChooseLangActivity"></activity>
+        <activity android:name=".activities.ChooseLangActivity" />
+        <activity android:name=".activities.WebViewActivity" />
     </application>
 
 </manifest>
