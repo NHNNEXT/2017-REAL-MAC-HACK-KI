@@ -1,0 +1,188 @@
+Acholi
+Afrikaans
+Akan
+Albanian
+Amharic
+Arabic
+Armenian
+American Sign Language
+Ashanti
+Assyrian
+Azerbaijani
+Bambara
+Basque
+Basaa
+Behdini
+Belorusian
+Bengali
+Bosnian
+Bulgarian
+Burmese
+Cantonese
+Cape Verde
+Catalan
+Cebuano
+Chamorro
+Cherokee
+Chuukese
+Croatian
+Czech
+Danish
+Dari (Persian)
+Dimli
+Dinka
+Duala
+Dutch
+Estonian
+Ethiopian
+Ewe
+Farsi (Persian)
+Fijian
+Finnish
+Flemish
+French
+French Canadian
+Frisian (West)
+Fukinese
+Fula
+Fulani
+Fuzhou
+Ga
+Gaelic
+Georgian
+German
+Grebo
+Greek
+Gujarati
+Haitian Creole
+Haka Burmese
+Hakka
+Hausa
+Hebrew
+Hindi
+Hmong
+Ho
+Hungarian
+Ibang
+Igbo (Ibo)
+Icelandic
+Ilocano
+Indonesian
+Italian
+Jakartanese
+Japanese
+Javanese
+Kanjobal
+Kannada
+Karen
+Kashmiri
+Kazakh
+Khmer (Cambodian)
+Kikuyu
+Kinyarwanda
+Kirghiz
+Kirundi
+Korean
+Kpele
+Krahn
+Kurdish
+Laotian
+Latin
+Latvian
+Lebanese
+Lingala
+Lithuanian
+Luganda
+Maay
+Macedonian
+Malagasy
+Malay
+Malayalam
+Maltese
+Mam
+Mandarin
+Mandingo
+Mandinka
+Mankon
+Marathi
+Marshallese
+Mien
+Mina
+Mixteco Alto
+Mixteco Bajo
+Moldovan
+Mongolian
+Moroccan Arabic
+Nahuati
+Navajo
+Nepali
+Norwegian
+Nuer
+Ojibay
+Oromo
+Pahari
+Pampangan
+Papiamento
+Pashto
+Polish
+Portuguese
+Portuguese Brazilian
+Potwari
+Pulaar
+Punjabi
+Quechua
+Quiche
+Rhade
+Romanian
+Russian
+Samoan
+Sara
+Serbian
+Serbo Croatian
+Shanghainese
+Shona
+Sichuan
+Sicilian
+Sindhi
+Sinhalese
+Slovak
+Slovenian
+Somali
+Soninke
+Sorani
+Sotho
+Spanish (European)
+Spanish (Latin American)
+Spanish (Mexican)
+Sudanese
+Swahili
+Swedish
+Tagalog
+Tahitian
+Taiwanese
+Tajiki
+Tamang
+Tamil
+Tatar
+Telugu
+Teochew
+Thai
+Tibetan
+Tigrigna – Tigrinya
+Toishanese
+Tongan
+Tsonga
+Tshiluba
+Turkish
+Turkmen
+Twi
+Ukrainian
+Urdu
+Uzbek
+Vietnamese
+Visayan (Cebuano)
+Welsh
+Wolof
+Yiddish
+Yoruba
+Zulu
