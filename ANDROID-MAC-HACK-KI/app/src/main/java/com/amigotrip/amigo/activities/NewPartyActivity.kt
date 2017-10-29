@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.activity_new_party.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 import java.util.regex.Pattern
 
 
@@ -26,14 +27,18 @@ class NewPartyActivity : AppCompatActivity(),
         NumberPicker.OnValueChangeListener,
         DatePickerDialog.OnDateSetListener {
 
+    companion object {
+        const val REQUEST_LANGUAGE: Int = 101
+    }
+
     //refactor
     var gender = "male"
     var languageList = arrayListOf<String>()
     var date = ""
+    var year = 0
+    var month = 0
+    var dayOfMonth = 0
 
-    companion object {
-        const val REQUEST_LANGUAGE: Int = 101
-    }
 
     val amigoService: AmigoService by lazy {
         AmigoService.getService(AmigoService::class.java)
@@ -47,6 +52,10 @@ class NewPartyActivity : AppCompatActivity(),
         supportActionBar?.title = "Amigo"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        setListeners()
+    }
+
+    private fun setListeners() {
         radio_group.setOnCheckedChangeListener { radiogrop, id ->
             run {
                 when (id) {
@@ -60,26 +69,19 @@ class NewPartyActivity : AppCompatActivity(),
         tv_select_age.setOnClickListener(this)
         tv_choose_date.setOnClickListener(this)
         tv_choose_lang.setOnClickListener(this)
-
     }
-
-    fun isEmailValid(email: String): Boolean {
-
-        val expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$"
-        val pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE)
-        val matcher = pattern.matcher(email)
-
-        return matcher.matches()
-    }
-
 
     override fun onValueChange(p0: NumberPicker?, p1: Int, p2: Int) {
         tv_age.text = p1.toString()
     }
 
     override fun onDateSet(p0: DatePicker?, p1: Int, p2: Int, p3: Int) {
-        tv_selected_date.text = " " + p1 + "." + p2 + "." + p3
-        date = " " + p1 + "." + p2 + "." + p3
+        year = p1
+        month = p2
+        dayOfMonth = p3
+
+        date = String.format("%d.%d.%d", year, month, dayOfMonth)
+        tv_selected_date.text = date
     }
 
     override fun onClick(view: View?) {
@@ -89,24 +91,51 @@ class NewPartyActivity : AppCompatActivity(),
                     submitInfo()
                 }
             }
+
             tv_select_age -> {
                 val numberPickerDialog = NumberPickerDialog()
                 numberPickerDialog.setValueChangeListener(this)
                 numberPickerDialog.show(supportFragmentManager, "time picker");
             }
+
             tv_choose_date -> {
+
+                val now = Calendar.getInstance()
                 val datePickerDialog =
-                        DatePickerDialog(NewPartyActivity@ this, this, 2017, 11, 0)
+                        DatePickerDialog(NewPartyActivity@ this,
+                                this,
+                                now.get(Calendar.YEAR),
+                                now.get(Calendar.MONTH),
+                                now.get(Calendar.DAY_OF_MONTH))
+
                 datePickerDialog.show()
             }
+
             tv_choose_lang -> {
                 val intent = Intent(NewPartyActivity@ this, ChooseLangActivity::class.java)
                 startActivityForResult(intent, REQUEST_LANGUAGE)
             }
+
         }
     }
 
-    fun checkInputs(): Boolean {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == REQUEST_LANGUAGE) {
+                val list = data?.getStringArrayListExtra("langs") as ArrayList<String>
+                languageList.addAll(list)
+                tv_lang_list.append(languageList.toString())
+            }
+        }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
+    private fun checkInputs(): Boolean {
 
         var result = true
 
@@ -134,10 +163,9 @@ class NewPartyActivity : AppCompatActivity(),
 
     }
 
-
-    fun submitInfo() {
+    private fun submitInfo() {
         val name = input_name.text.toString()
-        //val age = input_age.text.toString().toInt()
+        val age = tv_age.text.toString().toInt()
 
         val email = input_email.text.toString()
 
@@ -148,13 +176,16 @@ class NewPartyActivity : AppCompatActivity(),
             input_email.error = "wrong email!"
         }
 
-        val language = input_theme.text.toString()
         val theme = input_attraction.text.toString()
         val attraction = input_attraction.text.toString()
 
         val party =
-                Party(name, "wlals822@naver.com", 20, gender, language, "12/24", theme,
+                Party(name, email, age, gender,
+                        languageList.toString(),
+                        date,
+                        theme,
                         attraction)
+
         val call = amigoService.newParty(party)
 
         call.enqueue(object : Callback<Party> {
@@ -170,23 +201,16 @@ class NewPartyActivity : AppCompatActivity(),
                 }
             }
         })
+
         startActivity(Intent(NewPartyActivity@ this, WelcomeActivity::class.java))
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == REQUEST_LANGUAGE) {
-                val list = data?.getStringArrayListExtra("langs") as ArrayList<String>
-                languageList.addAll(list)
-                tv_lang_list.append(languageList.toString())
-            }
-        }
-    }
+    private fun isEmailValid(email: String): Boolean {
 
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return true
-    }
+        val expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$"
+        val pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE)
+        val matcher = pattern.matcher(email)
 
+        return matcher.matches()
+    }
 }
