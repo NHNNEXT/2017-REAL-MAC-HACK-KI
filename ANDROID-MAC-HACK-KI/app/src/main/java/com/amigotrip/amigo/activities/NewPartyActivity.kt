@@ -73,51 +73,19 @@ class NewPartyActivity : AppCompatActivity(),
 
 
     override fun onValueChange(p0: NumberPicker?, p1: Int, p2: Int) {
-        tv_select_age.text = p1.toString()
+        tv_age.text = p1.toString()
     }
 
     override fun onDateSet(p0: DatePicker?, p1: Int, p2: Int, p3: Int) {
-        tv_choose_date.text = "date:" + p1 + "." + p2 + "." + p3
+        tv_selected_date.text = " " + p1 + "." + p2 + "." + p3
     }
 
     override fun onClick(view: View?) {
         when (view) {
             btn_submit -> {
-                val name = input_name.text.toString()
-                //val age = input_age.text.toString().toInt()
-
-                val email = input_email.text.toString()
-
-                if (isEmailValid(email)) {
-                    Toast.makeText(this, "apply done", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(MainActivity@ this, NewPartyActivity::class.java))
-                } else {
-                    input_email.error = "wrong email!"
+                if (checkInputs()) {
+                    submitInfo()
                 }
-
-                val language = input_theme.text.toString()
-                val theme = input_attraction.text.toString()
-                val attraction = input_attraction.text.toString()
-
-                val party =
-                        Party(name, "wlals822@naver.com", 20, gender, language, "12/24", theme,
-                                attraction)
-                val call = amigoService.newParty(party)
-
-                call.enqueue(object : Callback<Party> {
-                    override fun onFailure(call: Call<Party>?, t: Throwable?) {
-                        Log.d("retrofit", "onfail")
-                        Log.d("new party", t.toString())
-                    }
-
-                    override fun onResponse(call: Call<Party>?, response: Response<Party>?) {
-
-                        if (response!!.isSuccessful) {
-                            Log.d("retrofit", "on response success")
-                        }
-                    }
-                })
-                startActivity(Intent(NewPartyActivity@ this, DoneActivity::class.java))
             }
             tv_select_age -> {
                 val numberPickerDialog = NumberPickerDialog()
@@ -134,6 +102,73 @@ class NewPartyActivity : AppCompatActivity(),
                 startActivityForResult(intent, REQUEST_LANGUAGE)
             }
         }
+    }
+
+    fun checkInputs(): Boolean {
+
+        var result = true
+
+        if (input_name.text.toString() == "") {
+            input_name.error = "check name!"
+            result = false
+        }
+
+        if (!isEmailValid(input_email.text.toString())) {
+            input_email.error = "please check email"
+            result = false
+        }
+
+        if(tv_age.text.toString() == "") {
+            Toast.makeText(baseContext, "please choose age", Toast.LENGTH_SHORT).show()
+            result = false
+        }
+
+        if (tv_selected_date.text.toString() == "") {
+            Toast.makeText(baseContext, "please choose date", Toast.LENGTH_SHORT).show()
+            result = false
+        }
+
+        return result
+
+    }
+
+
+    fun submitInfo() {
+        val name = input_name.text.toString()
+        //val age = input_age.text.toString().toInt()
+
+        val email = input_email.text.toString()
+
+        if (isEmailValid(email)) {
+            Toast.makeText(this, "apply done", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(MainActivity@ this, NewPartyActivity::class.java))
+        } else {
+            input_email.error = "wrong email!"
+        }
+
+        val language = input_theme.text.toString()
+        val theme = input_attraction.text.toString()
+        val attraction = input_attraction.text.toString()
+
+        val party =
+                Party(name, "wlals822@naver.com", 20, gender, language, "12/24", theme,
+                        attraction)
+        val call = amigoService.newParty(party)
+
+        call.enqueue(object : Callback<Party> {
+            override fun onFailure(call: Call<Party>?, t: Throwable?) {
+                Log.d("retrofit", "onfail")
+                Log.d("new party", t.toString())
+            }
+
+            override fun onResponse(call: Call<Party>?, response: Response<Party>?) {
+
+                if (response!!.isSuccessful) {
+                    Log.d("retrofit", "on response success")
+                }
+            }
+        })
+        startActivity(Intent(NewPartyActivity@ this, DoneActivity::class.java))
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
