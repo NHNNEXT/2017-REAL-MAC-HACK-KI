@@ -1,9 +1,13 @@
 ### 2017-REAL-MAC-HACK-KI
 2017년 3학기 실전 프로젝트 
 
-# Amigo
+# Amigo-true travel mate
 
-One Paragraph of project description goes here
+[amigo website](http://www.amigotrip.co.kr)
+
+한국에 오는 외국인들과의 동행을 통해 새로운 경험을 제공합니다. 
+
+현재 서비스 지역은 서울입니다. 
 
 ## Available Clients
 
@@ -13,15 +17,21 @@ One Paragraph of project description goes here
 
 ## Running the tests
 
+* jenkins
+* travis
+
 ## Deployment
 
-* Docker?
+* Docker
 * App Store
 * Play Store
 
 ## Built With
 
-## Used OpenSource
+* Spring
+* Android
+* XCode 
+
 
 ## Authors
 
