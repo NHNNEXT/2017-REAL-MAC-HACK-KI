@@ -16,4 +16,14 @@
     <string name="sign_in_email_hint">please input your email</string>
     <string name="sign_in_later">do later</string>
     <string name="sign_in">sign in</string>
+    <string name="message_intro1">Amigo! \n\n
+        I\'ll be your travel mate :) \n\n
+        Even if it\'s your first
+        trip alone, you will not be afraid to be with friends. \n\n
+        Amigo helps you meet new local friends while traveling!
+    </string>
+    <string name="message_intro2">How to use the service!\n\n
+        If you are planning a trip to Korea, \nand need a friend to accompany you,\n
+        Please touch apply. \nAmigo will match you travel mate!
+    </string>
 </resources>
