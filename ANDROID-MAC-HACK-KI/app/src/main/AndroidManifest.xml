@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.NewPartyActivity" />
-        <activity android:name=".activities.DoneActivity" />
+        <activity android:name=".activities.WelcomeActivity" />
         <activity android:name=".activities.PartiesActivity" />
         <activity android:name=".activities.SearchActivity" />
         <activity android:name=".activities.ProfileActivity" />

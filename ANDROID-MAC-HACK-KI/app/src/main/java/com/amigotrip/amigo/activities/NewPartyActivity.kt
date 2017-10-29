@@ -28,6 +28,8 @@ class NewPartyActivity : AppCompatActivity(),
 
     //refactor
     var gender = "male"
+    var languageList = arrayListOf<String>()
+    var date = ""
 
     companion object {
         const val REQUEST_LANGUAGE: Int = 101
@@ -40,7 +42,6 @@ class NewPartyActivity : AppCompatActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_party)
-
         setSupportActionBar(toolbar)
 
         supportActionBar?.title = "Amigo"
@@ -78,6 +79,7 @@ class NewPartyActivity : AppCompatActivity(),
 
     override fun onDateSet(p0: DatePicker?, p1: Int, p2: Int, p3: Int) {
         tv_selected_date.text = " " + p1 + "." + p2 + "." + p3
+        date = " " + p1 + "." + p2 + "." + p3
     }
 
     override fun onClick(view: View?) {
@@ -118,7 +120,7 @@ class NewPartyActivity : AppCompatActivity(),
             result = false
         }
 
-        if(tv_age.text.toString() == "") {
+        if (tv_age.text.toString() == "") {
             Toast.makeText(baseContext, "please choose age", Toast.LENGTH_SHORT).show()
             result = false
         }
@@ -168,14 +170,16 @@ class NewPartyActivity : AppCompatActivity(),
                 }
             }
         })
-        startActivity(Intent(NewPartyActivity@ this, DoneActivity::class.java))
+        startActivity(Intent(NewPartyActivity@ this, WelcomeActivity::class.java))
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == REQUEST_LANGUAGE) {
-                tv_lang_list.append(data?.getStringArrayListExtra("langs").toString())
+                val list = data?.getStringArrayListExtra("langs") as ArrayList<String>
+                languageList.addAll(list)
+                tv_lang_list.append(languageList.toString())
             }
         }
     }
