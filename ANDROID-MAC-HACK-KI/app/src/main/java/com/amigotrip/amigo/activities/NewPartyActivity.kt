@@ -1,5 +1,6 @@
 package com.amigotrip.amigo.activities
 
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
@@ -25,8 +26,12 @@ class NewPartyActivity : AppCompatActivity(),
         NumberPicker.OnValueChangeListener,
         DatePickerDialog.OnDateSetListener {
 
-
+    //refactor
     var gender = "male"
+
+    companion object {
+        const val REQUEST_LANGUAGE: Int = 101
+    }
 
     val amigoService: AmigoService by lazy {
         AmigoService.getService(AmigoService::class.java)
@@ -53,6 +58,7 @@ class NewPartyActivity : AppCompatActivity(),
         btn_submit.setOnClickListener(this)
         tv_select_age.setOnClickListener(this)
         tv_choose_date.setOnClickListener(this)
+        tv_choose_lang.setOnClickListener(this)
 
     }
 
@@ -71,11 +77,11 @@ class NewPartyActivity : AppCompatActivity(),
     }
 
     override fun onDateSet(p0: DatePicker?, p1: Int, p2: Int, p3: Int) {
-        tv_choose_date.text =  "date:" + p1 + "/" + p2 + "/" +  p3
+        tv_choose_date.text = "date:" + p1 + "." + p2 + "." + p3
     }
 
     override fun onClick(view: View?) {
-        when(view) {
+        when (view) {
             btn_submit -> {
                 val name = input_name.text.toString()
                 //val age = input_age.text.toString().toInt()
@@ -120,11 +126,21 @@ class NewPartyActivity : AppCompatActivity(),
             }
             tv_choose_date -> {
                 val datePickerDialog =
-                        DatePickerDialog(NewPartyActivity@this, this,2017, 11, 0)
+                        DatePickerDialog(NewPartyActivity@ this, this, 2017, 11, 0)
                 datePickerDialog.show()
             }
             tv_choose_lang -> {
+                val intent = Intent(NewPartyActivity@ this, ChooseLangActivity::class.java)
+                startActivityForResult(intent, REQUEST_LANGUAGE)
+            }
+        }
+    }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == REQUEST_LANGUAGE) {
+                tv_lang_list.append(data?.getStringArrayListExtra("langs").toString())
             }
         }
     }

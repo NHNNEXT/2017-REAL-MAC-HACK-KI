@@ -8,7 +8,6 @@ import android.widget.Toast
 import com.amigotrip.amigo.R
 import com.amigotrip.amigo.adpaters.IntroPagerAdapter
 import kotlinx.android.synthetic.main.activity_sign_in.*
-import java.util.regex.Pattern
 
 class SignInActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -24,7 +23,6 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener {
     }
 
 
-
     override fun onClick(view: View?) {
         when (view) {
             btn_view -> {
@@ -37,7 +35,7 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener {
             btn_apply -> {
 
 
-                val intent = Intent(SignInActivity@this, NewPartyActivity::class.java)
+                val intent = Intent(SignInActivity@ this, NewPartyActivity::class.java)
                 startActivity(intent)
             }
         }

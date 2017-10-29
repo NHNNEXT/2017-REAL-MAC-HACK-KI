@@ -7,7 +7,6 @@ import android.support.v4.app.DialogFragment
 import android.widget.NumberPicker
 
 
-
 /**
  * Created by Zimincom on 2017. 10. 28..
  */
@@ -27,7 +26,7 @@ class NumberPickerDialog : DialogFragment() {
         builder.setMessage("Choose a number :")
 
 
-        builder.setPositiveButton("ok"  ) { _, _ ->
+        builder.setPositiveButton("ok") { _, _ ->
             valueChangeListener?.onValueChange(numberPicker, numberPicker.value, numberPicker
                     .value)
         }
