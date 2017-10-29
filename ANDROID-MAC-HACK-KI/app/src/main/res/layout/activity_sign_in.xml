@@ -82,7 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:background="@color/colorPrimary"
-        android:text="@string/sign_in"
+        android:text="apply"
         android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toTopOf="@+id/btn_view"
         app:layout_constraintEnd_toStartOf="@+id/pager_intro"
