@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MyButton" parent="android:Widget.Material.Button">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_margin">0dip</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+</resources>
