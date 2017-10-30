@@ -5,6 +5,7 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.DatePicker
@@ -38,7 +39,6 @@ class NewPartyActivity : AppCompatActivity(),
     var year = 0
     var month = 0
     var dayOfMonth = 0
-
 
     val amigoService: AmigoService by lazy {
         AmigoService.getService(AmigoService::class.java)
@@ -135,6 +135,7 @@ class NewPartyActivity : AppCompatActivity(),
         return true
     }
 
+    //hide method
     private fun checkInputs(): Boolean {
 
         var result = true
@@ -149,7 +150,8 @@ class NewPartyActivity : AppCompatActivity(),
             result = false
         }
 
-        if (tv_age.text.toString() == "") {
+        //used text util
+        if (TextUtils.isEmpty(tv_age.text)){
             Toast.makeText(baseContext, "please choose age", Toast.LENGTH_SHORT).show()
             result = false
         }
@@ -185,6 +187,7 @@ class NewPartyActivity : AppCompatActivity(),
                         date,
                         theme,
                         attraction)
+
 
         val call = amigoService.newParty(party)
 

@@ -154,7 +154,7 @@
                     android:id="@+id/input_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="email"
+                    android:hint="@string/email"
                     android:inputType="textEmailAddress" />
             </android.support.design.widget.TextInputLayout>
 
@@ -164,7 +164,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="Desired date"
+                android:text="@string/label_desired_date"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -175,7 +175,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginEnd="16dp"
-                android:text="choose date"
+                android:text="@string/label_choose_date"
                 app:layout_constraintBaseline_toBaselineOf="@+id/tv_date"
                 app:layout_constraintEnd_toEndOf="parent" />
 
@@ -185,7 +185,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
-                android:text="Age:"
+                android:text="@string/age_title"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -197,7 +197,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
-                android:text="Language"
+                android:text="@string/language"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -208,7 +208,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:text="choose age"
+                android:text="@string/choose_age"
                 app:layout_constraintBaseline_toBaselineOf="@+id/label_age"
                 app:layout_constraintEnd_toEndOf="parent" />
 
@@ -217,7 +217,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:text="add language"
+                android:text="@string/add_language"
                 app:layout_constraintBaseline_toBaselineOf="@+id/textView7"
                 app:layout_constraintEnd_toEndOf="parent" />
 
@@ -227,7 +227,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="availiable language:\n"
+                android:text="@string/availiable_language_head"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
