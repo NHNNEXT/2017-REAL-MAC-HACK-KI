@@ -1,4 +1,4 @@
-package com.amigotrip.amigo.adpaters
+package com.amigotrip.android.adpaters
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager

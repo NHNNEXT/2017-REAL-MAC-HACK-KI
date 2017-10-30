@@ -1,4 +1,4 @@
-package com.amigotrip.amigo.activities
+package com.amigotrip.android.activities
 
 import android.app.Activity
 import android.app.DatePickerDialog
@@ -10,10 +10,10 @@ import android.view.View
 import android.widget.DatePicker
 import android.widget.NumberPicker
 import android.widget.Toast
-import com.amigotrip.amigo.NumberPickerDialog
-import com.amigotrip.amigo.R
-import com.amigotrip.amigo.datas.Party
-import com.amigotrip.amigo.remote.AmigoService
+import com.amigotrip.android.NumberPickerDialog
+import com.amigotrip.android.datas.Party
+import com.amigotrip.android.remote.AmigoService
+import com.amigotrip.anroid.R
 import kotlinx.android.synthetic.main.activity_new_party.*
 import retrofit2.Call
 import retrofit2.Callback

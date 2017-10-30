@@ -1,4 +1,4 @@
-package com.amigotrip.amigo
+package com.amigotrip.android
 
 import android.app.AlertDialog
 import android.app.Dialog

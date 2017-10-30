@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.amigotrip.amigo">
+    package="com.amigotrip.anroid">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activities.SignInActivity"
+            android:name="com.amigotrip.android.activities.SignInActivity"
             android:theme="@style/SignInTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,15 +21,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.NewPartyActivity" />
-        <activity android:name=".activities.WelcomeActivity" />
-        <activity android:name=".activities.PartiesActivity" />
-        <activity android:name=".activities.SearchActivity" />
-        <activity android:name=".activities.ProfileActivity" />
-        <activity android:name=".activities.IntroActivity" />
-        <activity android:name=".activities.MessagesActivity" />
-        <activity android:name=".activities.ChooseLangActivity" />
-        <activity android:name=".activities.WebViewActivity" />
+        <activity android:name="com.amigotrip.android.activities.NewPartyActivity" />
+        <activity android:name="com.amigotrip.android.activities.WelcomeActivity" />
+        <activity android:name="com.amigotrip.android.activities.PartiesActivity" />
+        <activity android:name="com.amigotrip.android.activities.SearchActivity" />
+        <activity android:name="com.amigotrip.android.activities.ProfileActivity" />
+        <activity android:name="com.amigotrip.android.activities.IntroActivity" />
+        <activity android:name="com.amigotrip.android.activities.MessagesActivity" />
+        <activity android:name="com.amigotrip.android.activities.ChooseLangActivity" />
+        <activity android:name="com.amigotrip.android.activities.WebViewActivity" />
     </application>
 
 </manifest>

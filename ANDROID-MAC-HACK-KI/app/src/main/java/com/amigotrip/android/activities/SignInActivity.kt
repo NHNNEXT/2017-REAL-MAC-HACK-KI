@@ -1,12 +1,12 @@
-package com.amigotrip.amigo.activities
+package com.amigotrip.android.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import com.amigotrip.amigo.R
-import com.amigotrip.amigo.adpaters.IntroPagerAdapter
-import com.amigotrip.amigo.fragments.IntroPage1Fragment
+import com.amigotrip.android.adpaters.IntroPagerAdapter
+import com.amigotrip.android.fragments.IntroPage1Fragment
+import com.amigotrip.anroid.R
 import kotlinx.android.synthetic.main.activity_sign_in.*
 
 class SignInActivity : AppCompatActivity(), View.OnClickListener {

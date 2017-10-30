@@ -1,6 +1,6 @@
-package com.amigotrip.amigo.remote
+package com.amigotrip.android.remote
 
-import com.amigotrip.amigo.datas.Party
+import com.amigotrip.android.datas.Party
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
