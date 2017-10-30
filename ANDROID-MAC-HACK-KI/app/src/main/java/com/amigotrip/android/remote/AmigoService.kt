@@ -23,11 +23,14 @@ interface AmigoService {
 
 
     companion object {
+
+        val baseUrl = "http://211.249.60.54"
+
         fun getService(java: Class<AmigoService>): AmigoService {
 
             val retrofit =
                     Retrofit.Builder()
-                            .baseUrl("http://211.249.60.54")
+                            .baseUrl(baseUrl)
                             .addConverterFactory(GsonConverterFactory.create())
                             .client(createOkHttpClient())
                             .build()
@@ -37,10 +40,10 @@ interface AmigoService {
 
         private fun createOkHttpClient(): OkHttpClient {
             val builder = OkHttpClient.Builder()
-            val intercepter = HttpLoggingInterceptor()
+            val interceptor = HttpLoggingInterceptor()
 
-            intercepter.level = HttpLoggingInterceptor.Level.BODY
-            builder.addInterceptor(intercepter)
+            interceptor.level = HttpLoggingInterceptor.Level.BODY
+            builder.addInterceptor(interceptor)
 
             return builder.build()
         }
