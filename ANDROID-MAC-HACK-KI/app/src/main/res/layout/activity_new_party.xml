@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btn_submit">
+
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context="com.amigotrip.amigo.activities.NewPartyActivity"
+            tools:context="com.amigotrip.amigo.com.amigo.android.activities.NewPartyActivity"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="81dp">
 
@@ -45,9 +46,9 @@
                     android:id="@+id/input_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/login_hint_name" />
+                    android:hint="@string/login_hint_name"
+                    android:inputType="textPersonName" />
             </android.support.design.widget.TextInputLayout>
-
 
 
             <TextView
@@ -66,9 +67,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="24dp"
                 android:text="@string/new_party_gender"
                 android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/label_age" />
 
@@ -123,7 +125,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="36dp"
+                android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -152,7 +154,8 @@
                     android:id="@+id/input_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="email" />
+                    android:hint="email"
+                    android:inputType="textEmailAddress" />
             </android.support.design.widget.TextInputLayout>
 
             <TextView
@@ -160,20 +163,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:text="Desired date"
                 android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView7" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_lang_list" />
 
             <TextView
                 android:id="@+id/tv_choose_date"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_marginStart="124dp"
-                android:text="choose"
+                android:layout_marginEnd="16dp"
+                android:text="choose date"
                 app:layout_constraintBaseline_toBaselineOf="@+id/tv_date"
-                app:layout_constraintStart_toEndOf="@+id/tv_date" />
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
                 android:id="@+id/label_age"
@@ -181,8 +185,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
-                android:text="Age"
+                android:text="Age:"
                 android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/input_email_layout" />
 
@@ -194,6 +199,7 @@
                 android:layout_marginTop="24dp"
                 android:text="Language"
                 android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -201,19 +207,19 @@
                 android:id="@+id/tv_select_age"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="176dp"
+                android:layout_marginEnd="16dp"
                 android:text="choose age"
                 app:layout_constraintBaseline_toBaselineOf="@+id/label_age"
-                app:layout_constraintStart_toEndOf="@+id/label_age" />
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
                 android:id="@+id/tv_choose_lang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="144dp"
+                android:layout_marginEnd="16dp"
                 android:text="add language"
                 app:layout_constraintBaseline_toBaselineOf="@+id/textView7"
-                app:layout_constraintStart_toEndOf="@+id/textView7" />
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
                 android:id="@+id/tv_lang_list"
@@ -223,7 +229,23 @@
                 android:layout_marginTop="8dp"
                 android:text="availiable language:\n"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_date" />
+                app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+            <TextView
+                android:id="@+id/tv_selected_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tv_date"
+                app:layout_constraintStart_toEndOf="@+id/tv_date" />
+
+            <TextView
+                android:id="@+id/tv_age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/label_age"
+                app:layout_constraintStart_toEndOf="@+id/label_age" />
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
@@ -234,9 +256,7 @@
         android:layout_height="wrap_content"
         android:elevation="4dp"
         android:text="@string/new_party_submit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-</LinearLayout>
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>
 
 

@@ -1,9 +1,9 @@
-package com.amigotrip.amigo.activities
+package com.amigotrip.android.activities
 
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.amigotrip.amigo.R
+import com.amigotrip.anroid.R
 import kotlinx.android.synthetic.main.layout_webview.*
 
 /**

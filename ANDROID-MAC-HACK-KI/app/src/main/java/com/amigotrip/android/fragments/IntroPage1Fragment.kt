@@ -1,11 +1,11 @@
-package com.amigotrip.amigo.fragments
+package com.amigotrip.android.fragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.amigotrip.amigo.R
+import com.amigotrip.anroid.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_intro_1.*
 

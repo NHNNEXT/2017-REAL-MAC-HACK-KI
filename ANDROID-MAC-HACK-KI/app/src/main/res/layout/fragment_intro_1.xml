@@ -9,7 +9,7 @@
         android:id="@+id/iv_intro"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:foreground="#77000000"
+        android:foreground="#99000000"
         android:scaleType="centerCrop"
         android:src="@drawable/korean_travel"
         app:layout_constraintBottom_toBottomOf="parent"

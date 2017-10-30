@@ -1,11 +1,11 @@
-package com.amigotrip.amigo.activities
+package com.amigotrip.android.activities
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.amigotrip.amigo.R
+import com.amigotrip.anroid.R
 import kotlinx.android.synthetic.main.activity_done.*
 
-class DoneActivity : AppCompatActivity() {
+class WelcomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

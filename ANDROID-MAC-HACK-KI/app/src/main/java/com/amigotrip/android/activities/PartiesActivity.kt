@@ -1,11 +1,11 @@
-package com.amigotrip.amigo.activities
+package com.amigotrip.android.activities
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import com.amigotrip.amigo.R
-import com.amigotrip.amigo.datas.Party
-import com.amigotrip.amigo.remote.AmigoService
+import com.amigotrip.android.datas.Party
+import com.amigotrip.android.remote.AmigoService
+import com.amigotrip.anroid.R
 import kotlinx.android.synthetic.main.activity_parties.*
 import retrofit2.Call
 import retrofit2.Callback
