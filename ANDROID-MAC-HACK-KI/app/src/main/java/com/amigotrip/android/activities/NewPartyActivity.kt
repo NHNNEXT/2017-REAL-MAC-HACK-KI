@@ -13,6 +13,7 @@ import android.widget.NumberPicker
 import android.widget.Toast
 import com.amigotrip.android.NumberPickerDialog
 import com.amigotrip.android.datas.Party
+import com.amigotrip.android.extentions.string
 import com.amigotrip.android.remote.AmigoService
 import com.amigotrip.anroid.R
 import kotlinx.android.synthetic.main.activity_new_party.*
@@ -28,17 +29,11 @@ class NewPartyActivity : AppCompatActivity(),
         NumberPicker.OnValueChangeListener,
         DatePickerDialog.OnDateSetListener {
 
+    var languageList = arrayListOf<String>()
+
     companion object {
         const val REQUEST_LANGUAGE: Int = 101
     }
-
-    //refactor
-    var gender = "male"
-    var languageList = arrayListOf<String>()
-    var date = ""
-    var year = 0
-    var month = 0
-    var dayOfMonth = 0
 
     val amigoService: AmigoService by lazy {
         AmigoService.getService(AmigoService::class.java)
@@ -56,14 +51,6 @@ class NewPartyActivity : AppCompatActivity(),
     }
 
     private fun setListeners() {
-        radio_group.setOnCheckedChangeListener { radiogrop, id ->
-            run {
-                when (id) {
-                    R.id.radio_male -> gender = "male"
-                    R.id.radio_female -> gender = "female"
-                }
-            }
-        }
 
         btn_submit.setOnClickListener(this)
         tv_select_age.setOnClickListener(this)
@@ -76,12 +63,7 @@ class NewPartyActivity : AppCompatActivity(),
     }
 
     override fun onDateSet(p0: DatePicker?, p1: Int, p2: Int, p3: Int) {
-        year = p1
-        month = p2
-        dayOfMonth = p3
-
-        date = String.format("%d.%d.%d", year, month, dayOfMonth)
-        tv_selected_date.text = date
+        tv_selected_date.text = String.format("%d.%d.%d", p1, p2, p3)
     }
 
     override fun onClick(view: View?) {
@@ -140,12 +122,12 @@ class NewPartyActivity : AppCompatActivity(),
 
         var result = true
 
-        if (input_name.text.toString() == "") {
+        if (input_name.string == "") {
             input_name.error = "check name!"
             result = false
         }
 
-        if (!isEmailValid(input_email.text.toString())) {
+        if (!isEmailValid(input_email.string)) {
             input_email.error = "please check email"
             result = false
         }
@@ -156,7 +138,7 @@ class NewPartyActivity : AppCompatActivity(),
             result = false
         }
 
-        if (tv_selected_date.text.toString() == "") {
+        if (tv_selected_date.string == "") {
             Toast.makeText(baseContext, "please choose date", Toast.LENGTH_SHORT).show()
             result = false
         }
@@ -166,23 +148,18 @@ class NewPartyActivity : AppCompatActivity(),
     }
 
     private fun submitInfo() {
-        val name = input_name.text.toString()
-        val age = tv_age.text.toString().toInt()
 
-        val email = input_email.text.toString()
+        val name = input_name.string
+        val age = tv_age.string.toInt()
+        val email = input_email.string
 
-        if (isEmailValid(email)) {
-            Toast.makeText(this, "apply done", Toast.LENGTH_SHORT).show()
-            startActivity(Intent(MainActivity@ this, NewPartyActivity::class.java))
-        } else {
-            input_email.error = "wrong email!"
-        }
+        val gender = if (radio_group.checkedRadioButtonId == R.id.radio_male) "male" else "female"
+        val date = tv_selected_date.string
 
-        val theme = input_attraction.text.toString()
-        val attraction = input_attraction.text.toString()
+        val theme = input_attraction.string
+        val attraction = input_attraction.string
 
-        val party =
-                Party(name, email, age, gender,
+        val party = Party(name, email, age, gender,
                         languageList.toString(),
                         date,
                         theme,
@@ -207,6 +184,7 @@ class NewPartyActivity : AppCompatActivity(),
 
         startActivity(Intent(NewPartyActivity@ this, WelcomeActivity::class.java))
     }
+
 
     private fun isEmailValid(email: String): Boolean {
 
