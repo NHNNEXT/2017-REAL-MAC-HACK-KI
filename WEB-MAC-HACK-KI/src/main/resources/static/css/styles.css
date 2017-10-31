@@ -292,7 +292,7 @@ a img {
 
 .android-wear-section {
     position: relative;
-    background: url('/images/korean-travel.png') no-repeat center center;
+    background: url('/images/korean-travel_opt.jpg') no-repeat center center;
     background-size: cover;
     height: 800px;
 }
@@ -364,7 +364,7 @@ a img {
 
 .android-customized-section-image {
     position: relative;
-    background: url('/images/travel-mate.png') no-repeat center center;
+    background: url('/images/travel-mate_opt.jpg') no-repeat center center;
     background-size: cover;
     height: 400px;
 }
