@@ -174,3 +174,13 @@ select {
 .post-result > div.mdl-card__title {
   margin-top: 10px;
 }
+
+#facebook-btn {
+  background: url('/images/facebook-box.png');
+  width: 48px;
+  height: 48px;
+}
+
+#facebook-btn:hover {
+  cursor: pointer;
+}
