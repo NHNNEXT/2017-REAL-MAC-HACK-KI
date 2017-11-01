@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1747989F1FAA219A00EFF50E /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1747989B1FAA219800EFF50E /* FBSDKShareKit.framework */; };
+		174798A01FAA219A00EFF50E /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1747989C1FAA219900EFF50E /* Bolts.framework */; };
+		174798A11FAA219A00EFF50E /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1747989D1FAA219900EFF50E /* FBSDKLoginKit.framework */; };
+		174798A21FAA219A00EFF50E /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1747989E1FAA219A00EFF50E /* FBSDKCoreKit.framework */; };
 		7C013EED1F9F733300B0FEA0 /* Demo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C013EEC1F9F733300B0FEA0 /* Demo.storyboard */; };
 		7C013EF11F9F93BB00B0FEA0 /* Checkbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C013EF01F9F93BB00B0FEA0 /* Checkbox.m */; };
 		7C22FE111FA04E9B00BF492B /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C22FE101FA04E9B00BF492B /* CalendarViewController.m */; };
@@ -39,6 +43,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1747989B1FAA219800EFF50E /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		1747989C1FAA219900EFF50E /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		1747989D1FAA219900EFF50E /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		1747989E1FAA219A00EFF50E /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		7C013EEC1F9F733300B0FEA0 /* Demo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Demo.storyboard; sourceTree = "<group>"; };
 		7C013EEF1F9F93BB00B0FEA0 /* Checkbox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Checkbox.h; sourceTree = "<group>"; };
 		7C013EF01F9F93BB00B0FEA0 /* Checkbox.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Checkbox.m; sourceTree = "<group>"; };
@@ -70,6 +78,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1747989F1FAA219A00EFF50E /* FBSDKShareKit.framework in Frameworks */,
+				174798A21FAA219A00EFF50E /* FBSDKCoreKit.framework in Frameworks */,
+				174798A01FAA219A00EFF50E /* Bolts.framework in Frameworks */,
+				174798A11FAA219A00EFF50E /* FBSDKLoginKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +105,10 @@
 		7C0A50EA1F9F56F0008E6BCB /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				1747989C1FAA219900EFF50E /* Bolts.framework */,
+				1747989E1FAA219A00EFF50E /* FBSDKCoreKit.framework */,
+				1747989D1FAA219900EFF50E /* FBSDKLoginKit.framework */,
+				1747989B1FAA219800EFF50E /* FBSDKShareKit.framework */,
 				7C92B6461F91775600C3B693 /* ViewController.h */,
 				7C92B6471F91775600C3B693 /* ViewController.m */,
 				7CE708E21F9873BC0021A412 /* ApplyViewController.h */,
@@ -456,7 +472,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6DUKJN52D5;
+				DEVELOPMENT_TEAM = 723G2B84ML;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/REAL-AMIGO/Demo",
+				);
 				INFOPLIST_FILE = "REAL-AMIGO/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.NHNNEXT.REAL-AMIGO";
@@ -471,7 +491,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6DUKJN52D5;
+				DEVELOPMENT_TEAM = 723G2B84ML;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/REAL-AMIGO/Demo",
+				);
 				INFOPLIST_FILE = "REAL-AMIGO/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.NHNNEXT.REAL-AMIGO";
