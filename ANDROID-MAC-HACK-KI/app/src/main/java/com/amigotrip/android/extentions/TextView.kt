@@ -8,3 +8,5 @@ import android.widget.TextView
 
 val TextView.string : String
     get() = text.toString()
+
+fun TextView.isEmpty() : Boolean = string == ""

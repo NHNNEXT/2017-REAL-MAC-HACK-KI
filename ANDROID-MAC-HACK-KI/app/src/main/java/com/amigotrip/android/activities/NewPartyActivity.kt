@@ -13,6 +13,7 @@ import android.widget.NumberPicker
 import android.widget.Toast
 import com.amigotrip.android.NumberPickerDialog
 import com.amigotrip.android.datas.Party
+import com.amigotrip.android.extentions.isEmpty
 import com.amigotrip.android.extentions.string
 import com.amigotrip.android.remote.AmigoService
 import com.amigotrip.anroid.R
@@ -122,7 +123,7 @@ class NewPartyActivity : AppCompatActivity(),
 
         var result = true
 
-        if (input_name.string == "") {
+        if (input_name.isEmpty()) {
             input_name.error = "check name!"
             result = false
         }
@@ -138,7 +139,7 @@ class NewPartyActivity : AppCompatActivity(),
             result = false
         }
 
-        if (tv_selected_date.string == "") {
+        if (tv_selected_date.isEmpty()) {
             Toast.makeText(baseContext, "please choose date", Toast.LENGTH_SHORT).show()
             result = false
         }
