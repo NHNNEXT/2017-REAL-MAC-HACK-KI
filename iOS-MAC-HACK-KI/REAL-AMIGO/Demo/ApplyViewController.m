@@ -27,20 +27,10 @@
     NSNotificationCenter *noti = [NSNotificationCenter defaultCenter];
     [noti addObserver:self selector:@selector(blurViewhidden) name:@"dismissNoti" object:nil];
     [noti addObserver:self selector:@selector(getDate:) name:@"dateNoti" object:nil];
-    
-//    calendarViewController = [[[NSBundle mainBundle] loadNibNamed:@"CalendarViewController" owner:self options:nil] objectAtIndex:0];
-
-@interface ApplyViewController ()
-
-@end
-
-@implementation ApplyViewController
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
-
+    
+    //    calendarViewController = [[[NSBundle mainBundle] loadNibNamed:@"CalendarViewController" owner:self options:nil] objectAtIndex:0];
+    
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -129,7 +119,7 @@
     CGRect offscreenRect = CGRectOffset(initialFrame, 0, -[UIScreen mainScreen].bounds.size.height);
     
     if (self.isShow) {
-        CGRect viewFrame = CGRectMake(10, 100, 355, 450);
+        CGRect viewFrame = CGRectMake(10, 100, 300, 450);
         
         toView.frame = offscreenRect;
         [containerView addSubview:toView];
