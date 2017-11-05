@@ -30,6 +30,7 @@
         <activity android:name="com.amigotrip.android.activities.MessagesActivity" />
         <activity android:name="com.amigotrip.android.activities.ChooseLangActivity" />
         <activity android:name="com.amigotrip.android.activities.WebViewActivity" />
+        <activity android:name="com.amigotrip.android.activities.MainActivity"></activity>
     </application>
 
 </manifest>
