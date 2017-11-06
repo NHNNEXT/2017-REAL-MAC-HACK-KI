@@ -11,7 +11,7 @@ import java.util.*
 class SplashActivity : Activity() {
 
     val preferences: SharedPreferences by lazy {
-        getSharedPreferences("amigoPreference", Context.MODE_PRIVATE)
+        getSharedPreferences(getString(R.string.KEY_PREFERENCE), Context.MODE_PRIVATE)
     }
 
     lateinit var timerTask: TimerTask
@@ -44,7 +44,7 @@ class SplashActivity : Activity() {
 
     }
     private fun isLogin(): Boolean {
-        return preferences.getBoolean("isLogin", false)
+        return preferences.getBoolean(getString(R.string.KEY_ISSIGNIN), false)
     }
 
 

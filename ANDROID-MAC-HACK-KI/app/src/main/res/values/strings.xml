@@ -43,4 +43,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- KEYS -->
+    <string name="KEY_ISSIGNIN" translatable="false">inSignIn</string>
+    <string name="KEY_PREFERENCE" translatable="false">com.amigotrip.android.preferences</string>
 </resources>
