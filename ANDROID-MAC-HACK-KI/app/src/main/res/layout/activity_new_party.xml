@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:focusableInTouchMode="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -155,7 +154,7 @@
                     android:id="@+id/input_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/email"
+                    android:hint="email"
                     android:inputType="textEmailAddress" />
             </android.support.design.widget.TextInputLayout>
 
@@ -165,7 +164,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="@string/label_desired_date"
+                android:text="Desired date"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -176,7 +175,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginEnd="16dp"
-                android:text="@string/label_choose_date"
+                android:text="choose date"
                 app:layout_constraintBaseline_toBaselineOf="@+id/tv_date"
                 app:layout_constraintEnd_toEndOf="parent" />
 
@@ -186,7 +185,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
-                android:text="@string/age_title"
+                android:text="Age:"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -198,7 +197,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
-                android:text="@string/language"
+                android:text="Language"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -209,7 +208,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:text="@string/choose_age"
+                android:text="choose age"
                 app:layout_constraintBaseline_toBaselineOf="@+id/label_age"
                 app:layout_constraintEnd_toEndOf="parent" />
 
@@ -218,7 +217,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:text="@string/add_language"
+                android:text="add language"
                 app:layout_constraintBaseline_toBaselineOf="@+id/textView7"
                 app:layout_constraintEnd_toEndOf="parent" />
 
@@ -228,7 +227,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="@string/availiable_language_head"
+                android:text="availiable language:\n"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView7" />
 

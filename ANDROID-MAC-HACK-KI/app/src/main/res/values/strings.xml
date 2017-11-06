@@ -16,28 +16,14 @@
     <string name="sign_in_email_hint">please input your email</string>
     <string name="sign_in_later">do later</string>
     <string name="sign_in">sign in</string>
-    <string name="message_intro1" translatable="false">Amigo! \n\n
+    <string name="message_intro1">Amigo! \n\n
         I\'ll be your travel mate :) \n\n
         Even if it\'s your first
         trip alone, you will not be afraid to be with friends. \n\n
         Amigo helps you meet new local friends while traveling!
     </string>
-    <string name="message_intro2" translatable="false">How to use the service!\n\n
+    <string name="message_intro2">How to use the service!\n\n
         If you are planning a trip to Korea, \nand need a friend to accompany you,\n
         Please touch apply. \nAmigo will match you travel mate!
     </string>
-    <string name="hint_search_language">search language</string>
-    <string name="add">add</string>
-    <string name="label_selected_language">Selected language:</string>
-    <string name="apply">apply</string>
-    <string name="email">email</string>
-    <string name="label_desired_date">Desired date</string>
-    <string name="label_choose_date">choose date</string>
-    <string name="age_title">Age:</string>
-    <string name="language">Language</string>
-    <string name="choose_age">choose age</string>
-    <string name="add_language">add language</string>
-    <string name="availiable_language_head">availiable language:</string>
-    <string name="more_info">more info</string>
-    <string name="place_for_title" translatable="false">Place for title</string>
 </resources>

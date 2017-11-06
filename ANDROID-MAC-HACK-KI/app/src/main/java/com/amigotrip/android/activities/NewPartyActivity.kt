@@ -5,7 +5,6 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.DatePicker
@@ -13,8 +12,6 @@ import android.widget.NumberPicker
 import android.widget.Toast
 import com.amigotrip.android.NumberPickerDialog
 import com.amigotrip.android.datas.Party
-import com.amigotrip.android.extentions.isEmpty
-import com.amigotrip.android.extentions.string
 import com.amigotrip.android.remote.AmigoService
 import com.amigotrip.anroid.R
 import kotlinx.android.synthetic.main.activity_new_party.*
@@ -30,11 +27,18 @@ class NewPartyActivity : AppCompatActivity(),
         NumberPicker.OnValueChangeListener,
         DatePickerDialog.OnDateSetListener {
 
-    var languageList = arrayListOf<String>()
-
     companion object {
         const val REQUEST_LANGUAGE: Int = 101
     }
+
+    //refactor
+    var gender = "male"
+    var languageList = arrayListOf<String>()
+    var date = ""
+    var year = 0
+    var month = 0
+    var dayOfMonth = 0
+
 
     val amigoService: AmigoService by lazy {
         AmigoService.getService(AmigoService::class.java)
@@ -52,6 +56,14 @@ class NewPartyActivity : AppCompatActivity(),
     }
 
     private fun setListeners() {
+        radio_group.setOnCheckedChangeListener { radiogrop, id ->
+            run {
+                when (id) {
+                    R.id.radio_male -> gender = "male"
+                    R.id.radio_female -> gender = "female"
+                }
+            }
+        }
 
         btn_submit.setOnClickListener(this)
         tv_select_age.setOnClickListener(this)
@@ -64,7 +76,12 @@ class NewPartyActivity : AppCompatActivity(),
     }
 
     override fun onDateSet(p0: DatePicker?, p1: Int, p2: Int, p3: Int) {
-        tv_selected_date.text = String.format("%d.%d.%d", p1, p2, p3)
+        year = p1
+        month = p2
+        dayOfMonth = p3
+
+        date = String.format("%d.%d.%d", year, month, dayOfMonth)
+        tv_selected_date.text = date
     }
 
     override fun onClick(view: View?) {
@@ -118,28 +135,26 @@ class NewPartyActivity : AppCompatActivity(),
         return true
     }
 
-    //hide method
     private fun checkInputs(): Boolean {
 
         var result = true
 
-        if (input_name.isEmpty()) {
+        if (input_name.text.toString() == "") {
             input_name.error = "check name!"
             result = false
         }
 
-        if (!isEmailValid(input_email.string)) {
+        if (!isEmailValid(input_email.text.toString())) {
             input_email.error = "please check email"
             result = false
         }
 
-        //used text util
-        if (TextUtils.isEmpty(tv_age.text)){
+        if (tv_age.text.toString() == "") {
             Toast.makeText(baseContext, "please choose age", Toast.LENGTH_SHORT).show()
             result = false
         }
 
-        if (tv_selected_date.isEmpty()) {
+        if (tv_selected_date.text.toString() == "") {
             Toast.makeText(baseContext, "please choose date", Toast.LENGTH_SHORT).show()
             result = false
         }
@@ -149,23 +164,27 @@ class NewPartyActivity : AppCompatActivity(),
     }
 
     private fun submitInfo() {
+        val name = input_name.text.toString()
+        val age = tv_age.text.toString().toInt()
 
-        val name = input_name.string
-        val age = tv_age.string.toInt()
-        val email = input_email.string
+        val email = input_email.text.toString()
 
-        val gender = if (radio_group.checkedRadioButtonId == R.id.radio_male) "male" else "female"
-        val date = tv_selected_date.string
+        if (isEmailValid(email)) {
+            Toast.makeText(this, "apply done", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(MainActivity@ this, NewPartyActivity::class.java))
+        } else {
+            input_email.error = "wrong email!"
+        }
 
-        val theme = input_attraction.string
-        val attraction = input_attraction.string
+        val theme = input_attraction.text.toString()
+        val attraction = input_attraction.text.toString()
 
-        val party = Party(name, email, age, gender,
+        val party =
+                Party(name, email, age, gender,
                         languageList.toString(),
                         date,
                         theme,
                         attraction)
-
 
         val call = amigoService.newParty(party)
 
@@ -185,7 +204,6 @@ class NewPartyActivity : AppCompatActivity(),
 
         startActivity(Intent(NewPartyActivity@ this, WelcomeActivity::class.java))
     }
-
 
     private fun isEmailValid(email: String): Boolean {
 
