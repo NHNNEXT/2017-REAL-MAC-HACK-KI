@@ -8,7 +8,6 @@
 
 #import "ApplyViewController.h"
 #import "CalendarViewController.h"
-#import "DataModel.h"
 
 @interface ApplyViewController () 
 
@@ -16,14 +15,11 @@
 
 @implementation ApplyViewController {
     Checkbox *cbox;
-    DataModel *dataModel;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     _emailLabel.text = _data;
-    _maleCheckBox.isChecked = FALSE;
-    _femaleCheckBox.isChecked = FALSE;
     NSNotificationCenter *noti = [NSNotificationCenter defaultCenter];
     [noti addObserver:self selector:@selector(blurViewhidden) name:@"dismissNoti" object:nil];
     [noti addObserver:self selector:@selector(getDate:) name:@"dateNoti" object:nil];
@@ -87,7 +83,9 @@
             NSString *request = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             NSLog(@"Data = %@", request);
         }
+        NSLog(@"%@", response);
     }];
+    
     [dataTask resume];
 }
 
@@ -119,7 +117,7 @@
     CGRect offscreenRect = CGRectOffset(initialFrame, 0, -[UIScreen mainScreen].bounds.size.height);
     
     if (self.isShow) {
-        CGRect viewFrame = CGRectMake(10, 100, 300, 450);
+        CGRect viewFrame = CGRectMake(10, 100, 300, 400);
         
         toView.frame = offscreenRect;
         [containerView addSubview:toView];
@@ -137,39 +135,35 @@
     }
 }
 
-- (IBAction)clickedMaleCheckBox:(id)sender {
-    if (_femaleCheckBox.isChecked == TRUE) {
-        _femaleCheckBox.isChecked = FALSE;
-        NSLog(@"female이 투루였다");
-    }
-    _genderString = @"male";
-}
-    
-- (IBAction)clickedFemaleCheckBox:(id)sender {
-    if (_maleCheckBox.isChecked == TRUE) {
-        _maleCheckBox.isChecked = FALSE;
-        NSLog(@"male이 투루였다");
-
-    }
-    _genderString = @"female";
-}
-
-
-
-- (void) checkAction{
-    if (_maleCheckBox.isChecked == true) {
-        cbox.text = @"Checked";
-    }
-    else{
-        cbox.text = @"Unchecked";
-    }
-}
-
-
+//- (IBAction)clickedMaleCheckBox:(id)sender {
+//    if (_femaleCheckBox.isChecked == TRUE) {
+//        _femaleCheckBox.isChecked = FALSE;
+//        NSLog(@"female이 투루였다");
+//    }
+//    _genderString = @"male";
+//}
+//
+//- (IBAction)clickedFemaleCheckBox:(id)sender {
+//    if (_maleCheckBox.isChecked == TRUE) {
+//        _maleCheckBox.isChecked = FALSE;
+//        NSLog(@"male이 투루였다");
+//
+//    }
+//    _genderString = @"female";
+//}
+//
+//- (void) checkAction{
+//    if (_maleCheckBox.isChecked == true) {
+//        cbox.text = @"Checked";
+//    }
+//    else{
+//        cbox.text = @"Unchecked";
+//    }
+//}
 
 - (IBAction)clickedBackBtn:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
-}
 
+}
 
 @end
