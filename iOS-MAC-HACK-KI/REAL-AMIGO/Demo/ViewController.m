@@ -49,6 +49,41 @@
 - (IBAction)clickedGetInfo:(id)sender {
     [self openScheme:@"http://amigotrip.co.kr/"];
 }
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField {
+    [self animateTextField:textField up:YES];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [self animateTextField:textField up:NO];
+}
+
+-(void)animateTextField:(UITextField*)textField up:(BOOL)up {
+    const int movementDistance = -200;
+    const float movementDuration = 0.3f;
+    
+    int movement = (up ? movementDistance : -movementDistance);
+    
+    [UIView beginAnimations: @"animateTextField" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: movementDuration];
+    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+    [UIView commitAnimations];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (BOOL)textView:(UIView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(nonnull NSString *)text {
+    if ([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    return YES;
+}
+
 //
 //- (IBAction)facebookLoginBtn:(id)sender {
 //    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"login_details"]) {

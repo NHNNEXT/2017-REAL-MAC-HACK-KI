@@ -23,7 +23,9 @@
     NSNotificationCenter *noti = [NSNotificationCenter defaultCenter];
     [noti addObserver:self selector:@selector(blurViewhidden) name:@"dismissNoti" object:nil];
     [noti addObserver:self selector:@selector(getDate:) name:@"dateNoti" object:nil];
+    
 }
+
     
     //    calendarViewController = [[[NSBundle mainBundle] loadNibNamed:@"CalendarViewController" owner:self options:nil] objectAtIndex:0];
     
@@ -121,6 +123,7 @@
         
         toView.frame = offscreenRect;
         [containerView addSubview:toView];
+        [containerView layoutIfNeeded];
         
         [UIView animateWithDuration:[self transitionDuration:transitionContext]
                               delay:0
@@ -129,11 +132,100 @@
                             options:0
                          animations: ^{
                              toView.frame = viewFrame;
+                             toView.center = containerView.center;
+                             [containerView layoutIfNeeded];
                          } completion: ^(BOOL finished) {
                              [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
                          }];
     }
 }
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField {
+    [self animateTextField:textField up:YES];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [self animateTextField:textField up:NO];
+}
+
+-(void)animateTextField:(UITextField*)textField up:(BOOL)up {
+    const int movementDistance = -200; 
+    const float movementDuration = 0.3f;
+    
+    int movement = (up ? movementDistance : -movementDistance);
+    
+    [UIView beginAnimations: @"animateTextField" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: movementDuration];
+    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+    [UIView commitAnimations];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (BOOL)textView:(UIView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(nonnull NSString *)text {
+    if ([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    return YES;
+}
+//
+//
+//// 키보드가 나타나면 apply 버튼을 기준으로 화면이 위로 올라가게 된다.
+//- (void)registerForKeyboardNotifications {
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(keyboardWasShown:)
+//                                                 name:UIKeyboardDidShowNotification
+//                                               object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(keyboardWillBeHidden:)
+//                                                 name:UIKeyboardWillHideNotification
+//                                               object:nil];
+//}
+//
+//- (void)deregisterFromKeyboardNotifications {
+//    [[NSNotificationCenter defaultCenter] removeObserver:self
+//                                                    name:UIKeyboardDidHideNotification
+//                                                  object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self
+//                                                    name:UIKeyboardWillHideNotification
+//                                                  object:nil];
+//}
+//
+//- (void)viewWillAppear:(BOOL)animated {
+//    [super viewWillAppear:animated];
+//    [self registerForKeyboardNotifications];
+//}
+//
+//- (void)viewWillDisappear:(BOOL)animated {
+//    [self deregisterFromKeyboardNotifications];
+//    [super viewWillDisappear:animated];
+//}
+//
+//- (void)keyboardWasShown:(NSNotification *)notification {
+//    NSDictionary* info = [notification userInfo];
+//
+//    CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+//    CGPoint buttonOrigin = self.submitBtn.frame.origin;
+//    CGFloat buttonHeight = self.submitBtn.frame.size.height;
+//    CGRect visibleRect = self.scrollView.frame;
+//
+//    visibleRect.size.height -= keyboardSize.height;
+//
+//    if (!CGRectContainsPoint(visibleRect, buttonOrigin)){
+//        CGPoint scrollPoint = CGPointMake(0.0, buttonOrigin.y - visibleRect.size.height + buttonHeight);
+//        [self.scrollView setContentOffset:scrollPoint animated:YES];
+//    }
+//}
+//
+//- (void)keyboardWillBeHidden:(NSNotification *)notification {
+//    [self.scrollView setContentOffset:CGPointZero animated:YES];
+//}
+
 
 //- (IBAction)clickedMaleCheckBox:(id)sender {
 //    if (_femaleCheckBox.isChecked == TRUE) {

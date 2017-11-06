@@ -11,7 +11,7 @@
 
 @class CalendarViewController;
 
-@interface ApplyViewController : UIViewController  <UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning>
+@interface ApplyViewController : UIViewController  <UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning, UITextViewDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
@@ -23,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *attractionTextField;
 
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIButton *submitBtn;
 
 @property NSString *genderString;
 @property NSString *data;

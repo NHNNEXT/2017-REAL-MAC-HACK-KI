@@ -61,7 +61,7 @@
     
     for (int i = 0; i < 7; i ++) {
         NSArray *dayNameArr = [NSArray arrayWithObjects:@"Sun", @"Mon", @"Tue", @"Wed", @"Thu", @"Fri", @"Sat", nil];
-        UILabel *dayNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(13 + (50 * i), 50 , 30, 30)];
+        UILabel *dayNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(13 + (40 * i), 50 , 30, 30)];
         dayNameLabel.textAlignment = NSTextAlignmentCenter;
         [dayNameLabel setFont:[UIFont systemFontOfSize:12]];
         [dayNameLabel setText:dayNameArr[i]];
@@ -72,7 +72,7 @@
     for (int startDay = 1; startDay <= _dayNum; startDay++) {
         UIButton *dayNumBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
 //        NSString *date = [NSString stringWithFormat:@"%ld%ld%d", (long)_year, (long)_month, startDay];
-        NSUInteger xCoord = (newWeekDay * 50) + 13;
+        NSUInteger xCoord = (newWeekDay * 40) + 13;
         NSUInteger yCoord = (count * 45) + yVal;
         newWeekDay++;
         
