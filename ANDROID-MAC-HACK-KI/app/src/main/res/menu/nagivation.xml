@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:icon="@android:drawable/btn_star"
+        android:title="Locals" />
+
+    <item
+        android:title="Travelers"
+        android:icon="@android:drawable/btn_star"/>
+
+    <item
+        android:icon="@android:drawable/btn_star"
+        android:title="Message" />
+
+    <item
+        android:title="Feed"
+        android:icon="@android:drawable/btn_star"/>
+    <item
+        android:title="More"
+        android:icon="@android:drawable/btn_star"/>
+</menu>

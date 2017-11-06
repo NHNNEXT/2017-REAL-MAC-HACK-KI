@@ -38,6 +38,9 @@
     <string name="choose_age">choose age</string>
     <string name="add_language">add language</string>
     <string name="availiable_language_head">availiable language:</string>
-    <string name="more_info">more info</string>
+    <string name="more_info">do later</string>
     <string name="place_for_title" translatable="false">Place for title</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

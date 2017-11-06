@@ -2,32 +2,30 @@ package com.amigotrip.android.activities
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.amigotrip.android.adpaters.MainPagerAdapter
 import com.amigotrip.anroid.R
-import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigationAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), AHBottomNavigation.OnTabSelectedListener{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val item1 = AHBottomNavigationItem("홈", android.R.drawable.ic_menu_help, R.color
-                .colorPrimary)
 
-        val item2 = AHBottomNavigationItem("홈", android.R.drawable.ic_menu_help, R.color
-                .colorPrimary)
-        val item3 = AHBottomNavigationItem("홈", android.R.drawable.ic_menu_help, R.color
-                .colorPrimary)
-        val item4 = AHBottomNavigationItem("홈", android.R.drawable.ic_menu_help, R.color
-                .colorPrimary)
-        val item5 = AHBottomNavigationItem("홈", android.R.drawable.ic_menu_help, R.color
-                .colorPrimary)
+        navigation.titleState = AHBottomNavigation.TitleState.ALWAYS_SHOW
+        val navigationAdapter = AHBottomNavigationAdapter(MainActivity@this, R.menu.nagivation)
 
-        navigation.addItem(item1)
-        navigation.addItem(item1)
-        navigation.addItem(item1)
-        navigation.addItem(item1)
-        navigation.addItem(item1)
+        navigationAdapter.setupWithBottomNavigation(navigation)
+        navigation.setOnTabSelectedListener(this)
+        pager_main.adapter = MainPagerAdapter(supportFragmentManager)
+
+    }
+
+    override fun onTabSelected(position: Int, wasSelected: Boolean): Boolean {
+        pager_main.setCurrentItem(position, false)
+        return true
     }
 }
