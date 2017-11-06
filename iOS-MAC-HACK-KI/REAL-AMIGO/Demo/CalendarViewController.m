@@ -7,10 +7,12 @@
 //
 
 #import "CalendarViewController.h"
+#import "DataModel.h"
 
 @interface CalendarViewController () {
     NSInteger buttonTag;
     UIButton *previousBtn;
+    DataModel *dataModel;
 }
 @end
 
@@ -44,16 +46,16 @@
     _dayNum = [self getCurrentDateInfo:newDate];
     NSUInteger newWeekDay = _weekday - 1;
     
-    int yVal = 53;
+    int yVal = 60;
     int count = 1;
     
     NSDateFormatter *day = [[NSDateFormatter alloc]init];
     [day setDateFormat:@"YYYYMd"];
+    NSString *today = [day stringFromDate:[NSDate date]];
     
-    UILabel *yearMonth = [[UILabel alloc]initWithFrame:CGRectMake(75, 10, 150, 30)];
-//    [yearMonth setFont:[UIFont systemFontOfSize:18]];
+    UILabel *yearMonth = [[UILabel alloc]initWithFrame:CGRectMake(87, 15, 200, 50)];
+    [yearMonth setFont:[UIFont systemFontOfSize:18]];
     [yearMonth setText:[NSString stringWithFormat:@"%ld . %ld",(long)_year ,(long)_month]];
-    [yearMonth setFont:[UIFont boldSystemFontOfSize:20]];
     [yearMonth setTextColor:[UIColor blackColor]];
     yearMonth.textAlignment = NSTextAlignmentCenter;
     yearMonth.tag = 32;
@@ -61,7 +63,7 @@
     
     for (int i = 0; i < 7; i ++) {
         NSArray *dayNameArr = [NSArray arrayWithObjects:@"Sun", @"Mon", @"Tue", @"Wed", @"Thu", @"Fri", @"Sat", nil];
-        UILabel *dayNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(13 + (50 * i), 50 , 30, 30)];
+        UILabel *dayNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(13 + (50 * i), 50 , 40, 40)];
         dayNameLabel.textAlignment = NSTextAlignmentCenter;
         [dayNameLabel setFont:[UIFont systemFontOfSize:12]];
         [dayNameLabel setText:dayNameArr[i]];
@@ -81,7 +83,7 @@
             count++;
         }
         
-        dayNumBtn.frame = CGRectMake(xCoord, yCoord, 30, 30);
+        dayNumBtn.frame = CGRectMake(xCoord, yCoord, 40, 40);
         [dayNumBtn setTitle:[NSString stringWithFormat:@"%d",startDay]forState:UIControlStateNormal];
         [dayNumBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         
@@ -113,7 +115,7 @@
 
 - (void)prevButton {
     UIButton *prevBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [prevBtn setFrame:CGRectMake(34, 10, 30, 30)];
+    [prevBtn setFrame:CGRectMake(80, 15, 55, 55)];
     [prevBtn setTitle:@"<" forState:UIControlStateNormal];
     [prevBtn.titleLabel setFont:[UIFont systemFontOfSize:20]];
     [prevBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -124,7 +126,7 @@
 
 - (void)nextButton {
     UIButton *nextBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [nextBtn setFrame:CGRectMake(236, 10, 30, 30)];
+    [nextBtn setFrame:CGRectMake(240, 15, 55, 55)];
     [nextBtn setTitle:@">" forState:UIControlStateNormal];
     [nextBtn.titleLabel setFont:[UIFont systemFontOfSize:20]];
     [nextBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -210,6 +212,9 @@
         [self performSelector:@selector(hideLabel) withObject:nil afterDelay:1];
     } else {
 //        [self dateFormatter];
+        dataModel.date = _selectedDate;
+        [dataModel getDate:_selectedDate];
+        NSLog(@"data = %@", dataModel.date);
         NSLog(@"%@", _selectedDate);
 
         [[NSNotificationCenter defaultCenter] postNotificationName:@"dateNoti" object:_selectedDate];

@@ -36,7 +36,6 @@ class NumberPickerDialog : DialogFragment() {
                     numberPicker.value, numberPicker.value)
         }
         builder.setView(numberPicker)
-
         return builder.create()
     }
 

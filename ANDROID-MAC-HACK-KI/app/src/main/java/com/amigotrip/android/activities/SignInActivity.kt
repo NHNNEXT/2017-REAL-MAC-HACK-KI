@@ -15,6 +15,7 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener {
         IntroPagerAdapter(supportFragmentManager)
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
@@ -30,7 +31,6 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     fun addIntroPage(imageId: Int, messageId: Int) {
-
         val introPage = IntroPage1Fragment()
         val bundle = Bundle()
         bundle.putInt("imageId", imageId)
@@ -38,9 +38,7 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener {
         introPage.arguments = bundle
 
         pagerAdapter.addFragment(introPage)
-
     }
-
     override fun onClick(view: View?) {
         when (view) {
             btn_view -> {
