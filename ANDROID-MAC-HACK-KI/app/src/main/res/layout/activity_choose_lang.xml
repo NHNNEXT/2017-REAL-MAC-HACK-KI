@@ -28,7 +28,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:completionThreshold="1"
-        android:hint="search language"
+        android:hint="@string/hint_search_language"
         app:layout_constraintEnd_toStartOf="@+id/btn_add"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="8dp"
-        android:text="add"
+        android:text="@string/add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Selected language:\n"
+        android:text="@string/label_selected_language"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView" />
 
@@ -64,7 +64,7 @@
         android:id="@+id/btn_apply"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="apply"
+        android:text="@string/apply"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
