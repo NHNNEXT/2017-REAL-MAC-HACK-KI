@@ -7,10 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1747989F1FAA219A00EFF50E /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1747989B1FAA219800EFF50E /* FBSDKShareKit.framework */; };
-		174798A01FAA219A00EFF50E /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1747989C1FAA219900EFF50E /* Bolts.framework */; };
-		174798A11FAA219A00EFF50E /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1747989D1FAA219900EFF50E /* FBSDKLoginKit.framework */; };
-		174798A21FAA219A00EFF50E /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1747989E1FAA219A00EFF50E /* FBSDKCoreKit.framework */; };
+		174798AC1FAB437B00EFF50E /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 174798AB1FAB437B00EFF50E /* Tutorial.storyboard */; };
+		174798AF1FAB438F00EFF50E /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 174798AE1FAB438F00EFF50E /* TutorialViewController.m */; };
+		174798B21FAB43B200EFF50E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 174798B11FAB43B200EFF50E /* LoginViewController.m */; };
 		7C013EED1F9F733300B0FEA0 /* Demo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C013EEC1F9F733300B0FEA0 /* Demo.storyboard */; };
 		7C013EF11F9F93BB00B0FEA0 /* Checkbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C013EF01F9F93BB00B0FEA0 /* Checkbox.m */; };
 		7C22FE111FA04E9B00BF492B /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C22FE101FA04E9B00BF492B /* CalendarViewController.m */; };
@@ -21,7 +20,6 @@
 		7C92B6531F91775700C3B693 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C92B6521F91775700C3B693 /* main.m */; };
 		7C92B65D1F91775700C3B693 /* REAL_AMIGOTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C92B65C1F91775700C3B693 /* REAL_AMIGOTests.m */; };
 		7C92B6681F91775700C3B693 /* REAL_AMIGOUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C92B6671F91775700C3B693 /* REAL_AMIGOUITests.m */; };
-		7CCCD1001FA1042F00CFCEC3 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCCD0FF1FA1042F00CFCEC3 /* DataModel.m */; };
 		7CE708E41F9873BC0021A412 /* ApplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE708E31F9873BC0021A412 /* ApplyViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -43,10 +41,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1747989B1FAA219800EFF50E /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
-		1747989C1FAA219900EFF50E /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		1747989D1FAA219900EFF50E /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		1747989E1FAA219A00EFF50E /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		174798AB1FAB437B00EFF50E /* Tutorial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
+		174798AD1FAB438F00EFF50E /* TutorialViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
+		174798AE1FAB438F00EFF50E /* TutorialViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
+		174798B01FAB43B200EFF50E /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		174798B11FAB43B200EFF50E /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		7C013EEC1F9F733300B0FEA0 /* Demo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Demo.storyboard; sourceTree = "<group>"; };
 		7C013EEF1F9F93BB00B0FEA0 /* Checkbox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Checkbox.h; sourceTree = "<group>"; };
 		7C013EF01F9F93BB00B0FEA0 /* Checkbox.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Checkbox.m; sourceTree = "<group>"; };
@@ -67,8 +66,6 @@
 		7C92B6631F91775700C3B693 /* REAL-AMIGOUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "REAL-AMIGOUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C92B6671F91775700C3B693 /* REAL_AMIGOUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = REAL_AMIGOUITests.m; sourceTree = "<group>"; };
 		7C92B6691F91775700C3B693 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7CCCD0FE1FA1042F00CFCEC3 /* DataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataModel.h; sourceTree = "<group>"; };
-		7CCCD0FF1FA1042F00CFCEC3 /* DataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
 		7CE708E21F9873BC0021A412 /* ApplyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApplyViewController.h; sourceTree = "<group>"; };
 		7CE708E31F9873BC0021A412 /* ApplyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ApplyViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -78,10 +75,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1747989F1FAA219A00EFF50E /* FBSDKShareKit.framework in Frameworks */,
-				174798A21FAA219A00EFF50E /* FBSDKCoreKit.framework in Frameworks */,
-				174798A01FAA219A00EFF50E /* Bolts.framework in Frameworks */,
-				174798A11FAA219A00EFF50E /* FBSDKLoginKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,13 +95,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		174798A91FAB433E00EFF50E /* Tutorial&Login */ = {
+			isa = PBXGroup;
+			children = (
+				174798AB1FAB437B00EFF50E /* Tutorial.storyboard */,
+				174798AD1FAB438F00EFF50E /* TutorialViewController.h */,
+				174798AE1FAB438F00EFF50E /* TutorialViewController.m */,
+				174798B01FAB43B200EFF50E /* LoginViewController.h */,
+				174798B11FAB43B200EFF50E /* LoginViewController.m */,
+			);
+			path = "Tutorial&Login";
+			sourceTree = "<group>";
+		};
+		17DC60FF1FAB4477005E8A7D /* SupportingFile */ = {
+			isa = PBXGroup;
+			children = (
+				7C92B6521F91775700C3B693 /* main.m */,
+				7C92B6431F91775600C3B693 /* AppDelegate.h */,
+				7C92B6441F91775600C3B693 /* AppDelegate.m */,
+			);
+			path = SupportingFile;
+			sourceTree = "<group>";
+		};
 		7C0A50EA1F9F56F0008E6BCB /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				1747989C1FAA219900EFF50E /* Bolts.framework */,
-				1747989E1FAA219A00EFF50E /* FBSDKCoreKit.framework */,
-				1747989D1FAA219900EFF50E /* FBSDKLoginKit.framework */,
-				1747989B1FAA219800EFF50E /* FBSDKShareKit.framework */,
 				7C92B6461F91775600C3B693 /* ViewController.h */,
 				7C92B6471F91775600C3B693 /* ViewController.m */,
 				7CE708E21F9873BC0021A412 /* ApplyViewController.h */,
@@ -118,8 +129,6 @@
 				7C013EEC1F9F733300B0FEA0 /* Demo.storyboard */,
 				7C22FE0F1FA04E9B00BF492B /* CalendarViewController.h */,
 				7C22FE101FA04E9B00BF492B /* CalendarViewController.m */,
-				7CCCD0FE1FA1042F00CFCEC3 /* DataModel.h */,
-				7CCCD0FF1FA1042F00CFCEC3 /* DataModel.m */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -147,12 +156,11 @@
 		7C92B6421F91775600C3B693 /* REAL-AMIGO */ = {
 			isa = PBXGroup;
 			children = (
+				174798A91FAB433E00EFF50E /* Tutorial&Login */,
 				7C0A50EA1F9F56F0008E6BCB /* Demo */,
 				7C92B64E1F91775700C3B693 /* LaunchScreen.storyboard */,
+				17DC60FF1FAB4477005E8A7D /* SupportingFile */,
 				7C92B6511F91775700C3B693 /* Info.plist */,
-				7C92B6521F91775700C3B693 /* main.m */,
-				7C92B6431F91775600C3B693 /* AppDelegate.h */,
-				7C92B6441F91775600C3B693 /* AppDelegate.m */,
 				7C73479E1FA0B9AB00CC7574 /* Images.xcassets */,
 			);
 			path = "REAL-AMIGO";
@@ -284,6 +292,7 @@
 			files = (
 				7C92B6501F91775700C3B693 /* LaunchScreen.storyboard in Resources */,
 				7C73479F1FA0B9AB00CC7574 /* Images.xcassets in Resources */,
+				174798AC1FAB437B00EFF50E /* Tutorial.storyboard in Resources */,
 				7C013EED1F9F733300B0FEA0 /* Demo.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,8 +322,9 @@
 				7CE708E41F9873BC0021A412 /* ApplyViewController.m in Sources */,
 				7C92B6531F91775700C3B693 /* main.m in Sources */,
 				7C013EF11F9F93BB00B0FEA0 /* Checkbox.m in Sources */,
-				7CCCD1001FA1042F00CFCEC3 /* DataModel.m in Sources */,
+				174798B21FAB43B200EFF50E /* LoginViewController.m in Sources */,
 				7C22FE111FA04E9B00BF492B /* CalendarViewController.m in Sources */,
+				174798AF1FAB438F00EFF50E /* TutorialViewController.m in Sources */,
 				7C92B6451F91775600C3B693 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
