@@ -1,6 +1,8 @@
 package amigo.com.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -21,13 +23,16 @@ import java.util.Set;
 public class User {
 
     @Id
-    @Autowired
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Getter
     private long id;
 
     @NotEmpty
+    @Getter
     private String name;
 
     @NotEmpty
+    @Getter
     private String email;
 
     private String gender;
@@ -38,6 +43,7 @@ public class User {
 
     private String city;
 
+    @JsonIgnore
     private int creditPoint;
 
     private String profileImg;
@@ -51,6 +57,16 @@ public class User {
     @OneToMany
     @JoinColumn(name = "to_id")
     private Set<Review> reviews;
+
+    private boolean emailConfirm = false;
+
+    public boolean isConfirmdUser() {
+        return emailConfirm;
+    }
+
+//    public void confirmEmail() {
+//        emailConfirm = true;
+//    }
 
     @Override
     public String toString() {
