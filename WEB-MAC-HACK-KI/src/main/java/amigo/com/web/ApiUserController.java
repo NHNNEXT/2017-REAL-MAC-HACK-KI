@@ -5,6 +5,7 @@ import amigo.com.domain.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +22,9 @@ public class ApiUserController {
     @Resource
     private UserRepository userRepository;
 
+    @Resource
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Result> createUser(@RequestBody User user, HttpServletResponse response) {
@@ -32,6 +36,7 @@ public class ApiUserController {
                     HttpStatus.valueOf(HttpStatus.BAD_REQUEST.value()));
         }
 
+        user.encryptionPassword(bCryptPasswordEncoder);
         return new ResponseEntity<Result>(
                 new Result("/user/" + userRepository.save(user).getId()),
                 HttpStatus.valueOf(HttpStatus.CREATED.value()));
