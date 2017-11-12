@@ -1,10 +1,15 @@
 package amigo.com.mail;
 
 import amigo.com.domain.PartyGuest;
+import amigo.com.domain.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
+import org.stringtemplate.v4.ST;
+import org.stringtemplate.v4.STGroup;
+import org.stringtemplate.v4.STGroupFile;
+import org.stringtemplate.v4.StringRenderer;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -69,6 +74,19 @@ public class AmigoMailSender {
             e.printStackTrace();
         }
         return "Success";
+    }
+
+    @Async
+    public void sendEmailConfirmMail(User user) {
+        String[] toSend = {user.getEmail()};
+        String emailSubject =  "Hi " + user.getName() + ", this is Amigo!";
+        STGroup group = new STGroupFile("templates/mailConfigure.stg");
+        group.registerRenderer(String.class, new StringRenderer());
+        ST st = group.getInstanceOf("page");
+        st.add("name", user.getName());
+        st.add("url", "localhost:8080/user/" + user.getId() + "/emailConfirm/" + user.getEmailConfirmKey());
+        String emailTxt = st.render();
+        sendMail(toSend, emailTxt, emailSubject);
     }
 
     @Async

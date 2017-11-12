@@ -1,11 +1,16 @@
 package amigo.com.web;
 
+import amigo.com.domain.User;
+import amigo.com.domain.UserRepository;
 import amigo.com.mail.AmigoMailSender;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
+import javax.annotation.Resource;
 import javax.mail.MessagingException;
 
 
@@ -15,29 +20,38 @@ import javax.mail.MessagingException;
 @Controller
 @Slf4j
 public class HomeController {
-    public AmigoMailSender amigoMailSender = new AmigoMailSender();
+    @Resource
+    public AmigoMailSender amigoMailSender;
+
+    @Resource
+    public BCryptPasswordEncoder passwordEncoder;
+
+    @Resource
+    public UserRepository userRepository;
 
     @GetMapping("/")
     public String home() {
         return "index";
     }
 
-    @GetMapping("/mail")
-    public String mail() {
-        try {
-            String[] emailList = { "wkddngus5@naver.com" };// 메일 보낼사람 리스트
-            String emailFromAddress = "amigotrip82@gmail.com";// 메일 보내는 사람
-            String emailMsgTxt = "메일 테스트 내용 "; // 내용
-            String emailSubjectTxt = "잘가는지 테스트 중~~~~~~~~~~";// 제목
-
-            // 메일보내기
-            amigoMailSender.postMail(emailList, emailSubjectTxt, emailMsgTxt, emailFromAddress);
-            System.out.println("모든 사용자에게 메일이 성공적으로 보내졌음~~");
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
-        return "Success";
+    @GetMapping("/loginForm")
+    public String loginForm() {
+        return "/loginForm";
     }
 
+    @GetMapping("/user/{userId}/emailConfirm/{key}")
+    public String mail(@PathVariable long userId, @PathVariable String key) {
+        User user = userRepository.findOne(userId);
+        if(user == null) {
+            return "redirect:/";
+        }
+
+        if(user.getEmailConfirmKey().equals(key)) {
+            user.confirmUser();
+            userRepository.save(user);
+            return "redirect:/loginForm";
+        }
+        return "redirect:/";
+    }
 }
 

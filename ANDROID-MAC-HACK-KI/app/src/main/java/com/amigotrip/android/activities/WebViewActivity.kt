@@ -16,6 +16,7 @@ class WebViewActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_webview)
 
+        //check internet connection
         webview.loadUrl("http://www.amigotrip.co.kr")
         val webSettings = webview.settings
         webSettings.javaScriptEnabled = true
