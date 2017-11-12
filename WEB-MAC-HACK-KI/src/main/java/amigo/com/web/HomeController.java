@@ -3,9 +3,11 @@ package amigo.com.web;
 import amigo.com.mail.AmigoMailSender;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.annotation.Resource;
 import javax.mail.MessagingException;
 
 
@@ -16,6 +18,9 @@ import javax.mail.MessagingException;
 @Slf4j
 public class HomeController {
     public AmigoMailSender amigoMailSender = new AmigoMailSender();
+
+    @Resource
+    public BCryptPasswordEncoder passwordEncoder;
 
     @GetMapping("/")
     public String home() {

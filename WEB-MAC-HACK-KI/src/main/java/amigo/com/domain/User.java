@@ -4,9 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 import java.awt.*;
@@ -35,6 +37,10 @@ public class User {
     @Getter
     private String email;
 
+    @Getter
+    @Setter
+    private String password;
+
     private String gender;
 
     private int age;
@@ -50,6 +56,11 @@ public class User {
 
     private String contents;
 
+    @Getter
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "userRole", joinColumns = @JoinColumn(name = "email"), inverseJoinColumns = @JoinColumn(name = "roleId"))
+    private Set<Role> roles;
+
     @OneToMany
     @JoinColumn(name = "writer_id")
     private Set<Photo> photos;
@@ -64,9 +75,9 @@ public class User {
         return emailConfirm;
     }
 
-//    public void confirmEmail() {
-//        emailConfirm = true;
-//    }
+    public void encryptionPassword(BCryptPasswordEncoder passwordEncoder) {
+        this.password = passwordEncoder.encode(password);
+    }
 
     @Override
     public String toString() {

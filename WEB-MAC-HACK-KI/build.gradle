@@ -40,6 +40,10 @@ dependencies {
     compile('org.webjars.bower:jquery:3.2.1')
     compile('mysql:mysql-connector-java:5.1.44')
     compile('javax.mail:mail:1.4')
+    compile('org.springframework.security:spring-security-core:4.2.3.RELEASE')
+    compile('org.springframework.security:spring-security-web:4.2.3.RELEASE')
+    compile('org.springframework.security:spring-security-config:4.2.3.RELEASE')
+    compile("org.springframework.boot:spring-boot-starter-security")
     compile('io.springfox:springfox-swagger2:2.6.1')
     compile('io.springfox:springfox-swagger-ui:2.6.1')
 
