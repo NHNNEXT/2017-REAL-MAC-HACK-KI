@@ -4,8 +4,8 @@ package com.amigotrip.android.datas
  * Created by Zimincom on 2017. 11. 11..
  */
 data class User(
-        var name: String,
-        var email: String,
+        var name: String = "",
+        var email: String = "",
         var gender: String = "",
         var age: Int= 0,
         var nationality: String = "",

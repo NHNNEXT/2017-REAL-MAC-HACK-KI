@@ -28,7 +28,7 @@ interface AmigoService {
 
     companion object {
 
-        val baseUrl = "http://www.amigotrip.co.kr"
+        val baseUrl = "http://dev.amigotrip.co.kr"
 
         fun getService(java: Class<AmigoService>): AmigoService {
 
