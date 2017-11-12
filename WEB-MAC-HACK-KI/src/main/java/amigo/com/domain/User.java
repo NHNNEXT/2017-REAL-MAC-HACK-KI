@@ -75,8 +75,25 @@ public class User {
         return emailConfirm;
     }
 
+    public void confirmUser() {
+        this.emailConfirm = true;
+    }
+
     public void encryptionPassword(BCryptPasswordEncoder passwordEncoder) {
         this.password = passwordEncoder.encode(password);
+    }
+
+    public String getEmailConfirmKey() {
+        String key = "";
+        char character;
+
+        for(int i = 0 ; i < password.length() ; i++) {
+            character = password.charAt(i);
+            if( character > '1') {
+                key += character;
+            }
+        }
+        return key;
     }
 
     @Override

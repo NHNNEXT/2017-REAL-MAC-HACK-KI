@@ -2,6 +2,7 @@ package amigo.com.web;
 
 import amigo.com.domain.User;
 import amigo.com.domain.UserRepository;
+import amigo.com.mail.AmigoMailSender;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,11 +26,12 @@ public class ApiUserController {
     @Resource
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    @Resource
+    AmigoMailSender amigoMailSender;
+
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Result> createUser(@RequestBody User user, HttpServletResponse response) {
-        log.debug("input user: {}", user);
-
         if(userRepository.findByEmail(user.getEmail()) != null) {
             return new ResponseEntity<Result>(
                     new Result(),
@@ -37,14 +39,15 @@ public class ApiUserController {
         }
 
         user.encryptionPassword(bCryptPasswordEncoder);
+        User savedUser = userRepository.save(user);
+        amigoMailSender.sendEmailConfirmMail(savedUser);
         return new ResponseEntity<Result>(
-                new Result("/user/" + userRepository.save(user).getId()),
+                new Result("/user/" + savedUser.getId()),
                 HttpStatus.valueOf(HttpStatus.CREATED.value()));
     }
 
     @GetMapping("/{userId}")
     public ResponseEntity<User> getUserInfo(@PathVariable long userId) {
-        log.debug("ID: {}", userId);
         if(userRepository.findOne(userId).isConfirmdUser()) {
             return new ResponseEntity<User>(userRepository.findOne(userId),
                     HttpStatus.valueOf(HttpStatus.OK.value()));
@@ -52,8 +55,4 @@ public class ApiUserController {
         return new ResponseEntity<User>(userRepository.findOne(userId),
                 HttpStatus.valueOf(HttpStatus.ACCEPTED.value()));
     }
-
-//    @PutMapping("")
-//    @ResponseStatus(HttpStatus.ACCEPTED)
-//    public
 }
