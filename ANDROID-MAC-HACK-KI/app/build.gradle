@@ -1,8 +1,11 @@
+apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
+
+
 
 android {
     compileSdkVersion 26
@@ -40,10 +43,13 @@ dependencies {
     })
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation 'com.android.support:design:26.1.0'
+    implementation 'com.google.android.gms:play-services-auth:11.6.0'
+    implementation 'com.google.firebase:firebase-analytics:11.6.0'
 
     //UI libs
     implementation 'com.aurelhubert:ahbottomnavigation:2.1.0'
     implementation 'com.github.apl-devs:appintro:v4.2.2'
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
 
     //retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
