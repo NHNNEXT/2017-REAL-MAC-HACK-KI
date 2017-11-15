@@ -4,6 +4,7 @@ import amigo.com.domain.Role;
 import amigo.com.domain.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -42,7 +43,9 @@ public class CustomUserDetailsService implements UserDetailsService{
 
     private List<GrantedAuthority> buildUserAuthority(Set<Role> roles) {
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>(0);
-        authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+        for(Role role : roles) {
+            authorities.add(new SimpleGrantedAuthority(role.getRole()));
+        }
         return authorities;
     }
 }
