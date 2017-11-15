@@ -3,6 +3,7 @@ package amigo.com.web;
 import amigo.com.domain.User;
 import amigo.com.domain.UserRepository;
 import amigo.com.mail.AmigoMailSender;
+import amigo.com.service.UserConfirmService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.annotation.Resource;
 import javax.mail.MessagingException;
+import javax.servlet.http.HttpSession;
+import java.security.Principal;
 
 
 /**
@@ -29,8 +32,12 @@ public class HomeController {
     @Resource
     public UserRepository userRepository;
 
+    @Resource(name = "service.userConfirmService")
+    public UserConfirmService userConfirmService;
+
     @GetMapping("/")
-    public String home() {
+    public String home(Principal principal) {
+        log.debug("principal: {}", principal);
         return "index";
     }
 
@@ -41,17 +48,8 @@ public class HomeController {
 
     @GetMapping("/user/{userId}/emailConfirm/{key}")
     public String mail(@PathVariable long userId, @PathVariable String key) {
-        User user = userRepository.findOne(userId);
-        if(user == null) {
-            return "redirect:/";
-        }
-
-        if(user.getEmailConfirmKey().equals(key)) {
-            user.confirmUser();
-            userRepository.save(user);
-            return "redirect:/loginForm";
-        }
-        return "redirect:/";
+        return userConfirmService.confirmUserByUserId(userId, key);
     }
+
 }
 

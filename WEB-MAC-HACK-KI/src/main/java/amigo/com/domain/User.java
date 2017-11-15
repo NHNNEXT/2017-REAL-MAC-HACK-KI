@@ -12,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 import java.awt.*;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -25,16 +26,20 @@ import java.util.Set;
 public class User {
 
     @Id
+    @JoinColumn(name = "user_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Getter
+    @Setter
     private long id;
 
     @NotEmpty
     @Getter
+    @Setter
     private String name;
 
     @NotEmpty
     @Getter
+    @Setter
     private String email;
 
     @Getter
@@ -58,7 +63,7 @@ public class User {
 
     @Getter
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "userRole", joinColumns = @JoinColumn(name = "email"), inverseJoinColumns = @JoinColumn(name = "roleId"))
+    @JoinTable(name = "userRole", joinColumns = @JoinColumn(name = "userId"), inverseJoinColumns = @JoinColumn(name = "roleId"))
     private Set<Role> roles;
 
     @OneToMany
@@ -69,20 +74,20 @@ public class User {
     @JoinColumn(name = "to_id")
     private Set<Review> reviews;
 
-    private boolean emailConfirm = false;
-
-    public boolean isConfirmdUser() {
-        return emailConfirm;
-    }
-
-    public void confirmUser() {
-        this.emailConfirm = true;
-    }
-
     public void encryptionPassword(BCryptPasswordEncoder passwordEncoder) {
         this.password = passwordEncoder.encode(password);
     }
 
+    public void addRole(Role role) {
+        roles = new HashSet<>();
+        roles.add(role);
+    }
+
+    public void removeRole(Role role) {
+        roles.remove(role);
+    }
+
+    @JsonIgnore
     public String getEmailConfirmKey() {
         String key = "";
         char character;

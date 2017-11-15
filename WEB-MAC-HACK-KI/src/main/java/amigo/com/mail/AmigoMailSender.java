@@ -84,6 +84,7 @@ public class AmigoMailSender {
         group.registerRenderer(String.class, new StringRenderer());
         ST st = group.getInstanceOf("page");
         st.add("name", user.getName());
+//        st.add("url", "amigotrip.co.kr/user/" + user.getId() + "/emailConfirm/" + user.getEmailConfirmKey());
         st.add("url", "localhost:8080/user/" + user.getId() + "/emailConfirm/" + user.getEmailConfirmKey());
         String emailTxt = st.render();
         sendMail(toSend, emailTxt, emailSubject);
