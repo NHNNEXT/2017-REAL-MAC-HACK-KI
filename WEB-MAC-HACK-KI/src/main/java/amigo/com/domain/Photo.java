@@ -10,7 +10,8 @@ import javax.persistence.Id;
 @Entity
 public class Photo {
     @Id
-    private long id;
+    @Column(name = "photo_id")
+    private long photoId;
 
     @Column(name = "writer_id")
     private long writerId;

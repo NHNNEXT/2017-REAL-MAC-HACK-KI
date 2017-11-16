@@ -50,7 +50,7 @@ public class ApiUserController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Result> createUser(@RequestBody User user, HttpServletResponse response) {
+    public ResponseEntity<Result> createUser(@RequestBody User user) {
         if(userRepository.findByEmail(user.getEmail()) != null) {
             return new ResponseEntity<Result>(
                     new Result(),

@@ -26,7 +26,7 @@ import java.util.Set;
 public class User {
 
     @Id
-    @JoinColumn(name = "user_id")
+    @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Getter
     @Setter
@@ -57,7 +57,9 @@ public class User {
     @JsonIgnore
     private int creditPoint;
 
-    private String profileImg;
+    @OneToOne
+    @JoinColumn(name = "profile_id")
+    private Photo profileImg;
 
     private String contents;
 
