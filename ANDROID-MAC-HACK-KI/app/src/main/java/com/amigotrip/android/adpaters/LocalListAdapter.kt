@@ -16,9 +16,9 @@ class LocalListAdapter : RecyclerView.Adapter<LocalListAdapter.ViewHolder>(){
 
 
     private val localList = arrayListOf<Post>(
-            Post("근교여행", User("미나")),
-            Post("서울여행", User("중기")),
-            Post("근교여행", User("미나"))
+            Post("근교여행", User(name ="미나")),
+            Post("서울여행", User(name ="중기")),
+            Post("근교여행", User(name ="미나"))
     )
 
 
@@ -43,6 +43,9 @@ class LocalListAdapter : RecyclerView.Adapter<LocalListAdapter.ViewHolder>(){
             itemView.tv_title.text = post.title
             itemView.tv_name.text = post.user.name
             itemView.pager_preview.adapter = PreviewPagerAdapter()
+
+            //indicator 가 같이 움직이는 버그
+            itemView.indicator.setViewPager(itemView.pager_preview)
         }
     }
 }

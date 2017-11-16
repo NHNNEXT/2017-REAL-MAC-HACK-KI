@@ -1,4 +1,5 @@
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -26,6 +27,7 @@
                 android:hint="지역을 검색하세요"
                 android:layout_centerVertical="true"
                 android:background="@android:color/white"
+                android:layout_margin="4dp"
                 android:layout_width="290dp"
                 android:layout_height="40dp" />
 
@@ -39,10 +41,11 @@
 
             <TextView
                 android:id="@+id/tv_related_word"
+                android:textSize="9.3dp"
                 android:text="연관검색_#힐링 #이태원 #한복 #전통"
                 android:layout_below="@+id/input_search"
                 android:layout_alignStart="@+id/input_search"
-               android:layout_width="wrap_content"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </RelativeLayout>
 

@@ -1,5 +1,6 @@
 package com.amigotrip.android.remote
 
+import com.amigotrip.android.datas.ApiResult
 import com.amigotrip.android.datas.Party
 import com.amigotrip.android.datas.User
 import okhttp3.OkHttpClient
@@ -10,6 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 /**
  * Created by Zimincom on 2017. 10. 19..
@@ -20,7 +22,13 @@ interface AmigoService {
     fun newParty(@Body party: Party): Call<Party>
 
     @POST("/user")
-    fun addUser(@Body user: User): Call<User>
+    fun addUser(@Body user: User): Call<ApiResult>
+
+    @POST("/user/login")
+    fun loginUser(@Body user: User): Call<ApiResult>
+
+    @GET("/user/{userId}")
+    fun getUser(@Path("userId") userId: Int): Call<String>
 
     @GET("/party/guest")
     fun showParties(): Call<List<Party>>

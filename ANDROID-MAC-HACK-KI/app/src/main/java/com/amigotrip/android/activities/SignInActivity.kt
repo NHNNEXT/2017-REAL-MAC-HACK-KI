@@ -1,21 +1,13 @@
 package com.amigotrip.android.activities
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
-import android.widget.Toast
-import com.amigotrip.android.datas.User
-import com.amigotrip.android.remote.AmigoService
 import com.amigotrip.anroid.R
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import kotlinx.android.synthetic.main.activity_signin.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class SignInActivity : AppCompatActivity() {
 
@@ -34,33 +26,14 @@ class SignInActivity : AppCompatActivity() {
 
         googleSigninClient = GoogleSignIn.getClient(this, gso)
 
-
-
         btn_signin_email.setOnClickListener { signEmail() }
         btn_signin_fb.setOnClickListener { signFB() }
         btn_signin_google.setOnClickListener { signGoogle() }
-
     }
 
     private fun signEmail() {
-        val amigoService = AmigoService.getService(AmigoService::class.java)
-        val call = amigoService.addUser(User("zimin", "wlals822@naver.com"))
-
-        call.enqueue(object : Callback<User> {
-            override fun onResponse(call: Call<User>?, response: Response<User>?) {
-                Log.d("email sign in", "success")
-                val preferences = getSharedPreferences(getString(R.string.KEY_PREFERENCE), Context.MODE_PRIVATE)
-                val editor = preferences.edit()
-                editor.putBoolean(getString(R.string.KEY_ISSIGNIN), true)
-                editor.apply()
-                Toast.makeText(this, "login", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(SignInActivity@ this, MainActivity::class.java))
-            }
-
-            override fun onFailure(call: Call<User>?, t: Throwable?) {
-                Log.d("email sign in", "error")
-            }
-        })
+        val intent = Intent(this, EmailSignInActivity::class.java)
+        startActivity(intent)
     }
 
     private fun signFB() {
