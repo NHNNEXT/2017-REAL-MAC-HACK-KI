@@ -19,8 +19,8 @@ class IntroActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro)
 
-        btn_view.setOnClickListener(this)
-        btn_signin.setOnClickListener(this)
+        btn_sign_in.setOnClickListener(this)
+        btn_sign_up.setOnClickListener(this)
 
         addIntroPage(R.drawable.korean_travel, R.string.message_intro1)
         addIntroPage(R.drawable.travel_mate, R.string.message_intro2)
@@ -43,12 +43,13 @@ class IntroActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(view: View?) {
         when (view) {
-            btn_view -> {
+            btn_sign_in -> {
+
                 startActivity(Intent(IntroActivity@ this, MainActivity::class.java))
             }
 
-            btn_signin -> {
-                val intent = Intent(IntroActivity@ this, SignInActivity::class.java)
+            btn_sign_up -> {
+                val intent = Intent(IntroActivity@ this, SignUpActivity::class.java)
                 startActivity(intent)
             }
         }

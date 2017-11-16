@@ -61,7 +61,7 @@
         app:layout_constraintGuide_begin="16dp" />
 
     <Button
-        android:id="@+id/btn_signin"
+        android:id="@+id/btn_sign_up"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/apply"
