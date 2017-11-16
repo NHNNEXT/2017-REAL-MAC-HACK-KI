@@ -47,4 +47,7 @@
     <!-- KEYS -->
     <string name="KEY_ISSIGNIN" translatable="false">inSignIn</string>
     <string name="KEY_PREFERENCE" translatable="false">com.amigotrip.android.preferences</string>
+    <string name="KEY_USER_ID" translatable="false">key_user_id</string>
+    <string name="KEY_USER_EMAIL" translatable="false">key_email</string>
+    <string name="KEY_USER_NAME" translatable="false">userName</string>
 </resources>

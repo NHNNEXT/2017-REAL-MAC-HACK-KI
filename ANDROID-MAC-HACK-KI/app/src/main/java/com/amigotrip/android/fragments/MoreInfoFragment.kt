@@ -22,7 +22,21 @@ class MoreInfoFragment : Fragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setUserInfo()
         btn_sign_out.setOnClickListener { signOut() }
+    }
+
+    private fun setUserInfo() {
+
+        val preferences =
+                activity.getSharedPreferences(getString(R.string.KEY_PREFERENCE), Context.MODE_PRIVATE)
+
+        val name = preferences.getString(getString(R.string.KEY_USER_NAME), "no name")
+        val email = preferences.getString(getString(R.string.KEY_USER_EMAIL), "no email")
+
+        tv_name.text = name
+        tv_email.text = email
+
     }
 
     private fun signOut() {
