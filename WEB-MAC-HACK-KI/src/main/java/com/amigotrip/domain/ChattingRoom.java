@@ -1,6 +1,4 @@
-package amigo.com.domain;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+package com.amigotrip.domain;
 
 import javax.persistence.*;
 import java.util.Set;

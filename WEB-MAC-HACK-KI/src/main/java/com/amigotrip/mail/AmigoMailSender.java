@@ -1,9 +1,8 @@
-package amigo.com.mail;
+package com.amigotrip.mail;
 
-import amigo.com.domain.PartyGuest;
-import amigo.com.domain.User;
+import com.amigotrip.domain.PartyGuest;
+import com.amigotrip.domain.User;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import org.stringtemplate.v4.ST;
@@ -14,9 +13,6 @@ import org.stringtemplate.v4.StringRenderer;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Properties;
 
 /**

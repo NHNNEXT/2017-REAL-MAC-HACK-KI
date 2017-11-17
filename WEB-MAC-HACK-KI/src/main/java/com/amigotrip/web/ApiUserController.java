@@ -1,10 +1,10 @@
-package amigo.com.web;
+package com.amigotrip.web;
 
-import amigo.com.domain.RoleRepository;
-import amigo.com.domain.User;
-import amigo.com.domain.UserRepository;
-import amigo.com.mail.AmigoMailSender;
-import amigo.com.service.UserConfirmService;
+import com.amigotrip.domain.RoleRepository;
+import com.amigotrip.domain.User;
+import com.amigotrip.domain.UserRepository;
+import com.amigotrip.mail.AmigoMailSender;
+import com.amigotrip.service.UserConfirmService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,21 +14,17 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.security.Principal;
 
 /**
  * Created by Naver on 2017. 11. 8..
  */
 @RestController
 @Slf4j
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class ApiUserController {
     @Resource
     private UserRepository userRepository;
@@ -50,7 +46,7 @@ public class ApiUserController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Result> createUser(@RequestBody User user, HttpServletResponse response) {
+    public ResponseEntity<Result> createUser(@RequestBody User user) {
         if(userRepository.findByEmail(user.getEmail()) != null) {
             return new ResponseEntity<Result>(
                     new Result(),
@@ -62,7 +58,7 @@ public class ApiUserController {
         User savedUser = userRepository.save(user);
         amigoMailSender.sendEmailConfirmMail(savedUser);
         return new ResponseEntity<Result>(
-                new Result("/user/" + savedUser.getId()),
+                new Result("/users/" + savedUser.getId()),
                 HttpStatus.valueOf(HttpStatus.CREATED.value()));
     }
 
@@ -77,16 +73,16 @@ public class ApiUserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Result> login(@RequestBody User user, HttpSession httpSession) {
+    public User login(@RequestBody User user, HttpSession httpSession) {
         User findUser = userRepository.findByEmail(user.getEmail());
         if(findUser == null) {
-            return new ResponseEntity<Result>(new Result("/loginForm"), HttpStatus.BAD_REQUEST);
+            return null;
         }
         UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(findUser.getEmail(), findUser.getPassword());
         Authentication authentication = authenticationManager.authenticate(authRequest);
         SecurityContext securityContext = SecurityContextHolder.getContext();
         securityContext.setAuthentication(authentication);
         httpSession.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
-        return new ResponseEntity<Result>(new Result("/"), HttpStatus.ACCEPTED);
+        return findUser;
     }
 }

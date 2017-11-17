@@ -1,17 +1,18 @@
-package amigo.com.domain;
+package com.amigotrip.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.internal.Nullable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
-import java.awt.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Null;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -26,7 +27,7 @@ import java.util.Set;
 public class User {
 
     @Id
-    @JoinColumn(name = "user_id")
+    @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Getter
     @Setter
@@ -44,11 +45,12 @@ public class User {
 
     @Getter
     @Setter
+    @JsonIgnore
     private String password;
 
     private String gender;
 
-    private int age;
+    private int age = 0; // data.sql에서 이 값을 주지 않고 insert 하면 NULL not allowed for column "AGE" 라는 에러가 발생함
 
     private String nationality;
 
@@ -57,7 +59,9 @@ public class User {
     @JsonIgnore
     private int creditPoint;
 
-    private String profileImg;
+    @OneToOne
+    @JoinColumn(name = "profile_id")
+    private Photo profileImg;
 
     private String contents;
 
@@ -73,6 +77,12 @@ public class User {
     @OneToMany
     @JoinColumn(name = "to_id")
     private Set<Review> reviews;
+
+    public User(String email, String password, String name) {
+        this.email = email;
+        this.password = password;
+        this.name = name;
+    }
 
     public void encryptionPassword(BCryptPasswordEncoder passwordEncoder) {
         this.password = passwordEncoder.encode(password);
@@ -108,5 +118,20 @@ public class User {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        return id == user.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return (int) (id ^ (id >>> 32));
     }
 }

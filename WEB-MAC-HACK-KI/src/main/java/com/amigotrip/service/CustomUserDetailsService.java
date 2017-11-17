@@ -1,10 +1,9 @@
-package amigo.com.service;
+package com.amigotrip.service;
 
-import amigo.com.domain.Role;
-import amigo.com.domain.UserRepository;
+import com.amigotrip.domain.Role;
+import com.amigotrip.domain.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -31,13 +30,13 @@ public class CustomUserDetailsService implements UserDetailsService{
     @Transactional
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException{
         log.debug("load username: {}", email);
-        amigo.com.domain.User user = userRepository.findByEmail(email);
+        com.amigotrip.domain.User user = userRepository.findByEmail(email);
         log.debug("loaded user: {}", user);
         List<GrantedAuthority> authorities = buildUserAuthority(user.getRoles());
         return buildUserForAuthentication(user, authorities);
     }
 
-    private User buildUserForAuthentication(amigo.com.domain.User user, List<GrantedAuthority> authorities) {
+    private User buildUserForAuthentication(com.amigotrip.domain.User user, List<GrantedAuthority> authorities) {
         return new User(user.getEmail(), user.getPassword(), true, true, true, true, authorities);
     }
 

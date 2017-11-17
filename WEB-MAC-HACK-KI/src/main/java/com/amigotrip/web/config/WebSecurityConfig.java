@@ -1,7 +1,6 @@
-package amigo.com.web.config;
+package com.amigotrip.web.config;
 
-import amigo.com.service.CustomUserDetailsService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.amigotrip.service.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.annotation.Resource;
 
@@ -27,7 +27,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.headers().frameOptions().disable();
+
+        http
+                .logout()
+                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
     }
+
+
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {

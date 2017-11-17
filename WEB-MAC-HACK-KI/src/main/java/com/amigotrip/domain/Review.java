@@ -1,4 +1,4 @@
-package amigo.com.domain;
+package com.amigotrip.domain;
 
 import org.hibernate.validator.constraints.NotEmpty;
 

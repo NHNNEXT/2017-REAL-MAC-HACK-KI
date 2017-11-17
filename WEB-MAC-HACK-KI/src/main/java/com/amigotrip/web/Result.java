@@ -1,4 +1,4 @@
-package amigo.com.web;
+package com.amigotrip.web;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

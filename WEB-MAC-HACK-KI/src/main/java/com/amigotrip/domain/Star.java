@@ -1,10 +1,9 @@
-package amigo.com.domain;
+package com.amigotrip.domain;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
 
 @Entity
 public class Star {

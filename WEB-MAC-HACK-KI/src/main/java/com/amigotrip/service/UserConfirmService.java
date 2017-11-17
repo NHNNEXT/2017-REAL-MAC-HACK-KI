@@ -1,8 +1,8 @@
-package amigo.com.service;
+package com.amigotrip.service;
 
-import amigo.com.domain.RoleRepository;
-import amigo.com.domain.User;
-import amigo.com.domain.UserRepository;
+import com.amigotrip.domain.RoleRepository;
+import com.amigotrip.domain.User;
+import com.amigotrip.domain.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

@@ -1,19 +1,15 @@
-package amigo.com.web;
+package com.amigotrip.web;
 
-import amigo.com.domain.User;
-import amigo.com.domain.UserRepository;
-import amigo.com.mail.AmigoMailSender;
-import amigo.com.service.UserConfirmService;
+import com.amigotrip.domain.UserRepository;
+import com.amigotrip.mail.AmigoMailSender;
+import com.amigotrip.service.UserConfirmService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.annotation.Resource;
-import javax.mail.MessagingException;
-import javax.servlet.http.HttpSession;
 import java.security.Principal;
 
 
