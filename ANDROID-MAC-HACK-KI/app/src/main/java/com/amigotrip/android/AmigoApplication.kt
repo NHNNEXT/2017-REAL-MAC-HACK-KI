@@ -7,4 +7,8 @@ import android.app.Application
  */
 class AmigoApplication : Application(){
 
+    override fun onCreate() {
+        super.onCreate()
+        UserInfoManager.initManager(this)
+    }
 }

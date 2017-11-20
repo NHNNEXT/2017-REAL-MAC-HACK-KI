@@ -76,6 +76,7 @@ class EmailSignInActivity : AppCompatActivity() {
 
                     val preferences =
                             getSharedPreferences(getString(R.string.KEY_PREFERENCE), Context.MODE_PRIVATE)
+                    //회원가입이 된 상태로 다른 액티비티에서 로그인 시에 이것이 가능하지 않음
 
                     val editor = preferences.edit()
                     editor.putBoolean(getString(R.string.KEY_ISSIGNIN), true)

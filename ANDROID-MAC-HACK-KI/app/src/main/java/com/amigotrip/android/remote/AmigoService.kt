@@ -30,6 +30,8 @@ interface AmigoService {
     @GET("/user/{userId}")
     fun getUser(@Path("userId") userId: Int): Call<String>
 
+//    @GET("{url}")
+
     @GET("/party/guest")
     fun showParties(): Call<List<Party>>
 

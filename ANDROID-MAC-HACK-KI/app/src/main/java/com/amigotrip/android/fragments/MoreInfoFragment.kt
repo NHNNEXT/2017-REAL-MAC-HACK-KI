@@ -1,13 +1,13 @@
 package com.amigotrip.android.fragments
 
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.amigotrip.android.UserInfoManager
 import com.amigotrip.android.activities.IntroActivity
 import com.amigotrip.anroid.R
 import kotlinx.android.synthetic.main.fragment_profile.*
@@ -28,8 +28,7 @@ class MoreInfoFragment : Fragment() {
 
     private fun setUserInfo() {
 
-        val preferences =
-                activity.getSharedPreferences(getString(R.string.KEY_PREFERENCE), Context.MODE_PRIVATE)
+        val preferences = UserInfoManager.getPreference()
 
         val name = preferences.getString(getString(R.string.KEY_USER_NAME), "no name")
         val email = preferences.getString(getString(R.string.KEY_USER_EMAIL), "no email")
@@ -41,10 +40,7 @@ class MoreInfoFragment : Fragment() {
 
     private fun signOut() {
 
-        val pref = activity.getSharedPreferences(getString(R.string.KEY_PREFERENCE), Context.MODE_PRIVATE)
-        val editor = pref.edit()
-        editor.putBoolean(getString(R.string.KEY_ISSIGNIN), false)
-        editor.apply()
+        UserInfoManager.removeUser()
 
         startActivity(Intent(activity, IntroActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
     }
