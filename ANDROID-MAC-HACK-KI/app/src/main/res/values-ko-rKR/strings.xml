@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Amigo</string>
+    <string name="theme">테마</string>
+    <string name="attraction">희망 장소</string>
+    <string name="nation">국가</string>
+    <string name="sign_in_email_hint">이메일을 입력하세요</string>
+    <string name="sign_in">로그인</string>
+    <string name="hint_search_language">언어 검색</string>
+    <string name="add">추가</string>
+    <string name="label_selected_language">선택된 언어:</string>
+    <string name="apply">신청</string>
+    <string name="email">이메일</string>
+    <string name="label_desired_date">방문 날짜</string>
+    <string name="label_choose_date">날짜선택</string>
+    <string name="age_title">나이:</string>
+    <string name="language">언어</string>
+    <string name="choose_age">나이선택</string>
+    <string name="add_language">언어 추가</string>
+    <string name="availiable_language_head">가능 언어:</string>
+    <string name="more_info">더 알아보기</string>
+    <string name="sign_in_later">다음에하기</string>
+    <string name="gender_male">남성</string>
+    <string name="gender_female">여성</string>
+    <string name="new_party_gender">성별</string>
+    <string name="new_party_submit">제출</string>
+    <string name="done_message">환영 이메일을 곧 보내드리겠습니다!</string>
+    <string name="sign_in_success">성공!</string>
+    <string name="login_btn_confirm">확인</string>
+    <string name="login_message">아래 정보를 입력해주세요</string>
+    <string name="login_hint_age">나이</string>
+    <string name="login_hint_name">이름</string>
+</resources>
