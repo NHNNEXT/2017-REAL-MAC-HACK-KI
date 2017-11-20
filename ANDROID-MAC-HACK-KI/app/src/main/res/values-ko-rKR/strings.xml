@@ -5,7 +5,7 @@
     <string name="attraction">희망 장소</string>
     <string name="nation">국가</string>
     <string name="sign_in_email_hint">이메일을 입력하세요</string>
-    <string name="sign_in">회원가입</string>
+    <string name="sign_in">로그인</string>
     <string name="hint_search_language">언어 검색</string>
     <string name="add">추가</string>
     <string name="label_selected_language">선택된 언어:</string>
