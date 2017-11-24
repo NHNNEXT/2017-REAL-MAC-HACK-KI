@@ -13,6 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name="com.amigotrip.android.activities.SplashActivity"
             android:noHistory="true">
@@ -22,6 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name="com.amigotrip.android.activities.SignUpActivity" />
         <activity android:name="com.amigotrip.android.activities.NewPartyActivity" />
         <activity android:name="com.amigotrip.android.activities.WelcomeActivity" />
@@ -31,10 +33,10 @@
         <activity android:name="com.amigotrip.android.activities.IntroActivity" />
         <activity android:name="com.amigotrip.android.activities.MessagesActivity" />
         <activity android:name="com.amigotrip.android.activities.ChooseLangActivity" />
-        <activity android:name="com.amigotrip.android.activities.WebViewActivity" />
         <activity android:name="com.amigotrip.android.activities.MainActivity" />
         <activity android:name="com.amigotrip.android.activities.EmailSignInActivity" />
-        <activity android:name="com.amigotrip.android.activities.SignInActivity"></activity>
+        <activity android:name="com.amigotrip.android.activities.SignInActivity" />
+
     </application>
 
 </manifest>

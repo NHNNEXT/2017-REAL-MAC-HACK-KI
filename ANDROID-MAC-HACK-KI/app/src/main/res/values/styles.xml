@@ -10,6 +10,7 @@
         <item name="android:buttonStyle">@style/MyButton</item>
         <item name="android:alertDialogTheme">@style/AlertDialogCustom</item>
         <item name="android:datePickerDialogTheme">@style/AlertDialogCustom</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
     </style>
 
     <style name="SignInTheme" parent="AppTheme">

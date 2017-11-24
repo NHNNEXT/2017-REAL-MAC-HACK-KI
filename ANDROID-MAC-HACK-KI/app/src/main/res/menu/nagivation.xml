@@ -14,9 +14,9 @@
         android:icon="@android:drawable/btn_star"
         android:title="Message" />
 
-    <item
-        android:title="Feed"
-        android:icon="@android:drawable/btn_star"/>
+    <!--<item-->
+        <!--android:title="Feed"-->
+        <!--android:icon="@android:drawable/btn_star"/>-->
     <item
         android:title="More"
         android:icon="@android:drawable/btn_star"/>
