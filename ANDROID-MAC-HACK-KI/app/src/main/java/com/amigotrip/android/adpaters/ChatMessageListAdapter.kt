@@ -46,12 +46,18 @@ class ChatMessageListAdapter : RecyclerView.Adapter<ChatMessageListAdapter.BindH
 
     }
 
+
     override fun onBindViewHolder(holder: BindHolder, position: Int) {
         holder.bind(messageList[position])
     }
 
     override fun getItemViewType(position: Int): Int {
         return messageList[position].type
+    }
+
+    fun addMessage(chatMessage: ChatMessage) {
+        messageList.add(chatMessage)
+        notifyItemInserted(messageList.size - 1)
     }
 
     inner class OthersMessageHolder(itemView: View): BindHolder(itemView){

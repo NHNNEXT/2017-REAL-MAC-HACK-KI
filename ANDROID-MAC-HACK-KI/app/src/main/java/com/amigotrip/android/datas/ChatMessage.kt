@@ -4,7 +4,7 @@ package com.amigotrip.android.datas
  * Created by Zimincom on 2017. 11. 25..
  */
 data class ChatMessage(
-        val type: Int,
-        var message: String,
-        var userName: String){
+        var type: Int = 11,
+        var message: String = "",
+        var userName: String = ""){
 }

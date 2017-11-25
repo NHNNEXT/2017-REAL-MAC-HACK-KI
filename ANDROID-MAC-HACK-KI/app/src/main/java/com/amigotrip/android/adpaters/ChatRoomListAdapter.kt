@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.row_chatroom.view.*
  */
 class ChatRoomListAdapter : RecyclerView.Adapter<ChatRoomListAdapter.ViewHolder>() {
 
-    lateinit var chatRoomListener: OnChatRoomClick
+    lateinit var chatRoomListener: OnChatRoomClickListener
 
     val chatRoomList = arrayListOf<ChatRoom>(
             ChatRoom("hello", "my name is mina"),
@@ -47,11 +47,11 @@ class ChatRoomListAdapter : RecyclerView.Adapter<ChatRoomListAdapter.ViewHolder>
     }
 
 
-    fun setOnRoomClickLisetener(onChatRoomClick: OnChatRoomClick) {
+    fun setOnRoomClickLisetener(onChatRoomClick: OnChatRoomClickListener) {
         this.chatRoomListener = onChatRoomClick
     }
 
-    interface OnChatRoomClick {
+    interface OnChatRoomClickListener {
         fun onRoomClick(position: Int)
     }
 }
