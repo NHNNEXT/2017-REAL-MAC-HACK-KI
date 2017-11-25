@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.amigotrip.android.fragments.ChatsFragment">
+    tools:context="com.amigotrip.android.fragments.ChatRoomsFragment">
 
 
     <android.support.v7.widget.Toolbar
@@ -15,21 +15,22 @@
 
     </android.support.v7.widget.Toolbar>
 
+    <TextView
+        android:id="@+id/tv_empty_list"
+        android:layout_below="@id/toolbar"
+        android:text="Only login user!"
+        android:textSize="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list_chat"
-        app:layoutManager="LinearLayoutManager"
-        android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        app:layoutManager="LinearLayoutManager"
+        tools:listitem="@layout/row_chatroom">
 
     </android.support.v7.widget.RecyclerView>
-
-    <Button
-        android:id="@+id/btn_new_room"
-        android:text="new"
-        android:layout_below="@id/toolbar"
-        android:layout_alignParentEnd="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
 </RelativeLayout>

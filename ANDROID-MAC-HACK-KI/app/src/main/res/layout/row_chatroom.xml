@@ -7,11 +7,13 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv_profile"
-        android:layout_width="46dp"
-        android:layout_height="46dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:src="@drawable/profile"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -19,31 +21,31 @@
         android:id="@+id/tv_room_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/roboto_bold"
         android:text="mina jane"
+        android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/iv_profile"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/iv_profile" />
 
     <TextView
         android:id="@+id/tv_chat_preview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
         android:layout_marginTop="12dp"
+        android:fontFamily="@font/roboto_light"
         android:text="안녕? 반가워!"
-        app:layout_constraintStart_toEndOf="@+id/iv_profile"
+        app:layout_constraintStart_toStartOf="@+id/tv_room_title"
         app:layout_constraintTop_toBottomOf="@+id/tv_room_title" />
 
     <FrameLayout
         android:id="@+id/line"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:layout_marginTop="24dp"
         android:background="#3B3B3B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_profile">
+        tools:layout_editor_absoluteY="109dp">
 
     </FrameLayout>
 </android.support.constraint.ConstraintLayout>

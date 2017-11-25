@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.amigotrip.android.UserInfoManager
 import com.amigotrip.android.activities.ChatRoomActivity
 import com.amigotrip.android.adpaters.ChatRoomListAdapter
 import com.amigotrip.android.datas.ChatMessage
@@ -17,7 +18,7 @@ import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.fragment_chats.*
 
 //chatrooms fragment
-class ChatsFragment : Fragment(), ChatRoomListAdapter.OnChatRoomClickListener {
+class ChatRoomsFragment : Fragment(), ChatRoomListAdapter.OnChatRoomClickListener {
 
     var database = FirebaseDatabase.getInstance()
 
@@ -36,6 +37,10 @@ class ChatsFragment : Fragment(), ChatRoomListAdapter.OnChatRoomClickListener {
         val adapter = ChatRoomListAdapter()
         adapter.setOnRoomClickLisetener(this)
         list_chat.adapter = adapter
+
+        if (!UserInfoManager.isUserLogin()) {
+//            list_chat.visibility = View.INVISIBLE
+        }
 
         btn_new_room.setOnClickListener { pushNewRoom() }
     }
