@@ -3,7 +3,10 @@ package com.amigotrip.android.adpaters
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
-import com.amigotrip.android.fragments.*
+import com.amigotrip.android.fragments.ChatsFragment
+import com.amigotrip.android.fragments.LocalListFragment
+import com.amigotrip.android.fragments.MoreInfoFragment
+import com.amigotrip.android.fragments.TravelerListFragment
 
 /**
  * Created by Zimincom on 2017. 11. 6..
@@ -16,7 +19,6 @@ class MainPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm){
         pageList.add(LocalListFragment())
         pageList.add(TravelerListFragment())
         pageList.add(ChatsFragment())
-        pageList.add(FeedsFragment())
         pageList.add(MoreInfoFragment())
     }
 

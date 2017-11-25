@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import com.amigotrip.android.UserInfoManager
 import com.amigotrip.android.activities.IntroActivity
 import com.amigotrip.anroid.R
-import kotlinx.android.synthetic.main.fragment_profile.*
 
 class MoreInfoFragment : Fragment() {
 
@@ -22,8 +21,9 @@ class MoreInfoFragment : Fragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         setUserInfo()
-        btn_sign_out.setOnClickListener { signOut() }
+//        btn_sign_out.setOnClickListener { signOut() }
     }
 
     private fun setUserInfo() {
@@ -33,8 +33,8 @@ class MoreInfoFragment : Fragment() {
         val name = preferences.getString(getString(R.string.KEY_USER_NAME), "no name")
         val email = preferences.getString(getString(R.string.KEY_USER_EMAIL), "no email")
 
-        tv_name.text = name
-        tv_email.text = email
+//        tv_name.text = name
+//        tv_email.text = email
 
     }
 

@@ -13,9 +13,6 @@
         android:layout_width="0dp"
         android:layout_height="165dp"
         android:layout_marginTop="8dp"
-        android:clipToPadding="false"
-        android:paddingEnd="200dp"
-        android:paddingStart="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
