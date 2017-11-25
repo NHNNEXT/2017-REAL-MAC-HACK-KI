@@ -4,14 +4,12 @@ package com.amigotrip.android.fragments
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.amigotrip.android.UserInfoManager
 import com.amigotrip.android.activities.ChatRoomActivity
 import com.amigotrip.android.adpaters.ChatRoomListAdapter
-import com.amigotrip.android.datas.ChatMessage
 import com.amigotrip.anroid.R
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -42,7 +40,6 @@ class ChatRoomsFragment : Fragment(), ChatRoomListAdapter.OnChatRoomClickListene
 //            list_chat.visibility = View.INVISIBLE
         }
 
-        btn_new_room.setOnClickListener { pushNewRoom() }
     }
 
     override fun onRoomClick(position: Int) {
@@ -50,9 +47,4 @@ class ChatRoomsFragment : Fragment(), ChatRoomListAdapter.OnChatRoomClickListene
         startActivity(intent)
     }
 
-    fun pushNewRoom() {
-        val key = roomRef.child("rooms").push().key
-        roomRef.child("messages").child(key).setValue(ChatMessage(11, "helo", "zimin"))
-        Log.d("roomId", key)
-    }
 }
