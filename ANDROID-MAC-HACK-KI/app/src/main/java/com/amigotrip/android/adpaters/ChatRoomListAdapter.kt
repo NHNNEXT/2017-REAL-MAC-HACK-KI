@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.row_chatroom.view.*
  */
 class ChatRoomListAdapter : RecyclerView.Adapter<ChatRoomListAdapter.ViewHolder>() {
 
+    lateinit var chatRoomListener: OnChatRoomClick
 
     val chatRoomList = arrayListOf<ChatRoom>(
             ChatRoom("hello", "my name is mina"),
@@ -30,14 +31,27 @@ class ChatRoomListAdapter : RecyclerView.Adapter<ChatRoomListAdapter.ViewHolder>
         holder?.bind(chatRoomList[position])
     }
 
-
     override fun getItemCount(): Int = chatRoomList.size
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener{
 
         fun bind(chatRoom: ChatRoom) {
             itemView.tv_room_title.text = chatRoom.title
             itemView.tv_chat_preview.text = chatRoom.previewMessage
+            itemView.setOnClickListener(this)
         }
+
+        override fun onClick(p0: View?) {
+            chatRoomListener.onRoomClick(1)
+        }
+    }
+
+
+    fun setOnRoomClickLisetener(onChatRoomClick: OnChatRoomClick) {
+        this.chatRoomListener = onChatRoomClick
+    }
+
+    interface OnChatRoomClick {
+        fun onRoomClick(position: Int)
     }
 }

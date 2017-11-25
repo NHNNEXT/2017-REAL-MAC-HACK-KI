@@ -1,17 +1,19 @@
 package com.amigotrip.android.fragments
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.amigotrip.android.activities.ChatRoomActivity
 import com.amigotrip.android.adpaters.ChatRoomListAdapter
 import com.amigotrip.anroid.R
 import kotlinx.android.synthetic.main.fragment_chats.*
 
 
-class ChatsFragment : Fragment() {
+class ChatsFragment : Fragment(), ChatRoomListAdapter.OnChatRoomClick {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -20,6 +22,14 @@ class ChatsFragment : Fragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        list_chat.adapter = ChatRoomListAdapter()
+        val adapter = ChatRoomListAdapter()
+        adapter.setOnRoomClickLisetener(this)
+
+        list_chat.adapter = adapter
+    }
+
+    override fun onRoomClick(position: Int) {
+        val intent = Intent(context, ChatRoomActivity::class.java)
+        startActivity(intent)
     }
 }
