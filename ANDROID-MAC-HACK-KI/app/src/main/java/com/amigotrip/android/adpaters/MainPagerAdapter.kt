@@ -3,7 +3,7 @@ package com.amigotrip.android.adpaters
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
-import com.amigotrip.android.fragments.ChatsFragment
+import com.amigotrip.android.fragments.ChatRoomsFragment
 import com.amigotrip.android.fragments.LocalListFragment
 import com.amigotrip.android.fragments.MoreInfoFragment
 import com.amigotrip.android.fragments.TravelerListFragment
@@ -18,7 +18,8 @@ class MainPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm){
     init {
         pageList.add(LocalListFragment())
         pageList.add(TravelerListFragment())
-        pageList.add(ChatsFragment())
+        pageList.add(ChatRoomsFragment())
+//        pageList.add(FeedsFragment())
         pageList.add(MoreInfoFragment())
     }
 

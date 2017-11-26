@@ -35,10 +35,12 @@
         <activity android:name="com.amigotrip.android.activities.EmailSignUpActivity" />
         <activity android:name="com.amigotrip.android.activities.SignInActivity" />
         <activity android:name="com.amigotrip.android.activities.StartActivity"></activity>
+        <activity android:name="com.amigotrip.android.activities.ChatRoomActivity"></activity>
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
     </application>
 
 </manifest>
