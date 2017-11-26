@@ -16,7 +16,7 @@
 
     <!--<item-->
         <!--android:title="Feed"-->
-        <!--android:icon="@android:drawable/btn_star"/>-->
+        <!--andricon_searchicon="@android:drawable/btn_star"/>-->
 
     <item
         android:title="More"

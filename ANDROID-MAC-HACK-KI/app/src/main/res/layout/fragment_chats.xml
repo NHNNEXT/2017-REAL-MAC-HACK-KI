@@ -13,21 +13,50 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/input_search_room"
+                android:layout_width="304dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:cursorVisible="false"
+                android:background="@drawable/back_search_room"
+                android:hint="find room.."
+                android:paddingStart="10dp"
+                android:textAlignment="center" />
+
+            <ImageButton
+                android:id="@+id/btn_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/input_search_room"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="70dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/icon_search" />
+        </RelativeLayout>
+
     </android.support.v7.widget.Toolbar>
 
     <TextView
         android:id="@+id/tv_empty_list"
-        android:layout_below="@id/toolbar"
-        android:text="Only login user!"
-        android:textSize="40dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:text="To use chat, please sign in"
+        android:textSize="24dp" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list_chat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbar"
+        android:visibility="gone"
         app:layoutManager="LinearLayoutManager"
         tools:listitem="@layout/row_chatroom">
 
