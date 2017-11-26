@@ -57,7 +57,7 @@ class StartActivity : AppCompatActivity() {
 
 
     private fun signEmail() {
-        val intent = Intent(this, EmailSignInActivity::class.java)
+        val intent = Intent(this, EmailSignUpActivity::class.java)
         startActivity(intent)
     }
 

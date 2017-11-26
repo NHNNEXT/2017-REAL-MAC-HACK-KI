@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btn_sign_in"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="sign in"
@@ -44,6 +44,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/input_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/email"
@@ -62,6 +63,7 @@
         app:layout_constraintTop_toBottomOf="@+id/layout_input_email">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/layout_input_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="password"

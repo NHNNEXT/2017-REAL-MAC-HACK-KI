@@ -20,15 +20,16 @@ class MoreInfoFragment : Fragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        setUserInfo()
+        if (UserInfoManager.isUserLogin()) {
+            setUserInfo()
+        } else {
+            tv_name.text = "please sign in!"
+        }
     }
 
     private fun setUserInfo() {
         val user = UserInfoManager.getLogineduser()
-
         tv_name.text = user.name
-
     }
 
 

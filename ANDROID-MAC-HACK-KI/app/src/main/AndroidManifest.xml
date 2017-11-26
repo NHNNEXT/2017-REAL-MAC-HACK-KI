@@ -32,7 +32,7 @@
         <activity android:name="com.amigotrip.android.activities.MessagesActivity" />
         <activity android:name="com.amigotrip.android.activities.ChooseLangActivity" />
         <activity android:name="com.amigotrip.android.activities.MainActivity" />
-        <activity android:name="com.amigotrip.android.activities.EmailSignInActivity" />
+        <activity android:name="com.amigotrip.android.activities.EmailSignUpActivity" />
         <activity android:name="com.amigotrip.android.activities.SignInActivity" />
         <activity android:name="com.amigotrip.android.activities.StartActivity"></activity>
 

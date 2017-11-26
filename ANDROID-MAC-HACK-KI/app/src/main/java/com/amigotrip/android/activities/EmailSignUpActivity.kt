@@ -19,7 +19,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.regex.Pattern
 
-class EmailSignInActivity : AppCompatActivity() {
+class EmailSignUpActivity : AppCompatActivity() {
 
     val amigoService = AmigoService.getService(AmigoService::class.java)
 
@@ -42,9 +42,9 @@ class EmailSignInActivity : AppCompatActivity() {
             val user = User(name = name, email = email, password = password)
 
             requestNewUser(user)
-            UserInfoManager.serUserInfo(user)
+            UserInfoManager.setUserInfo(user)
 
-            startActivity(Intent(this@EmailSignInActivity, MainActivity::class.java))
+            startActivity(Intent(this@EmailSignUpActivity, MainActivity::class.java))
         }
     }
 
@@ -101,7 +101,7 @@ class EmailSignInActivity : AppCompatActivity() {
                     editor.putString(getString(R.string.KEY_USER_EMAIL), user.email)
                     editor.apply()
 
-                    val intent = Intent(this@EmailSignInActivity,
+                    val intent = Intent(this@EmailSignUpActivity,
                                     MainActivity::class.java)
                     startActivity(intent)
                 } else {

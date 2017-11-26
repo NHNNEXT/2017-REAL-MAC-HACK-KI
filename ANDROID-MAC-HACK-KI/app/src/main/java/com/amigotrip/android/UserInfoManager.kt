@@ -18,12 +18,14 @@ object UserInfoManager {
                 Context.MODE_PRIVATE)
     }
 
-    fun serUserInfo(user: User) {
+    fun setUserInfo(user: User) {
         val editor = preference.edit()
         editor.putString(AppKeys.userName, user.name)
         editor.putString(AppKeys.userEmail, user.email)
-        editor.putString(AppKeys.password, user.password)
-        editor.commit()
+        editor.putBoolean(AppKeys.isLogin, true)
+        editor.apply()
+
+        this.user = user
     }
 
     fun getPreference() = preference
