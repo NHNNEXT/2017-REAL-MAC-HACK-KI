@@ -1,8 +1,8 @@
 package com.amigotrip.service;
 
-import com.amigotrip.domain.RoleRepository;
+import com.amigotrip.repository.RoleRepository;
 import com.amigotrip.domain.User;
-import com.amigotrip.domain.UserRepository;
+import com.amigotrip.repository.UserRepository;
 import com.amigotrip.exception.BadRequestException;
 import com.amigotrip.mail.AmigoMailSender;
 import lombok.extern.slf4j.Slf4j;

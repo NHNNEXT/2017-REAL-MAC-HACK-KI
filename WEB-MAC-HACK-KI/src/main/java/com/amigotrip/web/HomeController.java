@@ -1,6 +1,6 @@
 package com.amigotrip.web;
 
-import com.amigotrip.domain.UserRepository;
+import com.amigotrip.repository.UserRepository;
 import com.amigotrip.mail.AmigoMailSender;
 import com.amigotrip.service.UserService;
 import lombok.extern.slf4j.Slf4j;

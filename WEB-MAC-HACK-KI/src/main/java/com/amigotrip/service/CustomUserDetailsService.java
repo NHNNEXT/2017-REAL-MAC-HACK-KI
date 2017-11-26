@@ -1,7 +1,7 @@
 package com.amigotrip.service;
 
 import com.amigotrip.domain.Role;
-import com.amigotrip.domain.UserRepository;
+import com.amigotrip.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
