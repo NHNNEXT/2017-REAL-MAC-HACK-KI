@@ -18,6 +18,14 @@ object UserInfoManager {
                 Context.MODE_PRIVATE)
     }
 
+    fun serUserInfo(user: User) {
+        val editor = preference.edit()
+        editor.putString(AppKeys.userName, user.name)
+        editor.putString(AppKeys.userEmail, user.email)
+        editor.putString(AppKeys.password, user.password)
+        editor.commit()
+    }
+
     fun getPreference() = preference
 
     fun isUserLogin() : Boolean {
@@ -28,8 +36,11 @@ object UserInfoManager {
         preference.edit().clear().apply()
     }
 
-    fun getLogineduser() {
+    fun getLogineduser(): User{
+        val name = preference.getString(AppKeys.userName, "no name")
+        val email = preference.getString(AppKeys.userEmail, "no email")
 
+        return User(name = name, email = email)
     }
 
 

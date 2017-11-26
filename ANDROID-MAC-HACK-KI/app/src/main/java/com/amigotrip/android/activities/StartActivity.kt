@@ -41,7 +41,12 @@ class StartActivity : AppCompatActivity() {
         iv_start_email.setOnClickListener { signEmail() }
         iv_start_fb.setOnClickListener { signFB() }
         iv_start_google.setOnClickListener { signGoogle() }
-        tv_tour.setOnClickListener {  }
+        tv_tour.setOnClickListener { showHome() }
+    }
+
+    private fun showHome() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 
 

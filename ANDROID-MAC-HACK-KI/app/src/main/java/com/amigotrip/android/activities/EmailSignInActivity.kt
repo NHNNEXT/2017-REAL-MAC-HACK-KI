@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.Toast
+import com.amigotrip.android.UserInfoManager
 import com.amigotrip.android.datas.ApiResult
 import com.amigotrip.android.datas.User
 import com.amigotrip.android.extentions.isEmpty
@@ -40,31 +41,46 @@ class EmailSignInActivity : AppCompatActivity() {
 
             val user = User(name = name, email = email, password = password)
 
-            val call = amigoService.addUser(user)
+            requestNewUser(user)
+            UserInfoManager.serUserInfo(user)
 
-            //login feature checked
-            call.enqueue(object : Callback<ApiResult> {
-                override fun onResponse(call: Call<ApiResult>?, response: Response<ApiResult>) {
-                    if (response.isSuccessful) {
-
-                        val responseString = response.body()!!.url
-
-                        val userId = getUserIdFrom(responseString)
-
-                        requestLogin(user)
-
-                    } else {
-                        Log.w("sigin", response.code().toString())
-                    }
-                }
-
-                override fun onFailure(call: Call<ApiResult>?, t: Throwable?) {
-                    Log.d("email sign in", "error")
-                }
-            })
+            startActivity(Intent(this@EmailSignInActivity, MainActivity::class.java))
         }
     }
 
+
+    /**
+     * Make sign up request to server
+     *
+     * @param user User info which wants to create
+     *
+     * @author zimin
+     */
+    private fun requestNewUser(user: User) {
+
+        val call = amigoService.addUser(user)
+
+        //login feature checked
+        call.enqueue(object : Callback<ApiResult> {
+            override fun onResponse(call: Call<ApiResult>?, response: Response<ApiResult>) {
+                if (response.isSuccessful) {
+
+                    val responseString = response.body()!!.url
+
+                    val userId = getUserIdFrom(responseString)
+
+                    requestLogin(user)
+
+                } else {
+                    Log.w("sigin", response.code().toString())
+                }
+            }
+
+            override fun onFailure(call: Call<ApiResult>?, t: Throwable?) {
+                Log.d("email sign in", "error")
+            }
+        })
+    }
 
     private fun requestLogin(user: User) {
 
