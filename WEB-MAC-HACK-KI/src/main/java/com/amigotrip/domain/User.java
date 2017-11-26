@@ -2,10 +2,7 @@ package com.amigotrip.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.internal.Nullable;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -24,28 +21,20 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Slf4j
+@Data
 public class User {
 
     @Id
     @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter
-    @Setter
     private long id;
 
     @NotEmpty
-    @Getter
-    @Setter
     private String name;
 
     @NotEmpty
-    @Getter
-    @Setter
     private String email;
 
-    @Getter
-    @Setter
-    @JsonIgnore
     private String password;
 
     private String gender;
@@ -65,7 +54,6 @@ public class User {
 
     private String contents;
 
-    @Getter
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "userRole", joinColumns = @JoinColumn(name = "userId"), inverseJoinColumns = @JoinColumn(name = "roleId"))
     private Set<Role> roles;
@@ -109,6 +97,10 @@ public class User {
             }
         }
         return key;
+    }
+
+    public boolean isSamePassword(String password, BCryptPasswordEncoder bCryptPasswordEncoder) {
+        return bCryptPasswordEncoder.matches(password, this.password);
     }
 
     @Override

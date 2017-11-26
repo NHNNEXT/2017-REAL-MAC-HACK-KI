@@ -7,7 +7,7 @@
         </layout>
     </appender>
 
-    <logger name="amigo.com" level="DEBUG" />
+    <logger name="com.amigotrip" level="DEBUG" />
 
     <root level="INFO">
         <appender-ref ref="STDOUT" />
