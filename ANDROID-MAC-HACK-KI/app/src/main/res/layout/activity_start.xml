@@ -4,22 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/back_login"
     tools:context="com.amigotrip.android.activities.StartActivity">
 
-    <ImageView
-        android:id="@+id/iv_background"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/back_login" />
-
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tv_logo"
         android:layout_width="164dp"
         android:layout_height="119dp"
         android:layout_marginTop="96dp"
@@ -28,9 +17,9 @@
         android:textAlignment="center"
         android:textColor="@android:color/background_light"
         android:textSize="64sp"
-        app:layout_constraintEnd_toStartOf="@+id/iv_background"
-        app:layout_constraintHorizontal_bias="0.499"
-        app:layout_constraintStart_toEndOf="@+id/iv_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -39,9 +28,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/iv_start_fb"
-        app:layout_constraintEnd_toStartOf="@+id/iv_background"
-        app:layout_constraintHorizontal_bias="0.499"
-        app:layout_constraintStart_toEndOf="@+id/iv_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/start_with_email" />
 
     <ImageView
@@ -50,9 +39,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/iv_start_google"
-        app:layout_constraintEnd_toStartOf="@+id/iv_background"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/iv_background"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/start_with_facebook" />
 
     <ImageView
@@ -61,9 +50,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/tv_tour"
-        app:layout_constraintEnd_toStartOf="@+id/iv_background"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/iv_background"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/start_with_google" />
 
     <TextView
@@ -74,8 +63,21 @@
         android:text="Take the tour"
         android:textColor="@color/colorBackground"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/iv_background"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/iv_background" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_sign_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="Are you already member? sign in"
+        android:textColor="@color/colorBackground"
+        app:layout_constraintBottom_toTopOf="@+id/iv_start_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

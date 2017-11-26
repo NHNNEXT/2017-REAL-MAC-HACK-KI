@@ -38,7 +38,7 @@ class SplashActivity : Activity() {
             val intent = Intent(SplashActivity@this, MainActivity::class.java)
             startActivity(intent)
         } else {
-            val intent = Intent(SplashActivity@this, IntroActivity::class.java)
+            val intent = Intent(SplashActivity@this, StartActivity::class.java)
             startActivity(intent)
         }
 
