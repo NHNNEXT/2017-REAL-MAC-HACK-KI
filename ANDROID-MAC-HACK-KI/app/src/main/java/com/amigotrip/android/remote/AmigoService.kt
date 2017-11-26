@@ -21,13 +21,13 @@ interface AmigoService {
     @POST("/party/guest")
     fun newParty(@Body party: Party): Call<Party>
 
-    @POST("/user")
+    @POST("/users")
     fun addUser(@Body user: User): Call<ApiResult>
 
-    @POST("/user/login")
+    @POST("/users/login")
     fun loginUser(@Body user: User): Call<ApiResult>
 
-    @GET("/user/{userId}")
+    @GET("/users/{userId}")
     fun getUser(@Path("userId") userId: Int): Call<String>
 
 //    @GET("{url}")

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
     tools:context="com.amigotrip.android.fragments.LocalListFragment">
 
     <android.support.v7.widget.Toolbar
@@ -39,14 +40,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/tv_related_word"
-                android:textSize="9.3dp"
-                android:text="연관검색_#힐링 #이태원 #한복 #전통"
-                android:layout_below="@+id/input_search"
-                android:layout_alignStart="@+id/input_search"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
         </RelativeLayout>
 
     </android.support.v7.widget.Toolbar>

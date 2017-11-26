@@ -11,7 +11,6 @@ data class User(
         var age: Int= 0,
         var nationality: String = "",
         var city: String = "",
-        var creditPoint: Int = 0,
         var profileImg: String = "",
         var contents: String = "",
         val password: String = ""

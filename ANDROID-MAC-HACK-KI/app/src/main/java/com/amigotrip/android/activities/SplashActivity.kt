@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import com.amigotrip.android.AppKeys
 import com.amigotrip.anroid.R
 import java.util.*
 
@@ -38,13 +39,13 @@ class SplashActivity : Activity() {
             val intent = Intent(SplashActivity@this, MainActivity::class.java)
             startActivity(intent)
         } else {
-            val intent = Intent(SplashActivity@this, IntroActivity::class.java)
+            val intent = Intent(SplashActivity@this, StartActivity::class.java)
             startActivity(intent)
         }
 
     }
     private fun isLogin(): Boolean {
-        return preferences.getBoolean(getString(R.string.KEY_ISSIGNIN), false)
+        return preferences.getBoolean(AppKeys.isLogin, false)
     }
 
 

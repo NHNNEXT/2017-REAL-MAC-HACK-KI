@@ -50,5 +50,6 @@
     <string name="KEY_USER_ID" translatable="false">key_user_id</string>
     <string name="KEY_USER_EMAIL" translatable="false">key_email</string>
     <string name="KEY_USER_NAME" translatable="false">userName</string>
+    <string name="KEY_GOOGLE_SERVER_CLIENT" translatable="false">AIzaSyB2wJ1UqqjiV11S9Rd3wtSmyZ2EoylEwKk</string>
     <string name="sign_up">sign up</string>
 </resources>
