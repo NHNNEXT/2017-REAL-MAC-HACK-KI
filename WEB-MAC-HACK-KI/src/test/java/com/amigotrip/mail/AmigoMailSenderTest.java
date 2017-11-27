@@ -1,7 +1,8 @@
 package amigo.com.mail;
 
-import amigo.com.MachackkiApplication;
-import amigo.com.domain.PartyGuest;
+import com.amigotrip.MachackkiApplication;
+import com.amigotrip.domain.PartyGuest;
+import com.amigotrip.mail.AmigoMailSender;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

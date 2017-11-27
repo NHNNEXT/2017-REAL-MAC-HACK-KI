@@ -21,7 +21,7 @@ import javax.annotation.Resource;
  */
 @Configuration
 @EnableWebSecurity
-@ComponentScan("amigo.com.service")
+@ComponentScan("com.amigotrip.service")
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {

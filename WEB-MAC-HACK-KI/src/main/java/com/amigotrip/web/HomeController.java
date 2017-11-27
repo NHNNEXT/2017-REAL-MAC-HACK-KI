@@ -1,8 +1,8 @@
 package com.amigotrip.web;
 
-import com.amigotrip.domain.UserRepository;
+import com.amigotrip.repository.UserRepository;
 import com.amigotrip.mail.AmigoMailSender;
-import com.amigotrip.service.UserConfirmService;
+import com.amigotrip.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -28,8 +28,8 @@ public class HomeController {
     @Resource
     public UserRepository userRepository;
 
-    @Resource(name = "service.userConfirmService")
-    public UserConfirmService userConfirmService;
+    @Resource
+    public UserService userService;
 
     @GetMapping("/")
     public String home(Principal principal) {
@@ -44,7 +44,7 @@ public class HomeController {
 
     @GetMapping("/user/{userId}/emailConfirm/{key}")
     public String mail(@PathVariable long userId, @PathVariable String key) {
-        return userConfirmService.confirmUserByUserId(userId, key);
+        return userService.confirmUserByUserId(userId, key);
     }
 
 }

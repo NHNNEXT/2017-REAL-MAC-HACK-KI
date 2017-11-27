@@ -1,7 +1,7 @@
 package com.amigotrip.web;
 
 import com.amigotrip.domain.PartyGuest;
-import com.amigotrip.domain.PartyGuestRepository;
+import com.amigotrip.repository.PartyGuestRepository;
 import com.amigotrip.mail.AmigoMailSender;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

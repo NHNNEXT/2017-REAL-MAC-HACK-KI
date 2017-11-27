@@ -1,5 +1,6 @@
-package com.amigotrip.domain;
+package com.amigotrip.repository;
 
+import com.amigotrip.domain.User;
 import org.springframework.data.repository.CrudRepository;
 
 /**

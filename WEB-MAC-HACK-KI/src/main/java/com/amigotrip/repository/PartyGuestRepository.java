@@ -1,5 +1,6 @@
-package com.amigotrip.domain;
+package com.amigotrip.repository;
 
+import com.amigotrip.domain.PartyGuest;
 import org.springframework.data.repository.CrudRepository;
 
 /**
