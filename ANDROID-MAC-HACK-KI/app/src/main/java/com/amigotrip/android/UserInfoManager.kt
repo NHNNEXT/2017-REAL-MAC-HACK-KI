@@ -12,6 +12,7 @@ object UserInfoManager {
 
     private lateinit var preference: SharedPreferences
     private lateinit var user: User
+    private lateinit var firebaseUserKey: String
 
     fun initManager(context: Context) {
         preference = context.getSharedPreferences(context.getString(R.string.KEY_PREFERENCE),
@@ -27,6 +28,17 @@ object UserInfoManager {
         editor.apply()
 
         this.user = user!!
+    }
+
+    fun setKey(key: String) {
+        firebaseUserKey = key
+        val editor = preference.edit()
+        editor.putString(AppKeys.userFirebaseKey, key)
+        editor.apply()
+    }
+
+    fun getUserFirebaseKey() : String{
+        return preference.getString(AppKeys.userFirebaseKey, "")
     }
 
     fun getPreference() = preference

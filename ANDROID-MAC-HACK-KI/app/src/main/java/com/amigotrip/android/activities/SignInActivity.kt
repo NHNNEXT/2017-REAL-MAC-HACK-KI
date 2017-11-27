@@ -15,8 +15,12 @@ import kotlinx.android.synthetic.main.activity_sign_in.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import com.google.firebase.database.FirebaseDatabase
 
 class SignInActivity : AppCompatActivity() {
+
+    private val database = FirebaseDatabase.getInstance()
+    private val userRef = database.getReference("users")
 
     val amigoService = AmigoService.getService(AmigoService::class.java)
 
@@ -63,7 +67,6 @@ class SignInActivity : AppCompatActivity() {
             }
 
         })
-
 
     }
 }

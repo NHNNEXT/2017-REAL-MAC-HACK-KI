@@ -4,6 +4,7 @@ package com.amigotrip.android.fragments
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +13,6 @@ import com.amigotrip.android.UserInfoManager
 import com.amigotrip.android.activities.ChatRoomActivity
 import com.amigotrip.android.adpaters.ChatRoomListAdapter
 import com.amigotrip.anroid.R
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.fragment_chats.*
 
@@ -21,7 +21,8 @@ class ChatRoomsFragment : Fragment(), ChatRoomListAdapter.OnChatRoomClickListene
 
     var database = FirebaseDatabase.getInstance()
 
-    lateinit var roomRef :  DatabaseReference
+    var roomRef = database.getReference("rooms")
+    var userRef = database.getReference("users")
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -37,15 +38,18 @@ class ChatRoomsFragment : Fragment(), ChatRoomListAdapter.OnChatRoomClickListene
 //            tv_empty_list.visibility = View.INVISIBLE
         }
 
-        input_search_room.setOnClickListener {
-            view -> (view as EditText).isCursorVisible = true 
-        }
-        roomRef = database.getReference()
 
         val adapter = ChatRoomListAdapter()
         adapter.setOnRoomClickLisetener(this)
         list_chat.adapter = adapter
 
+        val query = userRef.equalTo("wlals822@naver.com")
+        Log.d("rooms", query.ref.key )
+        input_search_room.setOnClickListener {
+            view -> (view as EditText).isCursorVisible = true
+        }
+
+        btn_new_chat.setOnClickListener { createNewRoom() }
     }
 
     override fun onRoomClick(position: Int) {
@@ -53,4 +57,11 @@ class ChatRoomsFragment : Fragment(), ChatRoomListAdapter.OnChatRoomClickListene
         startActivity(intent)
     }
 
+    private fun createNewRoom() {
+        val user = UserInfoManager.getLogineduser()
+        val userFirebaseKey = UserInfoManager.getUserFirebaseKey()
+        val roomKey = roomRef.child("rooms").push().key
+
+        roomRef.child(roomKey).child(userFirebaseKey).setValue(true)
+    }
 }
