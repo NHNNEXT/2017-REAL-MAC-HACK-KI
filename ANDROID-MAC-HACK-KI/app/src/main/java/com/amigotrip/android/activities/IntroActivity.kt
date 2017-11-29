@@ -22,9 +22,6 @@ class IntroActivity : AppCompatActivity(), View.OnClickListener {
         btn_sign_in.setOnClickListener(this)
         btn_sign_up.setOnClickListener(this)
 
-        addIntroPage(R.drawable.korean_travel, R.string.message_intro1)
-        addIntroPage(R.drawable.travel_mate, R.string.message_intro2)
-
         pager_intro.adapter = pagerAdapter
         pager_intro.offscreenPageLimit = 0
     }

@@ -17,9 +17,9 @@ class LocalListAdapter : RecyclerView.Adapter<LocalListAdapter.ViewHolder>() {
 
 
     private val localList = arrayListOf<Post>(
-            Post("근교여행", User(name = "미나")),
-            Post("서울여행", User(name = "중기")),
-            Post("근교여행", User(name = "미나"))
+            Post("#healing#nature#foo", User(name = "미나")),
+            Post("#healing#nature#foo", User(name = "중기")),
+            Post("#healing#nature#foo", User(name = "미나"))
     )
 
 
@@ -41,13 +41,13 @@ class LocalListAdapter : RecyclerView.Adapter<LocalListAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(post: Post) {
-            itemView.tv_title.text = post.title
+            itemView.tv_tags.text = post.title
             itemView.tv_name.text = post.user.name
             itemView.pager_preview.adapter = PreviewPagerAdapter()
             itemView.pager_preview.setPageTransformer(true, ZoomOutPageTransformer())
 
             //indicator 가 같이 움직이는 버그
-            itemView.indicator.setViewPager(itemView.pager_preview)
+//            itemView.indicator.setViewPager(itemView.pager_preview)
         }
     }
 }
