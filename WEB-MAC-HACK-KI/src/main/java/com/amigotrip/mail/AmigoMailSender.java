@@ -25,7 +25,7 @@ import java.util.Properties;
 public class AmigoMailSender {
     String emailFromAddress = "amigotrip82@gmail.com";
 
-    @Value("${mailSender.path")
+    @Value("${mailSender.path}")
     private String mailSenderPath; // "localhost:8080/users/" for local, "amigotrip.co.kr/users/" for dev
 
     public void postMail(String recipients[], String subject, String message, String from) throws MessagingException {
