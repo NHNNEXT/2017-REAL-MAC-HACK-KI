@@ -40,6 +40,7 @@ class StartActivity : AppCompatActivity() {
 
     private fun showSignIn() {
         val intent = Intent(this, SignInActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
         startActivity(intent)
     }
 

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.View
 import com.amigotrip.android.UserInfoManager
 import com.amigotrip.android.datas.User
 import com.amigotrip.android.extentions.string
@@ -29,6 +30,8 @@ class SignInActivity : AppCompatActivity() {
 
     private fun signInUser() {
 
+        progress_sign_in.visibility = View.VISIBLE
+
         val email = input_email.string
         val password = input_password.string
 
@@ -49,6 +52,8 @@ class SignInActivity : AppCompatActivity() {
                 } else {
                     Log.d("request login", response.code().toString())
                 }
+
+                progress_sign_in.visibility = View.INVISIBLE
             }
 
             override fun onFailure(call: Call<User>?, t: Throwable?) {
