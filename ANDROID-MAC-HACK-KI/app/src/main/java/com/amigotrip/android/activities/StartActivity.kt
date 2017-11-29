@@ -85,7 +85,7 @@ class StartActivity : AppCompatActivity() {
                             Context.MODE_PRIVATE)
                     val editor = preference.edit()
                     editor.putBoolean(getString(R.string.KEY_ISSIGNIN), true)
-                    editor.putInt(getString(R.string.KEY_USER_ID), user.id)
+//                    editor.putInt(getString(R.string.KEY_USER_ID), user.id)
                     editor.putString(getString(R.string.KEY_USER_NAME), user.name)
                     editor.putString(getString(R.string.KEY_USER_EMAIL), user.email)
                     editor.apply()

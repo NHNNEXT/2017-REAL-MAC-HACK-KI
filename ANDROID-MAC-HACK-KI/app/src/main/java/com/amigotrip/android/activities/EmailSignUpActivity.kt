@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.Toast
-import com.amigotrip.android.UserInfoManager
 import com.amigotrip.android.datas.ApiResult
 import com.amigotrip.android.datas.User
 import com.amigotrip.android.extentions.isEmpty
@@ -17,16 +16,16 @@ import kotlinx.android.synthetic.main.activity_email_sign_in.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import timber.log.Timber
 import java.util.regex.Pattern
 
 class EmailSignUpActivity : AppCompatActivity() {
 
-    val amigoService = AmigoService.getService(AmigoService::class.java)
+    private val amigoService = AmigoService.getService(AmigoService::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_email_sign_in)
-
 
         btn_sign_in.setOnClickListener {
 
@@ -39,12 +38,11 @@ class EmailSignUpActivity : AppCompatActivity() {
             val email = input_email.string
             val password = input_pw.string
 
-            val user = User(name = name, email = email, password = password)
+            val user = User(name = name, email = email, password = password, id = null,
+                    profileImg = null)
 
             requestNewUser(user)
-            UserInfoManager.setUserInfo(user)
 
-            startActivity(Intent(this@EmailSignUpActivity, MainActivity::class.java))
         }
     }
 
@@ -60,26 +58,23 @@ class EmailSignUpActivity : AppCompatActivity() {
 
         val call = amigoService.addUser(user)
 
-        //login feature checked
-        call.enqueue(object : Callback<ApiResult> {
-            override fun onResponse(call: Call<ApiResult>?, response: Response<ApiResult>) {
+        call.enqueue(object : Callback<User> {
+            override fun onResponse(call: Call<User>?, response: Response<User>) {
+
                 if (response.isSuccessful) {
 
-                    val responseString = response.body()!!.url
-
-                    val userId = getUserIdFrom(responseString)
+                    Timber.d(user.toString())
 
                     requestLogin(user)
 
-                } else {
-                    Log.w("sigin", response.code().toString())
                 }
             }
 
-            override fun onFailure(call: Call<ApiResult>?, t: Throwable?) {
-                Log.d("email sign in", "error")
+            override fun onFailure(call: Call<User>?, t: Throwable?) {
+                Timber.d("sign up fail")
             }
         })
+
     }
 
     private fun requestLogin(user: User) {
@@ -94,12 +89,16 @@ class EmailSignUpActivity : AppCompatActivity() {
                             getSharedPreferences(getString(R.string.KEY_PREFERENCE), Context.MODE_PRIVATE)
                     //회원가입이 된 상태로 다른 액티비티에서 로그인 시에 이것이 가능하지 않음
 
-                    val editor = preferences.edit()
-                    editor.putBoolean(getString(R.string.KEY_ISSIGNIN), true)
-                    editor.putInt(getString(R.string.KEY_USER_ID), user.id)
-                    editor.putString(getString(R.string.KEY_USER_NAME), user.name)
-                    editor.putString(getString(R.string.KEY_USER_EMAIL), user.email)
-                    editor.apply()
+                    val editor = preferences.edit().apply {
+                        putBoolean(getString(R.string.KEY_ISSIGNIN), true)
+
+                        val id = if (user.id != null) user.id else 0
+
+                        putInt(getString(R.string.KEY_USER_ID), id!!)
+                        putString(getString(R.string.KEY_USER_NAME), user.name)
+                        putString(getString(R.string.KEY_USER_EMAIL), user.email)
+                        apply()
+                    }
 
                     val intent = Intent(this@EmailSignUpActivity,
                                     MainActivity::class.java)

@@ -23,7 +23,7 @@ interface AmigoService {
     fun newParty(@Body party: Party): Call<Party>
 
     @POST("/users")
-    fun addUser(@Body user: User): Call<ApiResult>
+    fun addUser(@Body user: User): Call<User>
 
     @POST("/users/login")
     fun loginUser(@Body user: User): Call<ApiResult>

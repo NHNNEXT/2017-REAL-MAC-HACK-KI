@@ -42,7 +42,7 @@ object UserInfoManager {
         val name = preference.getString(AppKeys.userName, "no name")
         val email = preference.getString(AppKeys.userEmail, "no email")
 
-        return User(name = name, email = email)
+        return User(name = name, email = email, id = null, profileImg = "")
     }
 
 
