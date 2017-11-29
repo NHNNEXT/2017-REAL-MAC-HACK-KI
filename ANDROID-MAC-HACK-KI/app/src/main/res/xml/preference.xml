@@ -12,9 +12,17 @@
             android:key="pref_logout"
             android:title="logout"/>
 
-        <Preference
+        <PreferenceScreen
             android:key="pref_licence"
-            android:title="OpenSource Licence" />
+            android:title="OpenSource Licence">
+
+            <SwitchPreference
+                android:title="switch" />
+            <Preference
+                android:title="Gson" />
+            <Preference
+                android:title="Retrofit2" />
+        </PreferenceScreen>
 
     </PreferenceCategory>
 

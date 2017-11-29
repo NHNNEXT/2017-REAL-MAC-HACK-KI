@@ -29,7 +29,7 @@ class MoreInfoFragment : Fragment() {
 
     private fun setUserInfo() {
         val user = UserInfoManager.getLogineduser()
-        tv_name.text = user.name
+        tv_name.text = String.format("welcome %s !", user.name)
     }
 
 
