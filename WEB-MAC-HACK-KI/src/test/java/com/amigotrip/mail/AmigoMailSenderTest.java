@@ -1,8 +1,7 @@
-package amigo.com.mail;
+package com.amigotrip.mail;
 
 import com.amigotrip.MachackkiApplication;
 import com.amigotrip.domain.PartyGuest;
-import com.amigotrip.mail.AmigoMailSender;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +57,7 @@ public class AmigoMailSenderTest {
                 e.printStackTrace();
             }
         }
+
         private void postMail(String recipients[], String subject, String message, String from) throws MessagingException {
             boolean debug = false;
             java.security.Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());

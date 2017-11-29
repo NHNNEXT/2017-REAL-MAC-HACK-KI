@@ -42,7 +42,7 @@ public class HomeController {
         return "/loginForm";
     }
 
-    @GetMapping("/user/{userId}/emailConfirm/{key}")
+    @GetMapping("/users/{userId}/emailConfirm/{key}")
     public String mail(@PathVariable long userId, @PathVariable String key) {
         return userService.confirmUserByUserId(userId, key);
     }
