@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import com.amigotrip.android.UserInfoManager
 import com.amigotrip.android.datas.User
 import com.amigotrip.android.extentions.string
@@ -43,14 +44,15 @@ class SignInActivity : AppCompatActivity() {
             override fun onResponse(call: Call<User>?, response: Response<User>) {
                 if (response.isSuccessful) {
 
-
                     UserInfoManager.setUserInfo(response.body())
-
                     val intent = Intent(this@SignInActivity,
                             MainActivity::class.java)
                     startActivity(intent)
+
                 } else {
-                    Log.d("request login", response.code().toString())
+                    //when 400
+                    Toast.makeText(this@SignInActivity,
+                            "check your input! no account", Toast.LENGTH_SHORT).show()
                 }
 
                 progress_sign_in.visibility = View.INVISIBLE

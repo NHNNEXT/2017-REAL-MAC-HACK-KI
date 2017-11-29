@@ -65,10 +65,13 @@ class EmailSignUpActivity : AppCompatActivity() {
 
                 if (response.isSuccessful) {
 
-                    Timber.d(user.toString())
-
-                    requestLogin(user)
-
+                    if (response.code() == 400) {
+                        Toast.makeText(this@EmailSignUpActivity,
+                                "check your email", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Timber.d(user.toString())
+                        requestLogin(user)
+                    }
                 }
 
                 progress_sign_up.visibility = View.INVISIBLE
@@ -91,15 +94,23 @@ class EmailSignUpActivity : AppCompatActivity() {
             override fun onResponse(call: Call<User>?, response: Response<User>) {
                 if (response.isSuccessful) {
 
-                    val user = response.body()
 
-                    UserInfoManager.setUserInfo(user)
+                    if (response.code() == 400) {
+                        Toast.makeText(this@EmailSignUpActivity,
+                                "check your input", Toast.LENGTH_SHORT).show()
+                    } else {
 
-                    val intent = Intent(this@EmailSignUpActivity,
-                                    MainActivity::class.java)
-                    startActivity(intent)
+                        val user = response.body()
+                        Timber.d(user.toString())
+                        UserInfoManager.setUserInfo(user)
+
+                        val intent = Intent(this@EmailSignUpActivity,
+                                MainActivity::class.java)
+                        startActivity(intent)
+                    }
+
                 } else {
-                    Log.d("request login", response.code().toString())
+                    Timber.d(response.code().toString())
                 }
 
                 progress_sign_up.visibility = View.INVISIBLE
@@ -116,20 +127,31 @@ class EmailSignUpActivity : AppCompatActivity() {
 
     private fun checkInput(): Boolean {
 
-        var result = false
+        var result = true
 
         if (input_email.isEmpty()) {
             input_email.error = "check email!"
-        } else if (input_pw.isEmpty()) {
+            result = false
+        }
+
+        if (input_pw.isEmpty()) {
             input_pw.error = "check password"
-        } else if (!isEmailValid(input_email.string)) {
+            result = false
+        }
+
+        if (!isEmailValid(input_email.string)) {
             input_email.error = "please check email"
-        } else if (input_pw_confirm.isEmpty()) {
+            result = false
+        }
+
+        if (input_pw_confirm.isEmpty()) {
             input_pw_confirm.error = "please check confirm"
-        } else if (input_pw_confirm.text == input_pw.text) {
+            result = false
+        }
+
+        if (input_pw_confirm.text == input_pw.text) {
             input_pw_confirm.error = "password does not match"
-        } else {
-            result = true
+            result = false
         }
 
         return result
