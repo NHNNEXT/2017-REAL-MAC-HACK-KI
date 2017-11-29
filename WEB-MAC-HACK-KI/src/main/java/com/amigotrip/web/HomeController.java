@@ -37,6 +37,12 @@ public class HomeController {
         return "index";
     }
 
+    @GetMapping("/test")
+    public String test(Principal principal) {
+        log.debug("principal: {}", principal);
+        return "test";
+    }
+
     @GetMapping("/loginForm")
     public String loginForm() {
         return "/loginForm";
