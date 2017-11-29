@@ -22,13 +22,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.amigotrip.android.activities.SignUpActivity" />
         <activity android:name="com.amigotrip.android.activities.NewPartyActivity" />
         <activity android:name="com.amigotrip.android.activities.WelcomeActivity" />
         <activity android:name="com.amigotrip.android.activities.PartiesActivity" />
         <activity android:name="com.amigotrip.android.activities.SearchActivity" />
         <activity android:name="com.amigotrip.android.activities.ProfileActivity" />
-        <activity android:name="com.amigotrip.android.activities.IntroActivity" />
         <activity android:name="com.amigotrip.android.activities.MessagesActivity" />
         <activity android:name="com.amigotrip.android.activities.ChooseLangActivity" />
         <activity android:name="com.amigotrip.android.activities.MainActivity" />

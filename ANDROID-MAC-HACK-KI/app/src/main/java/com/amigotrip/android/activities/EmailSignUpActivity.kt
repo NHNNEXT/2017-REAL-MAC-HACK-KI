@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.Toast
-import com.amigotrip.android.datas.ApiResult
+import com.amigotrip.android.UserInfoManager
 import com.amigotrip.android.datas.User
 import com.amigotrip.android.extentions.isEmpty
 import com.amigotrip.android.extentions.string
@@ -81,23 +81,28 @@ class EmailSignUpActivity : AppCompatActivity() {
 
         val call = amigoService.loginUser(user)
 
-        call.enqueue(object : Callback<ApiResult> {
-            override fun onResponse(call: Call<ApiResult>?, response: Response<ApiResult>) {
+        call.enqueue(object : Callback<User> {
+            override fun onResponse(call: Call<User>?, response: Response<User>) {
                 if (response.isSuccessful) {
 
                     val preferences =
                             getSharedPreferences(getString(R.string.KEY_PREFERENCE), Context.MODE_PRIVATE)
                     //회원가입이 된 상태로 다른 액티비티에서 로그인 시에 이것이 가능하지 않음
 
+                    val user = response.body()
+
                     val editor = preferences.edit().apply {
+
                         putBoolean(getString(R.string.KEY_ISSIGNIN), true)
 
-                        val id = if (user.id != null) user.id else 0
+                        UserInfoManager.setUserInfo(user)
 
-                        putInt(getString(R.string.KEY_USER_ID), id!!)
-                        putString(getString(R.string.KEY_USER_NAME), user.name)
-                        putString(getString(R.string.KEY_USER_EMAIL), user.email)
-                        apply()
+//                        val id = if (user.id != null) user.id else 0
+//
+//                        putInt(getString(R.string.KEY_USER_ID), id!!)
+//                        putString(getString(R.string.KEY_USER_NAME), user.name)
+//                        putString(getString(R.string.KEY_USER_EMAIL), user.email)
+//                        apply()
                     }
 
                     val intent = Intent(this@EmailSignUpActivity,
@@ -108,7 +113,7 @@ class EmailSignUpActivity : AppCompatActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<ApiResult>?, t: Throwable?) {
+            override fun onFailure(call: Call<User>?, t: Throwable?) {
                Log.w("requset login", "failed")
             }
 
