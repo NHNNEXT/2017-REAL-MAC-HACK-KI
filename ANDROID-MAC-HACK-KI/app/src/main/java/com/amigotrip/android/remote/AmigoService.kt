@@ -1,6 +1,5 @@
 package com.amigotrip.android.remote
 
-import com.amigotrip.android.datas.ApiResult
 import com.amigotrip.android.datas.Party
 import com.amigotrip.android.datas.User
 import com.amigotrip.anroid.BuildConfig
@@ -23,10 +22,10 @@ interface AmigoService {
     fun newParty(@Body party: Party): Call<Party>
 
     @POST("/users")
-    fun addUser(@Body user: User): Call<ApiResult>
+    fun addUser(@Body user: User): Call<User>
 
     @POST("/users/login")
-    fun loginUser(@Body user: User): Call<ApiResult>
+    fun loginUser(@Body user: User): Call<User>
 
     @GET("/users/{userId}")
     fun getUser(@Path("userId") userId: Int): Call<String>
