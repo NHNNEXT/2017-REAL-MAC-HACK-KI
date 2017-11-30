@@ -5,8 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.amigotrip.android.ZoomOutPageTransformer
-import com.amigotrip.android.datas.Post
-import com.amigotrip.android.datas.User
+import com.amigotrip.android.datas.Article
 import com.amigotrip.anroid.R
 import kotlinx.android.synthetic.main.row_locals.view.*
 
@@ -16,11 +15,7 @@ import kotlinx.android.synthetic.main.row_locals.view.*
 class LocalListAdapter : RecyclerView.Adapter<LocalListAdapter.ViewHolder>() {
 
 
-    private val localList = arrayListOf<Post>(
-            Post("#healing#nature#foo", User(name = "미나")),
-            Post("#healing#nature#foo", User(name = "중기")),
-            Post("#healing#nature#foo", User(name = "미나"))
-    )
+    private val localList = arrayListOf<Article>()
 
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
@@ -39,10 +34,15 @@ class LocalListAdapter : RecyclerView.Adapter<LocalListAdapter.ViewHolder>() {
         return localList.size
     }
 
+    fun addAll(list: List<Article>) {
+        localList.addAll(list)
+        notifyDataSetChanged()
+    }
+
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(post: Post) {
-            itemView.tv_tags.text = post.title
-            itemView.tv_name.text = post.user.name
+        fun bind(article: Article) {
+            itemView.tv_tags.text = article.location
+            itemView.tv_name.text = article.writer.name
             itemView.pager_preview.adapter = PreviewPagerAdapter()
             itemView.pager_preview.setPageTransformer(true, ZoomOutPageTransformer())
 

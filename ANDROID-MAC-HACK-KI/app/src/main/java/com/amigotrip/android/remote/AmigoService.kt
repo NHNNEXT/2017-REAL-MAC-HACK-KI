@@ -1,5 +1,6 @@
 package com.amigotrip.android.remote
 
+import com.amigotrip.android.datas.Article
 import com.amigotrip.android.datas.Party
 import com.amigotrip.android.datas.User
 import com.amigotrip.anroid.BuildConfig
@@ -31,6 +32,10 @@ interface AmigoService {
     fun getUser(@Path("userId") userId: Int): Call<String>
 
 //    @GET("{url}")
+
+    @GET("/articles/locals")
+    fun getArticles(): Call<List<Article>>
+
 
     @GET("/party/guest")
     fun showParties(): Call<List<Party>>

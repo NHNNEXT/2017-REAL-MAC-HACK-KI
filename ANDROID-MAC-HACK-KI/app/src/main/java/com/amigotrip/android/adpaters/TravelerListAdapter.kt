@@ -17,8 +17,8 @@ class TravelerListAdapter : RecyclerView.Adapter<TravelerListAdapter.ViewHolder>
     private val travelerArticleList = arrayListOf<Article>()
 
     init {
-        travelerArticleList.add(Article("2017.7.12", "hello world!", "2020.22.11",
-                11, "korea:", listOf(Photo("temp")),UserInfoManager.getLogineduser()))
+        travelerArticleList.add(Article( "hello world!","2017.7.12",
+                11, "korea:", listOf(Photo("temp")), UserInfoManager.getLogineduser()))
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
