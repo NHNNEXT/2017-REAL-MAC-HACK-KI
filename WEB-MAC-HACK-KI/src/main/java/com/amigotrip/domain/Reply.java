@@ -1,9 +1,6 @@
 package com.amigotrip.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
@@ -16,14 +13,15 @@ import java.time.LocalDateTime;
 @Slf4j
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 public class Reply {
 
-
     @Id
-    @Column
-    @Getter
-    @Setter
-    private Long id;
+    @Column(name = "reply_id")
+    private long id;
+
+    @JoinColumn(name = "article_id")
+    private Long articleId;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -32,4 +30,5 @@ public class Reply {
     private String contents;
 
     private LocalDateTime createDate;
+
 }

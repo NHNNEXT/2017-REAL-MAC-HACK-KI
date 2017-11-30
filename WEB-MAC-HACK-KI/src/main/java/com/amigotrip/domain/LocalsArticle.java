@@ -1,9 +1,6 @@
 package com.amigotrip.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
@@ -17,36 +14,29 @@ import java.util.Set;
 @Slf4j
 @NoArgsConstructor
 @AllArgsConstructor
-public class LocalsArticle {
+@Data
+public class LocalsArticle implements Article {
 
     @Id
-    @Column
-    @Getter
-    @Setter
+    @Column(name = "article_id")
     private long id;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @Getter
-    @Setter
     private User writer;
 
     @OneToMany
     @JoinColumn(name = "photo_id")
-    @Getter
-    @Setter
     private Set<Photo> photos;
 
-    @Getter
-    @Setter
+    @OneToMany
+    @JoinColumn(name = "reply_id")
+    private Set<Reply> replies;
+
     private String location;
 
-    @Getter
-    @Setter
     private String contents;
 
-    @Getter
-    @Setter
     private LocalDateTime createDate;
 
     public boolean isMatchWriter(User writer) {
@@ -56,5 +46,9 @@ public class LocalsArticle {
     public void updateArticle(LocalsArticle article) {
         this.photos = article.photos;
         this.contents = article.contents;
+    }
+
+    public void addReply(Reply reply) {
+        replies.add(reply);
     }
 }
