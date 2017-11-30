@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/progress_sign_up"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/back_login"
@@ -23,9 +24,9 @@
             android:id="@+id/input_nickname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorBackground"
             android:hint="your nickname"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/colorBackground" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -44,9 +45,9 @@
             android:id="@+id/input_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorBackground"
             android:hint="please input email"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:textColor="@color/colorBackground" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -65,9 +66,9 @@
             android:id="@+id/input_pw"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorBackground"
             android:hint="password"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textColor="@color/colorBackground" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -86,19 +87,35 @@
             android:id="@+id/input_pw_confirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorBackground"
             android:hint="password confirm"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textColor="@color/colorBackground" />
     </android.support.design.widget.TextInputLayout>
 
     <Button
         android:id="@+id/btn_sign_in"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="send confrim email"
+        android:text="sign up"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/btn_sign_in"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.71000004" />
 
 </android.support.constraint.ConstraintLayout>

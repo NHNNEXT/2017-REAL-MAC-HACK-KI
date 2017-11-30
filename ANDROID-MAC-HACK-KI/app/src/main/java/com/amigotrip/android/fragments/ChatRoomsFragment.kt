@@ -33,8 +33,8 @@ class ChatRoomsFragment : Fragment(), ChatRoomListAdapter.OnChatRoomClickListene
 
 
         if (UserInfoManager.isUserLogin()) {
-            list_chat.visibility = View.VISIBLE
-            tv_empty_list.visibility = View.INVISIBLE
+//            list_chat.visibility = View.VISIBLE
+//            tv_empty_list.visibility = View.INVISIBLE
         }
 
         input_search_room.setOnClickListener {
