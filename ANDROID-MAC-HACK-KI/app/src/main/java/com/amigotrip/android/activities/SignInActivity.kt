@@ -3,12 +3,18 @@ package com.amigotrip.android.activities
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
+import android.view.View
+import android.widget.Toast
 import com.amigotrip.android.UserInfoManager
 import com.amigotrip.android.datas.User
 import com.amigotrip.android.extentions.string
 import com.amigotrip.android.remote.AmigoService
 import com.amigotrip.anroid.R
-import kotlinx.android.synthetic.main.activity_email_sign_in.*
+import kotlinx.android.synthetic.main.activity_sign_in.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SignInActivity : AppCompatActivity() {
 
@@ -25,46 +31,38 @@ class SignInActivity : AppCompatActivity() {
 
     private fun signInUser() {
 
+        progress_sign_in.visibility = View.VISIBLE
+
         val email = input_email.string
-        val password = input_email.string
+        val password = input_password.string
 
         val user = User(email = email, password = password)
 
-        UserInfoManager.setUserInfo(user)
+        val call = amigoService.loginUser(user)
 
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
+        call.enqueue(object : Callback<User> {
+            override fun onResponse(call: Call<User>?, response: Response<User>) {
+                if (response.isSuccessful) {
 
-//        val call = amigoService.loginUser(user)
+                    UserInfoManager.setUserInfo(response.body())
+                    val intent = Intent(this@SignInActivity,
+                            MainActivity::class.java)
+                    startActivity(intent)
 
-//        call.enqueue(object : Callback<ApiResult> {
-//            override fun onResponse(call: Call<ApiResult>?, response: Response<ApiResult>) {
-//                if (response.isSuccessful) {
-//
-//                    val preferences =
-//                            getSharedPreferences(getString(R.string.KEY_PREFERENCE), Context.MODE_PRIVATE)
-//                    //회원가입이 된 상태로 다른 액티비티에서 로그인 시에 이것이 가능하지 않음
-//
-//                    val editor = preferences.edit()
-//                    editor.putBoolean(getString(R.string.KEY_ISSIGNIN), true)
-//                    editor.putInt(getString(R.string.KEY_USER_ID), user.id)
-//                    editor.putString(getString(R.string.KEY_USER_NAME), user.name)
-//                    editor.putString(getString(R.string.KEY_USER_EMAIL), user.email)
-//                    editor.apply()
-//
-//                    val intent = Intent(this@SignInActivity,
-//                            MainActivity::class.java)
-//                    startActivity(intent)
-//                } else {
-//                    Log.d("request login", response.code().toString())
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<ApiResult>?, t: Throwable?) {
-//                Log.w("requset login", "failed")
-//            }
-//
-//        })
+                } else {
+                    //when 400
+                    Toast.makeText(this@SignInActivity,
+                            "check your input! no account", Toast.LENGTH_SHORT).show()
+                }
+
+                progress_sign_in.visibility = View.INVISIBLE
+            }
+
+            override fun onFailure(call: Call<User>?, t: Throwable?) {
+                Log.w("requset login", "failed")
+            }
+
+        })
 
 
     }

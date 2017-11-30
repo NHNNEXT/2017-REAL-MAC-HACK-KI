@@ -5,14 +5,18 @@ import android.os.Bundle
 import android.support.v7.preference.Preference
 import android.support.v7.preference.PreferenceFragmentCompat
 import android.support.v7.preference.PreferenceManager
+import android.support.v7.preference.PreferenceScreen
 import com.amigotrip.android.UserInfoManager
+import com.amigotrip.android.activities.NewArticleActivity
 import com.amigotrip.android.activities.StartActivity
 import com.amigotrip.anroid.R
 
 /**
  * Created by Zimincom on 2017. 11. 20..
  */
-class MainPreferenceFragment : PreferenceFragmentCompat(), PreferenceManager.OnPreferenceTreeClickListener{
+class MainPreferenceFragment : PreferenceFragmentCompat(), PreferenceManager
+.OnPreferenceTreeClickListener,PreferenceFragmentCompat.OnPreferenceStartScreenCallback{
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         addPreferencesFromResource(R.xml.preference)
@@ -21,11 +25,15 @@ class MainPreferenceFragment : PreferenceFragmentCompat(), PreferenceManager.OnP
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
     }
 
-    override fun onPreferenceTreeClick(preference: Preference?): Boolean {
-        if (preference?.key == "pref_profile") {
+    override fun onPreferenceTreeClick(preference: Preference): Boolean {
+        if (preference.key == "pref_profile") {
 
-        } else if (preference?.key == "pref_logout") {
+        } else if (preference.key == "pref_logout") {
             signOut()
+        } else if (preference.key == "pref_new_article" ) {
+
+            val intent = Intent(context, NewArticleActivity::class.java)
+            startActivity(intent)
         }
 
         return true
@@ -37,5 +45,11 @@ class MainPreferenceFragment : PreferenceFragmentCompat(), PreferenceManager.OnP
 
         startActivity(Intent(activity, StartActivity::class.java)
                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+    }
+
+
+    override fun onPreferenceStartScreen(caller: PreferenceFragmentCompat?, pref: PreferenceScreen?): Boolean {
+        caller?.setPreferenceScreen(pref)
+        return true
     }
 }

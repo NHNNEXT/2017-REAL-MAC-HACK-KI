@@ -10,5 +10,6 @@ object AppKeys {
     val userEmail = "email"
     val isLogin = "isLogin"
     val password = "password"
+    val userId: String = "userId"
 
 }

@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:text="To use chat, please sign in"
+        android:text="Availiable soon!"
         android:textSize="24dp" />
 
     <android.support.v7.widget.RecyclerView
