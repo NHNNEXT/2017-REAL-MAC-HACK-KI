@@ -3,6 +3,7 @@ package com.amigotrip.mail;
 import com.amigotrip.domain.PartyGuest;
 import com.amigotrip.domain.User;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import org.stringtemplate.v4.ST;
@@ -23,6 +24,9 @@ import java.util.Properties;
 @Component
 public class AmigoMailSender {
     String emailFromAddress = "amigotrip82@gmail.com";
+
+    @Value("${mailSender.path}")
+    private String mailSenderPath; // "localhost:8080/users/" for local, "amigotrip.co.kr/users/" for dev
 
     public void postMail(String recipients[], String subject, String message, String from) throws MessagingException {
         boolean debug = false;
@@ -80,8 +84,7 @@ public class AmigoMailSender {
         group.registerRenderer(String.class, new StringRenderer());
         ST st = group.getInstanceOf("page");
         st.add("name", user.getName());
-//        st.add("url", "amigotrip.co.kr/user/" + user.getId() + "/emailConfirm/" + user.getEmailConfirmKey());
-        st.add("url", "localhost:8080/user/" + user.getId() + "/emailConfirm/" + user.getEmailConfirmKey());
+        st.add("url", mailSenderPath + user.getId() + "/emailConfirm/" + user.getEmailConfirmKey());
         String emailTxt = st.render();
         sendMail(toSend, emailTxt, emailSubject);
     }
