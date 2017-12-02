@@ -4,10 +4,11 @@ import android.content.Context
 import com.amigotrip.android.cookie.PersistentCookieStore
 import com.amigotrip.android.datas.*
 import com.amigotrip.anroid.BuildConfig
+import com.google.gson.GsonBuilder
 import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
-import okhttp3.internal.JavaNetCookieJar
 import okhttp3.RequestBody
+import okhttp3.internal.JavaNetCookieJar
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -22,9 +23,11 @@ import java.util.concurrent.TimeUnit
  */
 interface AmigoService {
 
+    //test api
     @POST("/party/guest")
     fun newParty(@Body party: Party): Call<Party>
 
+    //users api
     @POST("/users")
     fun addUser(@Body user: User): Call<User>
 
@@ -34,8 +37,8 @@ interface AmigoService {
     @GET("/users/{userId}")
     fun getUser(@Path("userId") userId: Int): Call<String>
 
-//    @GET("{url}")
 
+    //articles api
     @GET("/articles/locals")
     fun getArticles(): Call<List<Article>>
 
@@ -45,13 +48,8 @@ interface AmigoService {
     @PUT("/articles/locals")
     fun putAriticle(): Call<ApiResult>
 
-    @Multipart
-    @POST("/uploads")
-    fun uploadImage(
-            @Part("description") description: RequestBody,
-            @Part file: MultipartBody.Part
-    ): Call<ApiResult>
 
+    //image upload api
     @Multipart
     @POST("/photos/{articleId}")
     fun uploadPhoto(
@@ -73,11 +71,16 @@ interface AmigoService {
 
         fun getService(java: Class<AmigoService>, context: Context): AmigoService {
 
+            //to handle plain string(not Json) , Add setLenient()
+            val gson = GsonBuilder()
+                    .setLenient()
+                    .create()
+
             val retrofit =
                     Retrofit.Builder()
                             .baseUrl(baseUrl)
-                            .addConverterFactory(GsonConverterFactory.create())
                             .client(createOkHttpClient(context))
+                            .addConverterFactory(GsonConverterFactory.create(gson))
                             .build()
 
             return retrofit.create(java)

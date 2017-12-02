@@ -158,9 +158,15 @@ class NewArticleActivity : AppCompatActivity() {
                 file
         )
 
+        if (requestFile == null) {
+            Timber.d("file is null")
+        } else {
+            Timber.d("file is no null")
+        }
+
         val body = MultipartBody.Part.createFormData("uploadFile", file.name, requestFile)
 
-        val descriptionString = "description"
+        val descriptionString = "uploadFile"
 
         val description = RequestBody.create(
                 okhttp3.MultipartBody.FORM, descriptionString
