@@ -42,9 +42,9 @@ class LocalListFragment : Fragment(), LocalListAdapter.OnLocalListItemClickListe
         val call = amigoService.getArticles()
         call.enqueue(object : Callback<List<Article>>{
             override fun onResponse(call: Call<List<Article>>?, response: Response<List<Article>>) {
-                val articles = response.body()
+                val articles = response.body() ?: return
 
-                localsAdapter.addAll(articles!!)
+                localsAdapter.addAll(articles)
 
             }
 

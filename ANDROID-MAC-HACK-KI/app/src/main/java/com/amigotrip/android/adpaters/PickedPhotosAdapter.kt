@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.amigotrip.android.datas.Photo
 import com.amigotrip.anroid.R
+import kotlinx.android.synthetic.main.item_picked.view.*
 
 /**
  * Created by Zimincom on 2017. 12. 12..
@@ -34,7 +35,7 @@ class PickedPhotosAdapter : RecyclerView.Adapter<PickedPhotosAdapter.ViewHolder>
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(photo: Photo) {
-
+              itemView.iv_picked.setImageURI(photo.uri)
         }
 
     }
