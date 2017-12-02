@@ -26,7 +26,7 @@ public class AmigoMailSender {
     String emailFromAddress = "amigotrip82@gmail.com";
 
     @Value("${service.domain}")
-    private String serviceDomain; // "localhost:8080/users/" for local, "amigotrip.co.kr/users/" for dev
+    private String serviceDomain; // "localhost:8080" for local, "amigotrip.co.kr" for dev
 
     public void postMail(String recipients[], String subject, String message, String from) throws MessagingException {
         boolean debug = false;
