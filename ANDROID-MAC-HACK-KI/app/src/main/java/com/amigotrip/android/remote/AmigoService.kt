@@ -1,5 +1,6 @@
 package com.amigotrip.android.remote
 
+import com.amigotrip.android.datas.ApiResult
 import com.amigotrip.android.datas.Article
 import com.amigotrip.android.datas.Party
 import com.amigotrip.android.datas.User
@@ -9,10 +10,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 /**
  * Created by Zimincom on 2017. 10. 19..
@@ -36,9 +34,11 @@ interface AmigoService {
     @GET("/articles/locals")
     fun getArticles(): Call<List<Article>>
 
+    @POST("/articles/locals")
+    fun postArticle(@Body article: Article): Call<ApiResult>
 
-    @GET("/party/guest")
-    fun showParties(): Call<List<Party>>
+    @PUT("/articles/locals")
+    fun putAriticle(): Call<ApiResult>
 
 
     companion object {
