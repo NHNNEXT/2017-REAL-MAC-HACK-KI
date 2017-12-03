@@ -12,17 +12,16 @@ import kotlinx.android.synthetic.main.row_locals.view.*
 /**
  * Created by Zimincom on 2017. 11. 12..
  */
-class LocalListAdapter : RecyclerView.Adapter<LocalListAdapter.ViewHolder>() {
-
+class LocalListAdapter : RecyclerView.Adapter<LocalListAdapter.ViewHolder>(){
 
     private val localList = arrayListOf<Article>()
+    private lateinit var localListItemClickListener: OnLocalListItemClickListener
 
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
         val view =
                 LayoutInflater.from(parent?.context)
                         .inflate(R.layout.row_locals, parent, false)
-
         return ViewHolder(view)
     }
 
@@ -32,6 +31,10 @@ class LocalListAdapter : RecyclerView.Adapter<LocalListAdapter.ViewHolder>() {
 
     override fun getItemCount(): Int {
         return localList.size
+    }
+
+    fun setOnLocalItemClickListener(listener: OnLocalListItemClickListener) {
+        this.localListItemClickListener = listener
     }
 
     fun addAll(list: List<Article>) {
@@ -46,8 +49,13 @@ class LocalListAdapter : RecyclerView.Adapter<LocalListAdapter.ViewHolder>() {
             itemView.pager_preview.adapter = PreviewPagerAdapter()
             itemView.pager_preview.setPageTransformer(true, ZoomOutPageTransformer())
 
-            //indicator 가 같이 움직이는 버그
-//            itemView.indicator.setViewPager(itemView.pager_preview)
+            itemView.setOnClickListener { view -> localListItemClickListener.onLocalItemClick(view, article) }
+
         }
     }
+
+    interface OnLocalListItemClickListener {
+        fun onLocalItemClick(view: View?, article: Article)
+    }
+
 }

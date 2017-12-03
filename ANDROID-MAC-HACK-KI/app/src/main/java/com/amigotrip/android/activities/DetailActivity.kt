@@ -2,17 +2,20 @@ package com.amigotrip.android.activities
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.amigotrip.android.remote.AmigoService
 import com.amigotrip.anroid.R
+import timber.log.Timber
 
-class PartiesActivity : AppCompatActivity() {
+class DetailActivity : AppCompatActivity() {
+
+    private lateinit var email: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_parties)
+        setContentView(R.layout.activity_detail)
 
-        val amigoService = AmigoService.getService(AmigoService::class.java)
-
+        email = intent.getStringExtra("email")
+        Timber.d(email)
 
     }
+
 }
