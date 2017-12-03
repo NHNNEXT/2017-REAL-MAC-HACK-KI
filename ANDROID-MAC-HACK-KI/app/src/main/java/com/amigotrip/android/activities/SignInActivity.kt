@@ -11,11 +11,11 @@ import com.amigotrip.android.datas.User
 import com.amigotrip.android.extentions.string
 import com.amigotrip.android.remote.AmigoService
 import com.amigotrip.anroid.R
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import com.google.firebase.database.FirebaseDatabase
 
 class SignInActivity : AppCompatActivity() {
 
@@ -51,6 +51,7 @@ class SignInActivity : AppCompatActivity() {
                     UserInfoManager.setUserInfo(response.body())
                     val intent = Intent(this@SignInActivity,
                             MainActivity::class.java)
+
                     startActivity(intent)
 
                 } else {
