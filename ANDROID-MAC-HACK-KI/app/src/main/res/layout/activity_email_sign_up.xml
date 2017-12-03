@@ -45,7 +45,7 @@
             android:id="@+id/input_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="please input email"
+            android:hint="please input targetEmail"
             android:inputType="textEmailAddress"
             android:textColor="@color/colorBackground" />
     </android.support.design.widget.TextInputLayout>

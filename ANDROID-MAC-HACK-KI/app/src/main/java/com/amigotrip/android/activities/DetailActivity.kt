@@ -14,31 +14,50 @@ import timber.log.Timber
 
 class DetailActivity : AppCompatActivity() {
 
-    private lateinit var email: String
+    private lateinit var targetEmail: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        email = intent.getStringExtra("email")
-        Timber.d(email)
+        targetEmail = intent.getStringExtra("email")
+        Timber.d(targetEmail)
 
 
         iv_chat.setOnClickListener { createChatRoom() }
     }
 
     private fun createChatRoom() {
+        //and add infos. need refctor
+
+        //query my rooms
+
+
+//        if (UserInfoManager.getChaters().contains(targetEmail)) {
+//            Timber.d("you already have room")
+//            return
+//        }
+//
+//        UserInfoManager.addChater(targetEmail)
+
         val chatroomsRef = FirebaseDatabase.getInstance().getReference("rooms")
 
+
         val roomKey = chatroomsRef.push().key
-        val loginedUser = UserInfoManager.getLogineduser()
+        val loginedUserKey = UserInfoManager.getUserFirebaseKey()
 
         val userRef = FirebaseDatabase.getInstance().getReference("users")
 
-        //find user firebase key by email
+        //find user firebase key by targetEmail
         //todo if i already have room, do not make room
+
+
+        //add room info to user data
+        userRef.child(loginedUserKey).child("rooms").child(roomKey).setValue(true)
+
+
         userRef.orderByChild("email")
-                .equalTo(email)
+                .equalTo(targetEmail)
                 .addListenerForSingleValueEvent(
                         object : ValueEventListener {
                             override fun onCancelled(p0: DatabaseError?) {
@@ -62,5 +81,6 @@ class DetailActivity : AppCompatActivity() {
         intent.putExtra("roomKey", roomKey)
         startActivity(intent)
     }
+
 
 }

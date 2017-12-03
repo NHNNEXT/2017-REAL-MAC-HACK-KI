@@ -41,6 +41,20 @@ object UserInfoManager {
         return preference.getString(AppKeys.userFirebaseKey, "")
     }
 
+    fun addChater(email: String) {
+        val emails = preference.getStringSet("chatingEmails", HashSet<String>())
+
+        val editor = preference.edit()
+        emails.add(email)
+        editor.putStringSet("chatingEmails", emails)
+        editor.apply()
+    }
+
+    fun getChaters() : Set<String> {
+        val chaters = preference.getStringSet("chatingEmails", HashSet<String>())
+        return chaters
+    }
+
     fun getPreference() = preference
 
     fun isUserLogin() : Boolean {
