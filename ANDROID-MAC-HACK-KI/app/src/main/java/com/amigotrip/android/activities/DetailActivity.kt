@@ -24,38 +24,16 @@ class DetailActivity : AppCompatActivity() {
         Timber.d(targetEmail)
 
 
-        iv_chat.setOnClickListener { createChatRoom() }
+        iv_chat.setOnClickListener { startChatWith(targetEmail) }
     }
 
-    private fun createChatRoom() {
+    private fun startChatWith(targetEmail: String) {
         //and add infos. need refctor
 
         //query my rooms
-
-
-//        if (UserInfoManager.getChaters().contains(targetEmail)) {
-//            Timber.d("you already have room")
-//            return
-//        }
-//
-//        UserInfoManager.addChater(targetEmail)
-
-        val chatroomsRef = FirebaseDatabase.getInstance().getReference("rooms")
-
-
-        val roomKey = chatroomsRef.push().key
-        val loginedUserKey = UserInfoManager.getUserFirebaseKey()
-
         val userRef = FirebaseDatabase.getInstance().getReference("users")
 
-        //find user firebase key by targetEmail
-        //todo if i already have room, do not make room
-
-
-        //add room info to user data
-        userRef.child(loginedUserKey).child("rooms").child(roomKey).setValue(true)
-
-
+        //query target key
         userRef.orderByChild("email")
                 .equalTo(targetEmail)
                 .addListenerForSingleValueEvent(
@@ -64,18 +42,75 @@ class DetailActivity : AppCompatActivity() {
                             }
 
                             override fun onDataChange(snapshot: DataSnapshot?) {
-                                snapshot?.children?.forEach { snapshot ->
-                                    chatroomsRef
-                                            .child(roomKey)
-                                            .child(snapshot.key)
-                                            .setValue(true)
+                                snapshot?.children?.forEach {
+                                    snapshot -> findRooms(snapshot)
                                 }
                             }
                         })
 
 
-        chatroomsRef.child(roomKey).child(UserInfoManager.getUserFirebaseKey()).setValue(true)
+    }
 
+    private fun findRooms(snapshot: DataSnapshot?) {
+        Timber.d("rooms filter")
+
+        val chatroomsRef = FirebaseDatabase.getInstance().getReference("rooms")
+        val loginedUserKey = UserInfoManager.getUserFirebaseKey()
+        val targetUserKey = snapshot?.key
+
+        Timber.d(targetUserKey)
+
+        chatroomsRef
+                .orderByChild(loginedUserKey)
+                .equalTo(true)
+                .addListenerForSingleValueEvent(
+                        object : ValueEventListener {
+                            override fun onCancelled(err: DatabaseError?) {
+                            }
+
+                            override fun onDataChange(snapshot: DataSnapshot?) {
+                                //result = rooms which iam in
+                                //snapshot = list which local user locate
+
+                                //todo if partner is false???
+                                val isRoomExist =
+                                        snapshot!!.children!!.any { children -> children.hasChild(targetUserKey)}
+
+
+                                if (isRoomExist) {
+
+                                    val roomkey =
+                                            snapshot!!.children!!.filter { children -> children
+                                                    .hasChild(targetUserKey)
+                                            }.map {
+                                                children -> children.key
+                                            }.first()
+
+                                    Timber.d(roomkey)
+                                    startChatActivity(roomkey)
+                                    return
+                                }
+                                else {
+                                    //if there is no room
+                                    creteNewRoom(targetUserKey)
+                                }
+
+                            }
+                        })
+
+
+    }
+
+    private fun creteNewRoom(targetUserKey: String?) {
+        val chatroomsRef = FirebaseDatabase.getInstance().getReference("rooms")
+        val roomKey = chatroomsRef.push().key
+
+        chatroomsRef.child(roomKey).child(UserInfoManager.getUserFirebaseKey()).setValue(true)
+        chatroomsRef.child(roomKey).child(targetUserKey).setValue(true)
+        startChatActivity(roomKey)
+    }
+
+    private fun startChatActivity(roomKey: String) {
         //todo put users info to intent
         val intent = Intent(this, ChatRoomActivity::class.java)
         intent.putExtra("roomKey", roomKey)

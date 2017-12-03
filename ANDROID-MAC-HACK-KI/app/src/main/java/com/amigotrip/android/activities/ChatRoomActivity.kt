@@ -22,6 +22,7 @@ class ChatRoomActivity : AppCompatActivity(){
     private val isBottom = false
     private lateinit var roomKey: String
 
+    //todo send message with name and deligate view holder (not with view id)
     //push() 사용해서 방 목록 만들기
 
     override fun onCreate(savedInstanceState: Bundle?) {
