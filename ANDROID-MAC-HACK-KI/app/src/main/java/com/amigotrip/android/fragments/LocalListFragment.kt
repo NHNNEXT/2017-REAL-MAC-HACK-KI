@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.amigotrip.android.activities.DetailActivity
 import com.amigotrip.android.activities.NewPartyActivity
 import com.amigotrip.android.adpaters.LocalListAdapter
 import com.amigotrip.android.datas.Article
@@ -21,7 +22,7 @@ import retrofit2.Response
 /**
  * A simple [Fragment] subclass.
  */
-class LocalListFragment : Fragment() {
+class LocalListFragment : Fragment(), LocalListAdapter.OnLocalListItemClickListener{
 
     private val amigoService = AmigoService.getService(AmigoService::class.java)
 
@@ -35,6 +36,7 @@ class LocalListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val localsAdapter = LocalListAdapter()
+        localsAdapter.setOnLocalItemClickListener(this)
         recycler_locals.adapter = localsAdapter
 
         val call = amigoService.getArticles()
@@ -50,8 +52,15 @@ class LocalListFragment : Fragment() {
                 t?.printStackTrace()
             }
         })
-                //btn_new_post.setOnClickListener { writeNewPost()}
 
+    }
+
+
+    //writer 가 오게 한다면 ?
+    override fun onLocalItemClick(view: View?, article: Article) {
+        val intent = Intent(context, DetailActivity::class.java)
+        intent.putExtra("email", article.writer.email)
+        startActivity(intent)
     }
 
     private fun writeNewPost() {
