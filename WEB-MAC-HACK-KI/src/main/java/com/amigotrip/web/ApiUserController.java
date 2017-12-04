@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 /**
  * Created by Naver on 2017. 11. 8..
@@ -22,16 +23,16 @@ public class ApiUserController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        if(userService.isDuplicatedEmail(user.getEmail())) {
+    public ResponseEntity<User> createUser(@RequestBody Map<String, String> body) {
+        if(userService.isDuplicatedEmail(body.get("email"))) {
             return new ResponseEntity<User>(
-                    user,
-                    HttpStatus.valueOf(HttpStatus.BAD_REQUEST.value()));
+                    new User(),
+                    HttpStatus.BAD_REQUEST);
         }
 
         return new ResponseEntity<User>(
-                userService.signup(user),
-                HttpStatus.valueOf(HttpStatus.CREATED.value()));
+                userService.signup(body.get("email"), body.get("password"), body.get("name")),
+                HttpStatus.CREATED);
     }
 
     @GetMapping("/{userId}")
@@ -39,15 +40,21 @@ public class ApiUserController {
         User user = userService.findUserById(userId);
         if(!userService.isConfirmedUserId(userId)) {
             return new ResponseEntity<User>(user,
-                    HttpStatus.valueOf(HttpStatus.OK.value()));
+                    HttpStatus.OK);
         }
         return new ResponseEntity<User>(user,
                 HttpStatus.ACCEPTED);
     }
 
+    @PutMapping("/{userId}")
+    public ResponseEntity<User> updateUser(@PathVariable long userId, @RequestBody User user) {
+        return new ResponseEntity<User>(userService.updateUser(userId, user),
+                HttpStatus.ACCEPTED);
+    }
+
     @PostMapping("/login")
-    public ResponseEntity<User> login(@RequestBody User user, HttpSession httpSession) {
-        return new ResponseEntity<User>(userService.login(user, httpSession),
+    public ResponseEntity<User> login(@RequestBody Map<String, String> body, HttpSession httpSession) {
+        return new ResponseEntity<User>(userService.login(body.get("email"), body.get("password"), httpSession),
                 HttpStatus.OK);
     }
 }
