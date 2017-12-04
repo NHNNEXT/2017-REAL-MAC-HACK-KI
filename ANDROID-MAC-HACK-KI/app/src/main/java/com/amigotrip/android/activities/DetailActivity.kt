@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.activity_detail.*
 import timber.log.Timber
 
 class DetailActivity : AppCompatActivity() {
-
+  
     private lateinit var targetEmail: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
