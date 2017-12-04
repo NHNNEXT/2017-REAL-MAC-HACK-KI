@@ -8,10 +8,12 @@ import com.amigotrip.anroid.R
 /**
  * Created by Zimincom on 2017. 11. 16..
  */
+//rename
 object UserInfoManager {
 
     private lateinit var preference: SharedPreferences
     private lateinit var user: User
+    private lateinit var firebaseUserKey: String
 
     fun initManager(context: Context) {
         preference = context.getSharedPreferences(context.getString(R.string.KEY_PREFERENCE),
@@ -27,6 +29,31 @@ object UserInfoManager {
         editor.apply()
 
         this.user = user!!
+    }
+
+    fun setKey(key: String) {
+        firebaseUserKey = key
+        val editor = preference.edit()
+        editor.putString(AppKeys.userFirebaseKey, key)
+        editor.apply()
+    }
+
+    fun getUserFirebaseKey() : String{
+        return preference.getString(AppKeys.userFirebaseKey, "")
+    }
+
+    fun addChater(email: String) {
+        val emails = preference.getStringSet("chatingEmails", HashSet<String>())
+
+        val editor = preference.edit()
+        emails.add(email)
+        editor.putStringSet("chatingEmails", emails)
+        editor.apply()
+    }
+
+    fun getChaters() : Set<String> {
+        val chaters = preference.getStringSet("chatingEmails", HashSet<String>())
+        return chaters
     }
 
     fun getPreference() = preference

@@ -11,5 +11,6 @@ object AppKeys {
     val isLogin = "isLogin"
     val password = "password"
     val userId: String = "userId"
+    val userFirebaseKey = "firebaseKey"
 
 }

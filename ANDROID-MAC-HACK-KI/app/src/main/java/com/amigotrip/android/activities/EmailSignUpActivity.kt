@@ -12,6 +12,8 @@ import com.amigotrip.android.extentions.isEmpty
 import com.amigotrip.android.extentions.string
 import com.amigotrip.android.remote.AmigoService
 import com.amigotrip.anroid.R
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.iid.FirebaseInstanceId
 import kotlinx.android.synthetic.main.activity_email_sign_up.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -63,15 +65,15 @@ class EmailSignUpActivity : AppCompatActivity() {
         call.enqueue(object : Callback<User> {
             override fun onResponse(call: Call<User>?, response: Response<User>) {
 
-                if (response.isSuccessful) {
+                if (!response.isSuccessful) return
 
-                    if (response.code() == 400) {
-                        Toast.makeText(this@EmailSignUpActivity,
-                                "check your email", Toast.LENGTH_SHORT).show()
-                    } else {
-                        Timber.d(user.toString())
-                        requestLogin(user)
-                    }
+                if (response.code() == 400) {
+                    Toast.makeText(this@EmailSignUpActivity,
+                            "check your email", Toast.LENGTH_SHORT).show()
+                } else {
+                    Timber.d(user.toString())
+                    addFirebaseInfo(user)
+                    requestLogin(user)
                 }
 
                 progress_sign_up.visibility = View.INVISIBLE
@@ -84,6 +86,19 @@ class EmailSignUpActivity : AppCompatActivity() {
 
     }
 
+    private fun addFirebaseInfo(user: User) {
+        val userRef = FirebaseDatabase.getInstance().getReference("users")
+
+        val userTempKey = userRef.push().key
+
+        val token = FirebaseInstanceId.getInstance().token
+        //plus device id (for FCM)
+        userRef.child(userTempKey).child("email").setValue(user.email)
+        userRef.child(userTempKey).child("deviceKey").setValue(token)
+
+
+    }
+
     private fun requestLogin(user: User) {
 
         progress_sign_up.visibility = View.VISIBLE
@@ -92,32 +107,29 @@ class EmailSignUpActivity : AppCompatActivity() {
 
         call.enqueue(object : Callback<User> {
             override fun onResponse(call: Call<User>?, response: Response<User>) {
-                if (response.isSuccessful) {
+
+                if (!response.isSuccessful) return
 
 
-                    if (response.code() == 400) {
-                        Toast.makeText(this@EmailSignUpActivity,
-                                "check your input", Toast.LENGTH_SHORT).show()
-                    } else {
-
-                        val user = response.body()
-                        Timber.d(user.toString())
-                        UserInfoManager.setUserInfo(user)
-
-                        val intent = Intent(this@EmailSignUpActivity,
-                                MainActivity::class.java)
-                        startActivity(intent)
-                    }
-
+                if (response.code() == 400) {
+                    Toast.makeText(this@EmailSignUpActivity,
+                            "check your input", Toast.LENGTH_SHORT).show()
                 } else {
-                    Timber.d(response.code().toString())
+
+                    val user = response.body()
+                    Timber.d(user.toString())
+                    UserInfoManager.setUserInfo(user)
+
+                    val intent = Intent(this@EmailSignUpActivity,
+                            MainActivity::class.java)
+                    startActivity(intent)
                 }
 
                 progress_sign_up.visibility = View.INVISIBLE
             }
 
             override fun onFailure(call: Call<User>?, t: Throwable?) {
-               Log.w("requset login", "failed")
+                Log.w("requset login", "failed")
             }
 
         })

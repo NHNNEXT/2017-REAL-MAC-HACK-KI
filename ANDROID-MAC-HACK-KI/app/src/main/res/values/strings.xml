@@ -5,7 +5,7 @@
     <string name="login_message">please give some information</string>
     <string name="login_btn_confirm">confirm</string>
     <string name="sign_in_success">Success!</string>
-    <string name="done_message">We email to you when party succesfully joined.</string>
+    <string name="done_message">We targetEmail to you when party succesfully joined.</string>
     <string name="new_party_submit">submit</string>
     <string name="new_party_gender">Gender</string>
     <string name="gender_male">Male</string>
@@ -13,7 +13,7 @@
     <string name="theme">Theme</string>
     <string name="attraction">Attraction</string>
     <string name="nation">Nation</string>
-    <string name="sign_in_email_hint">please input your email</string>
+    <string name="sign_in_email_hint">please input your targetEmail</string>
     <string name="sign_in_later">do later</string>
     <string name="sign_in">sign in</string>
     <string name="message_intro1" translatable="false">Amigo! \n\n
@@ -30,7 +30,7 @@
     <string name="add">add</string>
     <string name="label_selected_language">Selected language:</string>
     <string name="apply">apply</string>
-    <string name="email">email</string>
+    <string name="targetEmail">targetEmail</string>
     <string name="label_desired_date">Desired date</string>
     <string name="label_choose_date">choose date</string>
     <string name="age_title">Age:</string>

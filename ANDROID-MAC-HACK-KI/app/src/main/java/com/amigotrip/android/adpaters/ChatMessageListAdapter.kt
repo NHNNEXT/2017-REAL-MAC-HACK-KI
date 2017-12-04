@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.amigotrip.android.UserInfoManager
 import com.amigotrip.android.datas.ChatMessage
 import com.amigotrip.anroid.R
 
@@ -17,10 +18,9 @@ class ChatMessageListAdapter : RecyclerView.Adapter<ChatMessageListAdapter.BindH
 
     private val TYPE_MINE = 11
     private val TYPE_OTHER = 22
+    private var userEmail: String = UserInfoManager.getLogineduser().email
 
     init {
-        messageList.add(ChatMessage(11, "hello", "mina"))
-        messageList.add(ChatMessage(22, "bye", "mina"))
     }
 
     override fun getItemCount(): Int {
@@ -52,7 +52,13 @@ class ChatMessageListAdapter : RecyclerView.Adapter<ChatMessageListAdapter.BindH
     }
 
     override fun getItemViewType(position: Int): Int {
-        return messageList[position].type
+        val message = messageList[position]
+
+        if (message.email == userEmail) {
+            return TYPE_MINE
+        } else {
+            return TYPE_OTHER
+        }
     }
 
     fun addMessage(chatMessage: ChatMessage) {

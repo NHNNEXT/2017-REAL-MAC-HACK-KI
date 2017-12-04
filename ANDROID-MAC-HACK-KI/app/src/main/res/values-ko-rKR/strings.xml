@@ -10,7 +10,7 @@
     <string name="add">추가</string>
     <string name="label_selected_language">선택된 언어:</string>
     <string name="apply">신청</string>
-    <string name="email">이메일</string>
+    <string name="targetEmail">이메일</string>
     <string name="label_desired_date">방문 날짜</string>
     <string name="label_choose_date">날짜선택</string>
     <string name="age_title">나이:</string>

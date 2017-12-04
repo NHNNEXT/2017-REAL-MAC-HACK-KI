@@ -1,4 +1,4 @@
-package com.amigotrip.android
+package com.amigotrip.android.custom
 
 import android.support.v4.view.ViewPager
 import android.view.View

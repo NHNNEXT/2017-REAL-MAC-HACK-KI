@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import com.amigotrip.android.UserInfoManager
 import com.amigotrip.android.adpaters.ChatMessageListAdapter
 import com.amigotrip.android.datas.ChatMessage
 import com.amigotrip.android.extentions.string
@@ -20,7 +21,10 @@ class ChatRoomActivity : AppCompatActivity(){
     val messageRef = database.getReference("messages")
 
     private val isBottom = false
+    private lateinit var roomKey: String
+    private val user = UserInfoManager.getLogineduser()
 
+    //todo send message with name and deligate view holder (not with view id)
     //push() 사용해서 방 목록 만들기
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +37,9 @@ class ChatRoomActivity : AppCompatActivity(){
         chats.adapter = adapter
         chats.layoutManager = layoutManager
 
-        messageRef.addChildEventListener(object : ChildEventListener {
+        roomKey = intent.getStringExtra("roomKey")
+
+        messageRef.child(roomKey).addChildEventListener(object : ChildEventListener {
             override fun onCancelled(p0: DatabaseError?) {
             }
 
@@ -64,11 +70,19 @@ class ChatRoomActivity : AppCompatActivity(){
 
     }
 
+    private fun setRecyclerView() {
+
+    }
+
     private fun sendMessage() {
 
         val message = input_message.string
-        val key = messageRef.push().key
-        messageRef.child(key).setValue(ChatMessage(11, message, "message"))
+        val messageKey = messageRef.child(roomKey).push().key
+        val email = user.email
+        val userName = user.name
+
+        messageRef.child(roomKey).child(messageKey).setValue(ChatMessage(11, message,
+                email, userName))
     }
 
 }
