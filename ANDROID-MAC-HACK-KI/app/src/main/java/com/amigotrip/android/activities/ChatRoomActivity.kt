@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import com.amigotrip.android.UserInfoManager
 import com.amigotrip.android.adpaters.ChatMessageListAdapter
 import com.amigotrip.android.datas.ChatMessage
 import com.amigotrip.android.extentions.string
@@ -21,6 +22,7 @@ class ChatRoomActivity : AppCompatActivity(){
 
     private val isBottom = false
     private lateinit var roomKey: String
+    private val user = UserInfoManager.getLogineduser()
 
     //todo send message with name and deligate view holder (not with view id)
     //push() 사용해서 방 목록 만들기
@@ -76,8 +78,11 @@ class ChatRoomActivity : AppCompatActivity(){
 
         val message = input_message.string
         val messageKey = messageRef.child(roomKey).push().key
+        val email = user.email
+        val userName = user.name
 
-        messageRef.child(roomKey).child(messageKey).setValue(ChatMessage(11, message, "message"))
+        messageRef.child(roomKey).child(messageKey).setValue(ChatMessage(11, message,
+                email, userName))
     }
 
 }

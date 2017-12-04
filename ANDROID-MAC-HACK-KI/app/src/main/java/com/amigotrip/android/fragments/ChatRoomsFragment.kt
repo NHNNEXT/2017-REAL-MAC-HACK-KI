@@ -21,7 +21,6 @@ class ChatRoomsFragment : Fragment(), ChatRoomListAdapter.OnChatRoomClickListene
 
     var database = FirebaseDatabase.getInstance()
 
-    var roomRef = database.getReference("rooms")
     var userRef = database.getReference("users")
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -34,8 +33,8 @@ class ChatRoomsFragment : Fragment(), ChatRoomListAdapter.OnChatRoomClickListene
 
 
         if (UserInfoManager.isUserLogin()) {
-//            list_chat.visibility = View.VISIBLE
-//            tv_empty_list.visibility = View.INVISIBLE
+            list_chat.visibility = View.VISIBLE
+            tv_empty_list.visibility = View.INVISIBLE
         }
 
 
@@ -49,7 +48,6 @@ class ChatRoomsFragment : Fragment(), ChatRoomListAdapter.OnChatRoomClickListene
             view -> (view as EditText).isCursorVisible = true
         }
 
-        btn_new_chat.setOnClickListener { createNewRoom() }
     }
 
     override fun onRoomClick(position: Int) {
@@ -57,11 +55,4 @@ class ChatRoomsFragment : Fragment(), ChatRoomListAdapter.OnChatRoomClickListene
         startActivity(intent)
     }
 
-    private fun createNewRoom() {
-        val user = UserInfoManager.getLogineduser()
-        val userFirebaseKey = UserInfoManager.getUserFirebaseKey()
-        val roomKey = roomRef.child("rooms").push().key
-
-        roomRef.child(roomKey).child(userFirebaseKey).setValue(true)
-    }
 }

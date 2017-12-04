@@ -6,5 +6,6 @@ package com.amigotrip.android.datas
 data class ChatMessage(
         var type: Int = 11,
         var message: String = "",
+        var email: String = "",
         var userName: String = ""){
 }
