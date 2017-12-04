@@ -8,6 +8,7 @@ import com.amigotrip.anroid.R
 /**
  * Created by Zimincom on 2017. 11. 16..
  */
+//rename
 object UserInfoManager {
 
     private lateinit var preference: SharedPreferences
