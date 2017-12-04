@@ -15,11 +15,7 @@ class ChatRoomListAdapter : RecyclerView.Adapter<ChatRoomListAdapter.ViewHolder>
 
     lateinit var chatRoomListener: OnChatRoomClickListener
 
-    val chatRoomList = arrayListOf<ChatRoom>(
-            ChatRoom(title = "hello", previewMessage =  "my name is mina"),
-            ChatRoom(title = "hello", previewMessage =  "my name is mina"),
-            ChatRoom(title = "hello", previewMessage =  "my name is mina")
-    )
+    val chatRoomList = arrayListOf<ChatRoom>()
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent?.context).inflate(R.layout.row_chatroom, parent,
@@ -46,6 +42,10 @@ class ChatRoomListAdapter : RecyclerView.Adapter<ChatRoomListAdapter.ViewHolder>
         }
     }
 
+    fun addRoom(chatRoom: ChatRoom) {
+        chatRoomList.add(chatRoom)
+        notifyDataSetChanged()
+    }
 
     fun setOnRoomClickLisetener(onChatRoomClick: OnChatRoomClickListener) {
         this.chatRoomListener = onChatRoomClick

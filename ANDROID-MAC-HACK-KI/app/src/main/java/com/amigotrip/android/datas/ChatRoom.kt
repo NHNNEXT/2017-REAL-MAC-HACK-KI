@@ -6,5 +6,5 @@ package com.amigotrip.android.datas
 data class ChatRoom(
         var key: String = "",
         var title: String,
-        var previewMessage: String){
+        var previewMessage: String = ""){
 }

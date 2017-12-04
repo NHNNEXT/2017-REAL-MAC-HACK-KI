@@ -103,10 +103,18 @@ class DetailActivity : AppCompatActivity() {
 
     private fun creteNewRoom(targetUserKey: String?) {
         val chatroomsRef = FirebaseDatabase.getInstance().getReference("rooms")
+        val userRef = FirebaseDatabase.getInstance().getReference("users")
         val roomKey = chatroomsRef.push().key
+        val loginedUserKey = UserInfoManager.getUserFirebaseKey()
+        val loginedUserEmail = UserInfoManager.getLogineduser().email
 
         chatroomsRef.child(roomKey).child(UserInfoManager.getUserFirebaseKey()).setValue(true)
         chatroomsRef.child(roomKey).child(targetUserKey).setValue(true)
+
+        //add info to logined user
+        userRef.child(loginedUserKey).child("chaters").child(roomKey).child("email").setValue(targetEmail)
+        //add info to partner user
+        userRef.child(targetUserKey).child("chaters").child(roomKey).child("email").setValue(loginedUserEmail)
         startChatActivity(roomKey)
     }
 
