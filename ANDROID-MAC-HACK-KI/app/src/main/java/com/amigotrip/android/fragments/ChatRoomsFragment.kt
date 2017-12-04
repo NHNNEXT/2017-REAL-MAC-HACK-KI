@@ -40,6 +40,7 @@ class ChatRoomsFragment : Fragment(), ChatRoomListAdapter.OnChatRoomClickListene
         super.onViewCreated(view, savedInstanceState)
 
         initRecycler()
+        adapter.setOnRoomClickLisetener(this)
 
         input_search_room.setOnClickListener {
             view -> (view as EditText).isCursorVisible = true
@@ -47,8 +48,9 @@ class ChatRoomsFragment : Fragment(), ChatRoomListAdapter.OnChatRoomClickListene
 
     }
 
-    override fun onRoomClick(position: Int) {
+    override fun onRoomClick(chatRoom: ChatRoom) {
         val intent = Intent(context, ChatRoomActivity::class.java)
+        intent.putExtra("roomKey", chatRoom.key)
         startActivity(intent)
     }
 
@@ -76,7 +78,8 @@ class ChatRoomsFragment : Fragment(), ChatRoomListAdapter.OnChatRoomClickListene
                         snapshot?.children?.forEach {
                             //add list
                             child -> adapter.addRoom(
-                                ChatRoom(title = child.child("email").value.toString()))
+                                ChatRoom(key = child.child("roomKey").value.toString(),
+                                        title = child.child("email").value.toString()))
                         }
                     }
                 })

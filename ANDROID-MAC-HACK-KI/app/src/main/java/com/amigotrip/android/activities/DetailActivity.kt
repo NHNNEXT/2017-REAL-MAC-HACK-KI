@@ -113,8 +113,12 @@ class DetailActivity : AppCompatActivity() {
 
         //add info to logined user
         userRef.child(loginedUserKey).child("chaters").child(roomKey).child("email").setValue(targetEmail)
+        userRef.child(loginedUserKey).child("chaters").child(roomKey)
+                .child("roomKey").setValue(roomKey)
         //add info to partner user
         userRef.child(targetUserKey).child("chaters").child(roomKey).child("email").setValue(loginedUserEmail)
+        userRef.child(targetUserKey).child("chaters").child(roomKey)
+                .child("roomKey").setValue(roomKey)
         startChatActivity(roomKey)
     }
 

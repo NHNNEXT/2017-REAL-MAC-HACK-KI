@@ -29,17 +29,14 @@ class ChatRoomListAdapter : RecyclerView.Adapter<ChatRoomListAdapter.ViewHolder>
 
     override fun getItemCount(): Int = chatRoomList.size
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener{
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
         fun bind(chatRoom: ChatRoom) {
             itemView.tv_room_title.text = chatRoom.title
             itemView.tv_chat_preview.text = chatRoom.previewMessage
-            itemView.setOnClickListener(this)
+            itemView.setOnClickListener { chatRoomListener.onRoomClick(chatRoom) }
         }
 
-        override fun onClick(view: View?) {
-            chatRoomListener.onRoomClick(0)
-        }
     }
 
     fun addRoom(chatRoom: ChatRoom) {
@@ -52,6 +49,6 @@ class ChatRoomListAdapter : RecyclerView.Adapter<ChatRoomListAdapter.ViewHolder>
     }
 
     interface OnChatRoomClickListener {
-        fun onRoomClick(position: Int)
+        fun onRoomClick(chatRoom: ChatRoom)
     }
 }
