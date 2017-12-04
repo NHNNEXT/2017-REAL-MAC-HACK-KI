@@ -1,0 +1,615 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7CC48CB51FD2977B00ABDD1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC48CB41FD2977B00ABDD1F /* AppDelegate.swift */; };
+		7CC48CBC1FD2977B00ABDD1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CC48CBB1FD2977B00ABDD1F /* Assets.xcassets */; };
+		7CC48CBF1FD2977B00ABDD1F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CC48CBD1FD2977B00ABDD1F /* LaunchScreen.storyboard */; };
+		7CC48CCA1FD2977C00ABDD1F /* AmigoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC48CC91FD2977C00ABDD1F /* AmigoTests.swift */; };
+		7CC48CD51FD2977C00ABDD1F /* AmigoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC48CD41FD2977C00ABDD1F /* AmigoUITests.swift */; };
+		7CC48CE81FD297C100ABDD1F /* LocalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC48CE51FD297C100ABDD1F /* LocalsViewController.swift */; };
+		7CC48CE91FD297C100ABDD1F /* LocalsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC48CE61FD297C100ABDD1F /* LocalsTableViewCell.swift */; };
+		7CC48CEA1FD297C100ABDD1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CC48CE71FD297C100ABDD1F /* Main.storyboard */; };
+		7CC48CF01FD297CC00ABDD1F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC48CEB1FD297CB00ABDD1F /* LoginViewController.swift */; };
+		7CC48CF11FD297CC00ABDD1F /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC48CEC1FD297CB00ABDD1F /* Post.swift */; };
+		7CC48CF21FD297CC00ABDD1F /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC48CED1FD297CC00ABDD1F /* Animation.swift */; };
+		7CC48CF31FD297CC00ABDD1F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC48CEE1FD297CC00ABDD1F /* SignUpViewController.swift */; };
+		7CC48CF41FD297CC00ABDD1F /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CC48CEF1FD297CC00ABDD1F /* Start.storyboard */; };
+		7CC48CF71FD297D300ABDD1F /* Local.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CC48CF51FD297D300ABDD1F /* Local.storyboard */; };
+		7CC48CF81FD297D300ABDD1F /* LocalsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC48CF61FD297D300ABDD1F /* LocalsDetailViewController.swift */; };
+		7CC48CFA1FD2980100ABDD1F /* sun_vally.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7CC48CF91FD2980000ABDD1F /* sun_vally.ttf */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7CC48CC61FD2977B00ABDD1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7CC48CA91FD2977B00ABDD1F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7CC48CB01FD2977B00ABDD1F;
+			remoteInfo = Amigo;
+		};
+		7CC48CD11FD2977C00ABDD1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7CC48CA91FD2977B00ABDD1F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7CC48CB01FD2977B00ABDD1F;
+			remoteInfo = Amigo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7CC48CB11FD2977B00ABDD1F /* Amigo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Amigo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CC48CB41FD2977B00ABDD1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7CC48CBB1FD2977B00ABDD1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7CC48CBE1FD2977B00ABDD1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7CC48CC01FD2977B00ABDD1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CC48CC51FD2977B00ABDD1F /* AmigoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AmigoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CC48CC91FD2977C00ABDD1F /* AmigoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmigoTests.swift; sourceTree = "<group>"; };
+		7CC48CCB1FD2977C00ABDD1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CC48CD01FD2977C00ABDD1F /* AmigoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AmigoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CC48CD41FD2977C00ABDD1F /* AmigoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmigoUITests.swift; sourceTree = "<group>"; };
+		7CC48CD61FD2977C00ABDD1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CC48CE51FD297C100ABDD1F /* LocalsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalsViewController.swift; sourceTree = "<group>"; };
+		7CC48CE61FD297C100ABDD1F /* LocalsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalsTableViewCell.swift; sourceTree = "<group>"; };
+		7CC48CE71FD297C100ABDD1F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		7CC48CEB1FD297CB00ABDD1F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		7CC48CEC1FD297CB00ABDD1F /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		7CC48CED1FD297CC00ABDD1F /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
+		7CC48CEE1FD297CC00ABDD1F /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		7CC48CEF1FD297CC00ABDD1F /* Start.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
+		7CC48CF51FD297D300ABDD1F /* Local.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Local.storyboard; sourceTree = "<group>"; };
+		7CC48CF61FD297D300ABDD1F /* LocalsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalsDetailViewController.swift; sourceTree = "<group>"; };
+		7CC48CF91FD2980000ABDD1F /* sun_vally.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sun_vally.ttf; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7CC48CAE1FD2977B00ABDD1F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CC48CC21FD2977B00ABDD1F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CC48CCD1FD2977C00ABDD1F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7CC48CA81FD2977B00ABDD1F = {
+			isa = PBXGroup;
+			children = (
+				7CC48CB31FD2977B00ABDD1F /* Amigo */,
+				7CC48CC81FD2977C00ABDD1F /* AmigoTests */,
+				7CC48CD31FD2977C00ABDD1F /* AmigoUITests */,
+				7CC48CB21FD2977B00ABDD1F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7CC48CB21FD2977B00ABDD1F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7CC48CB11FD2977B00ABDD1F /* Amigo.app */,
+				7CC48CC51FD2977B00ABDD1F /* AmigoTests.xctest */,
+				7CC48CD01FD2977C00ABDD1F /* AmigoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7CC48CB31FD2977B00ABDD1F /* Amigo */ = {
+			isa = PBXGroup;
+			children = (
+				7CC48CE41FD297A700ABDD1F /* Login */,
+				7CC48CE31FD297A200ABDD1F /* Locals */,
+				7CC48CE21FD2979D00ABDD1F /* Main */,
+				7CC48CB41FD2977B00ABDD1F /* AppDelegate.swift */,
+				7CC48CBB1FD2977B00ABDD1F /* Assets.xcassets */,
+				7CC48CBD1FD2977B00ABDD1F /* LaunchScreen.storyboard */,
+				7CC48CC01FD2977B00ABDD1F /* Info.plist */,
+				7CC48CF91FD2980000ABDD1F /* sun_vally.ttf */,
+			);
+			path = Amigo;
+			sourceTree = "<group>";
+		};
+		7CC48CC81FD2977C00ABDD1F /* AmigoTests */ = {
+			isa = PBXGroup;
+			children = (
+				7CC48CC91FD2977C00ABDD1F /* AmigoTests.swift */,
+				7CC48CCB1FD2977C00ABDD1F /* Info.plist */,
+			);
+			path = AmigoTests;
+			sourceTree = "<group>";
+		};
+		7CC48CD31FD2977C00ABDD1F /* AmigoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				7CC48CD41FD2977C00ABDD1F /* AmigoUITests.swift */,
+				7CC48CD61FD2977C00ABDD1F /* Info.plist */,
+			);
+			path = AmigoUITests;
+			sourceTree = "<group>";
+		};
+		7CC48CE21FD2979D00ABDD1F /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				7CC48CE61FD297C100ABDD1F /* LocalsTableViewCell.swift */,
+				7CC48CE51FD297C100ABDD1F /* LocalsViewController.swift */,
+				7CC48CE71FD297C100ABDD1F /* Main.storyboard */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		7CC48CE31FD297A200ABDD1F /* Locals */ = {
+			isa = PBXGroup;
+			children = (
+				7CC48CF51FD297D300ABDD1F /* Local.storyboard */,
+				7CC48CF61FD297D300ABDD1F /* LocalsDetailViewController.swift */,
+			);
+			path = Locals;
+			sourceTree = "<group>";
+		};
+		7CC48CE41FD297A700ABDD1F /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				7CC48CED1FD297CC00ABDD1F /* Animation.swift */,
+				7CC48CEB1FD297CB00ABDD1F /* LoginViewController.swift */,
+				7CC48CEC1FD297CB00ABDD1F /* Post.swift */,
+				7CC48CEE1FD297CC00ABDD1F /* SignUpViewController.swift */,
+				7CC48CEF1FD297CC00ABDD1F /* Start.storyboard */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7CC48CB01FD2977B00ABDD1F /* Amigo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7CC48CD91FD2977C00ABDD1F /* Build configuration list for PBXNativeTarget "Amigo" */;
+			buildPhases = (
+				7CC48CAD1FD2977B00ABDD1F /* Sources */,
+				7CC48CAE1FD2977B00ABDD1F /* Frameworks */,
+				7CC48CAF1FD2977B00ABDD1F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Amigo;
+			productName = Amigo;
+			productReference = 7CC48CB11FD2977B00ABDD1F /* Amigo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7CC48CC41FD2977B00ABDD1F /* AmigoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7CC48CDC1FD2977C00ABDD1F /* Build configuration list for PBXNativeTarget "AmigoTests" */;
+			buildPhases = (
+				7CC48CC11FD2977B00ABDD1F /* Sources */,
+				7CC48CC21FD2977B00ABDD1F /* Frameworks */,
+				7CC48CC31FD2977B00ABDD1F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7CC48CC71FD2977B00ABDD1F /* PBXTargetDependency */,
+			);
+			name = AmigoTests;
+			productName = AmigoTests;
+			productReference = 7CC48CC51FD2977B00ABDD1F /* AmigoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7CC48CCF1FD2977C00ABDD1F /* AmigoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7CC48CDF1FD2977C00ABDD1F /* Build configuration list for PBXNativeTarget "AmigoUITests" */;
+			buildPhases = (
+				7CC48CCC1FD2977C00ABDD1F /* Sources */,
+				7CC48CCD1FD2977C00ABDD1F /* Frameworks */,
+				7CC48CCE1FD2977C00ABDD1F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7CC48CD21FD2977C00ABDD1F /* PBXTargetDependency */,
+			);
+			name = AmigoUITests;
+			productName = AmigoUITests;
+			productReference = 7CC48CD01FD2977C00ABDD1F /* AmigoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7CC48CA91FD2977B00ABDD1F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0910;
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = "Yongjae Kwon";
+				TargetAttributes = {
+					7CC48CB01FD2977B00ABDD1F = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+					7CC48CC41FD2977B00ABDD1F = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 7CC48CB01FD2977B00ABDD1F;
+					};
+					7CC48CCF1FD2977C00ABDD1F = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 7CC48CB01FD2977B00ABDD1F;
+					};
+				};
+			};
+			buildConfigurationList = 7CC48CAC1FD2977B00ABDD1F /* Build configuration list for PBXProject "Amigo" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7CC48CA81FD2977B00ABDD1F;
+			productRefGroup = 7CC48CB21FD2977B00ABDD1F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7CC48CB01FD2977B00ABDD1F /* Amigo */,
+				7CC48CC41FD2977B00ABDD1F /* AmigoTests */,
+				7CC48CCF1FD2977C00ABDD1F /* AmigoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7CC48CAF1FD2977B00ABDD1F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CC48CEA1FD297C100ABDD1F /* Main.storyboard in Resources */,
+				7CC48CF41FD297CC00ABDD1F /* Start.storyboard in Resources */,
+				7CC48CBF1FD2977B00ABDD1F /* LaunchScreen.storyboard in Resources */,
+				7CC48CBC1FD2977B00ABDD1F /* Assets.xcassets in Resources */,
+				7CC48CFA1FD2980100ABDD1F /* sun_vally.ttf in Resources */,
+				7CC48CF71FD297D300ABDD1F /* Local.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CC48CC31FD2977B00ABDD1F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CC48CCE1FD2977C00ABDD1F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7CC48CAD1FD2977B00ABDD1F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CC48CF01FD297CC00ABDD1F /* LoginViewController.swift in Sources */,
+				7CC48CF31FD297CC00ABDD1F /* SignUpViewController.swift in Sources */,
+				7CC48CE81FD297C100ABDD1F /* LocalsViewController.swift in Sources */,
+				7CC48CE91FD297C100ABDD1F /* LocalsTableViewCell.swift in Sources */,
+				7CC48CB51FD2977B00ABDD1F /* AppDelegate.swift in Sources */,
+				7CC48CF21FD297CC00ABDD1F /* Animation.swift in Sources */,
+				7CC48CF81FD297D300ABDD1F /* LocalsDetailViewController.swift in Sources */,
+				7CC48CF11FD297CC00ABDD1F /* Post.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CC48CC11FD2977B00ABDD1F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CC48CCA1FD2977C00ABDD1F /* AmigoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CC48CCC1FD2977C00ABDD1F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CC48CD51FD2977C00ABDD1F /* AmigoUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7CC48CC71FD2977B00ABDD1F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7CC48CB01FD2977B00ABDD1F /* Amigo */;
+			targetProxy = 7CC48CC61FD2977B00ABDD1F /* PBXContainerItemProxy */;
+		};
+		7CC48CD21FD2977C00ABDD1F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7CC48CB01FD2977B00ABDD1F /* Amigo */;
+			targetProxy = 7CC48CD11FD2977C00ABDD1F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7CC48CBD1FD2977B00ABDD1F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7CC48CBE1FD2977B00ABDD1F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7CC48CD71FD2977C00ABDD1F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7CC48CD81FD2977C00ABDD1F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7CC48CDA1FD2977C00ABDD1F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 723G2B84ML;
+				INFOPLIST_FILE = Amigo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yongjai.Amigo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7CC48CDB1FD2977C00ABDD1F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 723G2B84ML;
+				INFOPLIST_FILE = Amigo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yongjai.Amigo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7CC48CDD1FD2977C00ABDD1F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 723G2B84ML;
+				INFOPLIST_FILE = AmigoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yongjai.AmigoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Amigo.app/Amigo";
+			};
+			name = Debug;
+		};
+		7CC48CDE1FD2977C00ABDD1F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 723G2B84ML;
+				INFOPLIST_FILE = AmigoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yongjai.AmigoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Amigo.app/Amigo";
+			};
+			name = Release;
+		};
+		7CC48CE01FD2977C00ABDD1F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 723G2B84ML;
+				INFOPLIST_FILE = AmigoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yongjai.AmigoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Amigo;
+			};
+			name = Debug;
+		};
+		7CC48CE11FD2977C00ABDD1F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 723G2B84ML;
+				INFOPLIST_FILE = AmigoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yongjai.AmigoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Amigo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7CC48CAC1FD2977B00ABDD1F /* Build configuration list for PBXProject "Amigo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CC48CD71FD2977C00ABDD1F /* Debug */,
+				7CC48CD81FD2977C00ABDD1F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7CC48CD91FD2977C00ABDD1F /* Build configuration list for PBXNativeTarget "Amigo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CC48CDA1FD2977C00ABDD1F /* Debug */,
+				7CC48CDB1FD2977C00ABDD1F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7CC48CDC1FD2977C00ABDD1F /* Build configuration list for PBXNativeTarget "AmigoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CC48CDD1FD2977C00ABDD1F /* Debug */,
+				7CC48CDE1FD2977C00ABDD1F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7CC48CDF1FD2977C00ABDD1F /* Build configuration list for PBXNativeTarget "AmigoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CC48CE01FD2977C00ABDD1F /* Debug */,
+				7CC48CE11FD2977C00ABDD1F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7CC48CA91FD2977B00ABDD1F /* Project object */;
+}
