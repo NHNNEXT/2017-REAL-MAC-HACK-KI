@@ -1,6 +1,7 @@
 package com.amigotrip.web;
 
 import com.amigotrip.domain.*;
+import com.amigotrip.exception.BadRequestException;
 import com.amigotrip.repository.LocalsArticleRepository;
 import com.amigotrip.repository.TravelerArticleRepository;
 import com.amigotrip.repository.UserRepository;
@@ -38,6 +39,13 @@ public class ApiArticleController {
         List<LocalsArticle> list = localsArticleRepository.findAll();
 
         return list;
+    }
+
+    @GetMapping("/locals/{id}")
+    public LocalsArticle getLocalsArticle(@PathVariable long id) {
+        LocalsArticle article = localsArticleRepository.findOne(id);
+        if (article == null) throw new BadRequestException("No LocalArticle Exists");
+        return article;
     }
 
     @PostMapping("/locals")
@@ -85,11 +93,33 @@ public class ApiArticleController {
         );
     }
 
+    @DeleteMapping("/locals/{id}")
+    public ResponseEntity<Result> deleteLocalsArticle(@PathVariable Long id, Principal principal) {
+        LocalsArticle article = localsArticleRepository.findOne(id);
+        if (article == null) throw new BadRequestException("There is no such article");
+        if (article.getWriter().getEmail().equals(principal.getName())) throw new BadRequestException("Can not delete an article wrote by others");
+
+        // TODO delete Replies as well
+
+        localsArticleRepository.delete(id);
+        return new ResponseEntity<Result>(
+                new Result("/articles/locals"),
+                HttpStatus.OK
+        );
+    }
+
     @GetMapping("/traveler")
     public List<TravelerArticle> getTravelerArticleList() {
         List<TravelerArticle> list = travelerArticleRepository.findAll();
 
         return list;
+    }
+
+    @GetMapping("/traveler/{id}")
+    public TravelerArticle getTravelerArticle(@PathVariable long id) {
+        TravelerArticle article = travelerArticleRepository.findOne(id);
+        if (article == null) throw new BadRequestException("No Article Exists");
+        return article;
     }
 
     @PostMapping("/traveler")
@@ -131,6 +161,21 @@ public class ApiArticleController {
 
         dbArticle.updateArticle(article);
         travelerArticleRepository.save(dbArticle);
+        return new ResponseEntity<Result>(
+                new Result("/articles/traveler"),
+                HttpStatus.OK
+        );
+    }
+
+    @DeleteMapping("/traveler/{id}")
+    public ResponseEntity<Result> deleteTravelerArticle(@PathVariable Long id, Principal principal) {
+        TravelerArticle article = travelerArticleRepository.findOne(id);
+        if (article == null) throw new BadRequestException("There is no such article");
+        if (article.getWriter().getEmail().equals(principal.getName())) throw new BadRequestException("Can not delete an article wrote by others");
+
+        // TODO delete Replies as well
+
+        travelerArticleRepository.delete(id);
         return new ResponseEntity<Result>(
                 new Result("/articles/traveler"),
                 HttpStatus.OK
