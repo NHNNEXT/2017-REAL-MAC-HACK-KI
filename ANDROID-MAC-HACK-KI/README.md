@@ -4,9 +4,8 @@
 * Kotlin
 
 ### ScreenShots
-<img src="screenshots/home.png" width="360" height="640">
-<img src="screenshots/signin.png" width="360" height="640">
-<img src="screenshots/list.png" width="360" height="640">
+<img src="screenshots/home.png" width="180" height="320"><img src="screenshots/signin.png" 
+width="180" height="320"><img src="screenshots/list.png" width="180" height="320">
 
 ### OpenSource 
 * Firebase(database, analytics, FCM)
