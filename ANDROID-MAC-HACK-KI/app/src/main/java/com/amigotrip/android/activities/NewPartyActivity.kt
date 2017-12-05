@@ -11,7 +11,7 @@ import android.view.View
 import android.widget.DatePicker
 import android.widget.NumberPicker
 import android.widget.Toast
-import com.amigotrip.android.NumberPickerDialog
+import com.amigotrip.android.dialogs.NumberPickerDialog
 import com.amigotrip.android.datas.Party
 import com.amigotrip.android.extentions.isEmpty
 import com.amigotrip.android.extentions.string

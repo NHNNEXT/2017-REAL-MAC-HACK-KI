@@ -2,14 +2,8 @@ package com.amigotrip.android.activities
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
-import com.amigotrip.android.datas.Party
 import com.amigotrip.android.remote.AmigoService
 import com.amigotrip.anroid.R
-import kotlinx.android.synthetic.main.activity_parties.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class PartiesActivity : AppCompatActivity() {
 
@@ -19,19 +13,6 @@ class PartiesActivity : AppCompatActivity() {
 
         val amigoService = AmigoService.getService(AmigoService::class.java)
 
-        val call = amigoService.showParties()
 
-        call.enqueue(object : Callback<List<Party>> {
-            override fun onResponse(call: Call<List<Party>>?, response: Response<List<Party>>?) {
-                if (response!!.isSuccessful) {
-                    Log.d("parties", "success")
-                    tv_result.text = response.body().toString()
-                }
-            }
-
-            override fun onFailure(call: Call<List<Party>>?, t: Throwable?) {
-                Log.d("parties", "failed" + t.toString())
-            }
-        })
     }
 }

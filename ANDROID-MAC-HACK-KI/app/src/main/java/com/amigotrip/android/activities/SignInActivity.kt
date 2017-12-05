@@ -11,12 +11,19 @@ import com.amigotrip.android.datas.User
 import com.amigotrip.android.extentions.string
 import com.amigotrip.android.remote.AmigoService
 import com.amigotrip.anroid.R
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class SignInActivity : AppCompatActivity() {
+
+    private val database = FirebaseDatabase.getInstance()
+    private val userRef = database.getReference("users")
 
     val amigoService = AmigoService.getService(AmigoService::class.java)
 
@@ -47,6 +54,21 @@ class SignInActivity : AppCompatActivity() {
                     UserInfoManager.setUserInfo(response.body())
                     val intent = Intent(this@SignInActivity,
                             MainActivity::class.java)
+
+                    val userRef = FirebaseDatabase.getInstance().getReference("users")
+                    val query = userRef.orderByChild("email").equalTo(email)
+
+                    query.addListenerForSingleValueEvent(object :ValueEventListener{
+                        override fun onCancelled(err: DatabaseError?) {
+                        }
+
+                        override fun onDataChange(snapshot: DataSnapshot?) {
+                            snapshot?.children?.forEach {
+                                snapshot -> UserInfoManager.setKey(snapshot.key)
+                            }
+                        }
+                    })
+
                     startActivity(intent)
 
                 } else {
@@ -63,7 +85,6 @@ class SignInActivity : AppCompatActivity() {
             }
 
         })
-
 
     }
 }

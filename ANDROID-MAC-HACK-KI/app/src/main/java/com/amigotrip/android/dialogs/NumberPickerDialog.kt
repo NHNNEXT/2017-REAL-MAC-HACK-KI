@@ -1,4 +1,4 @@
-package com.amigotrip.android
+package com.amigotrip.android.dialogs
 
 import android.app.AlertDialog
 import android.app.Dialog
@@ -39,7 +39,6 @@ class NumberPickerDialog : DialogFragment() {
 
         return builder.create()
     }
-
     fun setValueChangeListener(valueChangeListener: NumberPicker.OnValueChangeListener) {
         this.valueChangeListener = valueChangeListener
     }
