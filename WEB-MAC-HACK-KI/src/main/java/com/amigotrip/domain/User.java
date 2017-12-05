@@ -1,5 +1,6 @@
 package com.amigotrip.domain;
 
+import com.amigotrip.exception.BadRequestException;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
@@ -34,18 +35,21 @@ public class User {
     @NotEmpty
     private String email;
 
+    @JsonIgnore
     private String password;
 
     private String gender;
 
-    private int age = 0; // data.sql에서 이 값을 주지 않고 insert 하면 NULL not allowed for column "AGE" 라는 에러가 발생함
+    @Column(nullable = true)
+    private Integer age; // data.sql에서 이 값을 주지 않고 insert 하면 NULL not allowed for column "AGE" 라는 에러가 발생함
 
     private String nationality;
 
     private String city;
 
     @JsonIgnore
-    private int creditPoint;
+    @Column(nullable = true)
+    private Integer creditPoint;
 
     @OneToOne
     @JoinColumn(name = "profile_id")
@@ -100,6 +104,28 @@ public class User {
 
     public boolean isSamePassword(String password, BCryptPasswordEncoder bCryptPasswordEncoder) {
         return bCryptPasswordEncoder.matches(password, this.password);
+    }
+
+    public void updateUser(User user) {
+        if(user.gender != null) {
+            this.gender = user.gender;
+        }
+
+        if(user.age != 0) {
+            this.age = user.age;
+        }
+
+        if(user.nationality != null) {
+            this.nationality = user.nationality;
+        }
+
+        if(user.city != null) {
+            this.city = user.city;
+        }
+
+        if(user.contents != null) {
+            this.contents = user.contents;
+        }
     }
 
     @Override

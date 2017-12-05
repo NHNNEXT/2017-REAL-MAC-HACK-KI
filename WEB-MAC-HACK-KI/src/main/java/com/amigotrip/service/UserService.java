@@ -45,7 +45,8 @@ public class UserService {
         return userRepository.findByEmail(email) != null;
     }
 
-    public User signup(User user) {
+    public User signup(String email, String password, String name) {
+        User user = new User(email, password, name);
         user.encryptionPassword(bCryptPasswordEncoder);
         user.addRole(roleRepository.findByRole("unconfirmed_user"));
         User savedUser = userRepository.save(user);
@@ -53,14 +54,21 @@ public class UserService {
         return savedUser;
     }
 
-    public User login(User user, HttpSession httpSession) {
-        checkValidateLogin(user);
-        User dbUser = userRepository.findByEmail(user.getEmail());
+    public User login(String email, String password, HttpSession httpSession) {
+        checkValidateLogin(email, password);
+        User dbUser = userRepository.findByEmail(email);
         UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(dbUser.getEmail(), dbUser.getPassword());
         Authentication authentication = authenticationManager.authenticate(authRequest);
         SecurityContext securityContext = SecurityContextHolder.getContext();
         securityContext.setAuthentication(authentication);
         httpSession.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
+        return dbUser;
+    }
+
+    public User updateUser(long id, User user) {
+        User dbUser = userRepository.findOne(id);
+        dbUser.updateUser(user);
+        userRepository.save(dbUser);
         return dbUser;
     }
 
@@ -84,13 +92,13 @@ public class UserService {
         return userRepository.findOne(id);
     }
 
-    public void checkValidateLogin(User user) {
-        User dbUser = userRepository.findByEmail(user.getEmail());
+    public void checkValidateLogin(String email, String password) {
+        User dbUser = userRepository.findByEmail(email);
         if (dbUser == null) {
             throw new BadRequestException("Email is wrong! Please check again.");
         }
 
-        if (!dbUser.isSamePassword(user.getPassword(), bCryptPasswordEncoder)) {
+        if (!dbUser.isSamePassword(password, bCryptPasswordEncoder)) {
             throw new BadRequestException("Password is wrong! Please check again");
         }
     }
