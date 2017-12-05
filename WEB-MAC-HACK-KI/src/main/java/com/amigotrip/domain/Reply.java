@@ -31,4 +31,7 @@ public class Reply {
 
     private LocalDateTime createDate;
 
+    public void update(String contents) {
+        this.contents = contents;
+    }
 }

@@ -43,13 +43,18 @@ public class TravelerArticle implements Article {
         return this.writer == writer;
     }
 
-    public void updateArticle(TravelerArticle article) {
-        this.beginDate = article.beginDate;
-        this.endDate = article.endDate;
-        this.contents = article.contents;
+    public void updateArticle(Article article) {
+        TravelerArticle tArticle = (TravelerArticle)article;
+        this.beginDate = tArticle.beginDate;
+        this.endDate = tArticle.endDate;
+        this.contents = tArticle.contents;
     }
 
     public void addReply(Reply reply) {
         replies.add(reply);
+    }
+
+    public void deleteReply(Reply reply) {
+        replies.remove(reply);
     }
 }

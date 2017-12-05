@@ -43,12 +43,17 @@ public class LocalsArticle implements Article {
         return this.writer == writer;
     }
 
-    public void updateArticle(LocalsArticle article) {
-        this.photos = article.photos;
-        this.contents = article.contents;
+    public void updateArticle(Article article) {
+        LocalsArticle lArticle = (LocalsArticle)article; // 받을 때 Article 형으로 받은 Entity 형변환
+        this.photos = lArticle.photos;
+        this.contents = lArticle.contents;
     }
 
     public void addReply(Reply reply) {
         replies.add(reply);
+    }
+
+    public void deleteReply(Reply reply) {
+        replies.remove(reply);
     }
 }

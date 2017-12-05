@@ -5,4 +5,7 @@ package com.amigotrip.domain;
  */
 public interface Article {
 
+    void updateArticle(Article article);
+    void addReply(Reply reply);
+    void deleteReply(Reply reply);
 }

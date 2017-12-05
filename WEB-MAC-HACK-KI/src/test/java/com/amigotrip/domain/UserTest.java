@@ -4,6 +4,7 @@ package com.amigotrip.domain;
  * Created by Woohyeon on 2017. 12. 4..
  */
 
+import org.hibernate.boot.jaxb.SourceType;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,5 +32,14 @@ public class UserTest {
 
         user.updateUser(updateUser);
         System.out.println(user.getNationality());
+    }
+
+    @Test
+    public void interfaceTest() {
+        Article article;
+        article = new LocalsArticle();
+        System.out.println(article.getClass().getName());
+        article = new TravelerArticle();
+        System.out.println(article.getClass().getName());
     }
 }

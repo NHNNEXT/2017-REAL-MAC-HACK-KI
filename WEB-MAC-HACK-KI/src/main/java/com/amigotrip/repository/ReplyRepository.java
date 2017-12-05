@@ -1,10 +1,13 @@
 package com.amigotrip.repository;
 
 import com.amigotrip.domain.Reply;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
 
 /**
  * Created by NEXT on 2017. 11. 30..
  */
-public interface ReplyRepository extends CrudRepository<Reply, Long> {
+public interface ReplyRepository extends JpaRepository<Reply, Long> {
+    List<Reply> findByArticleId(Long id);
 }
