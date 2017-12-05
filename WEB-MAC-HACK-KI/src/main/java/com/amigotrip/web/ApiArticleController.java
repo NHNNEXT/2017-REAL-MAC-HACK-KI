@@ -3,6 +3,7 @@ package com.amigotrip.web;
 import com.amigotrip.domain.*;
 import com.amigotrip.exception.BadRequestException;
 import com.amigotrip.repository.LocalsArticleRepository;
+import com.amigotrip.repository.ReplyRepository;
 import com.amigotrip.repository.TravelerArticleRepository;
 import com.amigotrip.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -34,6 +35,9 @@ public class ApiArticleController {
     @Resource
     private TravelerArticleRepository travelerArticleRepository;
 
+    @Resource
+    private ReplyRepository replyRepository;
+
     @GetMapping("/locals")
     public List<LocalsArticle> getLocalsArticleList() {
         List<LocalsArticle> list = localsArticleRepository.findAll();
@@ -49,23 +53,14 @@ public class ApiArticleController {
     }
 
     @PostMapping("/locals")
-    public ResponseEntity<Result> postLocalsArticle(@RequestBody LocalsArticle article, Principal principal) {
-        if (principal == null) {
-            return new ResponseEntity<Result>(
-                    new Result("/loginForm"),
-                    HttpStatus.NOT_ACCEPTABLE
-                    );
-        }
+    public LocalsArticle postLocalsArticle(@RequestBody LocalsArticle article, Principal principal) {
+        if (principal == null) throw new BadRequestException("Login first before writing an article.");
         User writer = userRepository.findByEmail(principal.getName());
 
         article.setId(articleId.getAndAdd(1));
         article.setWriter(writer);
-        localsArticleRepository.save(article);
 
-        return new ResponseEntity<Result>(
-                new Result("/articles/locals"),
-                HttpStatus.CREATED
-        );
+        return localsArticleRepository.save(article);
     }
 
     @PutMapping("/locals/{id}")
@@ -97,9 +92,11 @@ public class ApiArticleController {
     public ResponseEntity<Result> deleteLocalsArticle(@PathVariable Long id, Principal principal) {
         LocalsArticle article = localsArticleRepository.findOne(id);
         if (article == null) throw new BadRequestException("There is no such article");
-        if (article.getWriter().getEmail().equals(principal.getName())) throw new BadRequestException("Can not delete an article wrote by others");
+        if (!article.getWriter().getEmail().equals(principal.getName())) throw new BadRequestException("Can not delete an article wrote by others");
 
-        // TODO delete Replies as well
+        for (Reply r : article.getReplies()) { // delete replies as well
+            replyRepository.delete(r.getId());
+        }
 
         localsArticleRepository.delete(id);
         return new ResponseEntity<Result>(
@@ -123,23 +120,14 @@ public class ApiArticleController {
     }
 
     @PostMapping("/traveler")
-    public ResponseEntity<Result> postTravelerArticle(@RequestBody TravelerArticle article, Principal principal) {
-        if (principal == null) {
-            return new ResponseEntity<Result>(
-                    new Result("/loginForm"),
-                    HttpStatus.NOT_ACCEPTABLE
-            );
-        }
+    public TravelerArticle postTravelerArticle(@RequestBody TravelerArticle article, Principal principal) {
+        if (principal == null) throw new BadRequestException("Login first before writing an article");
         User writer = userRepository.findByEmail(principal.getName());
 
         article.setId(articleId.getAndAdd(1));
         article.setWriter(writer);
-        travelerArticleRepository.save(article);
 
-        return new ResponseEntity<Result>(
-                new Result("/articles/traveler"),
-                HttpStatus.CREATED
-        );
+        return travelerArticleRepository.save(article);
     }
 
     @PutMapping("/traveler/{id}")
@@ -171,10 +159,11 @@ public class ApiArticleController {
     public ResponseEntity<Result> deleteTravelerArticle(@PathVariable Long id, Principal principal) {
         TravelerArticle article = travelerArticleRepository.findOne(id);
         if (article == null) throw new BadRequestException("There is no such article");
-        if (article.getWriter().getEmail().equals(principal.getName())) throw new BadRequestException("Can not delete an article wrote by others");
+        if (!article.getWriter().getEmail().equals(principal.getName())) throw new BadRequestException("Can not delete an article wrote by others");
 
-        // TODO delete Replies as well
-
+        for (Reply r : article.getReplies()) { // delete replies as well
+            replyRepository.delete(r.getId());
+        }
         travelerArticleRepository.delete(id);
         return new ResponseEntity<Result>(
                 new Result("/articles/traveler"),

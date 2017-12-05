@@ -56,4 +56,8 @@ public class LocalsArticle implements Article {
     public void deleteReply(Reply reply) {
         replies.remove(reply);
     }
+
+    public void addPhoto(Photo photo) {
+        photos.add(photo);
+    }
 }

@@ -33,13 +33,4 @@ public class UserTest {
         user.updateUser(updateUser);
         System.out.println(user.getNationality());
     }
-
-    @Test
-    public void interfaceTest() {
-        Article article;
-        article = new LocalsArticle();
-        System.out.println(article.getClass().getName());
-        article = new TravelerArticle();
-        System.out.println(article.getClass().getName());
-    }
 }
