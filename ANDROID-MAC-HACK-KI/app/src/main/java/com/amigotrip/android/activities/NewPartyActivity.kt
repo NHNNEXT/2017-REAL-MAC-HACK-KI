@@ -11,8 +11,8 @@ import android.view.View
 import android.widget.DatePicker
 import android.widget.NumberPicker
 import android.widget.Toast
-import com.amigotrip.android.dialogs.NumberPickerDialog
 import com.amigotrip.android.datas.Party
+import com.amigotrip.android.dialogs.NumberPickerDialog
 import com.amigotrip.android.extentions.isEmpty
 import com.amigotrip.android.extentions.string
 import com.amigotrip.android.remote.AmigoService
@@ -95,7 +95,7 @@ class NewPartyActivity : AppCompatActivity(),
             }
 
             tv_choose_lang -> {
-                val intent = Intent(NewPartyActivity@ this, ChooseLangActivity::class.java)
+                val intent = Intent( NewPartyActivity@this, ChooseLangActivity::class.java)
                 startActivityForResult(intent, REQUEST_LANGUAGE)
             }
 

@@ -25,8 +25,6 @@ class ChatRoomsFragment : Fragment(), ChatRoomListAdapter.OnChatRoomClickListene
     var database = FirebaseDatabase.getInstance()
 
     var userRef = database.getReference("users")
-    var roomRef = database.getReference("rooms")
-    var loginedUser = UserInfoManager.getLogineduser()
     val firebaseKey = UserInfoManager.getUserFirebaseKey()
 
     lateinit var adapter: ChatRoomListAdapter
@@ -39,13 +37,16 @@ class ChatRoomsFragment : Fragment(), ChatRoomListAdapter.OnChatRoomClickListene
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initRecycler()
-        adapter.setOnRoomClickLisetener(this)
-
         input_search_room.setOnClickListener {
             view -> (view as EditText).isCursorVisible = true
         }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        initRecycler()
+        adapter.setOnRoomClickLisetener(this)
     }
 
     override fun onRoomClick(chatRoom: ChatRoom) {
