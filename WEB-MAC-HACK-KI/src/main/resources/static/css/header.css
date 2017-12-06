@@ -1,0 +1,30 @@
+header {
+    display: inline-block;
+    height: 90px;
+    width: 95%;
+    line-height: 90px;
+}
+
+.main-logo {
+    height: 80%;
+    margin-left: 2%;
+}
+
+.user-option {
+    display: inline-block;
+    float: right;
+    vertical-align: 40%;
+    margin-right: 5%;
+}
+
+.session-info {
+    border: none;
+    color: #AAA;
+    font-size: 15px;
+    margin-left: 5px;
+}
+
+.session-info:hover {
+    color: #000;
+    cursor: pointer;
+}
