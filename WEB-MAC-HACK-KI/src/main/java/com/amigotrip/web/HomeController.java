@@ -34,13 +34,13 @@ public class HomeController {
     @GetMapping("/")
     public String home(Principal principal) {
         log.debug("principal: {}", principal);
-        return "index";
+        return "guestForm";
     }
 
     @GetMapping("/test")
     public String test(Principal principal) {
         log.debug("principal: {}", principal);
-        return "test";
+        return "index";
     }
 
     @GetMapping("/loginForm")
