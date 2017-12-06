@@ -15,10 +15,10 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class TravelerArticle implements Article {
+public class TravelerArticle {
 
     @Id
-    @Column
+    @Column(name = "traveler_article_id")
     private long id;
 
     @ManyToOne
@@ -26,8 +26,8 @@ public class TravelerArticle implements Article {
     private User writer;
 
     @OneToMany
-    @JoinColumn(name = "reply_id")
-    private Set<Reply> replies;
+    @JoinColumn(name = "traveler_reply_id")
+    private Set<TravelerReply> replies;
 
     private String location;
 
@@ -43,18 +43,17 @@ public class TravelerArticle implements Article {
         return this.writer == writer;
     }
 
-    public void updateArticle(Article article) {
-        TravelerArticle tArticle = (TravelerArticle)article;
-        this.beginDate = tArticle.beginDate;
-        this.endDate = tArticle.endDate;
-        this.contents = tArticle.contents;
+    public void updateArticle(TravelerArticle article) {
+        this.beginDate = article.beginDate;
+        this.endDate = article.endDate;
+        this.contents = article.contents;
     }
 
-    public void addReply(Reply reply) {
+    public void addReply(TravelerReply reply) {
         replies.add(reply);
     }
 
-    public void deleteReply(Reply reply) {
+    public void deleteReply(TravelerReply reply) {
         replies.remove(reply);
     }
 }

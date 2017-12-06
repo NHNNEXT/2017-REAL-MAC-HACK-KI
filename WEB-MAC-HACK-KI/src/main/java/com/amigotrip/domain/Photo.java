@@ -4,9 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by Naver on 2017. 11. 9..
@@ -18,10 +16,12 @@ import javax.persistence.Id;
 public class Photo {
     @Id
     @Column(name = "photo_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long photoId;
 
-    @Column(name = "writer_id")
-    private long writerId;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User writer;
 
     private String name;
 

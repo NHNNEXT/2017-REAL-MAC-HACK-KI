@@ -2,10 +2,7 @@ package com.amigotrip.web;
 
 import com.amigotrip.domain.*;
 import com.amigotrip.exception.BadRequestException;
-import com.amigotrip.repository.LocalsArticleRepository;
-import com.amigotrip.repository.ReplyRepository;
-import com.amigotrip.repository.TravelerArticleRepository;
-import com.amigotrip.repository.UserRepository;
+import com.amigotrip.repository.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,7 +33,13 @@ public class ApiArticleController {
     private TravelerArticleRepository travelerArticleRepository;
 
     @Resource
-    private ReplyRepository replyRepository;
+    private LocalsReplyRepository localsReplyRepository;
+
+    @Resource
+    private TravelerReplyRepository travelerReplyRepository;
+
+    @Resource
+    private PhotoRepository photoRepository;
 
     @GetMapping("/locals")
     public List<LocalsArticle> getLocalsArticleList() {
@@ -94,8 +97,12 @@ public class ApiArticleController {
         if (article == null) throw new BadRequestException("There is no such article");
         if (!article.getWriter().getEmail().equals(principal.getName())) throw new BadRequestException("Can not delete an article wrote by others");
 
-        for (Reply r : article.getReplies()) { // delete replies as well
-            replyRepository.delete(r.getId());
+        for (LocalsReply r : article.getReplies()) { // delete replies as well
+            localsReplyRepository.delete(r.getId());
+        }
+
+        for (Photo p : article.getPhotos()) { // delete photos as well
+            photoRepository.delete(p.getPhotoId());
         }
 
         localsArticleRepository.delete(id);
@@ -161,8 +168,8 @@ public class ApiArticleController {
         if (article == null) throw new BadRequestException("There is no such article");
         if (!article.getWriter().getEmail().equals(principal.getName())) throw new BadRequestException("Can not delete an article wrote by others");
 
-        for (Reply r : article.getReplies()) { // delete replies as well
-            replyRepository.delete(r.getId());
+        for (TravelerReply r : article.getReplies()) { // delete replies as well
+            travelerReplyRepository.delete(r.getId());
         }
         travelerArticleRepository.delete(id);
         return new ResponseEntity<Result>(

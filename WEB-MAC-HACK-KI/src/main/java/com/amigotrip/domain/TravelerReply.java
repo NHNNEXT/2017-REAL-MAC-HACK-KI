@@ -1,27 +1,27 @@
 package com.amigotrip.domain;
 
-import lombok.*;
-import lombok.extern.slf4j.Slf4j;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 /**
- * Created by NEXT on 2017. 11. 16..
+ * Created by NEXT on 2017. 12. 6..
  */
 @Entity
-@Slf4j
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
-public class Reply {
+public class TravelerReply {
 
     @Id
-    @Column(name = "reply_id")
+    @Column(name = "traveler_reply_id")
     private long id;
 
-    @JoinColumn(name = "article_id")
-    private Long articleId;
+    @JoinColumn(name = "traveler_article_id")
+    private long articleId;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
