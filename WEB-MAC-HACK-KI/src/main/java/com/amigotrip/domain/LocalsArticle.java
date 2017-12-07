@@ -19,6 +19,7 @@ public class LocalsArticle {
 
     @Id
     @Column(name = "locals_article_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @ManyToOne

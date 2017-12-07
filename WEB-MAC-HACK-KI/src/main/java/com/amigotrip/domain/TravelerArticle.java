@@ -19,6 +19,7 @@ public class TravelerArticle {
 
     @Id
     @Column(name = "traveler_article_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @ManyToOne

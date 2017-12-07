@@ -3,6 +3,7 @@ package com.amigotrip.web;
 import com.amigotrip.domain.*;
 import com.amigotrip.exception.BadRequestException;
 import com.amigotrip.repository.*;
+import com.amigotrip.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,8 @@ import java.util.concurrent.atomic.AtomicLong;
 @RequestMapping("/replies")
 public class ApiReplyController {
 
-    AtomicLong replyId = new AtomicLong(1);
+    @Resource
+    private UserService userService;
 
     @Resource
     private UserRepository userRepository;
@@ -51,8 +53,6 @@ public class ApiReplyController {
         if (dbArticle == null) throw new BadRequestException("There is no such article");
 
         reply.setArticleId(dbArticle.getId());
-        reply.setId(replyId.getAndAdd(1));
-
 
         log.debug("reply : {}", reply);
 
@@ -119,7 +119,6 @@ public class ApiReplyController {
         if (dbArticle == null) throw new BadRequestException("There is no such article");
 
         reply.setArticleId(dbArticle.getId());
-        reply.setId(replyId.getAndAdd(1));
 
         TravelerReply dbReply = travelerReplyRepository.save(reply);
         dbArticle.addReply(reply);

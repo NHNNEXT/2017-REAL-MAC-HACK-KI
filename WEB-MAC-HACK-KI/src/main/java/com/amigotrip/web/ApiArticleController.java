@@ -21,8 +21,6 @@ import java.util.concurrent.atomic.AtomicLong;
 @RequestMapping("/articles")
 public class ApiArticleController {
 
-    AtomicLong articleId = new AtomicLong(1);
-
     @Resource
     private UserRepository userRepository;
 
@@ -60,7 +58,6 @@ public class ApiArticleController {
         if (principal == null) throw new BadRequestException("Login first before writing an article.");
         User writer = userRepository.findByEmail(principal.getName());
 
-        article.setId(articleId.getAndAdd(1));
         article.setWriter(writer);
 
         return localsArticleRepository.save(article);
@@ -131,7 +128,6 @@ public class ApiArticleController {
         if (principal == null) throw new BadRequestException("Login first before writing an article");
         User writer = userRepository.findByEmail(principal.getName());
 
-        article.setId(articleId.getAndAdd(1));
         article.setWriter(writer);
 
         return travelerArticleRepository.save(article);

@@ -18,6 +18,7 @@ public class TravelerReply {
 
     @Id
     @Column(name = "traveler_reply_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @JoinColumn(name = "traveler_article_id")

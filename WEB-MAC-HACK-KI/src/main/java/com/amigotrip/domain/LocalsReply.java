@@ -18,6 +18,7 @@ public class LocalsReply {
 
     @Id
     @Column(name = "locals_reply_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @JoinColumn(name = "locals_article_id")
