@@ -7,6 +7,7 @@ import com.amigotrip.exception.BadRequestException;
 import com.amigotrip.repository.LocalsArticleRepository;
 import com.amigotrip.repository.PhotoRepository;
 import com.amigotrip.repository.UserRepository;
+import com.amigotrip.service.FileUploadService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpEntity;
@@ -29,8 +30,11 @@ import java.security.Principal;
  */
 @RestController
 @Slf4j
-@RequestMapping("/images")
+@RequestMapping("/photos")
 public class ApiPhotoController {
+
+    @Resource
+    FileUploadService fileUploadService;
 
     @Resource
     PhotoRepository photoRepository;
@@ -58,27 +62,16 @@ public class ApiPhotoController {
         dbArticle.addPhoto(dbPhoto);
         localsArticleRepository.save(dbArticle);
 
-        MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
-        ByteArrayResource contentsAsResource = new ByteArrayResource(uploadFile.getBytes());
-        map.add("file", contentsAsResource);
+        fileUploadService.fileUpload(uploadFile, dbPhoto.getPhotoId());
 
-        RestTemplate restTemplate = new RestTemplate();
-        String url = "http://node.amigotrip.co.kr/photos/" + dbPhoto.getPhotoId();
-        log.debug("node server url : {}", url);
-        HttpEntity<MultipartFile> request = new HttpEntity<>(uploadFile);
-        HttpStatus responseStatus = restTemplate.postForObject(url, request, HttpStatus.class);
-        log.debug("response status : {}", responseStatus);
         return new ResponseEntity<Photo>(
                 dbPhoto,
-                responseStatus
+                HttpStatus.OK
         );
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<byte[]> getPhoto(@PathVariable Long id) {
-        RestTemplate restTemplate = new RestTemplate();
-        byte[] photo = restTemplate.getForObject("http://node.amigotrip.co.kr/photos/" + id, byte[].class);
-
-        return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(photo);
+    public ResponseEntity<byte[]> getPhoto(@PathVariable Long id) throws IOException {
+        return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(fileUploadService.getPhoto(id));
     }
 }

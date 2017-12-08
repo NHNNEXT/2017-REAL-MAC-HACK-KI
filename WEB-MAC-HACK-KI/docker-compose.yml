@@ -23,5 +23,7 @@ services:
       MYSQL_DATABASE: amigobase
     volumes:
       - amigo-datavolume:/var/lib/mysql
+      - photo-datavolume:/photo-datavolume
 volumes:
   amigo-datavolume:
+  photo-datavolume:
