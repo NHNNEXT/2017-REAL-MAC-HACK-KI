@@ -41,7 +41,7 @@ public class User {
     private String gender;
 
     @Column(nullable = true)
-    private Integer age; // data.sql에서 이 값을 주지 않고 insert 하면 NULL not allowed for column "AGE" 라는 에러가 발생함
+    private Integer age;
 
     private String nationality;
 
@@ -63,7 +63,7 @@ public class User {
 
     @OneToMany
     @JoinColumn(name = "writer_id")
-    private Set<Photo> photos;
+    private Set<UserPhoto> userPhotos;
 
     @OneToMany
     @JoinColumn(name = "to_id")

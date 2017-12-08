@@ -1,6 +1,7 @@
 package com.amigotrip.repository;
 
 import com.amigotrip.domain.LocalsArticle;
+import com.amigotrip.domain.Photo;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

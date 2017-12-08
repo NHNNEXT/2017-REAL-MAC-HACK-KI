@@ -1,29 +1,28 @@
 package com.amigotrip.domain;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 /**
- * Created by NEXT on 2017. 11. 16..
+ * Created by NEXT on 2017. 12. 6..
  */
 @Entity
-@Slf4j
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Reply {
-
+public class LocalsReply {
 
     @Id
-    @Column
-    @Getter
-    @Setter
-    private Long id;
+    @Column(name = "locals_reply_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    @JoinColumn(name = "locals_article_id")
+    private long articleId;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -32,4 +31,8 @@ public class Reply {
     private String contents;
 
     private LocalDateTime createDate;
+
+    public void update(String contents) {
+        this.contents = contents;
+    }
 }

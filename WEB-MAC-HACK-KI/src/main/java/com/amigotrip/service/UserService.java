@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.security.Principal;
 
 /**
  * Created by Naver on 2017. 11. 26..
@@ -43,6 +44,11 @@ public class UserService {
 
     public boolean isDuplicatedEmail(String email) {
         return userRepository.findByEmail(email) != null;
+    }
+
+    public boolean isLogined(Principal principal) {
+        if (userRepository.findByEmail(principal.getName()) == null) return false;
+        return true;
     }
 
     public User signup(String email, String password, String name) {
