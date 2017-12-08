@@ -44,7 +44,7 @@ class ChooseLangActivity : AppCompatActivity() {
             autoCompleteTextView.setText("")
         }
 
-        btn_apply.setOnClickListener {
+        btn_sign_up.setOnClickListener {
             val intent = Intent()
             intent.putStringArrayListExtra("langs", selectedLangs)
             setResult(Activity.RESULT_OK, intent)

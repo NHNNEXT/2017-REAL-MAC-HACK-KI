@@ -1,0 +1,134 @@
+@font-face {
+    font-family: "sun-valley";
+    src: url("/fonts/SunValley.ttf") format("truetype");
+}
+
+.search-area {
+    display: inline-block;
+    width: 100%;
+}
+
+.search-city-input {
+    margin: 20px -128px 20px 23%;
+    height: 37px;
+    width: 50%;
+    background-image: url("/images/search-icon.png");
+    background-repeat: no-repeat;
+    background-position: 15px;
+    background-size: 20px;
+    border-radius: 2em;
+    text-indent: 55px;
+    font-size: 110%;
+    border: solid #8799E9 2px;
+    outline: none;
+    box-shadow: 0 0 4px 3px #CCC;
+}
+
+.search-city-input::-webkit-input-placeholder {
+    margin-top: -3px;
+    font-size: 20px;
+}
+
+.search-city-input:focus {
+    background-color: #FFFECE;
+}
+
+#search-button {
+    border: none;
+    font-size: 120%;
+    background-color: #8799E9;
+    border-radius: 2em;
+    color: #FFF;
+    padding: 10px 30px 10px 30px;
+    outline: none;
+}
+
+#search-button:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.illust-zone {
+    margin: 3%;
+    padding:0px;
+}
+
+.illust {
+    margin: 8px;
+    display: inline-block;
+    box-shadow: 0 5px 14.7px 1.3px rgba(6, 0, 1, 0.4);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    font-family: "sun-valley";
+    font-size: 65px;
+    -webkit-transition: all 0.3s ease-out;
+    float: left;
+}
+
+.illust:hover {
+    opacity: 0.8;
+    font-size: 85px;
+    margin-top: 4px;
+    cursor: pointer;
+    box-shadow: 0 5px 14.7px 4.3px rgba(6, 0, 1, 0.4);
+}
+
+h5.city-name {
+    font-weight: 100;
+}
+
+.city-name {
+ display: inline-block;
+}
+
+.illust.seoul {
+    background-image: url("/images/illust-seoul.png");
+    width: 340px;
+    height: 220px;
+}
+
+h5.city-name.seoul {
+    margin: 25% 0 0 25%;
+}
+
+.illust.jeonju {
+    background-image: url("/images/illust-jeonju.png");
+    width: 240px;
+    height: 300px;
+}
+
+h5.city-name.jeonju {
+    margin: 25% 0 0 30%;
+}
+
+.illust.suwon {
+    background-image: url("/images/illust-suwon.png");
+    width: 270px;
+    height: 270px;
+}
+
+h5.city-name.suwon {
+    margin: 20% 0 0 30%;
+}
+
+
+.illust.busan {
+    background-image: url("/images/illust-busan.png");
+    width: 340px;
+    height: 250px;
+}
+
+h5.city-name.busan {
+    margin: 15% 0 0 25%;
+}
+
+.illust.gyeongju {
+    background-image: url("/images/illust-gyeongju.png");
+    width: 270px;
+    height: 270px;
+}
+
+h5.city-name.gyeongju {
+    margin: 70% 0 0 10%;
+}
+

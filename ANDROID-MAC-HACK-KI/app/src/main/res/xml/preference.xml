@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <Preference
+        android:key="pref_new_article"
+        android:title="new Article" />
+
+    <PreferenceCategory
+        android:title="settings">
+
+        <SwitchPreference
+            android:id="@+id/pref_notification"
+            android:title="notification" />
+
+        <Preference
+            android:key="pref_logout"
+            android:title="logout"/>
+
+        <PreferenceScreen
+            android:key="pref_licence"
+            android:title="OpenSource Licence">
+
+            <SwitchPreference
+                android:title="switch" />
+            <Preference
+                android:title="Gson" />
+            <Preference
+                android:title="Retrofit2" />
+        </PreferenceScreen>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
