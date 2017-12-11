@@ -82,7 +82,7 @@ h5.city-name {
 }
 
 .illust.seoul {
-    background-image: url("/images/illust-seoul.png");
+    background-image: url("/images/illust/illust-seoul.png");
     width: 340px;
     height: 220px;
 }
@@ -92,7 +92,7 @@ h5.city-name.seoul {
 }
 
 .illust.jeonju {
-    background-image: url("/images/illust-jeonju.png");
+    background-image: url("/images/illust/illust-jeonju.png");
     width: 240px;
     height: 300px;
 }
@@ -102,7 +102,7 @@ h5.city-name.jeonju {
 }
 
 .illust.suwon {
-    background-image: url("/images/illust-suwon.png");
+    background-image: url("/images/illust/illust-suwon.png");
     width: 270px;
     height: 270px;
 }
@@ -113,7 +113,7 @@ h5.city-name.suwon {
 
 
 .illust.busan {
-    background-image: url("/images/illust-busan.png");
+    background-image: url("/images/illust/illust-busan.png");
     width: 340px;
     height: 250px;
 }
@@ -123,7 +123,7 @@ h5.city-name.busan {
 }
 
 .illust.gyeongju {
-    background-image: url("/images/illust-gyeongju.png");
+    background-image: url("/images/illust/illust-gyeongju.png");
     width: 270px;
     height: 270px;
 }
@@ -132,3 +132,45 @@ h5.city-name.gyeongju {
     margin: 70% 0 0 10%;
 }
 
+.about-area {
+    width: 100%;
+    height: 55%;
+    margin: 5% 0 0 0;
+    background-color: #F9F9F9;
+}
+
+.about-image {
+    width: 80%;
+    height: auto;
+    background-image: url("/images/about-amigo-nobg.png");
+    background-repeat: no-repeat;
+    margin: auto;
+    background-size: 100%;
+}
+
+.about-sketchbook {
+    margin: auto;
+    text-align: center;
+    padding: 30% 4% 3% 0;
+}
+
+h3.about-desc {
+    display: inline-block;
+    font-family: cursive;
+    font-size: 2.5vw;
+    margin-bottom: 0.6vw;
+}
+
+button.about-button {
+    height: 3.3vw;
+    border-radius: 1em;
+    font-size: 2vw;
+    padding: 0 2vw;
+
+}
+
+button.about-button:hover {
+    cursor: pointer;
+    background-color: #C9FF95;
+    box-shadow: 0 0 4px 3px #CCC;
+}
