@@ -3,10 +3,6 @@
     src: url("/fonts/SunValley.ttf") format("truetype");
 }
 
-html {
-    font-size: 100%;
-}
-
 .search-area {
     display: inline-block;
     width: 100%;
