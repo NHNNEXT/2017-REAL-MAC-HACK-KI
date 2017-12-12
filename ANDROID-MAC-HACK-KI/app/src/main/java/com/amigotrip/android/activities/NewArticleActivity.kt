@@ -29,14 +29,24 @@ class NewArticleActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "new post"
 
+        setPhotoList()
+
+        tv_add_photo.setOnClickListener { view -> pickPhoto() }
+
+    }
+
+    private fun pickPhoto() {
+
+    }
+
+    private fun setPhotoList() {
         val adapter = PickedPhotosAdapter()
         adapter.addPhoto(Photo("www.hello"))
         val li = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         list_photos.layoutManager = li
         list_photos.adapter = adapter
+
     }
-
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.new_article, menu)
         return true
