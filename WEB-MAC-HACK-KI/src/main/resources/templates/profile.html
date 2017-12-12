@@ -17,10 +17,14 @@
     </div>
 <script>
     function activatePlacesSearch() {
+        var options = {
+            types: ['(cities)'],
+            componentRestrictions: {'country': 'kr'}
+        };
         var input = document.getElementById('search_term');
-        var autocomplete = new google.maps.places.Autocomplete(input);
+        var autocomplete = new google.maps.places.Autocomplete(input, options);
     }
 </script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7YyhbcRztHC-J6IiocCG6HE07JnmiGmE&libraries=places&callback=activatePlacesSearch"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7YyhbcRztHC-J6IiocCG6HE07JnmiGmE&libraries=places&language=en&callback=activatePlacesSearch"></script>
 </body>
 </html>
