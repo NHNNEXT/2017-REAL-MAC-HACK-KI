@@ -53,5 +53,9 @@ public class HomeController {
         return userService.confirmUserByUserId(userId, key);
     }
 
+    @GetMapping("/profile")
+    public String profile() {
+        return "/profile";
+    }
 }
 

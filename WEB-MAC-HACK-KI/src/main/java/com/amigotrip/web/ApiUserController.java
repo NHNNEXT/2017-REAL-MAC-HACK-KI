@@ -57,4 +57,9 @@ public class ApiUserController {
         return new ResponseEntity<User>(userService.login(body.get("email"), body.get("password"), httpSession),
                 HttpStatus.OK);
     }
+
+    @GetMapping("")
+    public boolean checkSignUp(String email) {
+        return userService.isSignedUp(email);
+    }
 }
