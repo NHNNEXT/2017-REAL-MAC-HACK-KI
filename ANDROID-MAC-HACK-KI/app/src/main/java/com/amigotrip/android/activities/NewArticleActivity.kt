@@ -2,11 +2,14 @@ package com.amigotrip.android.activities
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
-import com.amigotrip.android.UserInfoManager
+import com.amigotrip.android.adpaters.PickedPhotosAdapter
 import com.amigotrip.android.datas.ApiResult
 import com.amigotrip.android.datas.Article
+import com.amigotrip.android.datas.Photo
+import com.amigotrip.android.extentions.string
 import com.amigotrip.android.remote.AmigoService
 import com.amigotrip.anroid.R
 import kotlinx.android.synthetic.main.activity_new_article.*
@@ -25,6 +28,12 @@ class NewArticleActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "new post"
+
+        val adapter = PickedPhotosAdapter()
+        adapter.addPhoto(Photo("www.hello"))
+        val li = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        list_photos.layoutManager = li
+        list_photos.adapter = adapter
     }
 
 
@@ -47,17 +56,16 @@ class NewArticleActivity : AppCompatActivity() {
 
     private fun postNewArticle() {
 
-        val user = UserInfoManager.getLogineduser()
-
-        user.profileImg = null
+        val content = input_content.string
+        val location = input_location.string
 
         val article =
-                Article(contents = "hello world",
+                Article(contents = content,
                         id = null,
                         createDate = null,
-                        location = "korea",
+                        location = location,
                         photos = null,
-                        writer = user)
+                        writer = null)
 
 
         val amigoService = AmigoService.getService(AmigoService::class.java, this)

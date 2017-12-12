@@ -59,7 +59,7 @@ class LocalListFragment : Fragment(), LocalListAdapter.OnLocalListItemClickListe
     //writer 가 오게 한다면 ?
     override fun onLocalItemClick(view: View?, article: Article) {
         val intent = Intent(context, DetailActivity::class.java)
-        intent.putExtra("email", article.writer.email)
+        intent.putExtra("email", article.writer!!.email)
         startActivity(intent)
     }
 

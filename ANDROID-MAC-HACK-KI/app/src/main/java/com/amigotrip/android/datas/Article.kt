@@ -9,6 +9,6 @@ data class Article (
         var id: Int?,
         var location: String,
         var photos: List<Photo>?,
-        var writer: User
+        var writer: User?
 ) {
 }
