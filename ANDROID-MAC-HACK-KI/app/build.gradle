@@ -68,6 +68,11 @@ dependencies {
     // OkHttp
     implementation 'com.squareup.okhttp3:okhttp:3.8.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+    implementation 'com.squareup.okhttp3:okhttp-urlconnection:3.0.0-RC1'
+
+
+    // cookie handle
+    implementation 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
 
     implementation 'com.squareup.picasso:picasso:2.5.2'
 

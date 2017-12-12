@@ -24,7 +24,7 @@ import retrofit2.Response
  */
 class LocalListFragment : Fragment(), LocalListAdapter.OnLocalListItemClickListener{
 
-    private val amigoService = AmigoService.getService(AmigoService::class.java)
+    private lateinit var amigoService: AmigoService
 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -38,7 +38,7 @@ class LocalListFragment : Fragment(), LocalListAdapter.OnLocalListItemClickListe
         val localsAdapter = LocalListAdapter()
         localsAdapter.setOnLocalItemClickListener(this)
         recycler_locals.adapter = localsAdapter
-
+        amigoService = AmigoService.getService(AmigoService::class.java, context)
         val call = amigoService.getArticles()
         call.enqueue(object : Callback<List<Article>>{
             override fun onResponse(call: Call<List<Article>>?, response: Response<List<Article>>) {

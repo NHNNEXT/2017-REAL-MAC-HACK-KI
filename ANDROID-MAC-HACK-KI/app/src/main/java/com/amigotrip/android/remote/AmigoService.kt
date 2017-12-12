@@ -1,16 +1,21 @@
 package com.amigotrip.android.remote
 
+import android.content.Context
+import com.amigotrip.android.cookie.PersistentCookieStore
 import com.amigotrip.android.datas.ApiResult
 import com.amigotrip.android.datas.Article
 import com.amigotrip.android.datas.Party
 import com.amigotrip.android.datas.User
 import com.amigotrip.anroid.BuildConfig
 import okhttp3.OkHttpClient
+import okhttp3.internal.JavaNetCookieJar
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
+import java.net.CookieManager
+import java.net.CookiePolicy
 
 /**
  * Created by Zimincom on 2017. 10. 19..
@@ -51,24 +56,28 @@ interface AmigoService {
 
 
 
-        fun getService(java: Class<AmigoService>): AmigoService {
+        fun getService(java: Class<AmigoService>, context: Context): AmigoService {
 
             val retrofit =
                     Retrofit.Builder()
                             .baseUrl(baseUrl)
                             .addConverterFactory(GsonConverterFactory.create())
-                            .client(createOkHttpClient())
+                            .client(createOkHttpClient(context))
                             .build()
 
             return retrofit.create(java)
         }
 
-        private fun createOkHttpClient(): OkHttpClient {
+        private fun createOkHttpClient(context: Context): OkHttpClient {
             val builder = OkHttpClient.Builder()
             val interceptor = HttpLoggingInterceptor()
+            val cookieStore = PersistentCookieStore(context)
+            val cookieManager = CookieManager(cookieStore, CookiePolicy.ACCEPT_ALL)
+            val cookieJar = JavaNetCookieJar(cookieManager)
 
             interceptor.level = HttpLoggingInterceptor.Level.BODY
             builder.addInterceptor(interceptor)
+                    .cookieJar(cookieJar)
 
             return builder.build()
         }

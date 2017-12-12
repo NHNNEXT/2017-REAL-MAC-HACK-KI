@@ -39,7 +39,7 @@ class NewArticleActivity : AppCompatActivity() {
 
         when(id) {
             R.id.menu_post -> postNewArticle()
-            R.id.home -> finish()
+            android.R.id.home -> finish()
         }
 
         return true
@@ -60,7 +60,7 @@ class NewArticleActivity : AppCompatActivity() {
                         writer = user)
 
 
-        val amigoService = AmigoService.getService(AmigoService::class.java)
+        val amigoService = AmigoService.getService(AmigoService::class.java, this)
 
         val call = amigoService.postArticle(article)
 
