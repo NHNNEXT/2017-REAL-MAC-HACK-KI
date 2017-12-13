@@ -1,13 +1,32 @@
+article {
+    margin: 90px 0 0 0;
+}
+
 header {
+    margin: -90px 0 0 0;
     display: inline-block;
     height: 90px;
-    width: 95%;
+    width: 100%;
     line-height: 90px;
+    position: fixed;
+    z-index: 1;
+    background-color: #FFF;
+}
+
+header.show-underline {
+    border-bottom: solid;
+    border-color: #DDD;
+    border-width: 1px;
+}
+
+.main-link {
+    display: inline-block;
+    height: 80%;
+    margin-left: 2%;
 }
 
 .main-logo {
-    height: 80%;
-    margin-left: 2%;
+    height: 100%;
 }
 
 .user-option {
@@ -28,3 +47,53 @@ header {
     color: #000;
     cursor: pointer;
 }
+
+.header-search-city-input {
+    display: none;
+    vertical-align: top;
+    margin: 1% 0 0 3%;
+    height: 60%;
+    width: 40%;
+    box-shadow: 0.1px 1.3px 0.1px 0.5px #d9d9d9;
+    background-image: url("/images/search-icon-header.png");
+    background-repeat: no-repeat;
+    background-position: 15px;
+    background-size: 5%;
+    text-indent: 15%;
+    border: solid;
+    border-color: #DDD;
+    border-width: 0.017px;
+    font-size: 150%;
+    outline: none;
+    -webkit-transition: width 0.4s ease-in-out;
+}
+
+.header-search-city-input.is-visible {
+    display: inline-block;
+}
+
+.header-search-city-input::-webkit-input-placeholder {
+    color: #DDD;
+}
+
+.header-search-city-input::-moz-placeholder {
+    color: #DDD;
+}
+
+.header-search-city-input:-moz-placeholder {
+    color: #DDD;
+}
+
+.header-search-city-input:-ms-input-placeholder {
+    color: #DDD;
+}
+
+.header-search-city-input::placeholder {
+    color: #DDD;
+}
+
+.header-search-city-input:focus {
+    background-color: #FFFECE;
+}
+
+
