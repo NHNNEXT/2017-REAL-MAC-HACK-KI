@@ -25,7 +25,7 @@ class SignInActivity : AppCompatActivity() {
     private val database = FirebaseDatabase.getInstance()
     private val userRef = database.getReference("users")
 
-    val amigoService = AmigoService.getService(AmigoService::class.java)
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,6 +45,7 @@ class SignInActivity : AppCompatActivity() {
 
         val user = User(email = email, password = password)
 
+        val amigoService = AmigoService.getService(AmigoService::class.java, this)
         val call = amigoService.loginUser(user)
 
         call.enqueue(object : Callback<User> {

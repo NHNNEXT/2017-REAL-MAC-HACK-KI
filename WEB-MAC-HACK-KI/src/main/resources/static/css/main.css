@@ -21,7 +21,7 @@
     font-size: 110%;
     border: solid #8799E9 2px;
     outline: none;
-    box-shadow: 0 0 4px 3px #CCC;
+    box-shadow: 0.1px 1.3px 0.1px 0.5px #d9d9d9;
 }
 
 .search-city-input::-webkit-input-placeholder {
@@ -56,21 +56,25 @@
 .illust {
     margin: 8px;
     display: inline-block;
-    box-shadow: 0 5px 14.7px 1.3px rgba(6, 0, 1, 0.4);
+    box-shadow: 0.1px 1.3px 0.1px 0.5px #d9d9d9;
     background-size: 100%;
     background-repeat: no-repeat;
     font-family: "sun-valley";
     font-size: 65px;
     -webkit-transition: all 0.3s ease-out;
     float: left;
+    border: solid;
+    border-width: 1px;
+    border-color: #FFF;
 }
 
 .illust:hover {
     opacity: 0.8;
     font-size: 85px;
-    margin-top: 4px;
+    margin: 4px 8px 12px 8px;
     cursor: pointer;
-    box-shadow: 0 5px 14.7px 4.3px rgba(6, 0, 1, 0.4);
+    border-color: #DDD;
+    box-shadow: 0.1px 1.3px 1px 0.5px #d9d9d9;
 }
 
 h5.city-name {
@@ -172,5 +176,5 @@ button.about-button {
 button.about-button:hover {
     cursor: pointer;
     background-color: #C9FF95;
-    box-shadow: 0 0 4px 3px #CCC;
+    box-shadow: 0.1px 1.3px 0.1px 0.5px #d9d9d9;
 }

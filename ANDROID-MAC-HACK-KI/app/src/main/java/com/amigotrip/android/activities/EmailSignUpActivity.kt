@@ -23,11 +23,13 @@ import java.util.regex.Pattern
 
 class EmailSignUpActivity : AppCompatActivity() {
 
-    private val amigoService = AmigoService.getService(AmigoService::class.java)
+    lateinit var amigoService: AmigoService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_email_sign_up)
+
+        amigoService = AmigoService.getService(AmigoService::class.java, this)
 
         btn_sign_in.setOnClickListener {
 
@@ -57,6 +59,8 @@ class EmailSignUpActivity : AppCompatActivity() {
      * @author zimin
      */
     private fun requestNewUser(user: User) {
+
+
 
         val call = amigoService.addUser(user)
 

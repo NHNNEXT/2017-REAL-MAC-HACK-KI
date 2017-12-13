@@ -1,5 +1,6 @@
 package com.amigotrip.android.adpaters
 
+import android.net.Uri
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +19,7 @@ class TravelerListAdapter : RecyclerView.Adapter<TravelerListAdapter.ViewHolder>
 
     init {
         travelerArticleList.add(Article( "hello world!","2017.7.12",
-                11, "korea:", listOf(Photo("temp")), UserInfoManager.getLogineduser()))
+                11, "korea:", listOf(Photo(Uri.EMPTY)), UserInfoManager.getLogineduser()))
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {

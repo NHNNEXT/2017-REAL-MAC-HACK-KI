@@ -38,7 +38,6 @@
         <activity android:name="com.amigotrip.android.activities.NewArticleActivity" />
         <activity android:name="com.amigotrip.android.activities.NewPartyActivity" />
         <activity android:name="com.amigotrip.android.activities.WelcomeActivity" />
-        <activity android:name="com.amigotrip.android.activities.PartiesActivity" />
         <activity android:name="com.amigotrip.android.activities.SearchActivity" />
         <activity android:name="com.amigotrip.android.activities.ProfileActivity" />
         <activity android:name="com.amigotrip.android.activities.MessagesActivity" />

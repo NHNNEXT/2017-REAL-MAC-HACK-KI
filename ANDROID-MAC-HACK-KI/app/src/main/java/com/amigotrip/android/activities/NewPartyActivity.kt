@@ -37,7 +37,7 @@ class NewPartyActivity : AppCompatActivity(),
     }
 
     val amigoService: AmigoService by lazy {
-        AmigoService.getService(AmigoService::class.java)
+        AmigoService.getService(AmigoService::class.java, this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

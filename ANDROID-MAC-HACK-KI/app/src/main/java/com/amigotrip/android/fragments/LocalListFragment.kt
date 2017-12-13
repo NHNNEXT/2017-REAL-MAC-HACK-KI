@@ -24,7 +24,7 @@ import retrofit2.Response
  */
 class LocalListFragment : Fragment(), LocalListAdapter.OnLocalListItemClickListener{
 
-    private val amigoService = AmigoService.getService(AmigoService::class.java)
+    private lateinit var amigoService: AmigoService
 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -38,13 +38,13 @@ class LocalListFragment : Fragment(), LocalListAdapter.OnLocalListItemClickListe
         val localsAdapter = LocalListAdapter()
         localsAdapter.setOnLocalItemClickListener(this)
         recycler_locals.adapter = localsAdapter
-
+        amigoService = AmigoService.getService(AmigoService::class.java, context)
         val call = amigoService.getArticles()
         call.enqueue(object : Callback<List<Article>>{
             override fun onResponse(call: Call<List<Article>>?, response: Response<List<Article>>) {
-                val articles = response.body()
+                val articles = response.body() ?: return
 
-                localsAdapter.addAll(articles!!)
+                localsAdapter.addAll(articles)
 
             }
 
@@ -59,7 +59,7 @@ class LocalListFragment : Fragment(), LocalListAdapter.OnLocalListItemClickListe
     //writer 가 오게 한다면 ?
     override fun onLocalItemClick(view: View?, article: Article) {
         val intent = Intent(context, DetailActivity::class.java)
-        intent.putExtra("email", article.writer.email)
+        intent.putExtra("email", article.writer!!.email)
         startActivity(intent)
     }
 
