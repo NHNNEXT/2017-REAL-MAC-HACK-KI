@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import com.amigotrip.android.adpaters.PickedPhotosAdapter
 import com.amigotrip.android.datas.Article
 import com.amigotrip.android.datas.Photo
@@ -49,7 +50,7 @@ class NewArticleActivity : AppCompatActivity() {
 
         setPhotoList()
 
-        tv_add_photo.setOnClickListener { view -> pickPhoto() }
+        tv_add_photo.setOnClickListener { pickPhoto() }
 
     }
 
@@ -124,6 +125,9 @@ class NewArticleActivity : AppCompatActivity() {
                         pickedUri -> uploadPicture(pickedUri, id!!)
                     }
 
+                    finish()
+                    Toast.makeText(this@NewArticleActivity, "upload article", Toast
+                            .LENGTH_SHORT).show()
                 }
             }
 
