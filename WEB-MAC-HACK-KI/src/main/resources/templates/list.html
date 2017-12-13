@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
+    <title>Amigo List</title>
+    <link rel="stylesheet" href="/css/list.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+</head>
+<body>
+    {{> include/header}}
+    <article class="list-page">
+        <div class="filter-zone">
+            <ul class="subject-filter">
+                <li class="subject-locals is-checked">Locals</li>
+                <li class="subject-traveler">Traveler</li>
+            </ul>
+            <ul class="theme-filter">
+                <li class="theme-art-and-culture">Art & Culture</li>
+                <li class="theme-nature">Nature</li>
+                <li class="theme-healing">Healing</li>
+                <li class="theme-food-and-drink">Food & Drink</li>
+                <li class="theme-sports">Sports</li>
+                <li class="theme-music">Music</li>
+                <li class="theme-nightlife">Nightlife</li>
+                <li class="theme-concert">Concert</li>
+            </ul>
+        </div>
+
+        <div class="article-list locals is-visible">
+            <ul class="local-list">
+                <li class="local-article">
+                    <img class="local-article-photo" src="/images/sample3.jpeg">
+                    <div class="profile">
+                        <div class="profile-image"></div>
+                        <p class="profile-name">Hey Hey</p>
+                    </div>
+                    <h5 class="article-title">Ando's in Jeju</h5>
+                    <p class="location">Jeju</p>
+                    <ul class="article-themes">
+                        <li class="article-theme">Architecture</li>
+                        <li class="article-theme">Food</li>
+                    </ul>
+                </li>
+                <li class="local-article">
+                    <img class="local-article-photo" src="/images/sample2.jpeg">
+                    <div class="profile">
+                        <div class="profile-image"></div>
+                        <p class="profile-name">Hey Hey</p>
+                    </div>
+                    <h5 class="article-title">Ando's in Jeju</h5>
+                    <p class="location">Jeju</p>
+                    <ul class="article-themes">
+                        <li class="article-theme">Architecture</li>
+                        <li class="article-theme">Food</li>
+                    </ul>
+                </li>
+                <li class="local-article">
+                    <img class="local-article-photo" src="/images/sample1.jpeg">
+                    <div class="profile">
+                        <div class="profile-image"></div>
+                        <p class="profile-name">Hey Hey</p>
+                    </div>
+                    <h5 class="article-title">Ando's in Jeju</h5>
+                    <p class="location">Jeju</p>
+                    <ul class="article-themes">
+                        <li class="article-theme">Architecture</li>
+                        <li class="article-theme">Food</li>
+                    </ul>
+                </li>
+                <li class="local-article">
+                    <img class="local-article-photo" src="/images/sample2.jpeg">
+                    <div class="profile">
+                        <div class="profile-image"></div>
+                        <p class="profile-name">Hey Hey</p>
+                    </div>
+                    <h5 class="article-title">Ando's in Jeju</h5>
+                    <p class="location">Jeju</p>
+                    <ul class="article-themes">
+                        <li class="article-theme">Architecture</li>
+                        <li class="article-theme">Food</li>
+                    </ul>
+                </li>
+                <li class="local-article">
+                    <img class="local-article-photo" src="/images/sample3.jpeg">
+                    <div class="profile">
+                        <div class="profile-image"></div>
+                        <p class="profile-name">Hey Hey</p>
+                    </div>
+                    <h5 class="article-title">Ando's in Jeju</h5>
+                    <p class="location">Jeju</p>
+                    <ul class="article-themes">
+                        <li class="article-theme">Architecture</li>
+                        <li class="article-theme">Food</li>
+                    </ul>
+                </li>
+                <li class="local-article">
+                    <img class="local-article-photo" src="/images/sample3.jpeg">
+                    <div class="profile">
+                        <div class="profile-image"></div>
+                        <p class="profile-name">Hey Hey</p>
+                    </div>
+                    <h5 class="article-title">Ando's in Jeju</h5>
+                    <p class="location">Jeju</p>
+                    <ul class="article-themes">
+                        <li class="article-theme">Architecture</li>
+                        <li class="article-theme">Food</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="article-list traveler">
+            Traveler List
+        </div>
+        <div>
+            <p>  </p>
+        </div>
+    </article>
+    {{> include/footer}}
+    <script src="/js/listFilter.js"></script>
+    <script src="/js/header.js"></script>
+</body>
+</html>

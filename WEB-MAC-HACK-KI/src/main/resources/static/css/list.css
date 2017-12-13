@@ -1,0 +1,149 @@
+article {
+    height: 200%;
+}
+
+li {
+    list-style: none;
+}
+
+.filter-zone {
+    margin: 2% 10% 0 10%;
+}
+
+.filter-zone li {
+    display: inline-block;
+    list-style: none;
+    border: solid;
+    border-radius: 10px;
+    border-color: #DDD;
+    border-width: 1.2px;
+    color: #DDD;
+    text-align: center;
+}
+
+.filter-zone li:hover {
+    box-shadow: 0.1px 1.3px 0.1px 0.5px #d9d9d9;
+    cursor: pointer;
+    color: #8799E9;
+}
+
+.theme-filter li:hover {
+    border-bottom: solid;
+    border-color: #DDD;
+    border-width: 1px;
+    box-shadow: 0.1px 1.3px 0.1px 0.5px #d9d9d9;
+}
+
+.subject-filter li {
+    font-size: 2vw;
+    width: 9vw;
+    font-weight: 500;
+}
+
+.filter-zone .is-checked {
+    color: #8799E9;
+    box-shadow: 0.1px 1.3px 0.1px 0.5px #d9d9d9;
+}
+
+.theme-filter .is-checked {
+    box-shadow: 0.1px 1.3px 0.1px 0.5px #d9d9d9;
+}
+
+.theme-filter li {
+    padding: 0 1% 0 1%;
+}
+
+.article-list {
+    width: 80%;
+    display: none;
+}
+
+.article-list.is-visible {
+    display: inline-block;
+}
+
+.local-list {
+    width: 100%;
+}
+
+li.local-article {
+    margin: 2vw 0.5vw 2vw 0.5vw;
+    display: inline-block;
+    width: 30%;
+    padding: 0 0 2vw 0;
+    border: solid;
+    border-width: 1px;
+    border-color: #FFF;
+    float: left;
+    box-shadow: 0.1px 1.3px 0.1px 0.5px #FFF;
+}
+
+li.local-article:hover {
+    margin: 1.5vw 0.5vw 2.5vw 0.5vw;
+    cursor: pointer;
+    border-color: #DDD;
+    box-shadow: 0.1px 1.3px 0.1px 0.5px #d9d9d9;
+}
+
+.local-article-photo {
+    width: 100%;
+}
+
+.article-list {
+    margin: 3% 11% 0 11%;
+}
+
+div.profile {
+    width: 30%;
+    display: inline-block;
+    margin: 0 0 0 1vw;
+    text-align: center;
+}
+
+p.profile-name {
+    margin: 0;
+    display: inline-block;
+    font-weight: 900;
+}
+
+.profile-image {
+    background-image: url("/images/sample-man.jpeg");
+    background-position: center;
+    width: 3.5vw;
+    height: 3.5vw;
+    border-radius: 50%;
+    z-index: 1;
+    display: inline-block;
+    margin: -3.5vw 0 0 0;
+    border: solid;
+    border-color: #8799E9;
+}
+
+h5.article-title {
+    margin: 1vw 1vw 0 0;
+    font-size: 23px;
+    text-align: right;
+    float: right;
+}
+
+p.location {
+    margin: 0.3vw 1vw -0.2vw 0;
+    color: #BBB;
+    text-align: right;
+}
+
+ul.article-themes {
+    margin: 1vw 1vw 0 0;
+    text-align: right;
+}
+
+li.article-theme {
+    display: inline-block;
+    border: solid;
+    border-radius: 10px;
+    border-color: #8799E9;
+    border-width: 1.2px;
+    color: #8799E9;
+    text-align: center;
+    padding: 0 1% 0 1%;
+}

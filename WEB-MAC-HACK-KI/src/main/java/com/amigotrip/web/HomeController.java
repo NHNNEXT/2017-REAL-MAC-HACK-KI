@@ -32,15 +32,14 @@ public class HomeController {
     public UserService userService;
 
     @GetMapping("/")
-    public String home(Principal principal) {
-        log.debug("principal: {}", principal);
-        return "guestForm";
-    }
-
-    @GetMapping("/test")
-    public String test(Principal principal) {
+    public String main(Principal principal) {
         log.debug("principal: {}", principal);
         return "index";
+    }
+
+    @GetMapping("/list")
+    public String list(Principal principal) {
+        return "list";
     }
 
     @GetMapping("/loginForm")
