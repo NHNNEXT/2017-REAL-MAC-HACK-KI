@@ -28,3 +28,28 @@ header {
     color: #000;
     cursor: pointer;
 }
+
+#sign_in_modal, #sign_up_modal {
+    top: 25%;
+    left: 20%;
+    margin: 6%;
+    width: 40%;
+    padding: 1%;
+    display: none;
+    background: #FFF;
+    position: fixed;
+    z-index: 10000;
+    background: #FFF;
+}
+
+#dimmer {
+    background: #000;
+    opacity: 0.5;
+    position: absolute; /* important to use fixed, not absolute */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    z-index: 9999; /* may not be necessary */
+}

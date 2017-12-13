@@ -6,4 +6,37 @@
         <button class="session-info login-button">Login</button>
         <button class="session-info signup-button">Signup</button>
     </div>
+
+    <div id="dimmer"></div>
+
+    <div class="my_modal" id="sign_in_modal">
+        <form action="/users/login" id="userLogin" method="post">
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-control" id="user_email" name="email" placeholder="your@email.com" autofocus>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" id="user_password" placeholder="password">
+            </div>
+            <button type="submit" class="btn btn-default" id="sign_in_btn">Sign in</button>
+        </form>
+    </div>
+
+    <div class="my_modal" id="sign_up_modal">
+        <form action="/users" id="roomInfo" method="post">
+            <div class="form-group">
+                <label>방제목</label>
+                <input type="text" class="form-control" id="room_title" name="title" placeholder="방제목" autofocus>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <div class="secrete-room-check">
+                <label> <input type="checkbox">비밀방</label>
+            </div>
+            <button type="submit" class="btn btn-default" id="make_done">방만들기</button>
+        </form>
+    </div>
 </header>
