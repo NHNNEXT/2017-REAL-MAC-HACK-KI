@@ -15,4 +15,5 @@ class AmigoApplication : Application(){
         Timber.plant(Timber.DebugTree())
         Fresco.initialize(this)
     }
+
 }
