@@ -62,7 +62,7 @@ interface AmigoService {
     companion object {
 
         private val baseUrl =  if (BuildConfig.DEBUG) {
-            "http://dev.amigotrip.co.kr"
+            "http://www.amigotrip.co.kr"
         } else {
             "http://www.amigotrip.co.kr"
         }

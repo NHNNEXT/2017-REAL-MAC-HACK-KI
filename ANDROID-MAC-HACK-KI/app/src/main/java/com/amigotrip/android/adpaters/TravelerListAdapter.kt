@@ -1,13 +1,10 @@
 package com.amigotrip.android.adpaters
 
-import android.net.Uri
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.amigotrip.android.UserInfoManager
 import com.amigotrip.android.datas.Article
-import com.amigotrip.android.datas.Photo
 import com.amigotrip.anroid.R
 
 /**
@@ -18,8 +15,8 @@ class TravelerListAdapter : RecyclerView.Adapter<TravelerListAdapter.ViewHolder>
     private val travelerArticleList = arrayListOf<Article>()
 
     init {
-        travelerArticleList.add(Article( "hello world!","2017.7.12",
-                11, "korea:", listOf(Photo(Uri.EMPTY)), UserInfoManager.getLogineduser()))
+//        travelerArticleList.add(Article( "hello world!","2017.7.12",
+//                11, "korea:", listOf(Photo()), UserInfoManager.getLogineduser()))
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {

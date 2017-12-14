@@ -24,13 +24,14 @@ class SignInActivity : AppCompatActivity() {
 
     private val database = FirebaseDatabase.getInstance()
     private val userRef = database.getReference("users")
-
-
+    lateinit var amigoService : AmigoService
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
+
+//        amigoService = AmigoApplication.amigoService
 
         btn_sign_in.setOnClickListener { signInUser() }
     }
