@@ -20,15 +20,6 @@ import java.security.Principal;
 @Slf4j
 public class HomeController {
     @Resource
-    public AmigoMailSender amigoMailSender;
-
-    @Resource
-    public BCryptPasswordEncoder passwordEncoder;
-
-    @Resource
-    public UserRepository userRepository;
-
-    @Resource
     public UserService userService;
 
     @GetMapping("/")
@@ -47,10 +38,9 @@ public class HomeController {
         return "/loginForm";
     }
 
-    @GetMapping("/users/{userId}/emailConfirm/{key}")
-    public String mail(@PathVariable long userId, @PathVariable String key) {
-        return userService.confirmUserByUserId(userId, key);
+    @GetMapping("/test")
+    public String test() {
+        return "confirmed";
     }
-
 }
 
