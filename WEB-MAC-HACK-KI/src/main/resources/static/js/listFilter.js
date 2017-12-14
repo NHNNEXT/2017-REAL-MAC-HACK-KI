@@ -37,7 +37,6 @@ class ListFilter {
       e.target.classList.add('is-checked');
       this.themes.push(e.target.innerText);
     }
-    console.log(this.themes);
   }
 }
 
