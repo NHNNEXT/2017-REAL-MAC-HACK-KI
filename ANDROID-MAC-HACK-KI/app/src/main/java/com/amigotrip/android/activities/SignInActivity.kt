@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import com.amigotrip.android.AmigoApplication
 import com.amigotrip.android.UserInfoManager
 import com.amigotrip.android.datas.User
 import com.amigotrip.android.extentions.string
@@ -31,7 +32,7 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
 
-//        amigoService = AmigoApplication.amigoService
+        amigoService = AmigoApplication.amigoService
 
         btn_sign_in.setOnClickListener { signInUser() }
     }
@@ -46,7 +47,7 @@ class SignInActivity : AppCompatActivity() {
 
         val user = User(email = email, password = password)
 
-        val amigoService = AmigoService.getService(AmigoService::class.java, this)
+//        val amigoService = AmigoService.getService(AmigoService::class.java, this)
         val call = amigoService.loginUser(user)
 
         call.enqueue(object : Callback<User> {

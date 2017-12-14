@@ -7,8 +7,8 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.amigotrip.android.AmigoApplication
 import com.amigotrip.android.activities.DetailActivity
-import com.amigotrip.android.activities.NewPartyActivity
 import com.amigotrip.android.adpaters.LocalListAdapter
 import com.amigotrip.android.datas.Article
 import com.amigotrip.android.remote.AmigoService
@@ -27,6 +27,7 @@ class LocalListFragment : Fragment(), LocalListAdapter.OnLocalListItemClickListe
 
     @Inject
     lateinit var amigoService: AmigoService
+    lateinit var localsAdapter: LocalListAdapter
 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -37,26 +38,27 @@ class LocalListFragment : Fragment(), LocalListAdapter.OnLocalListItemClickListe
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val localsAdapter = LocalListAdapter()
-        localsAdapter.setOnLocalItemClickListener(this)
-        recycler_locals.adapter = localsAdapter
-        amigoService = AmigoService.getService(AmigoService::class.java, context)
-//        amigoService = AmigoApplication.amigoService
+        initList()
+
+        amigoService = AmigoApplication.amigoService
+
         val call = amigoService.getArticles()
         call.enqueue(object : Callback<List<Article>>{
             override fun onResponse(call: Call<List<Article>>?, response: Response<List<Article>>) {
                 val articles = response.body() ?: return
-
                 localsAdapter.addAll(articles)
-
-
             }
 
             override fun onFailure(call: Call<List<Article>>?, t: Throwable?) {
                 t?.printStackTrace()
             }
         })
+    }
 
+    private fun initList() {
+        localsAdapter = LocalListAdapter()
+        localsAdapter.setOnLocalItemClickListener(this)
+        recycler_locals.adapter = localsAdapter
     }
 
 
@@ -64,11 +66,8 @@ class LocalListFragment : Fragment(), LocalListAdapter.OnLocalListItemClickListe
     override fun onLocalItemClick(view: View?, article: Article) {
         val intent = Intent(context, DetailActivity::class.java)
         intent.putExtra("email", article.writer!!.email)
+        intent.putExtra("articleId", article.id)
         startActivity(intent)
-    }
-
-    private fun writeNewPost() {
-        startActivity(Intent(activity, NewPartyActivity::class.java))
     }
 
 }

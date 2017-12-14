@@ -10,5 +10,4 @@ data class Article (
         var location: String,
         var photos: List<PhotoResult>?,
         var writer: User?
-) {
-}
+)

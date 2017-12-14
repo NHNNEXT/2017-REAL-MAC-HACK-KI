@@ -25,7 +25,7 @@ import javax.inject.Singleton
 class NetworkModule {
 
     private val baseUrl = if (BuildConfig.DEBUG) {
-        "http://dev.amigotrip.co.kr"
+        "http://www.amigotrip.co.kr"
     } else {
         "http://www.amigotrip.co.kr"
     }
