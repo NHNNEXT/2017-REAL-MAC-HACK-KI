@@ -47,14 +47,15 @@ class SignInActivity : AppCompatActivity() {
 
         val user = User(email = email, password = password)
 
-//        val amigoService = AmigoService.getService(AmigoService::class.java, this)
         val call = amigoService.loginUser(user)
 
         call.enqueue(object : Callback<User> {
             override fun onResponse(call: Call<User>?, response: Response<User>) {
                 if (response.isSuccessful) {
 
-                    UserInfoManager.setUserInfo(response.body())
+                    val responseUser = response.body()
+                    responseUser?.password = user.password
+                    UserInfoManager.setUserInfo(responseUser)
                     val intent = Intent(this@SignInActivity,
                             MainActivity::class.java)
 

@@ -13,11 +13,11 @@ import com.amigotrip.android.adpaters.LocalListAdapter
 import com.amigotrip.android.datas.Article
 import com.amigotrip.android.remote.AmigoService
 import com.amigotrip.anroid.R
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.observers.DisposableObserver
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_local_list.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import javax.inject.Inject
 
 
 /**
@@ -25,10 +25,9 @@ import javax.inject.Inject
  */
 class LocalListFragment : Fragment(), LocalListAdapter.OnLocalListItemClickListener{
 
-    @Inject
     lateinit var amigoService: AmigoService
     lateinit var localsAdapter: LocalListAdapter
-
+    lateinit var compositeDisposable: CompositeDisposable
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -40,19 +39,27 @@ class LocalListFragment : Fragment(), LocalListAdapter.OnLocalListItemClickListe
 
         initList()
 
-        amigoService = AmigoApplication.amigoService
+        amigoService = (context.applicationContext as AmigoApplication).component.service()
 
-        val call = amigoService.getArticles()
-        call.enqueue(object : Callback<List<Article>>{
-            override fun onResponse(call: Call<List<Article>>?, response: Response<List<Article>>) {
-                val articles = response.body() ?: return
-                localsAdapter.addAll(articles)
-            }
+        //compositeDisposable 에 추가하고 , 액티비티 생명주기가 끝나면 dispose
+        compositeDisposable = CompositeDisposable()
+        val observable = amigoService.getArticles()
 
-            override fun onFailure(call: Call<List<Article>>?, t: Throwable?) {
-                t?.printStackTrace()
-            }
-        })
+        compositeDisposable.add(observable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableObserver<List<Article>>(){
+                    override fun onNext(t: List<Article>) {
+                        localsAdapter.addAll(t)
+                    }
+
+                    override fun onError(e: Throwable) {
+                        e.printStackTrace()
+                    }
+
+                    override fun onComplete() {}
+                }))
+
+
     }
 
     private fun initList() {
@@ -68,6 +75,11 @@ class LocalListFragment : Fragment(), LocalListAdapter.OnLocalListItemClickListe
         intent.putExtra("email", article.writer!!.email)
         intent.putExtra("articleId", article.id)
         startActivity(intent)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        compositeDisposable.dispose()
     }
 
 }

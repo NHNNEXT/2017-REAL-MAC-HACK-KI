@@ -47,7 +47,7 @@ class NewArticleActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "new post"
 
-        amigoService = AmigoApplication.amigoService
+        amigoService = (application as AmigoApplication).component.service()
 
         setPhotoList()
 

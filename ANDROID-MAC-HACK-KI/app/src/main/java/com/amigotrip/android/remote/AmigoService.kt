@@ -8,6 +8,7 @@ import com.amigotrip.android.datas.PhotoResult
 import com.amigotrip.android.datas.User
 import com.amigotrip.anroid.BuildConfig
 import com.google.gson.GsonBuilder
+import io.reactivex.Observable
 import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody
@@ -39,7 +40,7 @@ interface AmigoService {
 
     //articles api
     @GET("/articles/locals")
-    fun getArticles(): Call<List<Article>>
+    fun getArticles(): Observable<List<Article>>
 
     @POST("/articles/locals")
     fun postArticle(@Body article: Article): Call<Article>

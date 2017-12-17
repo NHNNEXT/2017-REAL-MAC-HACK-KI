@@ -77,6 +77,7 @@ class EmailSignUpActivity : AppCompatActivity() {
                 } else {
                     Timber.d(user.toString())
                     addFirebaseInfo(user)
+                    // 회원가입이 성공하면 로그인을 요청한다. 이를 Rx 로 바꾸어보자
                     requestLogin(user)
                 }
 
@@ -120,9 +121,10 @@ class EmailSignUpActivity : AppCompatActivity() {
                             "check your input", Toast.LENGTH_SHORT).show()
                 } else {
 
-                    val user = response.body()
-                    Timber.d(user.toString())
-                    UserInfoManager.setUserInfo(user)
+                    val responseUser = response.body()
+                    Timber.d(responseUser.toString())
+                    responseUser?.password = user.password
+                    UserInfoManager.setUserInfo(responseUser)
 
                     val intent = Intent(this@EmailSignUpActivity,
                             MainActivity::class.java)
