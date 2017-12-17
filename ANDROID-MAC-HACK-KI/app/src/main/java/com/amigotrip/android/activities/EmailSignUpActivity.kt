@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import com.amigotrip.android.AmigoApplication
 import com.amigotrip.android.UserInfoManager
 import com.amigotrip.android.datas.User
 import com.amigotrip.android.extentions.isEmpty
@@ -29,7 +30,7 @@ class EmailSignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_email_sign_up)
 
-        amigoService = AmigoService.getService(AmigoService::class.java, this)
+        amigoService = AmigoApplication.amigoService
 
         btn_sign_in.setOnClickListener {
 
@@ -59,7 +60,6 @@ class EmailSignUpActivity : AppCompatActivity() {
      * @author zimin
      */
     private fun requestNewUser(user: User) {
-
 
 
         val call = amigoService.addUser(user)

@@ -2,7 +2,10 @@ package com.amigotrip.android.remote
 
 import android.content.Context
 import com.amigotrip.android.cookie.PersistentCookieStore
-import com.amigotrip.android.datas.*
+import com.amigotrip.android.datas.ApiResult
+import com.amigotrip.android.datas.Article
+import com.amigotrip.android.datas.PhotoResult
+import com.amigotrip.android.datas.User
 import com.amigotrip.anroid.BuildConfig
 import com.google.gson.GsonBuilder
 import okhttp3.MultipartBody
@@ -22,10 +25,6 @@ import java.util.concurrent.TimeUnit
  * Created by Zimincom on 2017. 10. 19..
  */
 interface AmigoService {
-
-    //test api
-    @POST("/party/guest")
-    fun newParty(@Body party: Party): Call<Party>
 
     //users api
     @POST("/users")
@@ -62,7 +61,7 @@ interface AmigoService {
     companion object {
 
         private val baseUrl =  if (BuildConfig.DEBUG) {
-            "http://dev.amigotrip.co.kr"
+            "http://www.amigotrip.co.kr"
         } else {
             "http://www.amigotrip.co.kr"
         }

@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import com.amigotrip.android.AmigoApplication
 import com.amigotrip.android.adpaters.PickedPhotosAdapter
 import com.amigotrip.android.datas.Article
 import com.amigotrip.android.datas.Photo
@@ -46,7 +47,7 @@ class NewArticleActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "new post"
 
-        amigoService = AmigoService.getService(AmigoService::class.java, this)
+        amigoService = AmigoApplication.amigoService
 
         setPhotoList()
 
@@ -109,9 +110,6 @@ class NewArticleActivity : AppCompatActivity() {
                         location = location,
                         photos = null,
                         writer = null)
-
-
-        val amigoService = AmigoService.getService(AmigoService::class.java, this)
 
         val call = amigoService.postArticle(article)
 

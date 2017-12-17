@@ -53,6 +53,7 @@ class ChatUtil(private val activity: Activity){
         Timber.d(targetUserKey)
 
         roomRef
+                .orderByValue()
                 .orderByChild(loginedUserKey)
                 .equalTo(true)
                 .addListenerForSingleValueEvent(
