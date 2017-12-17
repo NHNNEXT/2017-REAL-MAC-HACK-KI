@@ -32,7 +32,7 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
 
-        amigoService = AmigoApplication.amigoService
+        amigoService = (application as AmigoApplication).component.service()
 
         btn_sign_in.setOnClickListener { signInUser() }
     }

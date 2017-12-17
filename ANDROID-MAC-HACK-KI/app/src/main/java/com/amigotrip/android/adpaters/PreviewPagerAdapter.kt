@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.item_preview_imge.view.*
  */
 class PreviewPagerAdapter : PagerAdapter(){
 
-    private val imageList = arrayListOf<Int>(1
+    private val imageList = arrayListOf<Int>(
 //            R.drawable.iamge_lake,
 //            R.drawable.house,
 //            R.drawable.street

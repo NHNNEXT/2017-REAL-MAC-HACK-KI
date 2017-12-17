@@ -26,7 +26,7 @@ class AmigoApplication @Inject constructor()  : Application(){
         Timber.plant(Timber.DebugTree())
         Fresco.initialize(this)
 
-        val component = DaggerAppComponent.builder()
+        component = DaggerAppComponent.builder()
                 .contextModule(ContextModule(this))
                 .networkModule(NetworkModule())
                 .build()
