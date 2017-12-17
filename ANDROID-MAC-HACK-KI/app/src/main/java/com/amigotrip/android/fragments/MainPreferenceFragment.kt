@@ -14,15 +14,15 @@ import com.amigotrip.android.activities.StartActivity
 import com.amigotrip.android.datas.User
 import com.amigotrip.android.remote.AmigoService
 import com.amigotrip.anroid.R
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.observers.DisposableObserver
+import io.reactivex.schedulers.Schedulers
 
 /**
  * Created by Zimincom on 2017. 11. 20..
  */
 class MainPreferenceFragment : PreferenceFragmentCompat(), PreferenceManager
-.OnPreferenceTreeClickListener,PreferenceFragmentCompat.OnPreferenceStartScreenCallback{
+.OnPreferenceTreeClickListener, PreferenceFragmentCompat.OnPreferenceStartScreenCallback {
 
     lateinit var amigoService: AmigoService
 
@@ -41,24 +41,25 @@ class MainPreferenceFragment : PreferenceFragmentCompat(), PreferenceManager
 
         } else if (preference.key == "pref_logout") {
             signOut()
-        } else if (preference.key == "pref_new_article" ) {
+        } else if (preference.key == "pref_new_article") {
 
-            val call = amigoService.loginUser(UserInfoManager.getLogineduser())
+            amigoService.loginUser(UserInfoManager.getLogineduser())
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeWith(object : DisposableObserver<User>() {
+                        override fun onError(e: Throwable) {
+                            Toast.makeText(context,
+                                    "you are not logined", Toast.LENGTH_SHORT).show()
+                        }
 
-            call.enqueue(object : Callback<User> {
-                override fun onResponse(call: Call<User>?, response: Response<User>) {
+                        override fun onComplete() {
+                            val intent = Intent(context, NewArticleActivity::class.java)
+                            startActivity(intent)
+                        }
 
-                    if (response.isSuccessful) {
-                        val intent = Intent(context, NewArticleActivity::class.java)
-                        startActivity(intent)
-                    }
-                }
-
-                override fun onFailure(call: Call<User>?, t: Throwable?) {
-                    t?.printStackTrace()
-                    Toast.makeText(context, "sorry, something went wrong", Toast.LENGTH_SHORT).show()
-                }
-            })
+                        override fun onNext(user: User) {
+                        }
+                    })
         }
 
         return true
@@ -74,7 +75,7 @@ class MainPreferenceFragment : PreferenceFragmentCompat(), PreferenceManager
 
 
     override fun onPreferenceStartScreen(caller: PreferenceFragmentCompat?, pref: PreferenceScreen?): Boolean {
-        caller?.setPreferenceScreen(pref)
+        caller?.preferenceScreen = pref
         return true
     }
 }

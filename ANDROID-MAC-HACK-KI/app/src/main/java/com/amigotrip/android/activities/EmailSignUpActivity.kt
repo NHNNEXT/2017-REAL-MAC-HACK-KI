@@ -3,7 +3,6 @@ package com.amigotrip.android.activities
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.amigotrip.android.AmigoApplication
@@ -15,10 +14,10 @@ import com.amigotrip.android.remote.AmigoService
 import com.amigotrip.anroid.R
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.iid.FirebaseInstanceId
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.observers.DisposableObserver
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_email_sign_up.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import timber.log.Timber
 import java.util.regex.Pattern
 
@@ -30,7 +29,7 @@ class EmailSignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_email_sign_up)
 
-        amigoService = AmigoApplication.amigoService
+        amigoService = (application as AmigoApplication).component.service()
 
         btn_sign_in.setOnClickListener {
 
@@ -46,6 +45,7 @@ class EmailSignUpActivity : AppCompatActivity() {
             val user = User(name = name, email = email, password = password, id = null,
                     profileImg = null)
 
+            Timber.d("button clicked")
             requestNewUser(user)
 
         }
@@ -61,33 +61,48 @@ class EmailSignUpActivity : AppCompatActivity() {
      */
     private fun requestNewUser(user: User) {
 
-
-        val call = amigoService.addUser(user)
-
         progress_sign_up.visibility = View.VISIBLE
 
-        call.enqueue(object : Callback<User> {
-            override fun onResponse(call: Call<User>?, response: Response<User>) {
 
-                if (!response.isSuccessful) return
+        val newUserObservable = amigoService.addUser(user)
 
-                if (response.code() == 400) {
+        val signInObservable = amigoService.loginUser(user)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnError {
                     Toast.makeText(this@EmailSignUpActivity,
-                            "check your email", Toast.LENGTH_SHORT).show()
-                } else {
-                    Timber.d(user.toString())
-                    addFirebaseInfo(user)
-                    // 회원가입이 성공하면 로그인을 요청한다. 이를 Rx 로 바꾸어보자
-                    requestLogin(user)
+                            "wrong user", Toast.LENGTH_SHORT).show()
                 }
 
-                progress_sign_up.visibility = View.INVISIBLE
-            }
 
-            override fun onFailure(call: Call<User>?, t: Throwable?) {
-                Timber.d("sign up fail")
-            }
-        })
+        //signup and sign in by RxKotlin. 더 복잡해 지는 느낌?
+
+        newUserObservable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .concatWith(signInObservable)
+                .subscribeWith(object : DisposableObserver<User>() {
+                    override fun onError(e: Throwable) {
+                        // HTTP 코드를 여기서 처리 가능
+                        Toast.makeText(this@EmailSignUpActivity,
+                                "email exists!", Toast.LENGTH_SHORT).show()
+                    }
+
+                    override fun onComplete() {
+                        Timber.d("success")
+                        addFirebaseInfo(user)
+                        progress_sign_up.visibility = View.INVISIBLE
+                    }
+
+                    override fun onNext(responseUser: User) {
+                        responseUser.password = user.password
+                        UserInfoManager.setUserInfo(responseUser)
+
+                        val intent = Intent(this@EmailSignUpActivity,
+                                MainActivity::class.java)
+                        startActivity(intent)
+                    }
+                })
+
 
     }
 
@@ -101,47 +116,8 @@ class EmailSignUpActivity : AppCompatActivity() {
         userRef.child(userTempKey).child("email").setValue(user.email)
         userRef.child(userTempKey).child("deviceKey").setValue(token)
 
-
     }
 
-    private fun requestLogin(user: User) {
-
-        progress_sign_up.visibility = View.VISIBLE
-
-        val call = amigoService.loginUser(user)
-
-        call.enqueue(object : Callback<User> {
-            override fun onResponse(call: Call<User>?, response: Response<User>) {
-
-                if (!response.isSuccessful) return
-
-
-                if (response.code() == 400) {
-                    Toast.makeText(this@EmailSignUpActivity,
-                            "check your input", Toast.LENGTH_SHORT).show()
-                } else {
-
-                    val responseUser = response.body()
-                    Timber.d(responseUser.toString())
-                    responseUser?.password = user.password
-                    UserInfoManager.setUserInfo(responseUser)
-
-                    val intent = Intent(this@EmailSignUpActivity,
-                            MainActivity::class.java)
-                    startActivity(intent)
-                }
-
-                progress_sign_up.visibility = View.INVISIBLE
-            }
-
-            override fun onFailure(call: Call<User>?, t: Throwable?) {
-                Log.w("requset login", "failed")
-            }
-
-        })
-
-
-    }
 
     private fun checkInput(): Boolean {
 
