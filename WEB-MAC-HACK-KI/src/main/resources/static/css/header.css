@@ -48,31 +48,6 @@ header.show-underline {
     cursor: pointer;
 }
 
-#sign_in_modal, #sign_up_modal {
-    top: 25%;
-    left: 20%;
-    margin: 6%;
-    width: 40%;
-    padding: 1%;
-    display: none;
-    background: #FFF;
-    position: fixed;
-    z-index: 10000;
-    background: #FFF;
-}
-
-#dimmer {
-    background: #000;
-    opacity: 0.5;
-    position: absolute; /* important to use fixed, not absolute */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: none;
-    z-index: 9999; /* may not be necessary */
-}
-
 .header-search-city-input {
     display: none;
     vertical-align: top;
@@ -119,4 +94,113 @@ header.show-underline {
 
 .header-search-city-input:focus {
     background-color: #FFFECE;
+}
+
+.dimmer {
+    background: #000;
+    opacity: 0.8;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+}
+
+.bq-user-modal-container {
+    position: absolute;
+}
+
+.bq-user-modal {
+    position: absolute;
+    font-family: Roboto, Helvetica, sans-serif;
+    font-weight: 300;
+}
+
+.bq-modal-signup {
+    display: none;
+    background: #FFF;
+    top: 10vw;
+    left: 35vw;
+    width: 30vw;
+    height: 24vw;
+    z-index: 4;
+}
+
+.bq-modal-signin {
+    /*display: none;*/
+    background: #FFF;
+    top: 10vw;
+    left: 35vw;
+    width: 30vw;
+    height: 36vw;
+    z-index: 4;
+}
+
+.modal-close-button {
+    margin: 1vw 1vw 0 27.6vw;
+    width: 1.5vw;
+    height: 1.5vw;
+    background-image: url("/images/close-button.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.link-to-signin {
+    text-align: center;
+    font-size: 1vw;
+}
+
+.link-to-signin span {
+    color: #A0A0A0;
+}
+
+.link-to-signin a {
+    color: #50A7AF;
+    text-decoration: none;
+}
+
+.bq-user-modal h2 {
+    width: 92%;
+    text-align: center;
+    border-bottom: 2px solid #F2F2F2;
+    line-height: 0.1em;
+    margin: 20px 20px 30px;
+}
+
+.bq-user-modal h2 span {
+    color: #767676;
+    background: #fff;
+    padding: 0 10px;
+    font-weight: 100;
+    font-size: 1vw;
+}
+
+.field-set label {
+    display: none;
+}
+
+.field-set input {
+    margin-left: 3%;
+    width: 92%;
+    height: 2.2vw;
+    border: 1px solid #E0E0E0;
+    font-size: 0.9vw;
+    font-weight: 100;
+    text-indent: 0.8vw;
+}
+
+.bq-error-message {
+    display: none;
+}
+
+.signup-btn {
+    background: #8292F7;
+    width: 92.7%;
+    margin-top: 1%;
+    margin-left: 3%;
+    height: 3vw;
+    font-size: 1.3vw;
+    font-weight: 400;
+    color: white;
 }

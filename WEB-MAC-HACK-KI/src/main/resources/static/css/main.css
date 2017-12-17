@@ -166,31 +166,31 @@ h3.about-desc {
     margin-bottom: 0.6vw;
 }
 
-/*button.about-button {*/
-    /*height: 3.3vw;*/
-    /*border-radius: 1em;*/
-    /*font-size: 2vw;*/
-    /*padding: 0 2vw;*/
+button.about-button {
+    height: 3.3vw;
+    border-radius: 1em;
+    font-size: 2vw;
+    padding: 0 2vw;
 
-/*}*/
-
-/*button.about-button:hover {*/
-    /*cursor: pointer;*/
-    /*background-color: #C9FF95;*/
-    /*box-shadow: 0.1px 1.3px 0.1px 0.5px #d9d9d9;*/
-/*}*/
-
-.about-button {
-    margin: 0 auto;
-    width: 20vw;
-    height: 6vw;
-    background-image: url("/images/about-amigo.png");
-    background-repeat: no-repeat;
-    background-size: contain;
 }
 
-.about-button:hover {
+button.about-button:hover {
     cursor: pointer;
-    -webkit-transition: all 0.3s ease-out;
-    -webkit-transform: scale(1.1);
+    background-color: #C9FF95;
+    box-shadow: 0.1px 1.3px 0.1px 0.5px #d9d9d9;
 }
+
+/*.about-button {*/
+    /*margin: 0 auto;*/
+    /*width: 20vw;*/
+    /*height: 6vw;*/
+    /*background-image: url("/images/about-amigo.png");*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: contain;*/
+/*}*/
+
+/*.about-button:hover {*/
+    /*cursor: pointer;*/
+    /*-webkit-transition: all 0.3s ease-out;*/
+    /*-webkit-transform: scale(1.1);*/
+/*}*/
