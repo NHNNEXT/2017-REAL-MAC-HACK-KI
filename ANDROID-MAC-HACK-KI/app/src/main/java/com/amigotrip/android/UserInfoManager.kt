@@ -25,6 +25,7 @@ object UserInfoManager {
         editor.putInt(AppKeys.userId, user!!.id!!)
         editor.putString(AppKeys.userName, user.name)
         editor.putString(AppKeys.userEmail, user.email)
+        editor.putString(AppKeys.password, user.password)
         editor.putBoolean(AppKeys.isLogin, true)
         editor.apply()
 
@@ -69,8 +70,9 @@ object UserInfoManager {
     fun getLogineduser(): User{
         val name = preference.getString(AppKeys.userName, "no name")
         val email = preference.getString(AppKeys.userEmail, "no email")
+        val password = preference.getString(AppKeys.password, "")
 
-        return User(name = name, email = email, id = null, profileImg = "")
+        return User(name = name, email = email, password = password, id = null, profileImg = "")
     }
 
 

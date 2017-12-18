@@ -13,11 +13,8 @@ import kotlinx.android.synthetic.main.item_preview_imge.view.*
  */
 class PreviewPagerAdapter : PagerAdapter(){
 
-    private val imageList = arrayListOf<Int>(
-//            R.drawable.iamge_lake,
-//            R.drawable.house,
-//            R.drawable.street
-    )
+    private val imageList = arrayListOf<Int>()
+
     override fun isViewFromObject(view: View?, `object`: Any?): Boolean {
         return view == `object` as View
     }
@@ -25,7 +22,6 @@ class PreviewPagerAdapter : PagerAdapter(){
     override fun instantiateItem(container: ViewGroup?, position: Int): Any {
         val imageLayout = LayoutInflater.from(container?.context).inflate(R.layout
                 .item_preview_imge, container, false)
-//        imageLayout.iv_preview.setImageResource(imageList[position])
 
         Picasso.with(container?.context)
                 .load("http://www.amigotrip.co.kr/photos/" + imageList[position])

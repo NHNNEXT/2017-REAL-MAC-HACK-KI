@@ -18,6 +18,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.fragment_chats.*
+import timber.log.Timber
 
 //chatrooms fragment
 class ChatRoomsFragment : Fragment(), ChatRoomListAdapter.OnChatRoomClickListener {
@@ -69,6 +70,8 @@ class ChatRoomsFragment : Fragment(), ChatRoomListAdapter.OnChatRoomClickListene
     }
 
     private fun queryUserRooms() {
+
+        Timber.i(firebaseKey)
         userRef.child(firebaseKey)
                 .child("chaters")
                 .addListenerForSingleValueEvent(object : ValueEventListener{

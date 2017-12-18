@@ -13,5 +13,5 @@ data class User(
         var city: String = "",
         var profileImg: String? = null,
         var contents: String = "",
-        val password: String = ""
+        var password: String = ""
 )
