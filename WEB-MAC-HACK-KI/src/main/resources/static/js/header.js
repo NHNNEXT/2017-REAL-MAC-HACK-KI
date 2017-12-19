@@ -8,6 +8,14 @@ class Header {
 
   init() {
     this.header = document.querySelector('header');
+    this.loginModal = document.querySelector('.bq-modal-signin');
+    this.signupModal = document.querySelector('.bq-modal-signup');
+    this.closeBtn = document.querySelector('.modal-close-button');
+    this.signupBtn = document.querySelector('.signup-btn');
+    this.loginBtn = document.querySelector('.login-btn');
+    this.signupLink = document.querySelector('.link-to-signup-btn');
+    this.loginLink = document.querySelector('.link-to-signin');
+
     if(document.querySelector('title').innerText === 'Amigo') {
       this.header.querySelector('.header-search-city-input').classList.remove('is-visible');
     }
@@ -24,6 +32,8 @@ class Header {
       this.header.classList.remove('show-underline');
     }
   }
+
+
 }
 
 new Header();
