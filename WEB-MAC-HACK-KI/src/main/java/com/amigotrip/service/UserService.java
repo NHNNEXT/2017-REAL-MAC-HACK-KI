@@ -87,7 +87,7 @@ public class UserService {
         user.addRole(roleRepository.findByRole("user"));
         user.removeRole(roleRepository.findByRole("unconfirmed_user"));
         userRepository.save(user);
-        return "redirect:/loginForm";
+        return "confirmed";
     }
 
     public boolean isConfirmedUserId(long id) {
