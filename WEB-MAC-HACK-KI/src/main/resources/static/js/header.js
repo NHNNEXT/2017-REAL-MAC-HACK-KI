@@ -1,6 +1,9 @@
 /**
  * Created by Woohyeon on 2017. 12. 13..
  */
+const serviceUrl = "http://localhost:8080/";
+// const serviceUrl = "http://dev.amigotrip.co.kr/" // should be changed on release;
+
 class Header {
   constructor() {
     this.init();
@@ -18,8 +21,7 @@ class Header {
     this.loginBtn = document.querySelector('.login-btn');
     this.signupLink = document.querySelector('.link-to-signup-btn');
     this.loginLink = document.querySelector('.link-to-signin');
-
-    this.url = "http://dev.amigotrip.co.kr/" // should be changed for release
+    this.inputs = document.querySelectorAll('.bq-input');
 
     if (document.querySelector('title').innerText === 'Amigo') {
       this.header.querySelector('.header-search-city-input').classList.remove('is-visible');
@@ -77,30 +79,50 @@ class Header {
   }
 
   tryLogin(e) {
-    fetch(this.url + "users/login", {
+    fetch(serviceUrl + "users/login", {
       method: 'post',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({email: document.querySelector("#login-email"),
-                            password: document.querySelector("#login-password")})
+      body: JSON.stringify({email: document.querySelector("#login-email").value,
+                            password: document.querySelector("#login-password").value})
     }).then(res=>res.json())
-      .then(res => console.log(res));
+      .then(function(res) {
+        if (res.id != null && res.id > 0) { // if login success
+          window.location.href = serviceUrl;
+        }
+        console.log(res);
+      });
+
+    this.clearForm();
   }
 
   trySignup(e) {
-    fetch(this.url + "users/", {
+    fetch(serviceUrl + "users/", {
       method: 'post',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({email: document.querySelector("#signup-email"),
-                            password: document.querySelector("#signup-password"),
-                            name: document.querySelector("#signup-username")})
+      body: JSON.stringify({email: document.querySelector("#signup-email").value,
+                            password: document.querySelector("#signup-password").value,
+                            name: document.querySelector("#signup-username").value})
     }).then(res=>res.json())
-      .then(res=> console.log(res));
+      .then(function(res) {
+        if (res.id != null && res.id > 0) { // if sign up success
+          window.location.href = serviceUrl;
+        }
+        console.log(res);
+      });
+
+    this.clearForm();
+  }
+
+  clearForm() {
+    for (let input of this.inputs) {
+      input.value = "";
+    }
   }
 }
 
