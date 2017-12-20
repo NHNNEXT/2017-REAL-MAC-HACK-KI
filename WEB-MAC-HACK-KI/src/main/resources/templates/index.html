@@ -12,8 +12,14 @@
     {{> include/header}}
     <article>
         <div class="search-area">
-            <input type="text" class="search-city-input" placeholder="Try any city"/>
-            <button id="search-button">Search</button>
+            <div class="wrap">
+                <div class="search">
+                    <form action="/search" method="post">
+                        <input type="text" class="search-city-input" name="city" placeholder="Try any city"/>
+                        <button type="submit" id="search-button">Search</button>
+                    </form>
+                </div>
+            </div>
             <ul class="illust-zone">
                 <li class="illust seoul"><h5 class="city-name seoul">Seoul</h5></li>
                 <li class="illust jeonju"><h5 class="city-name jeonju">Jeonju</h5></li>
@@ -34,5 +40,17 @@
     </article>
     {{> include/footer}}
     <script src="/js/header.js"></script>
+    <script src="/js/main.js"></script>
+    <script>
+      function activatePlacesSearch() {
+        let options = {
+          types: ['(cities)'],
+          componentRestrictions: {'country': 'kr'}
+        };
+        let input = document.querySelector('.search-city-input');
+        let autocomplete = new google.maps.places.Autocomplete(input, options);
+      }
+    </script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7YyhbcRztHC-J6IiocCG6HE07JnmiGmE&libraries=places&language=en&callback=activatePlacesSearch"></script>
 </body>
 </html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
+        <title>Amigo Profile</title>
+        <link rel="stylesheet" href="/css/header.css">
+        <link rel="stylesheet" href="/css/footer.css">
+        <link rel="stylesheet" href="/css/profile.css">
+    </head>
+    <body>
+    {{> include/header}}
+        <div class="top-info-zone">
+            <div class="profile-image">Change Image</div>
+                <input class="profile-image-input" type="file" accept="image/*">
+            <div class="basic-info-zone">
+                <h4 class="name">Newton Artemis Fido Scamander</h4>
+                <p class="city">London, England</p>
+            </div>
+            <div class="statistics-zone">
+                <p class="article">Article 10</p>
+                <p class="reviews">Reviews 10</p>
+                <p class="stars"> 10</p>
+            </div>
+        </div>
+        <table>
+            <tr>
+                <th class="edit-profile">Edit Profile</th>
+            </tr>
+            <tr>
+                <td class="contents">
+                    <form>
+                        <div class="contents-zone about-contents is-visible">
+                            <div class="info city-info-zone">
+                                <h6>City</h6> <input placeholder="London, England" type="text">
+                            </div>
+                            <div class="info birthday-info-zone">
+                                <h6>Birth Date</h6>
+                                <select class="select-month"></select>
+                                <select class="select-date"></select>
+                                <select class="select-year"></select>
+                            </div>
+                            <div class="info languages-info-zone">
+                                <h6>Languages</h6>
+                                <ul class="languages">
+                                    <li>English
+                                        <div class="level">Expert</div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="info interest-info-zone">
+                                <h6>Interest</h6>
+                                <ul class="interests">
+                                    <li class="interest">Art & Culture</li>
+                                    <li class="interest">Nature</li>
+                                </ul>
+                            </div>
+                            <hr>
+                            <div class="info about-me-info-zone">
+                                <h6 class="about-me-label">About me</h6>
+                                <div class="about-me-zone">
+                                    I have visited lairs, burrows and nests across five continents,
+                                    observed the curious habits of magical beasts in a hundred countries,
+                                    witnessed their powers, gained their trust and, on occasion, beaten
+                                    them off with my travelling kettle.
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </article>
+    {{> include/footer}}
+    <script id="entry-template" type="text/x-handlebars-template">
+        <ul class="people_list">
+            {{#each people}}
+            <li>{{this}}</li>
+            {{/each}}
+        </ul>
+    </script>
+    <script src="/js/header.js"></script>
+    <script src="/js/profile.js"></script>
+    <script src="/js/handlebars-v4.0.11.js"></script>
+    <script src="/js/editProfile.js"></script>
+    </body>
+</html>

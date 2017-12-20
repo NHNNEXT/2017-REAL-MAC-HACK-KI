@@ -31,19 +31,22 @@
 
         <div class="article-list locals is-visible">
             <ul class="local-list">
-                <li class="local-article">
-                    <img class="local-article-photo" src="/images/sample3.jpeg">
-                    <div class="profile">
-                        <div class="profile-image"></div>
-                        <p class="profile-name">Hey Hey</p>
-                    </div>
-                    <h5 class="article-title">Ando's in Jeju</h5>
-                    <p class="location">Jeju</p>
-                    <ul class="article-themes">
-                        <li class="article-theme">Architecture</li>
-                        <li class="article-theme">Food</li>
-                    </ul>
-                </li>
+                {{#each localsArticleList}}
+                    <li class="local-article">
+                        <img class="local-article-photo" src="/images/sample3.jpeg">
+                        <div class="profile">
+                            <div class="profile-image"></div>
+                            <p class="profile-name">{{writer.name}}</p>
+                        </div>
+                        <h5 class="article-title">{{title}}</h5>
+                        <p class="location">{{location}}</p>
+                        <ul class="article-themes">
+                            <li class="article-theme">Architecture</li>
+                            <li class="article-theme">Food</li>
+                        </ul>
+                    </li>
+                {{/each}}
+
                 <li class="local-article">
                     <img class="local-article-photo" src="/images/sample2.jpeg">
                     <div class="profile">
