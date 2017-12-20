@@ -107,6 +107,7 @@ header.show-underline {
 }
 
 .dimmer {
+    display: none;
     background: #000;
     opacity: 0.8;
     position: fixed;
@@ -239,6 +240,7 @@ header.show-underline {
     font-weight: 400;
     color: white;
     outline: none;
+    cursor: pointer;
 }
 
 .login-btn {
@@ -346,6 +348,10 @@ header.show-underline {
 
 .link-to-signup-btn:hover:before {
     top: 0;
+}
+
+.link-to-signup-btn:focus {
+    outline: none;
 }
 
 .fade-in {
