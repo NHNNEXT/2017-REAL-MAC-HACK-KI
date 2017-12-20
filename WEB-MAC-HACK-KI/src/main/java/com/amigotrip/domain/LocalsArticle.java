@@ -2,6 +2,7 @@ package com.amigotrip.domain;
 
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -21,6 +22,8 @@ public class LocalsArticle {
     @Column(name = "locals_article_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
+    private String title;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
