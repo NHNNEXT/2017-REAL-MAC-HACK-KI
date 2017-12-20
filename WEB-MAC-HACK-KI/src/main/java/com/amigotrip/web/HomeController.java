@@ -38,9 +38,9 @@ public class HomeController {
         return "/loginForm";
     }
 
-    @GetMapping("/test")
+    @GetMapping("/profile")
     public String test() {
-        return "confirmed";
+        return "profile";
     }
 }
 
