@@ -3,6 +3,7 @@
  */
 const serviceUrl = "http://localhost:8080/";
 // const serviceUrl = "http://dev.amigotrip.co.kr/" // should be changed on release;
+const emailregex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
 class Header {
   constructor() {
@@ -40,6 +41,40 @@ class Header {
     this.loginLink.addEventListener('click', this.linkToLogin.bind(this));
     this.loginBtn.addEventListener('click', this.tryLogin.bind(this));
     this.signupBtn.addEventListener('click', this.trySignup.bind(this));
+
+    for (let input of this.inputs) {
+      input.addEventListener('keyup', this.clearErrorMessage.bind(this));
+    }
+
+    this.timeout = null;
+    document.querySelector("#login-email").onkeyup = this.bindWithDelay(this.checkEmailValid).bind(this);
+    document.querySelector("#signup-email").onkeyup = this.bindWithDelay(this.checkEmailValid).bind(this);
+    document.querySelector("#signup-password").onkeyup = this.bindWithDelay(this.checkPasswordConfirm).bind(this);
+    document.querySelector("#signup-password-confirm").onkeyup = this.bindWithDelay(this.checkPasswordConfirm).bind(this);
+    document.querySelector("#login-password").addEventListener('keyup', function(e) {
+      this.disableButton(e);
+      console.log(e);
+      if (!this.checkInputNull(e)) {
+        console.log("checkinput 들어옴");
+        console.log(e);
+        this.enableButton(e);
+      }
+    }.bind(this));
+    document.querySelector("#signup-username").addEventListener('keyup', function(e) {
+      this.disableButton(e);
+      if (!this.checkInputNull(e)) {
+        this.enableButton(e);
+      }
+    }.bind(this));
+  }
+
+  bindWithDelay(df) { // df for delayed function
+    return function (e) {
+      this.event = e;
+      clearTimeout(this.timeout);
+
+      this.timeout = setTimeout(df.bind(this), 200);
+    }
   }
 
   showHeaderUnderline() {
@@ -92,10 +127,22 @@ class Header {
         if (res.id != null && res.id > 0) { // if login success
           window.location.href = serviceUrl;
         }
-        console.log(res);
-      });
 
-    this.clearForm();
+        if (res.message === "Email is wrong! Please check again.") {
+          let loginEmailInput = document.querySelector("#login-email");
+          this.clearForm(loginEmailInput);
+          this.showErrorMessage(e, "There's no such email", loginEmailInput);
+        }
+
+        if (res.message === "Password is wrong! Please check again") {
+          let loginPasswordInput = document.querySelector("#login-password");
+          this.clearForm(loginPasswordInput);
+          this.showErrorMessage(e, "Wrong password", loginPasswordInput);
+        }
+        console.log(res);
+      }.bind(this));
+
+    this.checkButtonActivate(e);
   }
 
   trySignup(e) {
@@ -112,16 +159,122 @@ class Header {
       .then(function(res) {
         if (res.id != null && res.id > 0) { // if sign up success
           window.location.href = serviceUrl;
+        } else {
+          this.showErrorMessage(e, "email already exists", document.querySelector("#signup-email"))
         }
         console.log(res);
-      });
+      }.bind(this));
 
     this.clearForm();
+    this.checkButtonActivate(e);
   }
 
-  clearForm() {
-    for (let input of this.inputs) {
-      input.value = "";
+  clearForm(target) { // clear input form
+    if (target) {
+      target.value = "";
+    } else {
+      for (let input of this.inputs) {
+        input.value = "";
+      }
+    }
+  }
+
+  clearErrorMessage(e, target) {
+    if (target) {
+      target.parentNode.querySelector('span').classList.remove('fade-in');
+    } else {
+      e.target.parentNode.querySelector('span').classList.remove('fade-in');
+    }
+  }
+
+  showErrorMessage(e, message, target) {
+    if (target) {
+      target.parentNode.querySelector('span').innerHTML = message;
+      target.parentNode.querySelector('span').classList.add('fade-in');
+    } else {
+      e.target.parentNode.querySelector('span').innerHTML = message;
+      e.target.parentNode.querySelector('span').classList.add('fade-in');    }
+  }
+
+  checkEmailValid() {
+    this.clearErrorMessage(this.event);
+    if (!(emailregex.test(this.event.target.value))) {
+      let message = "Invalid email form!";
+      this.showErrorMessage(this.event, message);
+    }
+
+    this.disableButton(this.event);
+
+    if (!this.checkInputNull(this.event) && this.checkButtonActivate(this.event)) {
+      this.enableButton(this.event);
+    }
+  }
+
+  checkPasswordConfirm() {
+    let password = document.querySelector('#signup-password');
+    let passwordConfirm = document.querySelector('#signup-password-confirm');
+    this.clearErrorMessage(this.event, password);
+    this.clearErrorMessage(this.event, passwordConfirm);
+    if (password.value !== passwordConfirm.value) {
+      let message = "password does not match!";
+      this.showErrorMessage(this.event, message);
+    }
+
+    this.disableButton(this.event);
+
+    if (!this.checkInputNull(this.event) && this.checkButtonActivate(this.event)) {
+      this.enableButton(this.event);
+    }
+  }
+
+  checkButtonActivate(e) {
+    let errorMessages = e.target.parentNode.parentNode.querySelectorAll('span');
+    for (let errorMessage of errorMessages) {
+      if (errorMessage.classList.contains('fade-in')) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  checkInputNull(e) {
+    for (let input of e.target.parentNode.parentNode.querySelectorAll('input')) {
+      if (input.value == "") {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  disableButton(e) {
+    let button = e.target.parentNode.parentNode.querySelector('button');
+    button.disabled = true;
+    button.classList.add('disabled');
+  }
+
+  enableButton(e) {
+    let button = e.target.parentNode.parentNode.querySelector('button');
+    button.disabled = false;
+    button.classList.remove('disabled');
+  }
+
+  showLastCharacter(e) { // not working properly. binded inputHidden to this
+    let input = e.target;
+    let inputHidden = document.querySelector("#" + input.id + "-hidden");
+    let passwordCharacter = "•";
+
+    if (e.key === "Backspace") {
+      inputHidden.value = inputHidden.value.substring(0, this.value.length - 1);
+    } else {
+      inputHidden.value += input.value[input.value.length - 1];
+    }
+
+    if (input.value.length == 1) {
+      inputHidden.value = input.value;
+    }
+    if (input.value.length > 1) {
+      input.value = passwordCharacter.repeat(input.value.length - 1) + input.value[input.value.length - 1];
     }
   }
 }
