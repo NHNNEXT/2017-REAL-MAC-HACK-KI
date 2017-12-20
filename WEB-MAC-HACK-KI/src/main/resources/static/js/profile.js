@@ -15,7 +15,8 @@ class Profile {
     document.querySelector('.profile-image').addEventListener('click', e => {
       this.profileImageInput.click();
     });
-      this.profileImageInput.addEventListener('change', e => {
+
+    this.profileImageInput.addEventListener('change', e => {
       this.changeProfileImage(e);
     });
 

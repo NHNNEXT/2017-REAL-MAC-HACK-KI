@@ -1,6 +1,5 @@
 package com.amigotrip.mail;
 
-import com.amigotrip.domain.PartyGuest;
 import com.amigotrip.domain.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -89,31 +88,6 @@ public class AmigoMailSender {
         st.add("url", urlValue);
         String emailTxt = st.render();
         sendMail(toSend, emailTxt, emailSubject);
-    }
-
-    @Async
-    public String sendPartyGuestFormMail(PartyGuest partyGuest) {
-        String[] toSend = {partyGuest.getEmail()};
-        String[] slackMail = {"register@machackki.mailclark.ai"};
-
-        String emailSubject = "Hi " + partyGuest.getName() + ", this is Amigo!";
-        String slackSubject = "We just got a new registration!";
-        String emailTxt = "<h4>Nice to meet you <strong>" + partyGuest.getName() + "</strong>.<br>" +
-                "your request was successfully verified.<br>" +
-                "Amigos on the trip will check the contents and if there is a suitable friend,<br>" +
-                "They will contact you by email. I hope you have a good trip. thank you.<br><br></h4>";
-        String emailContent =
-                "<h3>You applied with the following content:</h3><br>" +
-                "<h5>Age: " + partyGuest.getAge() + "<br>" +
-                "Gender: " + partyGuest.getGender() + "<br>" +
-                "Language: " + partyGuest.getLanguage() + "<br>" +
-                "Desired date: " + partyGuest.getDate() + "<br>" +
-                "Theme: " + partyGuest.getTheme() + "<br>" +
-                "Attarction: " + partyGuest.getAttraction() + "</h5>";
-
-        sendMail(toSend, emailTxt + emailContent, emailSubject);
-        sendMail(slackMail, emailContent, slackSubject);
-        return "";
     }
 
     /**
