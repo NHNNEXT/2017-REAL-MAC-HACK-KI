@@ -49,6 +49,8 @@ dependencies {
     compile('org.antlr:ST4:4.0.8')
     compile ('org.apache.tiles:tiles-extras:3.0.7')
     compile('org.webjars.npm:handlebars:4.0.6')
+    compile('org.springframework.social:spring-social-facebook')
+
 
     runtime('com.h2database:h2')
     runtime('mysql:mysql-connector-java')
