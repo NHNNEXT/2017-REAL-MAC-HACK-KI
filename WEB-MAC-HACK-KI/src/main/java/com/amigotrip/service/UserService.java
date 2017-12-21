@@ -108,4 +108,8 @@ public class UserService {
             throw new BadRequestException("Password is wrong! Please check again");
         }
     }
+
+    public boolean isSignedUp(String email) {
+        return userRepository.findByEmail(email) != null;
+    }
 }

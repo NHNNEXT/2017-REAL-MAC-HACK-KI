@@ -54,14 +54,14 @@ public class HomeController {
         return "/loginForm";
     }
 
-    @GetMapping("/profile")
-    public String profile() {
-        return "profile";
-    }
-
     @GetMapping("/test")
     public String test() {
         return "editProfile";
+    }
+
+    @GetMapping("/profile")
+    public String profile() {
+        return "/profile";
     }
 }
 
