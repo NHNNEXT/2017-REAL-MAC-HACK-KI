@@ -21,7 +21,6 @@ class Profile {
     });
 
     document.querySelector('table').addEventListener('click', e => {
-      console.log(e.target.tagName);
       if(e.target.tagName === 'TH') {
         this.select(e.target);
       }

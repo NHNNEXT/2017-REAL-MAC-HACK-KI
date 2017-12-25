@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.security.Principal;
 import java.util.Map;
 
 /**
@@ -47,8 +48,8 @@ public class ApiUserController {
     }
 
     @PutMapping("/{userId}")
-    public ResponseEntity<User> updateUser(@PathVariable long userId, @RequestBody User user) {
-        return new ResponseEntity<User>(userService.updateUser(userId, user),
+    public ResponseEntity<User> updateUser(@PathVariable long userId, @RequestBody User user, Principal principal) {
+        return new ResponseEntity<User>(userService.updateUser(userId, user, principal),
                 HttpStatus.ACCEPTED);
     }
 

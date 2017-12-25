@@ -8,15 +8,18 @@
         <link rel="stylesheet" href="/css/header.css">
         <link rel="stylesheet" href="/css/footer.css">
         <link rel="stylesheet" href="/css/profile.css">
+        <link rel="stylesheet" href="/css/editProfile.css">
+        <script src="//cdn.ckeditor.com/4.4.0/standard/ckeditor.js"></script>
     </head>
     <body>
     {{> include/header}}
-        <div class="top-info-zone">
+    <article>
+        <div class="top-info-zone" data-id="{{profileUser.id}}">
             <div class="profile-image">Change Image</div>
                 <input class="profile-image-input" type="file" accept="image/*">
             <div class="basic-info-zone">
-                <h4 class="name">Newton Artemis Fido Scamander</h4>
-                <p class="city">London, England</p>
+                <h4 class="name">{{profileUser.name}}</h4>
+                <p class="city">{{profileUser.city}}</p>
             </div>
             <div class="statistics-zone">
                 <p class="article">Article 10</p>
@@ -33,13 +36,24 @@
                     <form>
                         <div class="contents-zone about-contents is-visible">
                             <div class="info city-info-zone">
-                                <h6>City</h6> <input placeholder="London, England" type="text">
+                                <h6>City</h6> <input type="text" class="city-input search-city-input" id="ac2" placeholder="{{profileUser.city}}">
+                            </div>
+                            <div class="info nationality-info-zone">
+                                <h6>Nationality</h6>
+                                <select class="nation-select" data-id="{{profileUser.nationality}}">
+                                    {{> include/selectNations}}
+                                </select>
                             </div>
                             <div class="info birthday-info-zone">
                                 <h6>Birth Date</h6>
-                                <select class="select-month"></select>
-                                <select class="select-date"></select>
-                                <select class="select-year"></select>
+                                <input type="date" name="birthday" class="birthday-input" />
+                            </div>
+                            <div class="info gender-info-zone">
+                                <h6>Gender</h6>
+                                <select class="gender-select">
+                                    <option class="gender-male" value="male">Male</option>
+                                    <option class="gender-female" value="female">Female</option>
+                                </select>
                             </div>
                             <div class="info languages-info-zone">
                                 <h6>Languages</h6>
@@ -59,30 +73,43 @@
                             <hr>
                             <div class="info about-me-info-zone">
                                 <h6 class="about-me-label">About me</h6>
-                                <div class="about-me-zone">
-                                    I have visited lairs, burrows and nests across five continents,
-                                    observed the curious habits of magical beasts in a hundred countries,
-                                    witnessed their powers, gained their trust and, on occasion, beaten
-                                    them off with my travelling kettle.
-                                </div>
+                                <textarea name="editor1" id="editor1" rows="10" cols="80">
+                                    {{profileUser.contents}}
+                                </textarea>
+                                <script>
+                                  // Replace the <textarea id="editor1"> with a CKEditor
+                                  // instance, using default configuration.
+                                  CKEDITOR.replace( 'editor1' );
+                                </script>
                             </div>
                         </div>
                     </form>
                 </td>
             </tr>
         </table>
+        <div class="edit-form-button-zone">
+            <button class="edit-form-button save">Save</button>
+            <a href="/users/profile/{{profileUser.id}}"><button class="edit-form-button cancel">Cancel</button></a>
+        </div>
     </article>
     {{> include/footer}}
-    <script id="entry-template" type="text/x-handlebars-template">
-        <ul class="people_list">
-            {{#each people}}
-            <li>{{this}}</li>
-            {{/each}}
-        </ul>
-    </script>
     <script src="/js/header.js"></script>
     <script src="/js/profile.js"></script>
     <script src="/js/handlebars-v4.0.11.js"></script>
+    <script>
+      function activatePlacesSearch() {
+        let options = {
+          types: ['(cities)'],
+          componentRestrictions: {'country': 'kr'}
+        };
+        let input = document.querySelectorAll('.search-city-input');
+        for(let i = 0 ; i < input.length ; i++) {
+          let autocomplete = new google.maps.places.Autocomplete(input[i], options);
+          autocomplete.inputId = input[i].id;
+        }
+      }
+    </script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7YyhbcRztHC-J6IiocCG6HE07JnmiGmE&libraries=places&language=en&callback=activatePlacesSearch"></script>
     <script src="/js/editProfile.js"></script>
     </body>
 </html>
