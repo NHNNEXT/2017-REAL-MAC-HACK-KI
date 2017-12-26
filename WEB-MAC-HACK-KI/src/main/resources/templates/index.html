@@ -11,11 +11,14 @@
 <body>
     {{> include/header}}
     <article>
+        <form action="/connect/facebook" method="POST">
+            <input type="hidden" name="scope" value="user_posts" />
+        </form>
         <div class="search-area">
             <div class="wrap">
                 <div class="search">
                     <form action="/search" method="post">
-                        <input type="text" class="search-city-input" name="city" placeholder="Try any city"/>
+                        <input type="text" class="search-city-input" id="ac2" name="city" placeholder="Try any city"/>
                         <button type="submit" id="search-button">Search</button>
                     </form>
                 </div>
@@ -47,8 +50,12 @@
           types: ['(cities)'],
           componentRestrictions: {'country': 'kr'}
         };
-        let input = document.querySelector('.search-city-input');
-        let autocomplete = new google.maps.places.Autocomplete(input, options);
+        let input = document.querySelectorAll('.search-city-input');
+        for(let i = 0 ; i < input.length ; i++) {
+          let autocomplete = new google.maps.places.Autocomplete(input[i], options);
+          autocomplete.inputId = input[i].id;
+        }
+
       }
     </script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7YyhbcRztHC-J6IiocCG6HE07JnmiGmE&libraries=places&language=en&callback=activatePlacesSearch"></script>

@@ -1,8 +1,8 @@
 /**
  * Created by Woohyeon on 2017. 12. 13..
  */
-// const serviceUrl = "http://localhost:8080/";
-const serviceUrl = "http://dev.amigotrip.co.kr/" // should be changed on release;
+const serviceUrl = "http://localhost:8080/";
+// const serviceUrl = "http://dev.amigotrip.co.kr/" // should be changed on release;
 const emailregex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
 class Header {

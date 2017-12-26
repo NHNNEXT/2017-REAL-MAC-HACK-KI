@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Null;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -40,9 +41,6 @@ public class User {
 
     private String gender;
 
-    @Column(nullable = true)
-    private Integer age;
-
     private String nationality;
 
     private String city;
@@ -54,6 +52,8 @@ public class User {
     @OneToOne
     @JoinColumn(name = "profile_id")
     private Photo profileImg;
+
+    private Date birthday;
 
     private String contents;
 
@@ -111,8 +111,8 @@ public class User {
             this.gender = user.gender;
         }
 
-        if(user.age != 0) {
-            this.age = user.age;
+        if(user.birthday != null) {
+            this.birthday = user.birthday;
         }
 
         if(user.nationality != null) {
@@ -134,6 +134,16 @@ public class User {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
+                ", gender='" + gender + '\'' +
+                ", nationality='" + nationality + '\'' +
+                ", city='" + city + '\'' +
+                ", creditPoint=" + creditPoint +
+                ", profileImg=" + profileImg +
+                ", birthday=" + birthday +
+                ", contents='" + contents + '\'' +
+                ", roles=" + roles +
+                ", userPhotos=" + userPhotos +
+                ", reviews=" + reviews +
                 '}';
     }
 

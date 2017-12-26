@@ -46,11 +46,6 @@ public class UserService {
         return userRepository.findByEmail(email) != null;
     }
 
-    public boolean isLogined(Principal principal) {
-        if (userRepository.findByEmail(principal.getName()) == null) return false;
-        return true;
-    }
-
     public User signup(String email, String password, String name) {
         User user = new User(email, password, name);
         user.encryptionPassword(bCryptPasswordEncoder);
@@ -71,11 +66,23 @@ public class UserService {
         return dbUser;
     }
 
-    public User updateUser(long id, User user) {
+    public User updateUser(long id, User user, Principal principal) {
         User dbUser = userRepository.findOne(id);
+        identification(id, principal);
         dbUser.updateUser(user);
         userRepository.save(dbUser);
         return dbUser;
+    }
+
+    public void identification(long toEditUserId, Principal principal) {
+        if(principal == null) {
+            throw new BadRequestException("Please login");
+        }
+        User toEditUser = userRepository.findOne(toEditUserId);
+        User loginUser = userRepository.findByEmail(principal.getName());
+        if(loginUser.equals(toEditUser)) {
+            throw new BadRequestException("You can't edit the profile unless you are the person");
+        }
     }
 
     public String confirmUserByUserId(long userId, String key) {
@@ -96,6 +103,10 @@ public class UserService {
 
     public User findUserById(long id) {
         return userRepository.findOne(id);
+    }
+
+    public User findUserByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
     public void checkValidateLogin(String email, String password) {
