@@ -2,6 +2,10 @@ article {
     height: 200%;
 }
 
+a {
+    color: black;
+}
+
 li {
     list-style: none;
 }

@@ -3,7 +3,9 @@ package com.amigotrip.web;
 import com.amigotrip.domain.*;
 import com.amigotrip.exception.BadRequestException;
 import com.amigotrip.repository.*;
+import com.amigotrip.service.ArticleService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.tomcat.jni.Local;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +27,9 @@ public class ApiArticleController {
     private UserRepository userRepository;
 
     @Resource
+    private ArticleService articleService;
+
+    @Resource
     private LocalsArticleRepository localsArticleRepository;
 
     @Resource
@@ -42,7 +47,6 @@ public class ApiArticleController {
     @GetMapping("/locals")
     public List<LocalsArticle> getLocalsArticleList() {
         List<LocalsArticle> list = localsArticleRepository.findAll();
-
         return list;
     }
 
@@ -54,59 +58,23 @@ public class ApiArticleController {
     }
 
     @PostMapping("/locals")
+    @ResponseStatus(HttpStatus.CREATED)
     public LocalsArticle postLocalsArticle(@RequestBody LocalsArticle article, Principal principal) {
-        if (principal == null) throw new BadRequestException("Login first before writing an article.");
-        User writer = userRepository.findByEmail(principal.getName());
-
-        article.setWriter(writer);
-
-        return localsArticleRepository.save(article);
+        log.debug("LOCAL PRINCIPAL: {}", principal);
+        return articleService.createLocalArticle(principal, article);
     }
 
     @PutMapping("/locals/{id}")
-    public ResponseEntity<Result> updateLocalsArticle(@PathVariable Long id, @RequestBody LocalsArticle article, Principal principal) {
-        LocalsArticle dbArticle = localsArticleRepository.findOne(id);
-        if (dbArticle == null) {
-            return new ResponseEntity<Result>(
-                    new Result("/articles/locals"),
-                    HttpStatus.BAD_REQUEST
-            );
-        }
-
-        if (principal == null) {
-            return new ResponseEntity<Result>(
-                    new Result("/loginForm"),
-                    HttpStatus.NOT_ACCEPTABLE
-            );
-        }
-
-        dbArticle.updateArticle(article);
-        localsArticleRepository.save(dbArticle);
-        return new ResponseEntity<Result>(
-                new Result("/articles/locals"),
-                HttpStatus.OK
-        );
+    @ResponseStatus(HttpStatus.OK)
+    public LocalsArticle updateLocalsArticle(@PathVariable Long id, @RequestBody LocalsArticle article, Principal principal) {
+        return articleService.updateLocalsArticle(principal, id, article);
     }
 
     @DeleteMapping("/locals/{id}")
-    public ResponseEntity<Result> deleteLocalsArticle(@PathVariable Long id, Principal principal) {
-        LocalsArticle article = localsArticleRepository.findOne(id);
-        if (article == null) throw new BadRequestException("There is no such article");
-        if (!article.getWriter().getEmail().equals(principal.getName())) throw new BadRequestException("Can not delete an article wrote by others");
-
-        for (LocalsReply r : article.getReplies()) { // delete replies as well
-            localsReplyRepository.delete(r.getId());
-        }
-
-        for (Photo p : article.getPhotos()) { // delete photos as well
-            photoRepository.delete(p.getPhotoId());
-        }
-
-        localsArticleRepository.delete(id);
-        return new ResponseEntity<Result>(
-                new Result("/articles/locals"),
-                HttpStatus.OK
-        );
+    @ResponseStatus(HttpStatus.OK)
+    public Result deleteLocalsArticle(@PathVariable Long id, Principal principal) {
+        articleService.deleteLocalsArticle(principal, id);
+        return new Result();
     }
 
     @GetMapping("/traveler")
