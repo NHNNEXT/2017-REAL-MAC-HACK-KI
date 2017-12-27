@@ -55,6 +55,8 @@ public class User {
 
     private Date birthday;
 
+    @Lob
+    @Column(name = "contents", length = 512)
     private String contents;
 
     @ManyToMany(cascade = CascadeType.ALL)

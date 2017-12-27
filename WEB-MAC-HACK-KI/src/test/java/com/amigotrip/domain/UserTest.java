@@ -26,7 +26,6 @@ public class UserTest {
     @Test
     public void updateUser() {
         User updateUser = new User();
-        updateUser.setAge(23);
         updateUser.setCity("Seoul");
         updateUser.setContents("TTTTTTTEEEEEEEESSSSSSSSSSTTTTTTTTT");
 

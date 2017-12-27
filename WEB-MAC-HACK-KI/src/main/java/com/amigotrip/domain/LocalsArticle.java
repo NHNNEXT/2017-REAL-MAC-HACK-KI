@@ -3,9 +3,13 @@ package com.amigotrip.domain;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Set;
 
 /**
@@ -16,6 +20,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@EntityListeners(AuditingEntityListener.class)
 public class LocalsArticle {
 
     @Id
@@ -41,6 +46,7 @@ public class LocalsArticle {
 
     private String contents;
 
+    @CreatedDate
     private LocalDateTime createDate;
 
     public boolean isMatchWriter(User writer) {
