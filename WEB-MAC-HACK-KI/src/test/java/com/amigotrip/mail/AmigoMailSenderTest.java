@@ -26,16 +26,6 @@ public class AmigoMailSenderTest {
     @Autowired
     AmigoMailSender amigoMailSender;
 
-    @Test
-    public void testAsyncMailSender() throws InterruptedException {
-        PartyGuest testGuest = new PartyGuest();
-
-        System.out.println("Start - invoking an asynchronous method." + Thread.currentThread().getName());
-        amigoMailSender.sendPartyGuestFormMail(testGuest);
-        System.out.println("End - invoking an asynchronous method." + Thread.currentThread().getName());
-        Thread.sleep(250);
-    }
-
     /**
      * Created by Naver on 2017. 10. 24..
      */
