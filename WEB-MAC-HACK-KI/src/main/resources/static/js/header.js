@@ -24,6 +24,7 @@ class Header {
     this.loginLink = document.querySelector('.link-to-signin');
     this.inputs = document.querySelectorAll('.bq-input');
     this.logoutBtn = document.querySelector('.logout-button');
+    this.profileBtn = document.querySelector('.user-info');
 
     if (document.querySelector('title').innerText === 'Amigo') {
       this.header.querySelector('.header-search-city-input').classList.remove('is-visible');
@@ -36,6 +37,7 @@ class Header {
     if (this.loginModalBtn) this.loginModalBtn.addEventListener('click', this.addFadeIn.bind(this));
     if (this.signupModalBtn) this.signupModalBtn.addEventListener('click', this.addFadeIn.bind(this));
     if (this.logoutBtn) this.logoutBtn.addEventListener('click', () => {window.location.replace("/logout")});
+    if (this.profileBtn) this.profileBtn.addEventListener('click', () => {window.location.replace("/users/profile/" + this.profileBtn.getAttribute('data-id'))});
     for (let i = 0; i < this.closeBtn.length; i++) {
       this.closeBtn[i].addEventListener('click', this.closeModal.bind(this));
     }

@@ -46,11 +46,15 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public String main(Authentication principal, HttpSession session) {
+    public String main(Authentication principal, HttpSession session, Model model) {
         if(connectionRepository.findPrimaryConnection(Facebook.class) != null) {
             log.debug("{}", facebook.userOperations().getUserProfile());
         }
         SecurityContext securityContext = SecurityContextHolder.getContext();
+
+        if (principal != null) {
+            model.addAttribute("authenticatedUser", userService.findUserByEmail(principal.getName()));
+        }
 
         return "index";
     }
@@ -58,6 +62,10 @@ public class HomeController {
     @GetMapping("/list")
     public String list(Principal principal, Model model) {
         model.addAttribute("localsArticleList", articleService.findLocalsAll());
+
+        if (principal != null) {
+            model.addAttribute("authenticatedUser", userService.findUserByEmail(principal.getName()));
+        }
 
         return "list";
     }
@@ -68,11 +76,6 @@ public class HomeController {
         model.addAttribute("localsArticleList", localsArticleList);
         log.debug("CITY: {}", localsArticleList);
         return "list";
-    }
-
-    @GetMapping("/loginForm")
-    public String loginForm() {
-        return "/loginForm";
     }
 
     @GetMapping("/test")
