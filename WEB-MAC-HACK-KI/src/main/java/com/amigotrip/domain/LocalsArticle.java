@@ -54,8 +54,13 @@ public class LocalsArticle {
     }
 
     public void updateArticle(LocalsArticle article) {
-        this.photos = article.photos;
+        this.title = article.title;
+        this.location = article.location;
         this.contents = article.contents;
+    }
+
+    public boolean isAcceptedUser(User user) {
+        return user.equals(writer);
     }
 
     public void addReply(LocalsReply reply) {
