@@ -12,6 +12,10 @@ article {
     margin: 90px 0 0 0;
 }
 
+button:focus {
+    outline: none;
+}
+
 header {
     margin: -90px 0 0 0;
     display: inline-block;

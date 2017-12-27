@@ -50,6 +50,7 @@ dependencies {
     compile ('org.apache.tiles:tiles-extras:3.0.7')
     compile('org.webjars.npm:handlebars:4.0.6')
     compile('org.springframework.social:spring-social-facebook')
+    compile group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '1.5.8.RELEASE'
 
 
     runtime('com.h2database:h2')
