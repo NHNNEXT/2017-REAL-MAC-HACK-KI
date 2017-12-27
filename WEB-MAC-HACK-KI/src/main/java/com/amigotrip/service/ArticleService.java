@@ -31,6 +31,8 @@ public class ArticleService {
         return localsArticleRepository.findByLocationLike("%" + city + "%");
     }
 
+    public List<LocalsArticle> findLocalsAll() { return localsArticleRepository.findAll(); }
+
     public LocalsArticle findLocalsOne(long articleId) {
         return localsArticleRepository.findOne(articleId);
     }

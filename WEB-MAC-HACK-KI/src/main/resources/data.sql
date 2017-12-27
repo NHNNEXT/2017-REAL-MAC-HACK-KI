@@ -14,5 +14,57 @@ INSERT INTO user (email, name, password, nationality, city, birthday, contents)
 INSERT INTO user_role (user_id, role_id) VALUES (1, 1);
 INSERT INTO user_role (user_id, role_id) VALUES (1, 2);
 
+INSERT INTO user (email, name, password, nationality, city, birthday, contents)
+  VALUES ('bbq9234@naver.com', 'bbq923', '$2a$10$SRQgq4tJTr2IW5DoLT2AB.lsj0jACBX59xZsY/3yL7inpqjfFbhgS',
+          'KR', 'Yongin, South Korea', '1994-09-23',
+          'Howdy! Here comes your best trip mate to discover around Korea with. Mostly spent my time guiding those coming<br>
+           to Korea for the first time, I mainly enjoy introducing Korean traditional food and sports. As being one of the developers<br>
+           for this service, feel free to point out any inconvenience you faced while using this service.'); -- pw: Q
+
+INSERT INTO user_role (user_id, role_id) VALUES (2, 1);
+INSERT INTO user_role (user_id, role_id) VALUES (2, 2);
+
+INSERT INTO user (email, name, password, nationality, city, birthday, contents)
+  VALUES ('dev.yongjai@gmail.com', 'Yongjae Kwon', '$2a$10$SRQgq4tJTr2IW5DoLT2AB.lsj0jACBX59xZsY/3yL7inpqjfFbhgS',
+          'KR', 'Seoul, South Korea', '1994-05-23',
+          'Hi, I\’m yongjae. Like other introductions, I\’m also studying computer science and developing iOS clients.<br>
+           Actually I\’m not good at communicate in English. But we are living in the 21st century, and there are technologies<br>
+           that will fill the shortage of my language skills. So, I do not worry.'); -- pw: Q
+
+INSERT INTO user_role (user_id, role_id) VALUES (3, 1);
+INSERT INTO user_role (user_id, role_id) VALUES (3, 2);
+
+INSERT INTO user (email, name, password, nationality, city, birthday, contents)
+  VALUES ('LeoFab@gmail.com', 'Leonardo Fabbrica', '$2a$10$SRQgq4tJTr2IW5DoLT2AB.lsj0jACBX59xZsY/3yL7inpqjfFbhgS',
+          'IT', 'Pomezia, Lazio, Italy', '1986-11-23',
+          'I\’m an italian boy, i like movies, TV series, manga, i like the sea, I\’m a sportive guy, i like to go to the gym or swim<br>
+           in the pool, ride a bike. Also like animals, I always had cats, so now I have a cat which is half persian.'); -- pw: Q
+
+INSERT INTO user_role (user_id, role_id) VALUES (4, 1);
+INSERT INTO user_role (user_id, role_id) VALUES (4, 2);
+
+INSERT INTO user (email, name, password, nationality, city, birthday, contents)
+  VALUES ('JZhang@gmail.com', 'Julie Zhang', '$2a$10$SRQgq4tJTr2IW5DoLT2AB.lsj0jACBX59xZsY/3yL7inpqjfFbhgS',
+          'CN', 'Guangzhou, Guangdong, China', '1994-03-27',
+          'I am a 24-year-old girl from China. I just finished my study of college in China and I would like to travel to Europe. I am kenn on <br>
+           making friends and traveling. I think Couchsurfing is an excellent way to make friends and enjoy life. By learning different cultures<br>
+           and custom, I hope I can get experience from it. I really enjoy meeting new friends, and value it more than visiting the places of interest<br>
+           sometimes.'); -- pw: Q
+
+INSERT INTO user_role (user_id, role_id) VALUES (5, 1);
+INSERT INTO user_role (user_id, role_id) VALUES (5, 2);
+
 INSERT INTO locals_article (locals_article_id, title, contents, location, user_id)
   VALUES (1, 'Seoul palace tour', 'There are many palaces in Joseon dinesty', 'Seoul, South Korea', 1);
+
+INSERT INTO locals_article (locals_article_id, title, contents, location, user_id)
+  VALUES (2, 'Incheon tour', 'find out what you can do in Incheon.', 'Seoul, South Korea', 1);
+
+INSERT INTO locals_article (locals_article_id, title, contents, location, user_id)
+  VALUES (3, 'trip to Everland', 'Visit the best amusement park in Korea', 'Yongin, South Korea', 2);
+
+INSERT INTO locals_article (locals_article_id, title, contents, location, user_id)
+  VALUES (4, 'Colosseum tour', 'Enter the Colosseum and be one of those gladiators fought for the fame and rich in ancient times.', 'Pomezia, Lazio, Italy', 4);
+
+INSERT INTO locals_article (locals_article_id, title, contents, location, user_id)
+  VALUES (5, 'Canton Tower tour', 'Grab the astonishing night view. With your loved one, family, have an unforgettable night in Canton Tower.', 'Guangzhou, China', 5);

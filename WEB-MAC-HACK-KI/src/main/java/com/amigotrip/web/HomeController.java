@@ -56,7 +56,9 @@ public class HomeController {
     }
 
     @GetMapping("/list")
-    public String list(Principal principal) {
+    public String list(Principal principal, Model model) {
+        model.addAttribute("localsArticleList", articleService.findLocalsAll());
+
         return "list";
     }
 
