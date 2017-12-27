@@ -116,6 +116,7 @@ class Header {
   tryLogin(e) {
     fetch(serviceUrl + "users/login", {
       method: 'post',
+      credentials: 'same-origin',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
