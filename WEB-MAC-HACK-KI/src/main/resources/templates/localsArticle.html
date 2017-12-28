@@ -6,13 +6,18 @@
         <title>Amigo confirmed</title>
         <link rel="stylesheet" href="/css/header.css">
         <link rel="stylesheet" href="/css/footer.css">
+        <link rel="stylesheet" href="/css/localsArticle.css">
     </head>
     <body>
         {{> include/header}}
-        <article>
+        <article data-id="{{localsArticle.writer.id}}">
             <a href="/articles/localsForm/{{localsArticle.id}}"><button>Edit article</button></a>
             <button class="delete-button" data-id="{{localsArticle.id}}">Delete article</button>
+            <button class="star-button">Star</button>
             {{localsArticle}}
+            {{#each localsArticle.writer.stars}}
+                <p class="stars-from">{{this.id.fromId}}</p>
+            {{/each}}
         </article>
         {{> include/footer}}
         <script type="text/javascript" src="/js/localsArticle.js"></script>

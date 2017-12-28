@@ -1,5 +1,6 @@
 package com.amigotrip.web;
 
+import com.amigotrip.domain.Star;
 import com.amigotrip.domain.User;
 import com.amigotrip.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -62,5 +63,11 @@ public class ApiUserController {
     @GetMapping("")
     public boolean checkSignUp(String email) {
         return userService.isSignedUp(email);
+    }
+
+    @PostMapping("/stars")
+    public Star star(@RequestBody Map<String, String> body, Principal principal) {
+        Star star = userService.star(principal, Long.parseLong(body.get("toId")), Boolean.parseBoolean(body.get("star")));
+        return star;
     }
 }

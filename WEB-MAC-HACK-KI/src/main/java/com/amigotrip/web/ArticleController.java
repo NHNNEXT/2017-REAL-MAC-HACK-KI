@@ -23,8 +23,11 @@ public class ArticleController {
     private UserService userService;
 
     @GetMapping("/localsDetail/{articleId}")
-    public String getLocalsArticle(@PathVariable long articleId, Model model) {
+    public String getLocalsArticle(Principal principal, @PathVariable long articleId, Model model) {
         model.addAttribute("localsArticle", articleService.findLocalsOne(articleId));
+        if (principal != null) {
+            model.addAttribute("authenticatedUser", userService.findUserByEmail(principal.getName()));
+        }
         return "localsArticle";
     }
 
@@ -32,6 +35,9 @@ public class ArticleController {
     public String editLocalsArticle(Principal principal, Model model, @PathVariable long articleId) {
         LocalsArticle localsArticle = articleService.findLocalsOne(articleId);
         model.addAttribute("localsArticle", localsArticle);
+        if (principal != null) {
+            model.addAttribute("authenticatedUser", userService.findUserByEmail(principal.getName()));
+        }
         return "localsEditForm";
     }
 
@@ -39,6 +45,9 @@ public class ArticleController {
     public String localsArticleForm(Principal principal, Model model) {
         if(principal == null) {
             return "/";
+        }
+        if (principal != null) {
+            model.addAttribute("authenticatedUser", userService.findUserByEmail(principal.getName()));
         }
         return "localsForm";
     }

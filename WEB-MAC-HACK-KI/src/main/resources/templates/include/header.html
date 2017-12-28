@@ -5,12 +5,12 @@
     <input type="text" class="search-city-input header-search-city-input is-visible" id="ac1" placeholder="Search city"/>
     <div class="user-option">
         {{#authorize "isAnonymous()"}}
-        <button class="session-info login-button">Login</button>
-        <button class="session-info signup-button">Signup</button>
+            <button class="session-info login-button">Login</button>
+            <button class="session-info signup-button">Signup</button>
         {{/authorize}}
         {{#authorize "isAuthenticated()"}}
-        <button class="session-info user-info" data-id="{{authenticatedUser.id}}">{{authenticatedUser.name}}</button>
-        <button class="session-info logout-button">Logout</button>
+            <button class="session-info user-info" data-id="{{authenticatedUser.id}}">{{authenticatedUser.name}}</button>
+            <button class="session-info logout-button">Logout</button>
         {{/authorize}}
     </div>
 </header>
