@@ -1,8 +1,10 @@
 package com.amigotrip.service;
 
 import com.amigotrip.domain.Role;
+import com.amigotrip.domain.Star;
 import com.amigotrip.repository.RoleRepository;
 import com.amigotrip.domain.User;
+import com.amigotrip.repository.StarRepository;
 import com.amigotrip.repository.UserRepository;
 import com.amigotrip.exception.BadRequestException;
 import com.amigotrip.mail.AmigoMailSender;
@@ -37,6 +39,9 @@ public class UserService {
 
     @Resource
     private RoleRepository roleRepository;
+
+    @Resource
+    private StarRepository starRepository;
 
     @Resource
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -136,5 +141,24 @@ public class UserService {
 
     public boolean isSignedUp(String email) {
         return userRepository.findByEmail(email) != null;
+    }
+
+    public void checkLogined(Principal principal) {
+        if(principal == null) {
+            throw new BadRequestException("Please login");
+        }
+    }
+
+    public Star star(Principal principal, long toUserId, boolean star) {
+        checkLogined(principal);
+        User loginedUser = userRepository.findByEmail(principal.getName());
+        Star toStaring = new Star(loginedUser.getId(), toUserId);
+        if(star) {
+            return starRepository.save(toStaring);
+        } else {
+            starRepository.delete(toStaring);
+            log.debug("DESTAR");
+        }
+        return null;
     }
 }

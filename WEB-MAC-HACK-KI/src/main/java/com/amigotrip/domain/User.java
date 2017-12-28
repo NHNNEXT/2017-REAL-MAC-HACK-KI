@@ -71,6 +71,10 @@ public class User {
     @JoinColumn(name = "to_id")
     private Set<Review> reviews;
 
+    @OneToMany
+    @JoinColumn(name = "to_id")
+    private Set<Star> stars;
+
     public User(String email, String password, String name) {
         this.email = email;
         this.password = password;
@@ -146,6 +150,7 @@ public class User {
                 ", roles=" + roles +
                 ", userPhotos=" + userPhotos +
                 ", reviews=" + reviews +
+                ", stars=" + stars +
                 '}';
     }
 

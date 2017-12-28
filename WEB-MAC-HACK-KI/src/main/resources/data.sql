@@ -68,3 +68,9 @@ INSERT INTO locals_article (locals_article_id, title, contents, location, user_i
 
 INSERT INTO locals_article (locals_article_id, title, contents, location, user_id)
   VALUES (5, 'Canton Tower tour', 'Grab the astonishing night view. With your loved one, family, have an unforgettable night in Canton Tower.', 'Guangzhou, China', 5);
+
+INSERT INTO star (from_id, to_id) VALUES (2, 1);
+INSERT INTO star (from_id, to_id) VALUES (2, 3);
+INSERT INTO star (from_id, to_id) VALUES (4, 5);
+INSERT INTO star (from_id, to_id) VALUES (1, 4);
+INSERT INTO star (from_id, to_id) VALUES (2, 5);
