@@ -45,7 +45,7 @@ public class ApiPhotoController {
     @Resource
     LocalsArticleRepository localsArticleRepository;
 
-    @PostMapping("/{articleId}")
+    @PostMapping("/articles/{articleId}")
     public ResponseEntity<Photo> uploadPhoto(@PathVariable Long articleId, MultipartFile uploadFile, Principal principal) throws IOException {
         String fileName = uploadFile.getOriginalFilename();
         log.debug("filename : {}", fileName);

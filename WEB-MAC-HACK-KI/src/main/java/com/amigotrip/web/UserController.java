@@ -31,6 +31,7 @@ public class UserController {
     public String profile(Principal principal, @PathVariable long userId, Model model) {
         User profileUser = userService.findUserById(userId);
         model.addAttribute("profileUser", profileUser);
+        model.addAttribute("authenticatedUser", profileUser);
         return "profile";
     }
 
@@ -39,6 +40,7 @@ public class UserController {
 //        userService.identification(userId, principal);
         User profileUser = userService.findUserById(userId);
         model.addAttribute("profileUser", profileUser);
+        model.addAttribute("authenticatedUser", profileUser);
         return "editProfile";
     }
 

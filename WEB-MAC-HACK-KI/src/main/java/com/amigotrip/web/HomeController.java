@@ -6,6 +6,9 @@ import com.amigotrip.mail.AmigoMailSender;
 import com.amigotrip.service.ArticleService;
 import com.amigotrip.service.UserService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.facebook.api.Facebook;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.util.List;
 
@@ -42,16 +46,27 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public String main(Principal principal) {
+    public String main(Authentication principal, HttpSession session, Model model) {
         if(connectionRepository.findPrimaryConnection(Facebook.class) != null) {
             log.debug("{}", facebook.userOperations().getUserProfile());
         }
-        log.debug("principal: {}", principal);
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+
+        if (principal != null) {
+            model.addAttribute("authenticatedUser", userService.findUserByEmail(principal.getName()));
+        }
+
         return "index";
     }
 
     @GetMapping("/list")
-    public String list(Principal principal) {
+    public String list(Principal principal, Model model) {
+        model.addAttribute("localsArticleList", articleService.findLocalsAll());
+
+        if (principal != null) {
+            model.addAttribute("authenticatedUser", userService.findUserByEmail(principal.getName()));
+        }
+
         return "list";
     }
 
@@ -61,11 +76,6 @@ public class HomeController {
         model.addAttribute("localsArticleList", localsArticleList);
         log.debug("CITY: {}", localsArticleList);
         return "list";
-    }
-
-    @GetMapping("/loginForm")
-    public String loginForm() {
-        return "/loginForm";
     }
 
     @GetMapping("/test")

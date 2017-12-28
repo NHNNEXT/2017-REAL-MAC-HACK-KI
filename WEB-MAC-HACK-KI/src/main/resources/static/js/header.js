@@ -23,6 +23,8 @@ class Header {
     this.signupLink = document.querySelector('.link-to-signup-btn');
     this.loginLink = document.querySelector('.link-to-signin');
     this.inputs = document.querySelectorAll('.bq-input');
+    this.logoutBtn = document.querySelector('.logout-button');
+    this.profileBtn = document.querySelector('.user-info');
 
     if (document.querySelector('title').innerText === 'Amigo') {
       this.header.querySelector('.header-search-city-input').classList.remove('is-visible');
@@ -32,8 +34,10 @@ class Header {
       this.showHeaderUnderline();
     });
 
-    this.loginModalBtn.addEventListener('click', this.addFadeIn.bind(this));
-    this.signupModalBtn.addEventListener('click', this.addFadeIn.bind(this));
+    if (this.loginModalBtn) this.loginModalBtn.addEventListener('click', this.addFadeIn.bind(this));
+    if (this.signupModalBtn) this.signupModalBtn.addEventListener('click', this.addFadeIn.bind(this));
+    if (this.logoutBtn) this.logoutBtn.addEventListener('click', () => {window.location.replace("/logout")});
+    if (this.profileBtn) this.profileBtn.addEventListener('click', () => {window.location.replace("/users/profile/" + this.profileBtn.getAttribute('data-id'))});
     for (let i = 0; i < this.closeBtn.length; i++) {
       this.closeBtn[i].addEventListener('click', this.closeModal.bind(this));
     }
@@ -53,10 +57,7 @@ class Header {
     document.querySelector("#signup-password-confirm").onkeyup = this.bindWithDelay(this.checkPasswordConfirm).bind(this);
     document.querySelector("#login-password").addEventListener('keyup', function(e) {
       this.disableButton(e);
-      console.log(e);
       if (!this.checkInputNull(e)) {
-        console.log("checkinput 들어옴");
-        console.log(e);
         this.enableButton(e);
       }
     }.bind(this));
@@ -114,7 +115,7 @@ class Header {
   }
 
   tryLogin(e) {
-    fetch(serviceUrl + "users/login", {
+    fetch("/users/login", {
       method: 'post',
       credentials: 'same-origin',
       headers: {
@@ -126,7 +127,7 @@ class Header {
     }).then(res=>res.json())
       .then(function(res) {
         if (res.id != null && res.id > 0) { // if login success
-          window.location.href = serviceUrl;
+          window.location.replace(serviceUrl + "list");
         }
 
         if (res.message === "Email is wrong! Please check again.") {

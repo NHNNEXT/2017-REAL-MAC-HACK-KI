@@ -1,5 +1,6 @@
 package com.amigotrip.service;
 
+import com.amigotrip.domain.Role;
 import com.amigotrip.repository.RoleRepository;
 import com.amigotrip.domain.User;
 import com.amigotrip.repository.UserRepository;
@@ -10,6 +11,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -18,6 +21,9 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Naver on 2017. 11. 26..
@@ -58,12 +64,20 @@ public class UserService {
     public User login(String email, String password, HttpSession httpSession) {
         checkValidateLogin(email, password);
         User dbUser = userRepository.findByEmail(email);
-        UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(dbUser.getEmail(), dbUser.getPassword());
+        UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(dbUser.getEmail(), dbUser.getPassword(), buildUserAuthority(dbUser.getRoles()));
         Authentication authentication = authenticationManager.authenticate(authRequest);
         SecurityContext securityContext = SecurityContextHolder.getContext();
         securityContext.setAuthentication(authentication);
         httpSession.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
         return dbUser;
+    }
+
+    private List<GrantedAuthority> buildUserAuthority(Set<Role> roles) {
+        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>(0);
+        for(Role role : roles) {
+            authorities.add(new SimpleGrantedAuthority(role.getRole()));
+        }
+        return authorities;
     }
 
     public User updateUser(long id, User user, Principal principal) {
