@@ -60,9 +60,9 @@
     background-size: 100%;
     background-repeat: no-repeat;
     font-family: "sun-valley";
-    font-size: 65px;
+    font-size: 5vw;
     -webkit-transition: all 0.3s ease-out;
-    float: left;
+    vertical-align: -webkit-baseline-middle;
     border: solid;
     border-width: 1px;
     border-color: #FFF;
@@ -70,7 +70,7 @@
 
 .illust:hover {
     opacity: 0.8;
-    font-size: 85px;
+    font-size: 6vw;
     margin: 4px 8px 12px 8px;
     cursor: pointer;
     border-color: #DDD;
@@ -87,8 +87,13 @@ h5.city-name {
 
 .illust.seoul {
     background-image: url("/images/illust/illust-seoul.png");
-    width: 340px;
-    height: 220px;
+    width: 23vw;
+    height: 16vw;
+    margin: -6vw 0 0 0;
+}
+
+.illust.seoul:hover {
+    margin: -6.5vw 0 0 0;
 }
 
 h5.city-name.seoul {
@@ -97,8 +102,8 @@ h5.city-name.seoul {
 
 .illust.jeonju {
     background-image: url("/images/illust/illust-jeonju.png");
-    width: 240px;
-    height: 300px;
+    width: 18vw;
+    height: 22vw;
 }
 
 h5.city-name.jeonju {
@@ -107,33 +112,91 @@ h5.city-name.jeonju {
 
 .illust.suwon {
     background-image: url("/images/illust/illust-suwon.png");
-    width: 270px;
-    height: 270px;
+    width: 20vw;
+    height: 20vw;
+    margin:-2vw 0 0 0;
+}
+
+.illust.suwon:hover {
+    margin: -2.5vw 0 0 0;
 }
 
 h5.city-name.suwon {
     margin: 20% 0 0 30%;
 }
 
-
 .illust.busan {
     background-image: url("/images/illust/illust-busan.png");
-    width: 340px;
-    height: 250px;
+    width: 23vw;
+    height: 18vw;
+    margin:-4vw 0 0 1vw;
+}
+
+.illust.busan:hover {
+    margin: -4.5vw 0 0 1vw;
 }
 
 h5.city-name.busan {
     margin: 15% 0 0 25%;
 }
 
-.illust.gyeongju {
-    background-image: url("/images/illust/illust-gyeongju.png");
-    width: 270px;
-    height: 270px;
+.illust.suncheon {
+    background-image: url("/images/illust/illust-suncheon.png");
+    width: 22vw;
+    height: 23vw;
+    margin: -5vw 0 0 0.5vw;
 }
 
-h5.city-name.gyeongju {
-    margin: 70% 0 0 10%;
+.illust.suncheon:hover {
+    margin: -5vw 0 0 0.5vw;
+}
+
+h5.city-name.suncheon {
+    margin: 20% 0 0 25%;
+}
+
+.illust.dangjin {
+    background-image: url("/images/illust/illust-dangjin.png");
+    width: 21vw;
+    height: 16vw;
+    margin: -1vw 0 0 0.5vw;
+}
+
+.illust.dangjin:hover {
+    margin: -1.5vw 0 0 0.5vw;
+}
+
+h5.city-name.dangjin {
+    margin: 40% 0 0 30%;
+}
+
+.illust.paju {
+    background-image: url("/images/illust/illust-paju.png");
+    width: 22vw;
+    height: 15.5vw;
+    margin: -5.5vw 0 0 1vw;
+}
+
+.illust.paju:hover {
+    margin: -6vw 0 0 1vw;
+}
+
+h5.city-name.paju {
+    margin: 20% 0 0 57%;
+}
+.illust.yongin {
+    background-image: url("/images/illust/illust-yongin.png");
+    width: 19vw;
+    height: 17vw;
+    margin: -7vw 0 0 1vw;
+}
+
+.illust.yongin:hover {
+    margin: -6.5vw 0 0 1vw;
+}
+
+h5.city-name.yongin {
+    margin: 7% 0 0 42%;
 }
 
 .about-area {
@@ -160,24 +223,31 @@ h5.city-name.gyeongju {
 
 h3.about-desc {
     display: inline-block;
-    font-family: cursive;
-    font-size: 2.5vw;
-    margin-top: 1vw;
-    margin-bottom: 0.6vw;
+    font-family: "sun-valley";
+    font-size: 4vw;
+    margin: 3vw 0 1vw 0;
 }
 
-button.about-button {
-    height: 3.3vw;
-    border-radius: 1em;
-    font-size: 2vw;
-    padding: 0 2vw;
-
+a.about-button {
+    display: inline-block;
+    color: #000;
 }
 
-button.about-button:hover {
-    cursor: pointer;
-    background-color: #C9FF95;
-    box-shadow: 0.1px 1.3px 0.1px 0.5px #d9d9d9;
+div.about-button {
+    background-image: url("/images/arrow1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: inline-block;
+    width: 5vw;
+    height: 2.2vw;
+    -webkit-transition: 0.3s;
+}
+
+div.about-button.active {
+    animation: shake 1.5s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
 }
 
 /*.about-button {*/
@@ -194,3 +264,13 @@ button.about-button:hover {
     /*-webkit-transition: all 0.3s ease-out;*/
     /*-webkit-transform: scale(1.1);*/
 /*}*/
+
+@keyframes shake {
+    10%, 50%, 90% {
+        transform: translate3d(4px, 0, 0);
+    }
+
+    30%, 70% {
+        transform: translate3d(0, 0, 0);
+    }
+}
