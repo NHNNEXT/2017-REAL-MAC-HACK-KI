@@ -40,6 +40,7 @@ class EditProfile {
 
     fetch('/users/' + this.profileUserId, {
       method: 'PUT',
+      credentials: 'same-origin',
       headers: {
         'Accept': 'application/json',
         'dataType': 'json',
@@ -53,6 +54,8 @@ class EditProfile {
       // location.replace('/users/profile/' + this.profileUserId);
     });
   }
+
+
 }
 
 new EditProfile();

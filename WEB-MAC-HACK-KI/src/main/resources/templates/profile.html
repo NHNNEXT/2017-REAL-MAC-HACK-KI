@@ -12,7 +12,7 @@
         {{> include/header}}
         <article>
             <div class="top-info-zone">
-                <div class="profile-image">Change Image</div>
+                <div class="profile-image" data-photo-id="{{profileUser.profileImg.photoId}}", data-user-id="{{profileUser.id}}">Change Image</div>
                 <input class="profile-image-input" type="file" accept="image/*">
                 <div class="basic-info-zone">
                     <h4 class="name">{{profileUser.name}}</h4>

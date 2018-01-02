@@ -2,6 +2,7 @@ package com.amigotrip.domain;
 
 import com.amigotrip.exception.BadRequestException;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.internal.Nullable;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -48,10 +49,6 @@ public class User {
     @JsonIgnore
     @Column(nullable = true)
     private Integer creditPoint;
-
-    @OneToOne
-    @JoinColumn(name = "profile_id")
-    private Photo profileImg;
 
     private Date birthday;
 
@@ -144,7 +141,6 @@ public class User {
                 ", nationality='" + nationality + '\'' +
                 ", city='" + city + '\'' +
                 ", creditPoint=" + creditPoint +
-                ", profileImg=" + profileImg +
                 ", birthday=" + birthday +
                 ", contents='" + contents + '\'' +
                 ", roles=" + roles +

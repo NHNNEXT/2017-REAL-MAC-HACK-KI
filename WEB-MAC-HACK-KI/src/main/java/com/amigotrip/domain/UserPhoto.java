@@ -1,11 +1,10 @@
 package com.amigotrip.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
@@ -16,12 +15,11 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserPhoto {
-    @Id
+    @Id @GeneratedValue
     @Column(name = "user_photo_id")
     private long userPhotoId;
 
-    @Column(name = "writer_id")
-    private long writerId;
+//    private User writer;
 
     private String name;
 

@@ -127,7 +127,7 @@ class Header {
     }).then(res=>res.json())
       .then(function(res) {
         if (res.id != null && res.id > 0) { // if login success
-          window.location.replace(serviceUrl + "list");
+          window.location.href = "/list";
         }
 
         if (res.message === "Email is wrong! Please check again.") {
@@ -160,7 +160,7 @@ class Header {
     }).then(res=>res.json())
       .then(function(res) {
         if (res.id != null && res.id > 0) { // if sign up success
-          window.location.href = serviceUrl;
+          window.location.href = "/";
         } else {
           this.showErrorMessage(e, "email already exists", document.querySelector("#signup-email"))
         }
