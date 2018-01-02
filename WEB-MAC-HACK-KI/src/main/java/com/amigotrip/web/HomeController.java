@@ -59,23 +59,17 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("/list")
-    public String list(Principal principal, Model model) {
-        model.addAttribute("localsArticleList", articleService.findLocalsAll());
-
-        if (principal != null) {
-            model.addAttribute("authenticatedUser", userService.findUserByEmail(principal.getName()));
-        }
-
-        return "list";
-    }
-
     @PostMapping("/search")
     public String list(String city, Model model) {
         List<LocalsArticle> localsArticleList = articleService.search(city);
         model.addAttribute("localsArticleList", localsArticleList);
-        log.debug("CITY: {}", localsArticleList);
+        model.addAttribute("searchValue", city);
         return "list";
+    }
+
+    @GetMapping("/about")
+    public String about() {
+        return "about";
     }
 
     @GetMapping("/test")
