@@ -48,9 +48,6 @@ public class ApiUploadController {
     PhotoRepository photoRepository;
 
     @Resource
-    UserPhotoRepository userPhotoRepository;
-
-    @Resource
     UserRepository userRepository;
 
     @Resource
@@ -65,7 +62,7 @@ public class ApiUploadController {
 
         userService.identification(userId, principal);
         Avatar avatar = new Avatar();
-        avatar.setPath(path);
+        avatar.setUserId(userId);
         Avatar dbAvatar = avatarRepository.save(avatar);
 
         fileUploadService.fileUpload(file, userId, avatarUploadPath); // userId와 같은 이름으로 Avatar (프로필 사진) 저장

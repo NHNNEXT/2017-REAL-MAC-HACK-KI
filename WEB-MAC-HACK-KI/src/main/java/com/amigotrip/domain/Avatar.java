@@ -21,5 +21,5 @@ public class Avatar { // user profile image domain
     @Column(name = "avatar_id")
     private long avatarId;
 
-    private String path;
+    private long userId;
 }

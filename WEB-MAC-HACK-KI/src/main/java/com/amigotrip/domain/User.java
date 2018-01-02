@@ -61,10 +61,6 @@ public class User {
     private Set<Role> roles;
 
     @OneToMany
-    @JoinColumn(name = "writer_id")
-    private Set<UserPhoto> userPhotos;
-
-    @OneToMany
     @JoinColumn(name = "to_id")
     private Set<Review> reviews;
 
@@ -144,7 +140,6 @@ public class User {
                 ", birthday=" + birthday +
                 ", contents='" + contents + '\'' +
                 ", roles=" + roles +
-                ", userPhotos=" + userPhotos +
                 ", reviews=" + reviews +
                 ", stars=" + stars +
                 '}';

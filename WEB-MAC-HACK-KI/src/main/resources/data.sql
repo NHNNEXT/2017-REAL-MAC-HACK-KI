@@ -74,3 +74,14 @@ INSERT INTO star (from_id, to_id) VALUES (2, 3);
 INSERT INTO star (from_id, to_id) VALUES (4, 5);
 INSERT INTO star (from_id, to_id) VALUES (1, 4);
 INSERT INTO star (from_id, to_id) VALUES (2, 5);
+
+INSERT INTO avatar (avatar_id, user_id) VALUES (1, 1);
+INSERT INTO avatar (avatar_id, user_id) VALUES (2, 2);
+INSERT INTO avatar (avatar_id, user_id) VALUES (3, 3);
+INSERT INTO avatar (avatar_id, user_id) VALUES (4, 4);
+INSERT INTO avatar (avatar_id, user_id) VALUES (5, 5);
+
+INSERT INTO photo (photo_id, article_id) VALUES (1, 1);
+INSERT INTO photo (photo_id, article_id) VALUES (2, 1);
+INSERT INTO photo (photo_id, article_id) VALUES (3, 2);
+INSERT INTO photo (photo_id, article_id) VALUES (4, 3);
