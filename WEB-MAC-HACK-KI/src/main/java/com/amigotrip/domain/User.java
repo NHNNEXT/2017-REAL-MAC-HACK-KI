@@ -11,9 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Null;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by Naver on 2017. 11. 8..
@@ -45,6 +43,10 @@ public class User {
     private String nationality;
 
     private String city;
+
+    @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="owner_id")
+    private Collection<UserPhoto> userPhotos;
 
     @JsonIgnore
     @Column(nullable = true)
@@ -125,6 +127,21 @@ public class User {
         if(user.contents != null) {
             this.contents = user.contents;
         }
+    }
+
+    public Collection<UserPhoto> getUserPhotos() {
+        return userPhotos;
+    }
+
+    public void setUserPhoto(List<UserPhoto> userPhotos) {
+        this.userPhotos = userPhotos;
+    }
+
+    public void addUserPhoto(UserPhoto p) {
+        if (userPhotos == null) {
+            userPhotos = new ArrayList<UserPhoto>();
+        }
+        userPhotos.add(p);
     }
 
     @Override

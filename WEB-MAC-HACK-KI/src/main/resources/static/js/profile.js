@@ -53,7 +53,7 @@ class Profile {
     toShow.classList.add('is-visible');
     this.showing = toShow;
 
-    this.sendImage("/photos/users/" + this.profileUserId, this.profileImageInput.files[0]);
+    // this.sendImage("/uploads/userphotos/" + this.profileUserId, this.profileImageInput.files[0]);
   }
 
   changeProfileImage(e) {
@@ -69,11 +69,13 @@ class Profile {
     if(file) {
       reader.readAsDataURL(file);
     }
+
+    this.sendImage("/uploads/avatars/" + this.profileUserId, this.profileImageInput.files[0]);
   }
 
   setImageUrl() {
     let imageName = this.profileImage.dataset.userId;
-    if (imageName !== "0") {
+    if (imageName !== null) {
       this.profileImage.style.backgroundImage = "url('/uploads/avatars/" + imageName + "')";
     }
   }
@@ -82,11 +84,15 @@ class Profile {
     let formData = new FormData();
 
     for(let name in data) {
-      formData.append(name, data[name]);
+      console.log(name + " : " + data[name]);
+      // formData.append(name, data[name]);
     }
+
+    formData.append('file', data);
 
     fetch(url, {
       method: 'POST',
+      credentials: 'same-origin',
       body: formData
     }).then(res=>res.json())
       .then(res => {

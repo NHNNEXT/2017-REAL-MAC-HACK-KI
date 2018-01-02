@@ -61,13 +61,13 @@ INSERT INTO locals_article (locals_article_id, title, contents, location, user_i
   VALUES (2, 'Incheon tour', 'find out what you can do in Incheon.', 'Seoul, South Korea', 1);
 
 INSERT INTO locals_article (locals_article_id, title, contents, location, user_id)
-  VALUES (3, 'trip to Everland', 'Visit the best amusement park in Korea', 'Yongin, South Korea', 2);
+  VALUES (3, 'trip to Everland', 'Visit the best amusement park in Korea', 'Yongin-si, Gyeonggi-do, South Korea', 2);
 
 INSERT INTO locals_article (locals_article_id, title, contents, location, user_id)
-  VALUES (4, 'Colosseum tour', 'Enter the Colosseum and be one of those gladiators fought for the fame and rich in ancient times.', 'Pomezia, Lazio, Italy', 4);
+  VALUES (4, 'Busan Film Festival', 'Join in one of the biggest international film festival. Meet celebrities, feel the mood, dive deep into the screens', 'Busan, South Korea', 4);
 
 INSERT INTO locals_article (locals_article_id, title, contents, location, user_id)
-  VALUES (5, 'Canton Tower tour', 'Grab the astonishing night view. With your loved one, family, have an unforgettable night in Canton Tower.', 'Guangzhou, China', 5);
+  VALUES (5, 'DMZ Tour', 'Visit the symbol of last remaining divided nation in world.', 'Paju-si, Gyeonggi-do, South Korea', 5);
 
 INSERT INTO star (from_id, to_id) VALUES (2, 1);
 INSERT INTO star (from_id, to_id) VALUES (2, 3);
@@ -85,3 +85,7 @@ INSERT INTO photo (photo_id, article_id) VALUES (1, 1);
 INSERT INTO photo (photo_id, article_id) VALUES (2, 1);
 INSERT INTO photo (photo_id, article_id) VALUES (3, 2);
 INSERT INTO photo (photo_id, article_id) VALUES (4, 3);
+INSERT INTO photo (photo_id, article_id) VALUES (5, 4);
+INSERT INTO photo (photo_id, article_id) VALUES (6, 4);
+INSERT INTO photo (photo_id, article_id) VALUES (7, 5);
+INSERT INTO photo (photo_id, article_id) VALUES (8, 5);

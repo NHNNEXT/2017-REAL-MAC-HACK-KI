@@ -1,9 +1,6 @@
 package com.amigotrip.web;
 
-import com.amigotrip.domain.Avatar;
-import com.amigotrip.domain.LocalsArticle;
-import com.amigotrip.domain.Photo;
-import com.amigotrip.domain.User;
+import com.amigotrip.domain.*;
 import com.amigotrip.exception.BadRequestException;
 import com.amigotrip.repository.*;
 import com.amigotrip.service.FileUploadService;
@@ -38,6 +35,9 @@ public class ApiUploadController {
     @Value("${avatarUpload.path}")
     private String avatarUploadPath;
 
+    @Value("${userPhotoUpload.path}")
+    private String userPhotoUploadPath;
+
     @Resource
     AvatarRepository avatarRepository;
 
@@ -46,6 +46,9 @@ public class ApiUploadController {
 
     @Resource
     PhotoRepository photoRepository;
+
+    @Resource
+    UserPhotoRepository userPhotoRepository;
 
     @Resource
     UserRepository userRepository;
@@ -57,18 +60,20 @@ public class ApiUploadController {
     LocalsArticleRepository localsArticleRepository;
 
     @PostMapping("/avatars/{userId}")
-    public ResponseEntity<Avatar> uploadUserAvatar(@PathVariable Long userId, MultipartFile file, Principal principal) throws IOException {
+    public ResponseEntity<Avatar> uploadUserAvatar(@PathVariable Long userId, @RequestBody MultipartFile file, Principal principal) throws IOException {
         String path = avatarUploadPath + userId;
 
         userService.identification(userId, principal);
-        Avatar avatar = new Avatar();
-        avatar.setUserId(userId);
-        Avatar dbAvatar = avatarRepository.save(avatar);
+        if (avatarRepository.findOne(userId) == null) { // 아직 db에 저장되지 않은 경우만 새로 db에 저장
+            Avatar avatar = new Avatar();
+            avatar.setUserId(userId);
+            Avatar dbAvatar = avatarRepository.save(avatar);
+        }
 
         fileUploadService.fileUpload(file, userId, avatarUploadPath); // userId와 같은 이름으로 Avatar (프로필 사진) 저장
 
         return new ResponseEntity<Avatar>(
-                dbAvatar,
+                avatarRepository.findOne(userId),
                 HttpStatus.OK
         );
     }
@@ -94,6 +99,26 @@ public class ApiUploadController {
         );
     }
 
+    @PostMapping("/userphotos/{ownerId}")
+    public ResponseEntity<UserPhoto> uploadUserPhoto(@PathVariable Long ownerId, MultipartFile file, Principal principal) throws IOException {
+
+        userService.identification(ownerId, principal);
+        UserPhoto uPhoto = new UserPhoto();
+        uPhoto.setOwnerId(ownerId);
+        UserPhoto dbUserPhoto = userPhotoRepository.save(uPhoto);
+
+        fileUploadService.fileUpload(file, dbUserPhoto.getUserPhotoId(), userPhotoUploadPath);
+
+        User owner = userService.findUserById(ownerId);
+        owner.addUserPhoto(dbUserPhoto);
+        userRepository.save(owner);
+
+        return new ResponseEntity<UserPhoto>(
+                dbUserPhoto,
+                HttpStatus.OK
+        );
+    }
+
     @GetMapping("/avatars/{avatarId}")
     public ResponseEntity<byte[]> getAvatarImage(@PathVariable Long avatarId) throws IOException {
         byte[] image = fileUploadService.getFile(avatarId, avatarUploadPath);
@@ -103,6 +128,12 @@ public class ApiUploadController {
     @GetMapping("/photos/{photoId}")
     public ResponseEntity<byte[]> getPhotoImage(@PathVariable Long photoId) throws IOException {
         byte[] image = fileUploadService.getFile(photoId, photoUploadPath);
+        return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(image);
+    }
+
+    @GetMapping("/userphotos/{userPhotoId}")
+    public ResponseEntity<byte[]> getUserPhotoImage(@PathVariable Long userPhotoId) throws IOException {
+        byte[] image = fileUploadService.getFile(userPhotoId, userPhotoUploadPath);
         return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(image);
     }
 }

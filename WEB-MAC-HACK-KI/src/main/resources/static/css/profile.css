@@ -10,7 +10,7 @@ article {
 }
 
 .profile-image {
-    background-image: url("/images/sample-man2.png");
+    /*background-image: url("/images/sample-man2.png");*/
     background-position: center;
     background-repeat: no-repeat;
     background-size: 200px 200px;

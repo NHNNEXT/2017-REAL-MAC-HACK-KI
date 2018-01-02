@@ -33,7 +33,7 @@ public class LocalsArticle {
     @JoinColumn(name = "user_id")
     private User writer;
 
-    @OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="article_id")
     private Collection<Photo> photos;
 
