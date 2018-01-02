@@ -74,7 +74,7 @@ public class HomeController {
     public String list(String city, Model model) {
         List<LocalsArticle> localsArticleList = articleService.search(city);
         model.addAttribute("localsArticleList", localsArticleList);
-        log.debug("CITY: {}", localsArticleList);
+        model.addAttribute("searchValue", city);
         return "list";
     }
 
