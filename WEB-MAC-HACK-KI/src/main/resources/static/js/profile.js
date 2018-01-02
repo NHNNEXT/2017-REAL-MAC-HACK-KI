@@ -72,9 +72,9 @@ class Profile {
   }
 
   setImageUrl() {
-    let imageName = this.profileImage.dataset.photoId;
+    let imageName = this.profileImage.dataset.userId;
     if (imageName !== "0") {
-      this.profileImage.style.backgroundImage = "url('/images/profile/" + imageName + "')";
+      this.profileImage.style.backgroundImage = "url('/uploads/avatars/" + imageName + "')";
     }
   }
 

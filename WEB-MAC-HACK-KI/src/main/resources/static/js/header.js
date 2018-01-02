@@ -127,7 +127,7 @@ class Header {
     }).then(res=>res.json())
       .then(function(res) {
         if (res.id != null && res.id > 0) { // if login success
-          window.location.href = "/list";
+          window.location.href = "/";
         }
 
         if (res.message === "Email is wrong! Please check again.") {
