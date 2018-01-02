@@ -2,7 +2,10 @@
     <a class="main-link" href="/">
         <img class="main-logo" src="/images/amigo-logo.png">
     </a>
-    <input type="text" class="search-city-input header-search-city-input is-visible" id="ac1" placeholder="Search city"/>
+    <form class="header-form" action="/search" method="post">
+        <input type="text" class="search-city-input header-search-city-input is-visible"
+               value="{{searchValue}}" id="ac1" name="city" placeholder="Search city">
+    </form>
     <div class="user-option">
         {{#authorize "isAnonymous()"}}
             <button class="session-info login-button">Login</button>
