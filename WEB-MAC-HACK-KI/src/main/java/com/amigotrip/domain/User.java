@@ -2,6 +2,7 @@ package com.amigotrip.domain;
 
 import com.amigotrip.exception.BadRequestException;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.internal.Nullable;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -10,9 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Null;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by Naver on 2017. 11. 8..
@@ -45,13 +44,13 @@ public class User {
 
     private String city;
 
+    @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="owner_id")
+    private Collection<UserPhoto> userPhotos;
+
     @JsonIgnore
     @Column(nullable = true)
     private Integer creditPoint;
-
-    @OneToOne
-    @JoinColumn(name = "profile_id")
-    private Photo profileImg;
 
     private Date birthday;
 
@@ -62,10 +61,6 @@ public class User {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "userRole", joinColumns = @JoinColumn(name = "userId"), inverseJoinColumns = @JoinColumn(name = "roleId"))
     private Set<Role> roles;
-
-    @OneToMany
-    @JoinColumn(name = "writer_id")
-    private Set<UserPhoto> userPhotos;
 
     @OneToMany
     @JoinColumn(name = "to_id")
@@ -134,6 +129,21 @@ public class User {
         }
     }
 
+    public Collection<UserPhoto> getUserPhotos() {
+        return userPhotos;
+    }
+
+    public void setUserPhoto(List<UserPhoto> userPhotos) {
+        this.userPhotos = userPhotos;
+    }
+
+    public void addUserPhoto(UserPhoto p) {
+        if (userPhotos == null) {
+            userPhotos = new ArrayList<UserPhoto>();
+        }
+        userPhotos.add(p);
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -144,11 +154,9 @@ public class User {
                 ", nationality='" + nationality + '\'' +
                 ", city='" + city + '\'' +
                 ", creditPoint=" + creditPoint +
-                ", profileImg=" + profileImg +
                 ", birthday=" + birthday +
                 ", contents='" + contents + '\'' +
                 ", roles=" + roles +
-                ", userPhotos=" + userPhotos +
                 ", reviews=" + reviews +
                 ", stars=" + stars +
                 '}';

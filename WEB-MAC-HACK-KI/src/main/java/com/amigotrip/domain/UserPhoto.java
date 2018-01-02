@@ -4,12 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
- * Created by NEXT on 2017. 12. 7..
+ * Created by NEXT on 2018. 1. 2..
  */
 @Entity
 @Data
@@ -18,14 +16,9 @@ import javax.persistence.Id;
 public class UserPhoto {
     @Id
     @Column(name = "user_photo_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long userPhotoId;
 
-    @Column(name = "writer_id")
-    private long writerId;
-
-    private String name;
-
-    public UserPhoto (String name) {
-        this.name = name;
-    }
+    @Column(name="owner_id")
+    private long ownerId;
 }

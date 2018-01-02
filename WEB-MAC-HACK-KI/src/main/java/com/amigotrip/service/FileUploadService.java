@@ -23,17 +23,20 @@ import java.nio.file.Paths;
 @ComponentScan({"com.amigotrip.domain"})
 public class FileUploadService {
 
-    @Value("${fileUpload.path}")
-    private String fileUploadPath;
+    public void fileUpload(MultipartFile uploadFile, long fileId, String path) throws IOException {
 
-    public void fileUpload(MultipartFile uploadFile, long fileId) throws IOException {
-        File file = new File(fileUploadPath + fileId);
-        log.debug("file : {}", file);
-        uploadFile.transferTo(file);
+        if (!uploadFile.isEmpty()) {
+            File file = new File(path + fileId);
+            uploadFile.transferTo(file);
+        }
     }
 
-    public byte[] getPhoto(long fileId) throws IOException {
-        Path p = Paths.get(fileUploadPath + fileId);
+    public byte[] getFile(long fileId, String path) throws IOException {
+        Path p = Paths.get(path + fileId);
         return Files.readAllBytes(p);
+    }
+
+    public void deleteFile(String filename, String path) throws IOException {
+        Files.deleteIfExists(Paths.get(path, filename));
     }
 }

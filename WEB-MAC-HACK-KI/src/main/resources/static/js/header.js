@@ -67,6 +67,16 @@ class Header {
         this.enableButton(e);
       }
     }.bind(this));
+    document.querySelector(".bq-user-modal-container").addEventListener('keyup', this.submitOnEnterKey.bind(this));
+  }
+
+  submitOnEnterKey(e) {
+    if (e.keyCode == 13 && this.loginModal.classList.contains('fade-in')) {
+      this.tryLogin();
+    }
+    if (e.keyCode == 13 && this.signupModal.classList.contains('fade-in')) {
+      this.trySignup();
+    }
   }
 
   bindWithDelay(df) { // df for delayed function
@@ -127,7 +137,7 @@ class Header {
     }).then(res=>res.json())
       .then(function(res) {
         if (res.id != null && res.id > 0) { // if login success
-          window.location.replace(serviceUrl + "list");
+          window.location.href = "/";
         }
 
         if (res.message === "Email is wrong! Please check again.") {
@@ -160,7 +170,7 @@ class Header {
     }).then(res=>res.json())
       .then(function(res) {
         if (res.id != null && res.id > 0) { // if sign up success
-          window.location.href = serviceUrl;
+          window.location.href = "/";
         } else {
           this.showErrorMessage(e, "email already exists", document.querySelector("#signup-email"))
         }

@@ -6,6 +6,8 @@ class Profile {
     this.selected = document.querySelector('.selected');
     this.showing = document.querySelector('.contents-zone.is-visible');
     this.profileImageInput = document.querySelector('input.profile-image-input');
+    this.profileImage = document.querySelector('.profile-image');
+    this.profileUserId = this.profileImage.dataset.userId;
     this.init();
   }
 
@@ -25,6 +27,8 @@ class Profile {
         this.select(e.target);
       }
     });
+
+    this.setImageUrl();
   }
 
   select(selected) {
@@ -48,6 +52,8 @@ class Profile {
     }
     toShow.classList.add('is-visible');
     this.showing = toShow;
+
+    // this.sendImage("/uploads/userphotos/" + this.profileUserId, this.profileImageInput.files[0]);
   }
 
   changeProfileImage(e) {
@@ -63,6 +69,35 @@ class Profile {
     if(file) {
       reader.readAsDataURL(file);
     }
+
+    this.sendImage("/uploads/avatars/" + this.profileUserId, this.profileImageInput.files[0]);
+  }
+
+  setImageUrl() {
+    let imageName = this.profileImage.dataset.userId;
+    if (imageName !== null) {
+      this.profileImage.style.backgroundImage = "url('/uploads/avatars/" + imageName + "')";
+    }
+  }
+
+  sendImage(url, data) {
+    let formData = new FormData();
+
+    for(let name in data) {
+      console.log(name + " : " + data[name]);
+      // formData.append(name, data[name]);
+    }
+
+    formData.append('file', data);
+
+    fetch(url, {
+      method: 'POST',
+      credentials: 'same-origin',
+      body: formData
+    }).then(res=>res.json())
+      .then(res => {
+        console.log(res);
+      })
   }
 }
 

@@ -9,8 +9,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by NEXT on 2017. 11. 16..
@@ -34,9 +33,9 @@ public class LocalsArticle {
     @JoinColumn(name = "user_id")
     private User writer;
 
-    @OneToMany
-    @JoinColumn(name = "photo_id")
-    private Set<Photo> photos;
+    @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="article_id")
+    private Collection<Photo> photos;
 
     @OneToMany
     @JoinColumn(name = "locals_reply_id")
@@ -71,7 +70,18 @@ public class LocalsArticle {
         replies.remove(reply);
     }
 
-    public void addPhoto(Photo photo) {
-        photos.add(photo);
+    public Collection<Photo> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(List<Photo> photos) {
+        this.photos = photos;
+    }
+
+    public void addPhoto(Photo p) {
+        if (photos == null) {
+            photos = new ArrayList<Photo>();
+        }
+        photos.add(p);
     }
 }

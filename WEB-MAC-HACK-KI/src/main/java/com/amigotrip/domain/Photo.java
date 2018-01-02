@@ -1,5 +1,6 @@
 package com.amigotrip.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,13 +20,6 @@ public class Photo {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long photoId;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User writer;
-
-    private String name;
-
-    public Photo (String name) {
-        this.name = name;
-    }
+    @Column(name="article_id")
+    private long articleId;
 }

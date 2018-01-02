@@ -16,6 +16,8 @@ services:
       - db:db
     volumes:
       - ./photo-datavolume:/photo-datavolume
+      - ./avatar-datavolume:/avatar-datavolume
+      - ./userphoto-datavolume:/userphoto-datavolume
   db:
     image: mysql:5.7
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --init-connect='SET NAMES UTF8;'
@@ -29,3 +31,5 @@ services:
 volumes:
   amigo-datavolume:
   photo-datavolume:
+  avatar-datavolume:
+  userphoto-datavolume:
