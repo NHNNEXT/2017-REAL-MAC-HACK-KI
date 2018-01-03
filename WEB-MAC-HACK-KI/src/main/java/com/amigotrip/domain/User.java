@@ -1,16 +1,12 @@
 package com.amigotrip.domain;
 
-import com.amigotrip.exception.BadRequestException;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sun.istack.internal.Nullable;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.Null;
 import java.util.*;
 
 /**
@@ -23,7 +19,6 @@ import java.util.*;
 @Slf4j
 @Data
 public class User {
-
     @Id
     @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -76,6 +71,16 @@ public class User {
     @OneToMany
     @JoinColumn(name = "to_id")
     private Set<Star> stars;
+
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    private Set<Language> languages;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "userInterest", joinColumns = @JoinColumn(name = "userId"), inverseJoinColumns = @JoinColumn(name = "interestId"))
+    private Set<Interest> interests;
+
+
 
     public User(String email, String password, String name) {
         this.email = email;
@@ -162,6 +167,10 @@ public class User {
         chattingRooms.add(c);
     }
 
+    public int countStars() {
+        return stars.size();
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -177,6 +186,8 @@ public class User {
                 ", roles=" + roles +
                 ", reviews=" + reviews +
                 ", stars=" + stars +
+                ", languages=" + languages +
+                ", interests=" + interests +
                 '}';
     }
 

@@ -1,9 +1,6 @@
 package com.amigotrip.domain;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -13,17 +10,14 @@ import javax.persistence.*;
 @ToString
 @Entity
 @NoArgsConstructor
+@Data
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "role_id")
-    @Getter
-    @Setter
     private long id;
 
     @Column(name = "role")
-    @Getter
-    @Setter
     private String role;
 
     public Role(String role) {
