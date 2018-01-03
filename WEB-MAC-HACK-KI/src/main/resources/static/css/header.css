@@ -284,6 +284,11 @@ header.show-underline {
     margin-top: 0.5vw;
 }
 
+.chat-send-icon:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
 .message-area {
     height: 26vw;
     overflow: scroll;

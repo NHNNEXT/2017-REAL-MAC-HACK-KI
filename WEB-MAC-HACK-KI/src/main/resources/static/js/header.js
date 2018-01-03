@@ -159,7 +159,7 @@ class Header {
   }
 
   trySignup(e) {
-    fetch(serviceUrl + "users/", {
+    fetch("users/", {
       method: 'post',
       headers: {
         'Accept': 'application/json',

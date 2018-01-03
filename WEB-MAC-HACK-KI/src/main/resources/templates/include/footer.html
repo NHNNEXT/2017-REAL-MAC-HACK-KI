@@ -26,9 +26,25 @@
     </div>
 </footer>
 
+
+<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyD9Tz78iFMv4jCZYpALXH_mNktfrvPlAv0",
+    authDomain: "amigotrip-4f89e.firebaseapp.com",
+    databaseURL: "https://amigotrip-4f89e.firebaseio.com",
+    projectId: "amigotrip-4f89e",
+    storageBucket: "amigotrip-4f89e.appspot.com",
+    messagingSenderId: "984712803858"
+  };
+  firebase.initializeApp(config);
+</script>
+
 <script src="/js/handlebars-v4.0.11.js"></script>
 <script type="text/javascript">{{precompile "precompiles/myMessage"}}</script>
 <script type="text/javascript">{{precompile "precompiles/partnerMessage"}}</script>
+<script type="text/javascript">{{precompile "precompiles/chatRoom"}}</script>
 
 <script src="/js/header.js"></script>
 <script src="/js/chatting.js"></script>

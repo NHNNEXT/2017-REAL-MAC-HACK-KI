@@ -2,54 +2,69 @@ INSERT INTO role (role_id, role) VALUES (1, 'admin');
 INSERT INTO role (role_id, role) VALUES (2, 'user');
 INSERT INTO role (role_id, role) VALUES (3, 'unconfirmed_user');
 
+INSERT INTO chatting_room (chattingroom_id) VALUES (1);
+INSERT INTO chatting_room (chattingroom_id) VALUES (2);
+INSERT INTO chatting_room (chattingroom_id) VALUES (3);
+
 INSERT INTO user (email, name, password, nationality, city, birthday, contents)
-  VALUES ('wkddngus5@naver.com', 'Jang Woohyeon', '$2a$10$SRQgq4tJTr2IW5DoLT2AB.lsj0jACBX59xZsY/3yL7inpqjfFbhgS',
+  VALUES ('wkddngus5@naver.com', 'Jang Woohyeon', '$2a$10$dxou/N0NFgOFaOwiQXtytOvrF8ptKQsuxXnqVrIN2t2OvVY/qlMWO',
           'KR', 'Incheon, South Korea', '1995-05-20',
           'Hi there! I\’m a student studying computer science and developing this service.<br>
           I don\’t speak foreign language well, but I want to meet and experience various people.<br>
           If you want to experience real Korean\’s life, not the information in guide, please follow me:)<br><br>
           p.s)儉而不陋 華而不侈. it means \’frugal but not poor, fancy but not extravagant\’.<br>
-          it\’s korean beauty style. Let me show you beauty the beauty of Korea.'); -- pw: Q
+          it\’s korean beauty style. Let me show you beauty the beauty of Korea.'); -- pw: 123456
 
 INSERT INTO user_role (user_id, role_id) VALUES (1, 1);
 INSERT INTO user_role (user_id, role_id) VALUES (1, 2);
 
+INSERT INTO user_chatting_room (user_id, chattingroom_id) VALUES (1, 1);
+INSERT INTO user_chatting_room (user_id, chattingroom_id) VALUES (1, 2);
+INSERT INTO user_chatting_room (user_id, chattingroom_id) VALUES (1, 3);
+
+
 INSERT INTO user (email, name, password, nationality, city, birthday, contents)
-  VALUES ('bbq9234@naver.com', 'bbq923', '$2a$10$SRQgq4tJTr2IW5DoLT2AB.lsj0jACBX59xZsY/3yL7inpqjfFbhgS',
+  VALUES ('bbq9234@naver.com', 'bbq923', '$2a$10$dxou/N0NFgOFaOwiQXtytOvrF8ptKQsuxXnqVrIN2t2OvVY/qlMWO',
           'KR', 'Yongin, South Korea', '1994-09-23',
           'Howdy! Here comes your best trip mate to discover around Korea with. Mostly spent my time guiding those coming<br>
            to Korea for the first time, I mainly enjoy introducing Korean traditional food and sports. As being one of the developers<br>
-           for this service, feel free to point out any inconvenience you faced while using this service.'); -- pw: Q
+           for this service, feel free to point out any inconvenience you faced while using this service.'); -- pw: 123456
 
 INSERT INTO user_role (user_id, role_id) VALUES (2, 1);
 INSERT INTO user_role (user_id, role_id) VALUES (2, 2);
 
+INSERT INTO user_chatting_room (user_id, chattingroom_id) VALUES (2, 1);
+
 INSERT INTO user (email, name, password, nationality, city, birthday, contents)
-  VALUES ('dev.yongjai@gmail.com', 'Yongjae Kwon', '$2a$10$SRQgq4tJTr2IW5DoLT2AB.lsj0jACBX59xZsY/3yL7inpqjfFbhgS',
+  VALUES ('dev.yongjai@gmail.com', 'Yongjae Kwon', '$2a$10$dxou/N0NFgOFaOwiQXtytOvrF8ptKQsuxXnqVrIN2t2OvVY/qlMWO',
           'KR', 'Seoul, South Korea', '1994-05-23',
           'Hi, I\’m yongjae. Like other introductions, I\’m also studying computer science and developing iOS clients.<br>
            Actually I\’m not good at communicate in English. But we are living in the 21st century, and there are technologies<br>
-           that will fill the shortage of my language skills. So, I do not worry.'); -- pw: Q
+           that will fill the shortage of my language skills. So, I do not worry.'); -- pw: 123456
 
 INSERT INTO user_role (user_id, role_id) VALUES (3, 1);
 INSERT INTO user_role (user_id, role_id) VALUES (3, 2);
 
+INSERT INTO user_chatting_room (user_id, chattingroom_id) VALUES (3, 2);
+
 INSERT INTO user (email, name, password, nationality, city, birthday, contents)
-  VALUES ('LeoFab@gmail.com', 'Leonardo Fabbrica', '$2a$10$SRQgq4tJTr2IW5DoLT2AB.lsj0jACBX59xZsY/3yL7inpqjfFbhgS',
+  VALUES ('LeoFab@gmail.com', 'Leonardo Fabbrica', '$2a$10$dxou/N0NFgOFaOwiQXtytOvrF8ptKQsuxXnqVrIN2t2OvVY/qlMWO',
           'IT', 'Pomezia, Lazio, Italy', '1986-11-23',
           'I\’m an italian boy, i like movies, TV series, manga, i like the sea, I\’m a sportive guy, i like to go to the gym or swim<br>
-           in the pool, ride a bike. Also like animals, I always had cats, so now I have a cat which is half persian.'); -- pw: Q
+           in the pool, ride a bike. Also like animals, I always had cats, so now I have a cat which is half persian.'); -- pw: 123456
 
 INSERT INTO user_role (user_id, role_id) VALUES (4, 1);
 INSERT INTO user_role (user_id, role_id) VALUES (4, 2);
 
+INSERT INTO user_chatting_room (user_id, chattingroom_id) VALUES (4, 3);
+
 INSERT INTO user (email, name, password, nationality, city, birthday, contents)
-  VALUES ('JZhang@gmail.com', 'Julie Zhang', '$2a$10$SRQgq4tJTr2IW5DoLT2AB.lsj0jACBX59xZsY/3yL7inpqjfFbhgS',
+  VALUES ('JZhang@gmail.com', 'Julie Zhang', '$2a$10$dxou/N0NFgOFaOwiQXtytOvrF8ptKQsuxXnqVrIN2t2OvVY/qlMWO',
           'CN', 'Guangzhou, Guangdong, China', '1994-03-27',
           'I am a 24-year-old girl from China. I just finished my study of college in China and I would like to travel to Europe. I am kenn on <br>
            making friends and traveling. I think Couchsurfing is an excellent way to make friends and enjoy life. By learning different cultures<br>
            and custom, I hope I can get experience from it. I really enjoy meeting new friends, and value it more than visiting the places of interest<br>
-           sometimes.'); -- pw: Q
+           sometimes.'); -- pw: 123456
 
 INSERT INTO user_role (user_id, role_id) VALUES (5, 1);
 INSERT INTO user_role (user_id, role_id) VALUES (5, 2);

@@ -44,6 +44,13 @@ public class User {
 
     private String city;
 
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "userChattingRoom",
+                joinColumns = @JoinColumn(name = "user_id"),
+                inverseJoinColumns = @JoinColumn(name = "chattingroom_id"))
+    private Collection<ChattingRoom> chattingRooms;
+
     @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="owner_id")
     private Collection<UserPhoto> userPhotos;
@@ -142,6 +149,17 @@ public class User {
             userPhotos = new ArrayList<UserPhoto>();
         }
         userPhotos.add(p);
+    }
+
+    public void setChattingRoom(List<ChattingRoom> chattingRooms) {
+        this.chattingRooms = chattingRooms;
+    }
+
+    public void addChattingRoom(ChattingRoom c) {
+        if (chattingRooms == null) {
+            chattingRooms = new ArrayList<ChattingRoom>();
+        }
+        chattingRooms.add(c);
     }
 
     @Override
