@@ -89,3 +89,14 @@ INSERT INTO photo (photo_id, article_id) VALUES (5, 4);
 INSERT INTO photo (photo_id, article_id) VALUES (6, 4);
 INSERT INTO photo (photo_id, article_id) VALUES (7, 5);
 INSERT INTO photo (photo_id, article_id) VALUES (8, 5);
+
+INSERT INTO language (user_id, level, name) VALUES (1, 2, 1);
+INSERT INTO language (user_id, level, name) VALUES (1, 1, 2);
+INSERT INTO language (user_id, level, name) VALUES (1, 0, 3);
+
+INSERT INTO interest (interest_name) VALUES (1);
+INSERT INTO interest (interest_name) VALUES (2);
+INSERT INTO interest (interest_name) VALUES (3);
+
+INSERT INTO user_interest (user_id, interest_id) VALUES (1, 1);
+INSERT INTO user_interest (user_id, interest_id) VALUES (1, 2);

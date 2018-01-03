@@ -9,15 +9,28 @@ class LocalsArticle {
   init() {
     this.starButton = document.querySelector('.star-button');
     this.userInfo = document.querySelector('.user-info');
-    this.userId = this.userInfo.getAttribute('data-id');
     this.writerId = document.querySelector('article').getAttribute('data-id');
+    this.bigPictureModal = document.querySelector('.big-picture');
 
-    this.initStarStatus();
-    document.querySelector('.delete-button').addEventListener('click', e => {
-      this.deleteArticle();
-    });
+    if(this.userInfo !== null) {
+      this.userId = this.userInfo.getAttribute('data-id');
+      this.starCount = document.querySelector('.star-count');
+      this.initStarStatus();
+      document.querySelector('.delete-button').addEventListener('click', e => {
+        this.deleteArticle();
+      });
+    }
+
     this.starButton.addEventListener('click', e => {
       this.star();
+    });
+    
+    document.querySelector('.photos-zone').addEventListener('click', e => {
+      this.bigPicture(e);
+    });
+
+    document.querySelector('.close-modal').addEventListener('click', e => {
+      this.bigPictureModal.classList.remove('is-visible');
     });
   }
 
@@ -26,9 +39,11 @@ class LocalsArticle {
     if(this.starButton.classList.contains('active')) {
       this.starButton.classList.remove('active');
       star = false;
+      this.starCount.innerText = parseInt(this.starCount.innerText) - 1;
     } else {
       this.starButton.classList.add('active');
       star = true;
+      this.starCount.innerText = parseInt(this.starCount.innerText) + 1;
     }
 
     let toStarInfo = {
@@ -86,6 +101,16 @@ class LocalsArticle {
       console.log(location);
       window.location.replace(location);
     });
+  }
+
+  bigPicture(e) {
+    let clicked = e.target;
+    if(clicked.tagName === 'IMG') {
+      console.log('BIG PICTURE');
+    }
+    let imageUrl = clicked.getAttribute('src');
+    this.bigPictureModal.style.backgroundImage = `url(${imageUrl})`
+    this.bigPictureModal.classList.add('is-visible');
   }
 }
 

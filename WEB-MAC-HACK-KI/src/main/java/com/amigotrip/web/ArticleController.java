@@ -24,7 +24,9 @@ public class ArticleController {
 
     @GetMapping("/localsDetail/{articleId}")
     public String getLocalsArticle(Principal principal, @PathVariable long articleId, Model model) {
-        model.addAttribute("localsArticle", articleService.findLocalsOne(articleId));
+        LocalsArticle localsArticle = articleService.findLocalsOne(articleId);
+        model.addAttribute("localsArticle", localsArticle);
+        model.addAttribute("starCount", localsArticle.getWriter().countStars());
         if (principal != null) {
             model.addAttribute("authenticatedUser", userService.findUserByEmail(principal.getName()));
         }

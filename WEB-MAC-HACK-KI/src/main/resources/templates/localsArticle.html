@@ -11,15 +11,62 @@
     <body>
         {{> include/header}}
         <article data-id="{{localsArticle.writer.id}}">
-            <a href="/articles/localsForm/{{localsArticle.id}}"><button>Edit article</button></a>
-            <button class="delete-button" data-id="{{localsArticle.id}}">Delete article</button>
-            <button class="star-button">Star</button>
-            {{localsArticle}}
-            {{#each localsArticle.writer.stars}}
-                <p class="stars-from">{{this.id.fromId}}</p>
-            {{/each}}
+            <div class="writer-info-zone">
+                <div class="user-star-zone">
+                    <button class="star-button"></button>
+                    <h6 class="star-count">{{starCount}}</h6>
+                </div>
+                <div class="profile-image"></div>
+                <h3 class="writer-name">{{localsArticle.writer.name}}</h3>
+                <h4 class="writer-city">{{localsArticle.writer.city}}</h4>
+                <div class="language-zone">
+                    {{#each localsArticle.writer.languages}}
+                        <button class="language-level {{this.level}}">{{this.name}}</button>
+                    {{/each}}
+                </div>
+                <hr>
+                <div class="interest-zone">
+                    <h5 class="interests">Interests</h5>
+                    {{#each localsArticle.writer.interests}}
+                        <button class="interest">{{this.interestName}}</button>
+                    {{/each}}
+                </div>
+                {{#each localsArticle.writer.stars}}
+                    <p class="stars-from">{{this.id.fromId}}</p>
+                {{/each}}
+            </div>
+            <div class="article-details-zone">
+                <h1 class="title">{{localsArticle.title}}</h1>
+                <h3 class="location">{{localsArticle.location}}</h3>
+                {{#authorize "isAuthenticated()"}}
+                    <a href="/articles/localsForm/{{localsArticle.id}}"><button class="edit-button">Edit article</button></a>
+                    <button class="delete-button" data-id="{{localsArticle.id}}">Delete article</button>
+                {{/authorize}}
+                <hr>
+                <p class="contents">{{localsArticle.contents}}</p>
+                <hr>
+                <div class="photos-zone">
+                    {{#each localsArticle.photos}}
+                        <img class="local-article-photo" src="/uploads/photos/{{this.photoId}}">
+                    {{/each}}
+                </div>
+            </div>
+            <div class="big-picture"><button class="close-modal">X</button></div>
         </article>
         {{> include/footer}}
         <script type="text/javascript" src="/js/localsArticle.js"></script>
+        <script>
+          function activatePlacesSearch() {
+            let options = {
+              types: ['(cities)'],
+              componentRestrictions: {'country': 'kr'}
+            };
+            let input = document.querySelectorAll('.search-city-input');
+            for(let i = 0 ; i < input.length ; i++) {
+              let autocomplete = new google.maps.places.Autocomplete(input[i], options);
+              autocomplete.inputId = input[i].id;
+            }
+          }
+        </script>
     </body>
 </html>
