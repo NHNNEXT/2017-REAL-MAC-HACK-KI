@@ -26,13 +26,13 @@ public class FileUploadService {
     public void fileUpload(MultipartFile uploadFile, long fileId, String path) throws IOException {
 
         if (!uploadFile.isEmpty()) {
-            File file = new File(path + fileId);
+            File file = new File(path + fileId + ".jpg");
             uploadFile.transferTo(file);
         }
     }
 
     public byte[] getFile(long fileId, String path) throws IOException {
-        Path p = Paths.get(path + fileId);
+        Path p = Paths.get(path + fileId + ".jpg");
         return Files.readAllBytes(p);
     }
 
