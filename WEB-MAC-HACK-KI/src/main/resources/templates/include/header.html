@@ -12,12 +12,133 @@
             <button class="session-info signup-button">Signup</button>
         {{/authorize}}
         {{#authorize "isAuthenticated()"}}
-            <button class="session-info">Chat</button>
+            <button class="session-info chatlist-button">Chat</button>
             <button class="session-info user-info" data-id="{{authenticatedUser.id}}">{{authenticatedUser.name}}</button>
             <button class="session-info logout-button">Logout</button>
         {{/authorize}}
     </div>
+
+    <div class="chat-container">
+        <ul class="chat-list">
+            <li>
+                <img class="thumbnail-image" src="/images/sample-man2.png">
+                <div class="chat-contents-container">
+                    <p class="chat-user-name">bbq9234</p>
+                    <p class="last-chat-message">last chat goes here</p>
+                </div>
+                <div class="chat-alarms-container">
+                    <span>2 min ago</span>
+                    <p class="unread-messages">12</p>
+                </div>
+            </li>
+            <li>
+                <img class="thumbnail-image" src="/images/sample-man2.png">
+                <div class="chat-contents-container">
+                    <p class="chat-user-name">bbq9234</p>
+                    <p class="last-chat-message">last chat goes here</p>
+                </div>
+                <div class="chat-alarms-container">
+                    <span>2 min ago</span>
+                    <p class="unread-messages">12</p>
+                </div>
+            </li>
+            <li>
+                <img class="thumbnail-image" src="/images/sample-man2.png">
+                <div class="chat-contents-container">
+                    <p class="chat-user-name">bbq9234</p>
+                    <p class="last-chat-message">last chat goes here</p>
+                </div>
+                <div class="chat-alarms-container">
+                    <span>2 min ago</span>
+                    <p class="unread-messages">12</p>
+                </div>
+            </li>
+            <li>
+                <img class="thumbnail-image" src="/images/sample-man2.png">
+                <div class="chat-contents-container">
+                    <p class="chat-user-name">bbq9234</p>
+                    <p class="last-chat-message">last chat goes here</p>
+                </div>
+                <div class="chat-alarms-container">
+                    <span>2 min ago</span>
+                    <p class="unread-messages">12</p>
+                </div>
+            </li>
+            <li>
+                <img class="thumbnail-image" src="/images/sample-man2.png">
+                <div class="chat-contents-container">
+                    <p class="chat-user-name">bbq9234</p>
+                    <p class="last-chat-message">last chat goes here</p>
+                </div>
+                <div class="chat-alarms-container">
+                    <span>2 min ago</span>
+                    <p class="unread-messages">12</p>
+                </div>
+            </li>
+            <li>
+                <img class="thumbnail-image" src="/images/sample-man2.png">
+                <div class="chat-contents-container">
+                    <p class="chat-user-name">bbq9234</p>
+                    <p class="last-chat-message">last chat goes here</p>
+                </div>
+                <div class="chat-alarms-container">
+                    <span>2 min ago</span>
+                    <p class="unread-messages">12</p>
+                </div>
+            </li>
+        </ul>
+    </div>
 </header>
+
+<div class="chat-room">
+    <div class="chat-partner-info">
+        <p class="chat-partner-name">bbq9234</p>
+        <div class="chat-close-button"></div>
+    </div>
+    <div class="message-area">
+        <div class="partner-message-form">
+            <div class="partner-thumbnail"></div>
+            <div class="partner-message-container">
+                <p class="partner-name">bbq9234</p>
+                <div class="partner-message">
+                    <p>Hi, How are you?</p>
+                </div>
+                <span>PM 1:50</span>
+            </div>
+        </div>
+        <div class="partner-message-form">
+            <div class="partner-thumbnail"></div>
+            <div class="partner-message-container">
+                <p class="partner-name">bbq9234</p>
+                <div class="partner-message">
+                    <p>Hi, How are you?</p>
+                </div>
+                <span>PM 1:50</span>
+            </div>
+        </div>
+        <div class="partner-message-form">
+            <div class="partner-thumbnail"></div>
+            <div class="partner-message-container">
+                <p class="partner-name">bbq9234</p>
+                <div class="partner-message">
+                    <p>Hi, How are you?</p>
+                </div>
+                <span>PM 1:50</span>
+            </div>
+        </div>
+        <div class="my-message-container">
+            <span>PM 1:55</span>
+            <div class="my-message">
+                <p>I drank too much,</p>
+            </div>
+        </div>
+    </div>
+    <div class="chat-input-area">
+        <input class="chat-input-text" type="text" placeholder="send messages...">
+        <div class="chat-send-icon"></div>
+    </div>
+</div>
+
 
 <div class="dimmer"></div>
 
@@ -86,4 +207,6 @@
             <span>New to Amigo? </span><button class="link-to-signup-btn">Sign up</button>
         </div>
     </div>
+
 </div>
+
