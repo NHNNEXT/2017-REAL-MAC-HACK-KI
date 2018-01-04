@@ -46,6 +46,7 @@ class Header {
     this.loginBtn.addEventListener('click', this.tryLogin.bind(this));
     this.signupBtn.addEventListener('click', this.trySignup.bind(this));
 
+
     for (let input of this.inputs) {
       input.addEventListener('keyup', this.clearErrorMessage.bind(this));
     }
@@ -158,7 +159,7 @@ class Header {
   }
 
   trySignup(e) {
-    fetch(serviceUrl + "users/", {
+    fetch("users/", {
       method: 'post',
       headers: {
         'Accept': 'application/json',

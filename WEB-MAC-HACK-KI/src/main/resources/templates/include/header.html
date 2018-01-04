@@ -12,12 +12,32 @@
             <button class="session-info signup-button">Signup</button>
         {{/authorize}}
         {{#authorize "isAuthenticated()"}}
-            <button class="session-info">Chat</button>
-            <button class="session-info user-info" data-id="{{authenticatedUser.id}}">{{authenticatedUser.name}}</button>
             <button class="session-info logout-button">Logout</button>
+            <button class="session-info chatlist-button">Chat</button>
+            <div class="profile-button"></div>
+            <button class="session-info user-info" data-id="{{authenticatedUser.id}}">{{authenticatedUser.name}}</button>
         {{/authorize}}
     </div>
+
+    <div class="chat-container">
+        <ul class="chat-list">
+        </ul>
+    </div>
 </header>
+
+<div class="chat-room">
+    <div class="chat-partner-info">
+        <p class="chat-partner-name">bbq9234</p>
+        <div class="chat-close-button"></div>
+    </div>
+    <div class="message-area">
+    </div>
+    <div class="chat-input-area">
+        <input class="chat-input-text" type="text" placeholder="send messages...">
+        <div class="chat-send-icon"></div>
+    </div>
+</div>
+
 
 <div class="dimmer"></div>
 
@@ -86,4 +106,6 @@
             <span>New to Amigo? </span><button class="link-to-signup-btn">Sign up</button>
         </div>
     </div>
+
 </div>
+
