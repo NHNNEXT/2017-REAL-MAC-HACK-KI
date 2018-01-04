@@ -66,6 +66,29 @@ header.show-underline {
     cursor: pointer;
 }
 
+.user-info {
+    display: none;
+}
+
+.profile-button {
+    display: inline-block;
+    margin-left: 2vw;
+    background-image: url("/images/sample-man2.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 5vw, 5vw;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-collapse: separate;
+    width: 3.5vw;
+    height: 3.5vw;
+    vertical-align: middle;
+}
+
+.profile-button:hover {
+    cursor: pointer;
+}
+
 .header-search-city-input {
     display: none;
     vertical-align: top;
@@ -159,6 +182,10 @@ header.show-underline {
 .chat-list li.chatroom-selected {
     box-shadow: 0 0 5px rgba(130, 146, 247, 1);
     border: 1px solid rgba(130, 146, 247, 1);
+}
+
+.chat-list li:hover {
+    cursor: pointer;
 }
 
 .chat-list .thumbnail-image {

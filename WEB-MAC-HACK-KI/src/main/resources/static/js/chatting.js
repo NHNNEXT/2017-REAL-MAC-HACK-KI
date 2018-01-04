@@ -14,6 +14,7 @@ class Chatting {
     this.myUserId = document.querySelector('.session-info.user-info').dataset.id;
     this.myUserName = document.querySelector('.session-info.user-info').innerHTML;
     this.sendBtn = document.querySelector('.chat-send-icon');
+    this.profileBtn = document.querySelector('.profile-button');
     this.currentRoomId;
     this.currentPartnerId;
     this.currentRoomMsgCount;
@@ -25,6 +26,7 @@ class Chatting {
 
     this.database = firebase.database();
 
+    this.profileBtn.addEventListener('click', () => {window.location.replace("/users/profile/" + this.myUserId)})
     this.chatListBtn.addEventListener('click', () => {this.chatList.classList.toggle('fade-in')});
     this.chatCloseBtn.addEventListener('click', function() {
       this.chatRoom.classList.remove('fade-in');
@@ -37,13 +39,19 @@ class Chatting {
     this.sendBtn.addEventListener('click', this.addMyMessage.bind(this));
 
 
-
+    this.setProfileImgUrl(this.myUserId);
     this.getChatRooms();
+  }
+
+  setProfileImgUrl(myId) {
+    if (myId != null) {
+      this.profileBtn.style.backgroundImage = "url('/uploads/avatars/" + this.myUserId + "')";
+    }
   }
 
   addMyMessage(e) {
 
-    if (e.keyCode == 13 || e.type == 'click' && this.chatInput.value !== "") {
+    if (this.chatInput.value != "" && (e.keyCode == 13 || e.type == 'click')) {
       let time = new Date();
       time = time.toLocaleString('en-US', { hour12: true, hour: 'numeric', minute: 'numeric'});
       let data = {
@@ -192,12 +200,14 @@ class Chatting {
 
     if (clickedRoom.classList.contains('chatroom-selected')) {
       this.chatRoom.classList.add('fade-in');
+      let partnerName = clickedRoom.querySelector('.chat-user-name').innerHTML;
+      console.log(partnerName);
+      this.chatRoom.querySelector('.chat-partner-name').innerHTML = partnerName;
       this.chatList.classList.remove('fade-in');
-      this.getMessages(clickedRoom.querySelector('.chat-contents-container').dataset.chatroomId, clickedRoom.querySelector('.chat-user-name').innerHTML,
+      this.getMessages(clickedRoom.querySelector('.chat-contents-container').dataset.chatroomId, partnerName,
                         clickedRoom.querySelector('.chat-contents-container').dataset.partnerId);
       this.currentRoomId = clickedRoom.querySelector('.chat-contents-container').dataset.chatroomId;
       this.currentPartnerId = clickedRoom.querySelector('.chat-contents-container').dataset.partnerId;
-      this.syncScroll(this.messageArea);
     } else {
       e.target.closest('li').classList.add('chatroom-selected');
     }

@@ -12,9 +12,10 @@
             <button class="session-info signup-button">Signup</button>
         {{/authorize}}
         {{#authorize "isAuthenticated()"}}
-            <button class="session-info chatlist-button">Chat</button>
-            <button class="session-info user-info" data-id="{{authenticatedUser.id}}">{{authenticatedUser.name}}</button>
             <button class="session-info logout-button">Logout</button>
+            <button class="session-info chatlist-button">Chat</button>
+            <div class="profile-button"></div>
+            <button class="session-info user-info" data-id="{{authenticatedUser.id}}">{{authenticatedUser.name}}</button>
         {{/authorize}}
     </div>
 
