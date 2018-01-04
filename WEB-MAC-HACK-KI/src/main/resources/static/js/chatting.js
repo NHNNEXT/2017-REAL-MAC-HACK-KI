@@ -44,8 +44,9 @@ class Chatting {
   }
 
   setProfileImgUrl(myId) {
+    console.log("myId : " + myId);
     if (myId != null) {
-      this.profileBtn.style.backgroundImage = "url('/uploads/avatars/" + this.myUserId + "')";
+      this.profileBtn.style.backgroundImage = "url('/uploads/avatars/" + this.myUserId + "')"; // set fallback when user doesn't have profile image
     }
   }
 

@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.Principal;
@@ -121,7 +122,12 @@ public class ApiUploadController {
 
     @GetMapping("/avatars/{avatarId}")
     public ResponseEntity<byte[]> getAvatarImage(@PathVariable Long avatarId) throws IOException {
-        byte[] image = fileUploadService.getFile(avatarId, avatarUploadPath);
+        byte[] image;
+        try {
+            image = fileUploadService.getFile(avatarId, avatarUploadPath);
+        } catch (NoSuchFileException e) {
+            image = Files.readAllBytes(Paths.get("./images/sample-man2.png")); // try to serve sample image when avatar not found
+        }
         return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(image);
     }
 
