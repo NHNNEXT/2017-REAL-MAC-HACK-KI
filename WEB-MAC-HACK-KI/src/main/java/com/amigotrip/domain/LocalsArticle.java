@@ -45,6 +45,10 @@ public class LocalsArticle {
 
     private String contents;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "userTheme", joinColumns = @JoinColumn(name = "userId"), inverseJoinColumns = @JoinColumn(name = "themeId"))
+    private Set<Theme> themes;
+
     @CreatedDate
     private LocalDateTime createDate;
 

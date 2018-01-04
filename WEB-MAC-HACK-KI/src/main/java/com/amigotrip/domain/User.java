@@ -80,8 +80,6 @@ public class User {
     @JoinTable(name = "userInterest", joinColumns = @JoinColumn(name = "userId"), inverseJoinColumns = @JoinColumn(name = "interestId"))
     private Set<Interest> interests;
 
-
-
     public User(String email, String password, String name) {
         this.email = email;
         this.password = password;

@@ -40,10 +40,11 @@
                                 <p class="profile-name">{{writer.name}}</p>
                             </div>
                             <h5 class="article-title">{{title}}</h5>
-                            <p class="location">{{location}}</p>
+                            <p class="location">{{location}}</p><br>
                             <ul class="article-themes">
-                                <li class="article-theme">Architecture</li>
-                                <li class="article-theme">Food</li>
+                                {{#each this.themes}}
+                                    <li class="article-theme">{{this.themeName}}</li>
+                                {{/each}}
                             </ul>
                         </li>
                     </a>
@@ -53,9 +54,7 @@
         <div class="article-list traveler">
             Traveler List
         </div>
-        <div>
-            <p>  </p>
-        </div>
+        <a href="/articles/localsForm"><div class="write-article"></div></a>
     </article>
     {{> include/footer}}
     <script src="/js/listFilter.js"></script>
