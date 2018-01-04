@@ -27,7 +27,10 @@ class Chatting {
     this.database = firebase.database();
 
     this.profileBtn.addEventListener('click', () => {window.location.replace("/users/profile/" + this.myUserId)})
-    this.chatListBtn.addEventListener('click', () => {this.chatList.classList.toggle('fade-in')});
+    this.chatListBtn.addEventListener('click', function() {
+      this.chatList.classList.toggle('fade-in');
+      this.getChatRooms();
+    }.bind(this));
     this.chatCloseBtn.addEventListener('click', function() {
       this.chatRoom.classList.remove('fade-in');
       this.currentFBRef.off()
@@ -40,7 +43,6 @@ class Chatting {
 
 
     this.setProfileImgUrl(this.myUserId);
-    this.getChatRooms();
   }
 
   setProfileImgUrl(myId) {
@@ -71,11 +73,18 @@ class Chatting {
   }
 
   sendMessage(roomId, message) {
-    this.database.ref('messages/chatroom-' + roomId + '/m' + (++this.currentRoomMsgCount)).set({
+    let timestamp = Date.now();
+    let updates = {};
+    updates['messages/chatroom-' + roomId + '/m' + (++this.currentRoomMsgCount)] = {
       message: message,
       name: this.myUserName,
-      timestamp: Date.now()
-    });
+      timestamp: timestamp
+    };
+    updates['chats/chatroom-' + roomId] = {
+      lastMessage: message,
+      timestamp: timestamp
+    }
+    this.database.ref().update(updates);
   }
 
   addPartnerMessage(res) {
@@ -146,6 +155,8 @@ class Chatting {
       credentials: 'same-origin'
     }).then(res=>res.json())
       .then(function(res) {
+        this.chatRoomList.innerHTML = "";
+
         for (let chatroom of res) {
           let roomId = chatroom.id;
           let partner;
@@ -167,7 +178,7 @@ class Chatting {
             let data = {
               "partnerId": partner.id,
               "partnerName": partner.name,
-              "lastMessage": lastMessage.substring(0, 20) + "...",
+              "lastMessage": lastMessage.length >= 20 ? lastMessage.substring(0, 20) + "..." : lastMessage,
               "time": time,
               "chatroomId": chatroom.id
             }
