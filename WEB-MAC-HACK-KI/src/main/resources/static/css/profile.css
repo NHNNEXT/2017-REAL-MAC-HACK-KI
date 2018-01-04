@@ -199,3 +199,14 @@ hr {
     color: #8799E9;
     font-weight: 400;
 }
+
+input.post-locals-article {
+    margin: 0 3% 30px 0;
+    background-color: #8799E9;
+    border-radius: 7px;
+    float: right;
+    width: 100px;
+    height: 35px;
+    font-size: 20px;
+    color: #FFF;
+}

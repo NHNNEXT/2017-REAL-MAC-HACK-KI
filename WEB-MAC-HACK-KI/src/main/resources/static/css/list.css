@@ -74,6 +74,7 @@ li.local-article {
     margin: 20px 1% 20px 1%;
     display: inline-block;
     width: 30%;
+    height: 320px;
     min-width: 280px;
     padding: 0 0 2vw 0;
     border: solid;
@@ -128,10 +129,12 @@ p.profile-name {
 }
 
 h5.article-title {
-    margin: 1vw 1vw 0 0;
+    margin: 1vw 0 0 0;
     font-size: 23px;
     text-align: right;
-    float: right;
+    display: inline-block;
+    width: 63%;
+    vertical-align: top;
 }
 
 p.location {
@@ -158,4 +161,21 @@ li.article-theme {
 
 p.liner {
     float: left;
+}
+
+.write-article {
+    position: fixed;
+    background-color: #EEE;
+    background-image: url("/images/new_post_size2_btn.png");
+    background-size: 100%;
+    width: 70px;
+    height: 70px;
+    right: 10%;
+    border-radius: 3em;
+    box-shadow: 2px 2px #DDD;
+}
+
+.write-article:hover {
+    cursor: pointer;
+    opacity: 0.7;
 }

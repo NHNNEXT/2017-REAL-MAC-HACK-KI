@@ -11,12 +11,16 @@ class LocalsArticle {
       e.preventDefault();
       this.postLocalsArticle();
     });
+    document.querySelector('.button.cancel-post-article').addEventListener('click', e => {
+      e.preventDefault();
+      window.location.replace('/');
+    });
   }
 
   postLocalsArticle() {
     let title = document.querySelector('.title-input').value;
-    let location = document.querySelector('.search-city-input').value;
-    let contents = document.querySelector('.contents-input').value;
+    let location = document.querySelector('#location').value;
+    let contents = CKEDITOR.instances["editor1"].getData();
 
     let article = {
       'title': title,
