@@ -84,11 +84,6 @@ class Chatting {
       lastMessage: message,
       timestamp: timestamp
     }
-    // this.database.ref('messages/chatroom-' + roomId + '/m' + (++this.currentRoomMsgCount)).set({
-    //   message: message,
-    //   name: this.myUserName,
-    //   timestamp: Date.now()
-    // });
     this.database.ref().update(updates);
   }
 
