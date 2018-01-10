@@ -24,6 +24,7 @@ import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.client.filter.OAuth2ClientAuthenticationProcessingFilter;
 import org.springframework.security.oauth2.client.filter.OAuth2ClientContextFilter;
 import org.springframework.security.oauth2.client.token.grant.code.AuthorizationCodeResourceDetails;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -40,48 +41,51 @@ import java.util.List;
  */
 @Configuration
 @EnableWebSecurity
-@EnableOAuth2Sso
+@EnableOAuth2Client
 @ComponentScan("com.amigotrip.service")
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Autowired
-    private OAuth2ClientContext oAuth2ClientContext;
+    OAuth2ClientContext oAuth2ClientContext;
 
-    @Primary
-    @Bean
-    @ConfigurationProperties("facebook.resource")
-    public ResourceServerProperties facebookResource() {
-        return new ResourceServerProperties();
-    }
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable();
+        http.headers().frameOptions().disable();
 
-    @Bean
-    @ConfigurationProperties("facebook")
-    public ClientResources facebook() {
-        return new ClientResources();
-    }
-
-    private Filter ssoFilter(ClientResources client, String path) {
-        OAuth2ClientAuthenticationProcessingFilter filter = new OAuth2ClientAuthenticationProcessingFilter(path);
-        OAuth2RestTemplate template = new OAuth2RestTemplate(client.getClient(), oAuth2ClientContext);
-        filter.setRestTemplate(template);
-        UserInfoTokenServices tokenServices = new UserInfoTokenServices(
-                client.getResource().getUserInfoUri(), client.getClient().getClientId());
-        tokenServices.setRestTemplate(template);
-        filter.setTokenServices(tokenServices);
-        return filter;
+        http
+                .antMatcher("/**")
+                .authorizeRequests()
+                    .antMatchers("/", "/test", "/login**", "/webjars/**")
+                    .permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class)
+                .logout()
+                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                    .logoutSuccessUrl("/");
     }
 
     private Filter ssoFilter() {
+
         CompositeFilter filter = new CompositeFilter();
         List<Filter> filters = new ArrayList<>();
-        filters.add(ssoFilter(facebook(), "/login/facebook"));
 
-//        OAuth2ClientAuthenticationProcessingFilter facebookFilter = new OAuth2ClientAuthenticationProcessingFilter("/login/facebook");
-//        OAuth2RestTemplate facebookTemplate = new OAuth2RestTemplate(facebook(), oAuth2ClientContext);
-//        facebookFilter.setRestTemplate(facebookTemplate);
-//        UserInfoTokenServices tokenServices = new UserInfoTokenServices(facebookResource().getUserInfoUri(), facebook().getClientId());
-//        tokenServices.setRestTemplate(facebookTemplate);
-//        facebookFilter.setTokenServices(tokenServices);
-//        filters.add(facebookFilter);
+        OAuth2ClientAuthenticationProcessingFilter facebookFilter = new OAuth2ClientAuthenticationProcessingFilter("/login/facebook");
+        OAuth2RestTemplate facebookTemplate = new OAuth2RestTemplate(facebook(), oAuth2ClientContext);
+        facebookFilter.setRestTemplate(facebookTemplate);
+        UserInfoTokenServices tokenServices = new UserInfoTokenServices(facebookResource().getUserInfoUri(), facebook().getClientId());
+        tokenServices.setRestTemplate(facebookTemplate);
+        facebookFilter.setTokenServices(tokenServices);
+        filters.add(facebookFilter);
+
+        OAuth2ClientAuthenticationProcessingFilter githubFilter = new OAuth2ClientAuthenticationProcessingFilter("/login/github");
+        OAuth2RestTemplate githubTemplate = new OAuth2RestTemplate(github(), oAuth2ClientContext);
+        githubFilter.setRestTemplate(githubTemplate);
+        tokenServices = new UserInfoTokenServices(githubResource().getUserInfoUri(), github().getClientId());
+        tokenServices.setRestTemplate(githubTemplate);
+        githubFilter.setTokenServices(tokenServices);
+        filters.add(githubFilter);
 
         filter.setFilters(filters);
         return filter;
@@ -96,21 +100,28 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return registration;
     }
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable();
-        http.headers().frameOptions().disable();
+    @Bean
+    @ConfigurationProperties("facebook.client")
+    public AuthorizationCodeResourceDetails facebook() {
+        return new AuthorizationCodeResourceDetails();
+    }
 
-        http
-                .antMatcher("/**")
-                .authorizeRequests()
-                    .antMatchers("/", "/login**", "/webjars/**")
-                    .permitAll()
-                .and()
-                .addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class)
-                .logout()
-                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                    .logoutSuccessUrl("/");
+    @Bean
+    @ConfigurationProperties("facebook.resource")
+    public ResourceServerProperties facebookResource() {
+        return new ResourceServerProperties();
+    }
+
+    @Bean
+    @ConfigurationProperties("github.client")
+    public AuthorizationCodeResourceDetails github() {
+        return new AuthorizationCodeResourceDetails();
+    }
+
+    @Bean
+    @ConfigurationProperties("github.resource")
+    public ResourceServerProperties githubResource() {
+        return new ResourceServerProperties();
     }
 
     @Bean
