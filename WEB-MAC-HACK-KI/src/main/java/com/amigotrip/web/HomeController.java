@@ -10,8 +10,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.social.connect.ConnectionRepository;
-import org.springframework.social.facebook.api.Facebook;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +17,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.annotation.Resource;
-import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.util.List;
@@ -37,22 +34,12 @@ public class HomeController {
     @Resource
     private ArticleService articleService;
 
-    private Facebook facebook;
-    private ConnectionRepository connectionRepository;
-
-    public HomeController(Facebook facebook, ConnectionRepository connectionRepository) {
-        this.facebook = facebook;
-        this.connectionRepository = connectionRepository;
-    }
-
     @GetMapping("/")
     public String main(Authentication principal, HttpSession session, Model model) {
-        if(connectionRepository.findPrimaryConnection(Facebook.class) != null) {
-            log.debug("{}", facebook.userOperations().getUserProfile());
-        }
         SecurityContext securityContext = SecurityContextHolder.getContext();
 
         if (principal != null) {
+            log.debug("login user: {}", principal.getName());
             model.addAttribute("authenticatedUser", userService.findUserByEmail(principal.getName()));
         }
 
@@ -74,7 +61,7 @@ public class HomeController {
 
     @GetMapping("/test")
     public String test() {
-        return "editProfile";
+        return "authTest";
     }
 }
 
