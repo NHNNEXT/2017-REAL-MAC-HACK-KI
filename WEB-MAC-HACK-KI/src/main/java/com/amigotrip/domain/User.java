@@ -14,11 +14,13 @@ import java.util.*;
  */
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "user_type")
 @NoArgsConstructor
 @AllArgsConstructor
 @Slf4j
 @Data
-public class User {
+public abstract class User {
     @Id
     @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.AUTO)

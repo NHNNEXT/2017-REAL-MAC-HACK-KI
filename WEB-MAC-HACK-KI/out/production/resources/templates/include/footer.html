@@ -1,0 +1,51 @@
+<footer>
+    <div class="footer-sections contact-info-zone">
+        <h4 class="footer-title">Contact Info</h4>
+        <ul class="contact-info">
+            <li><h5 class="subject">Tel.&nbsp</h5>82-10-7666-1533</li>
+            <li><h5 class="subject">Address.&nbsp</h5>82-10-7666-1533</li>
+            <li><h5 class="subject">Email.&nbsp</h5>amigotrip82@gmail.com</li>
+            <br>
+            <li>ⓒ Amigo.Inc</li>
+        </ul>
+    </div>
+
+    <div class="footer-sections social-networks-zone">
+        <h4 class="footer-title">Social Networks</h4>
+        <ul>
+            <li class="hover-pointer"><img src="/images/facebook-logo.png"></li>
+        </ul>
+    </div>
+
+    <div class="footer-sections mobile-apps-zone">
+        <h4 class="footer-title">Mobile Apps</h4>
+        <ul>
+            <li class="hover-pointer"><img src="/images/google-play.png"></li>
+            <li class="hover-pointer"><img src="/images/app-store.png"></li>
+        </ul>
+    </div>
+</footer>
+
+
+<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyD9Tz78iFMv4jCZYpALXH_mNktfrvPlAv0",
+    authDomain: "amigotrip-4f89e.firebaseapp.com",
+    databaseURL: "https://amigotrip-4f89e.firebaseio.com",
+    projectId: "amigotrip-4f89e",
+    storageBucket: "amigotrip-4f89e.appspot.com",
+    messagingSenderId: "984712803858"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<script src="/js/handlebars-v4.0.11.js"></script>
+<script type="text/javascript">{{precompile "precompiles/myMessage"}}</script>
+<script type="text/javascript">{{precompile "precompiles/partnerMessage"}}</script>
+<script type="text/javascript">{{precompile "precompiles/chatRoom"}}</script>
+
+<script src="/js/header.js"></script>
+<script src="/js/chatting.js"></script>
+

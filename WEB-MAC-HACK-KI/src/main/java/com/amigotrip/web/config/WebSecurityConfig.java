@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.security.oauth2.resource.ResourceS
 import org.springframework.boot.autoconfigure.security.oauth2.resource.UserInfoTokenServices;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -44,9 +45,11 @@ import java.util.List;
 @EnableOAuth2Client
 @ComponentScan("com.amigotrip.service")
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+    @Autowired
+    private OAuth2ClientContext oAuth2ClientContext;
 
     @Autowired
-    OAuth2ClientContext oAuth2ClientContext;
+    private ApplicationEventPublisher applicationEventPublisher;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -58,7 +61,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                     .antMatchers("/", "/test", "/login**", "/webjars/**")
                     .permitAll()
-                .anyRequest().authenticated()
                 .and()
                 .addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class)
                 .logout()
@@ -77,6 +79,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         UserInfoTokenServices tokenServices = new UserInfoTokenServices(facebookResource().getUserInfoUri(), facebook().getClientId());
         tokenServices.setRestTemplate(facebookTemplate);
         facebookFilter.setTokenServices(tokenServices);
+        facebookFilter.setApplicationEventPublisher(applicationEventPublisher);
         filters.add(facebookFilter);
 
         OAuth2ClientAuthenticationProcessingFilter githubFilter = new OAuth2ClientAuthenticationProcessingFilter("/login/github");
