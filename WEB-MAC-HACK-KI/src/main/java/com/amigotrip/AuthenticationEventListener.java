@@ -2,6 +2,7 @@ package com.amigotrip;
 
 import com.amigotrip.domain.EmailUser;
 import com.amigotrip.domain.FacebookUser;
+import com.amigotrip.domain.GoogleUser;
 import com.amigotrip.domain.User;
 import com.amigotrip.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -39,7 +40,6 @@ public class AuthenticationEventListener {
         }
 
         OAuth2Authentication authentication = (OAuth2Authentication) event.getAuthentication();
-        authentication.getPrincipal();
 
         Map<String, Object> map = (Map<String, Object>) authentication.getUserAuthentication().getDetails();
         log.debug("authentication details : {}", map);
@@ -59,7 +59,13 @@ public class AuthenticationEventListener {
             user = userDetailsService.loadUserByUsername(userEmail);
         } catch (UsernameNotFoundException e) {
             // 새로운 사용자를 등록한다.
-            User newUser = new FacebookUser(map.get("email").toString(), map.get("id").toString(), map.get("name").toString());
+            User newUser;
+            if(map.get("family_name") == null) {
+                newUser = new FacebookUser(map.get("email").toString(), map.get("id").toString(), map.get("name").toString());
+            } else {
+                newUser = new GoogleUser(map.get("email").toString(), map.get("id").toString(), map.get("name").toString());
+            }
+
             userRepository.save(newUser);
 
             user = userDetailsService.loadUserByUsername(userEmail);

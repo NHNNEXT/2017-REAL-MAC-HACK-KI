@@ -9,9 +9,9 @@ import javax.persistence.Entity;
 @Entity
 @Data
 @NoArgsConstructor
-@DiscriminatorValue("Facebook")
-public class FacebookUser extends User {
-    public FacebookUser(String email, String password, String name) {
+@DiscriminatorValue("Google")
+public class GoogleUser extends User {
+    public GoogleUser(String email, String password, String name) {
         super(email, password, name);
     }
 }
