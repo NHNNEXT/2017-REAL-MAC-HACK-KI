@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
+        <title>Amigo confirmed</title>
+        <link rel="stylesheet" href="/css/header.css">
+        <link rel="stylesheet" href="/css/footer.css">
+        <link rel="stylesheet" href="/css/localsForm.css">
+        <script src="//cdn.ckeditor.com/4.4.0/standard/ckeditor.js"></script>
+    </head>
+    <body>
+        {{> include/header}}
+        <article>
+            <table>
+                <tr>
+                    <th class="edit-profile"><h1 class="new-article-post">New article post</h1>
+                    </th>
+                </tr>
+                <tr>
+                    <td class="contents">
+                        <form method="post" action="/articles/locals">
+                            <div class="input-zone title">
+                                <label for="title">Title</label>
+                                <input type="text" class="title-input" name="title" id="title">
+                            </div>
+                            <div class="input-zone location">
+                                <label for="location">Location</label>
+                                <input type="text" class="search-city-input" name="location" id="location">
+                            </div>
+                            <div class="input-zone contents">
+                                <label for="editor1">Contents</label>
+                                <textarea class="contents-input" name="contents" id="editor1" rows="10" cols="80">
+                                    {{profileUser.contents}}
+                                </textarea>
+                                <script>
+                                  // Replace the <textarea id="editor1"> with a CKEditor
+                                  // instance, using default configuration.
+                                  CKEDITOR.replace( 'editor1' );
+                                </script>
+                            </div>
+                            <button class="button cancel-post-article">Cancel</button>
+                            <input type="submit" class="button post-locals-article" value="Save">
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </article>
+        {{> include/footer}}
+        <script>
+          function activatePlacesSearch() {
+            let options = {
+              types: ['(cities)'],
+              componentRestrictions: {'country': 'kr'}
+            };
+            let input = document.querySelectorAll('.search-city-input');
+            for(let i = 0 ; i < input.length ; i++) {
+              let autocomplete = new google.maps.places.Autocomplete(input[i], options);
+              autocomplete.inputId = input[i].id;
+            }
+          }
+        </script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7YyhbcRztHC-J6IiocCG6HE07JnmiGmE&libraries=places&language=en&callback=activatePlacesSearch"></script>
+        <script type="text/javascript" src="/js/localsArticleForm.js"></script>
+    </body>
+</html>

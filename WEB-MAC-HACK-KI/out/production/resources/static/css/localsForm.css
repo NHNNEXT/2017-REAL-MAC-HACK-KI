@@ -1,0 +1,86 @@
+table {
+    margin: 0 10% 0 10%;
+    width: 80%;
+    border: 1px solid #DDD;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #DDD;
+}
+
+th {
+    width: 30%;
+    height: 40px;
+    background-color: #f2f2f2;
+    color: #767676;
+    font-weight: 900;
+}
+
+h1.new-article-post {
+    font-size: 35px;
+    color: #000;
+}
+
+td.contents {
+    padding: 20px 5% 0 5%;
+}
+
+div.input-zone {
+    margin: 2vw 0 2vw 0;
+}
+
+div.input-zone label{
+    display: inline-block;
+    margin: 0 10px 0 0;
+    display: inline-block;
+    width: 15%;
+    color: #777;
+    text-align: right;
+    vertical-align: top;
+}
+
+div.input-zone input {
+    height: 25px;
+}
+
+input.title-input {
+    width: 60%;
+}
+
+#location {
+    width: 50%;
+}
+
+.contents-input {
+    width: 70%;
+}
+
+div#cke_editor1 {
+    width: 80%;
+    display: inline-block;
+}
+
+.button {
+    /* text-align: right; */
+    margin: 0 3% 30px 0;
+    background-color: #8799E9;
+    border-radius: 4px;
+    float: right;
+    width: 100px;
+    height: 35px;
+    font-size: 20px;
+    color: #FFF;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+input.post-locals-article {
+    margin: 0 7px 0 0;
+}
+
+button.cancel-post-article {
+    background-color: #DCE0E0;
+}

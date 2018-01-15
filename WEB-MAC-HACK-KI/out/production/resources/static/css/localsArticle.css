@@ -1,0 +1,195 @@
+.writer-info-zone {
+    margin: 1vw 0 0 5%;
+    width: 23%;
+    display: inline-block;
+    background-color: #FAFAFA;
+}
+
+.user-star-zone {
+    margin: 0 0 0 75%;
+}
+
+.star-button {
+    text-align: right;
+    background-image: url("/images/star-inactive.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    border: none;
+    border-radius: 1em;
+    width: 20px;
+    height: 20px;
+    vertical-align: bottom;
+}
+
+.star-button.active {
+    background-color: yellow;
+    box-shadow: 3px -3px yellow;
+}
+
+h6.star-count {
+    margin: 20px 0 0 4px;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.profile-image {
+    margin: 0 0 0 13%;
+    background-image: url("/images/sample-man2.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 200px 200px;
+    width: 18vw;
+    height: 18vw;
+    background-size: 130%;
+    -webkit-border-radius: 200px;
+    border-radius: 200px;
+    display: inline-block;
+    text-align: center;
+    line-height: 10;
+}
+
+h3.writer-name {
+    text-align: center;
+    font-size: 25px;
+    margin: 10px 0 0 0;
+}
+
+h4.writer-city {
+    text-align: center;
+    margin: 8px 0 0 0;
+    color: #AAA;
+}
+
+p.stars-from {
+    display: none;
+}
+
+.language-zone {
+    text-align: center;
+    margin: 10px 0 10px 0;
+}
+
+button.language-level {
+    margin: 0 1px 4px 1px;
+    width: 80px;
+    height: 30px;
+    font-size: 15px;
+    border-radius: 2em;
+}
+
+.language-level.Well {
+    background-color: #F44;
+    color: #FFF;
+}
+
+.language-level.Expert {
+    background-color: #000;
+    color: #E4C849;
+}
+
+.writer-info-zone hr {
+    margin: 30px 5% 30px 5%;
+    border: solid;
+    border-color: #DDD;
+    border-width: thin;
+}
+
+h5.interests {
+    margin: 0 0 10px 0;
+    font-size: 15px;
+    color: #777;
+}
+
+.interest-zone {
+    text-align: center;
+}
+
+.interest-zone button.interest {
+    margin: 0 2px 0 2px;
+    padding: 0 10px 0 10px;
+    height: 30px;
+    font-size: 15px;
+    border-radius: 2em;
+}
+
+.article-details-zone {
+    margin: 0 0 0 4%;
+    width: 60%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+h1.title {
+    font-size: 35px;
+    margin: 20px 0 0 0;
+    font-weight: 500;
+}
+
+h3.location {
+    margin: 10px 0 20px 0;
+    display: inline-block;
+    font-weight: 400;
+    font-size: 17px;
+    color: #AAA;
+}
+
+button.edit-button, button.delete-button {
+    float: right;
+    margin: 0 1% 0 0;
+}
+
+.article-details-zone hr {
+    margin: 30px 1% 30px -1%;
+    border: solid;
+    border-color: #DDD;
+    border-width: 0.8px;
+}
+
+p.contents {
+    color: #666;
+}
+
+.local-article-photo {
+    width: 31%;
+    margin: 0 1% 0 1%;
+}
+
+.local-article-photo:hover {
+    cursor: pointer;
+}
+
+.big-picture {
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #000;
+    width: 60vw;
+    height: 40vw;
+    z-index: 1;
+    position: fixed;
+    top: 20%;
+    left: 20%;
+    display: none;
+    box-shadow: 5px 5px #DDD;
+}
+
+.big-picture.is-visible {
+    display: block;
+}
+
+.close-modal {
+    margin: -10px -10px 0 0px;
+    float: right;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    border: solid;
+    border-width: 2px;
+}
+
+.close-modal:hover {
+    background-color: #DDD;
+}

@@ -48,10 +48,14 @@ dependencies {
     compile('org.antlr:ST4:4.0.8')
     compile ('org.apache.tiles:tiles-extras:3.0.7')
     compile('org.webjars.npm:handlebars:4.0.6')
-    compile('org.springframework.social:spring-social-facebook')
-    compile group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '1.5.8.RELEASE'
+    compile('org.springframework.boot:spring-boot-devtools:1.5.8.RELEASE')
 
     compile('org.springframework.security:spring-security-config:4.2.3.RELEASE')
+    compile('org.springframework.boot:spring-boot-starter-security:1.5.9.RELEASE')
+    compile('org.springframework.security.oauth:spring-security-oauth2:2.2.1.RELEASE')
+
+    compile('org.webjars.bower:jquery:3.2.1')
+    compile('org.webjars:bootstrap:3.3.7-1')
 
     runtime('com.h2database:h2')
     runtime('mysql:mysql-connector-java')
