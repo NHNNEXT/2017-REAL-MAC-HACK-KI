@@ -1,5 +1,6 @@
 package com.amigotrip.web;
 
+import com.amigotrip.domain.EmailUser;
 import com.amigotrip.domain.Star;
 import com.amigotrip.domain.User;
 import com.amigotrip.service.UserService;
@@ -28,7 +29,7 @@ public class ApiUserController {
     public ResponseEntity<User> createUser(@RequestBody Map<String, String> body) {
         if(userService.isDuplicatedEmail(body.get("email"))) {
             return new ResponseEntity<User>(
-                    new User(),
+                    new EmailUser(),
                     HttpStatus.BAD_REQUEST);
         }
 

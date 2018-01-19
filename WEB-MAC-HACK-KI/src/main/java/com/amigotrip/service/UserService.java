@@ -1,5 +1,6 @@
 package com.amigotrip.service;
 
+import com.amigotrip.domain.EmailUser;
 import com.amigotrip.domain.Role;
 import com.amigotrip.domain.Star;
 import com.amigotrip.repository.RoleRepository;
@@ -58,7 +59,7 @@ public class UserService {
     }
 
     public User signup(String email, String password, String name) {
-        User user = new User(email, password, name);
+        User user = new EmailUser(email, password, name);
         user.encryptionPassword(bCryptPasswordEncoder);
         user.addRole(roleRepository.findByRole("unconfirmed_user"));
         User savedUser = userRepository.save(user);

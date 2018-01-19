@@ -28,9 +28,12 @@ public class CustomUserDetailsService implements UserDetailsService{
 
     @Override
     @Transactional
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException{
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         log.debug("load username: {}", email);
         com.amigotrip.domain.User user = userRepository.findByEmail(email);
+        if(user == null) {
+            throw new UsernameNotFoundException("No user");
+        }
         log.debug("loaded user: {}", user);
         List<GrantedAuthority> authorities = buildUserAuthority(user.getRoles());
         return buildUserForAuthentication(user, authorities);
