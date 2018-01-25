@@ -1,0 +1,16 @@
+article {
+    text-align: center;
+}
+
+div.confirmed-notice {
+    display: inline-block;
+    margin: 20% 0 10% 0;
+}
+
+img.logo {
+    width: 40%;
+}
+
+p.from {
+    text-align: right;
+}

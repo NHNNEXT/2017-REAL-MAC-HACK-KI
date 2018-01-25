@@ -1,9 +1,12 @@
 package com.amigotrip.service;
 
 import com.amigotrip.domain.LocalsArticle;
+import com.amigotrip.domain.Theme;
 import com.amigotrip.domain.User;
+import com.amigotrip.domain.enums.ThemeName;
 import com.amigotrip.exception.BadRequestException;
 import com.amigotrip.repository.LocalsArticleRepository;
+import com.amigotrip.repository.ThemeRepository;
 import com.amigotrip.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.jni.Local;
@@ -12,7 +15,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.security.Principal;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by NEXT on 2017. 12. 7..
@@ -26,6 +29,9 @@ public class ArticleService {
 
     @Resource
     private UserRepository userRepository;
+
+    @Resource
+    private ThemeRepository themeRepository;
 
     public List<LocalsArticle> search(String city) {
         return localsArticleRepository.findByLocationLike("%" + city + "%");
@@ -72,6 +78,26 @@ public class ArticleService {
         if(principal == null) {
             throw new BadRequestException("login please");
         }
-        return userRepository.findByEmail(principal.getName());
+        User loginUser = userRepository.findByEmail(principal.getName());
+        if(loginUser == null) {
+            loginUser = userRepository.findByPassword(principal.getName());
+        }
+        return loginUser;
+    }
+
+    public LocalsArticle updateThemes(Long id, String[] themes) {
+        Set<Theme> updateThemes = new HashSet<>();
+        for(Theme theme : themeRepository.findAll()) {
+            log.debug("DB THEME: {}", theme);
+            for(String inputTheme : themes) {
+                if(theme.getThemeName().toString().equals(inputTheme)) {
+                    updateThemes.add(theme);
+                }
+            }
+        }
+
+        LocalsArticle dbArticle = localsArticleRepository.findOne(id);
+        dbArticle.setThemes(updateThemes);
+        return localsArticleRepository.save(dbArticle);
     }
 }

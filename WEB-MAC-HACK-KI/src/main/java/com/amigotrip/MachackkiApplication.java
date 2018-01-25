@@ -20,6 +20,4 @@ public class MachackkiApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MachackkiApplication.class, args);
 	}
-
-
 }

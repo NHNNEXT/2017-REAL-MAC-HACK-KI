@@ -5,6 +5,7 @@ import com.amigotrip.repository.UserRepository;
 import com.amigotrip.mail.AmigoMailSender;
 import com.amigotrip.service.ArticleService;
 import com.amigotrip.service.UserService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
@@ -60,8 +61,9 @@ public class HomeController {
     }
 
     @GetMapping("/test")
-    public String test() {
-        return "authTest";
+    public String test(Model model) {
+        model.addAttribute("localsArticle", articleService.findLocalsOne(1L));
+        return "localsEditForm";
     }
 }
 
