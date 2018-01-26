@@ -116,9 +116,21 @@ INSERT INTO interest (interest_name) VALUES (3);
 INSERT INTO user_interest (user_id, interest_id) VALUES (1, 1);
 INSERT INTO user_interest (user_id, interest_id) VALUES (1, 2);
 
+INSERT INTO theme (theme_name) VALUES (0);
 INSERT INTO theme (theme_name) VALUES (1);
 INSERT INTO theme (theme_name) VALUES (2);
 INSERT INTO theme (theme_name) VALUES (3);
+INSERT INTO theme (theme_name) VALUES (4);
+INSERT INTO theme (theme_name) VALUES (5);
+INSERT INTO theme (theme_name) VALUES (6);
+INSERT INTO theme (theme_name) VALUES (7);
 
 INSERT INTO user_theme (user_id, theme_id) VALUES (1, 1);
-INSERT INTO user_theme (user_id, theme_id) VALUES (1, 2);
+INSERT INTO user_theme (user_id, theme_id) VALUES (1, 3);
+INSERT INTO user_theme (user_id, theme_id) VALUES (2, 2);
+INSERT INTO user_theme (user_id, theme_id) VALUES (3, 2);
+INSERT INTO user_theme (user_id, theme_id) VALUES (3, 4);
+INSERT INTO user_theme (user_id, theme_id) VALUES (4, 1);
+INSERT INTO user_theme (user_id, theme_id) VALUES (4, 5);
+INSERT INTO user_theme (user_id, theme_id) VALUES (5, 1);
+INSERT INTO user_theme (user_id, theme_id) VALUES (5, 6);

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.security.Principal;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
@@ -75,6 +76,13 @@ public class ApiArticleController {
     public Result deleteLocalsArticle(@PathVariable Long id, Principal principal) {
         articleService.deleteLocalsArticle(principal, id);
         return new Result();
+    }
+
+    @PutMapping("/locals/{id}/themes")
+    @ResponseStatus(HttpStatus.OK)
+    public LocalsArticle updateThemes(@PathVariable Long id, @RequestBody Map<String, String[]> body) {
+        log.debug("THEME COUNTS: {}", body.get("themes").length);
+        return articleService.updateThemes(id, body.get("themes"));
     }
 
     @GetMapping("/traveler")

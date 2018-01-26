@@ -18,14 +18,14 @@
                 <li class="subject-traveler">Traveler</li>
             </ul>
             <ul class="theme-filter">
-                <li class="theme-art-and-culture">Art & Culture</li>
-                <li class="theme-nature">Nature</li>
-                <li class="theme-healing">Healing</li>
-                <li class="theme-food-and-drink">Food & Drink</li>
-                <li class="theme-sports">Sports</li>
-                <li class="theme-music">Music</li>
-                <li class="theme-nightlife">Nightlife</li>
-                <li class="theme-concert">Concert</li>
+                <li class="theme-art-and-culture is-checked" data-id="Art & Culture">Art & Culture</li>
+                <li class="theme-nature is-checked" data-id="Nature">Nature</li>
+                <li class="theme-healing is-checked" data-id="Healing">Healing</li>
+                <li class="theme-food-and-drink is-checked" data-id="Food & Drink">Food & Drink</li>
+                <li class="theme-sports is-checked" data-id="Sports">Sports</li>
+                <li class="theme-music is-checked" data-id="Music">Music</li>
+                <li class="theme-nightlife is-checked" data-id="Nightlife">Nightlife</li>
+                <li class="theme-concert is-checked" data-id="Concert">Concert</li>
             </ul>
         </div>
 
@@ -33,14 +33,14 @@
             <ul class="local-list">
                 {{#each localsArticleList}}
                     <a href="/articles/localsDetail/{{id}}">
-                        <li class="local-article">
+                        <li class="local-article is-visible{{#each this.themes}} {{this.themeName}}{{/each}}">
                             <img class="local-article-photo" src="/uploads/photos/{{photos.[0].photoId}}">
                             <div class="profile">
                                 <div class="profile-image"></div>
                                 <p class="profile-name">{{writer.name}}</p>
                             </div>
                             <h5 class="article-title">{{title}}</h5>
-                            <p class="location">{{location}}</p><br>
+                            {{location}}<br>
                             <ul class="article-themes">
                                 {{#each this.themes}}
                                     <li class="article-theme">{{this.themeName}}</li>

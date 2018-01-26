@@ -8,7 +8,10 @@ class ListFilter {
 
   init() {
     this.subject = 'Locals';
-    this.themes = [];
+    this.themes = ['Art & Culture', 'Nature', 'Healing', 'Food & Drink', 'Sports', 'Music', 'Nightlife', 'Concert'];
+
+    this.localArticleList = document.querySelectorAll('.local-article');
+
     document.querySelector('.subject-filter').addEventListener('click', e => {
       if(e.target.tagName === 'LI') {
         this.changeSubject(e);
@@ -37,6 +40,26 @@ class ListFilter {
       e.target.classList.add('is-checked');
       this.themes.push(e.target.innerText);
     }
+    this.filtering();
+  }
+
+  filtering() {
+    for(let i = 0 ; i < this.localArticleList.length ; i++) {
+      if(this.canShow(this.localArticleList[i])) {
+        this.localArticleList[i].classList.add('is-visible');
+      } else {
+        this.localArticleList[i].classList.remove('is-visible');
+      }
+    }
+  }
+
+  canShow(article) {
+    for(let i = 0 ; i < this.themes.length ; i++) {
+      if(article.classList.contains(this.themes[i])) {
+        return true;
+      }
+    }
+    return false;
   }
 }
 

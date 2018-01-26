@@ -44,6 +44,11 @@
                 {{/authorize}}
                 <hr>
                 <p class="contents">{{localsArticle.contents}}</p>
+                <ul class="themes" id="theme">
+                    {{#each localsArticle.themes}}
+                    <li class="article-theme">{{this.themeName}}</li>
+                    {{/each}}
+                </ul>
                 <hr>
                 <div class="photos-zone">
                     {{#each localsArticle.photos}}
