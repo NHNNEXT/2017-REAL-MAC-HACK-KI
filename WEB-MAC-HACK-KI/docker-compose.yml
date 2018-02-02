@@ -1,0 +1,35 @@
+version: '3'
+services:
+  nginx:
+    depends_on:
+      - amigo
+    image: real/nginx
+    links:
+      - amigo:amigo
+    ports:
+      - "80:80"
+  amigo:
+    image: real/amigo
+    ports:
+      - "8002:8080"
+    links:
+      - db:db
+    volumes:
+      - ./photo-datavolume:/photo-datavolume
+      - ./avatar-datavolume:/avatar-datavolume
+      - ./userphoto-datavolume:/userphoto-datavolume
+  db:
+    image: mysql:5.7
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --init-connect='SET NAMES UTF8;'
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_USER: dev
+      MYSQL_PASSWORD: 123456
+      MYSQL_DATABASE: amigobase
+    volumes:
+      - ./amigo-datavolume:/var/lib/mysql
+volumes:
+  amigo-datavolume:
+  photo-datavolume:
+  avatar-datavolume:
+  userphoto-datavolume:
