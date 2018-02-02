@@ -52,6 +52,16 @@
                                     <li class="theme-concert" data-id="Concert">Concert</li>
                                 </ul>
                             </div>
+                            <div class="input-zone photos">
+                                <label for="photos">Photos</label>
+                                <ul id="photos">
+                                    <li class="photo">
+                                        <input type="file" class="photo-input">
+                                        <button class="remove-photo-input">x</button>
+                                        <button class="add-photo-input">+</button>
+                                    </li>
+                                </ul>
+                            </div>
                             <button class="button cancel-post-article">Cancel</button>
                             <input type="submit" class="button post-locals-article" value="Save">
                         </form>
@@ -72,6 +82,11 @@
               autocomplete.inputId = input[i].id;
             }
           }
+        </script>
+        <script id="photo-template" type="text/x-handlebars-template">
+            <input type="file" class="photo-input">
+            <button class="remove-photo-input">x</button>
+            <button class="add-photo-input">+</button>
         </script>
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7YyhbcRztHC-J6IiocCG6HE07JnmiGmE&libraries=places&language=en&callback=activatePlacesSearch"></script>
         <script type="text/javascript" src="/js/localsArticleForm.js"></script>

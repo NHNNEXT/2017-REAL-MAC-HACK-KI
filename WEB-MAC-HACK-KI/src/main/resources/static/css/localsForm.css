@@ -115,3 +115,13 @@ input.post-locals-article {
 button.cancel-post-article {
     background-color: #DCE0E0;
 }
+
+ul#photos {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+li.photo {
+    list-style: none;
+}

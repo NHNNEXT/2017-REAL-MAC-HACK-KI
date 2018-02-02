@@ -54,8 +54,6 @@ class EditProfile {
       // location.replace('/users/profile/' + this.profileUserId);
     });
   }
-
-
 }
 
 new EditProfile();

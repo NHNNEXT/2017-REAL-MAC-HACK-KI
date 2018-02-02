@@ -98,9 +98,11 @@ public class UserService {
         if(principal == null) {
             throw new BadRequestException("Please login");
         }
+        log.debug("toEDITUSERID: {}", toEditUserId);
         User toEditUser = userRepository.findOne(toEditUserId);
         if(toEditUser == null) throw new BadRequestException("There's no such user.");
         User loginUser = userRepository.findByEmail(principal.getName());
+        log.debug("loginUser: {}, toEditUser: {}", loginUser, toEditUser);
         if(!loginUser.equals(toEditUser)) {
             throw new BadRequestException("You can't edit the profile unless you are the person");
         }

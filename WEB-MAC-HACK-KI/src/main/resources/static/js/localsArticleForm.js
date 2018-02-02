@@ -7,6 +7,11 @@ class LocalsArticle {
   }
 
   init() {
+    this.fileReader = new FileReader();
+
+    this.photoInputTemplate = document.querySelector('#photo-template').innerHTML;
+    this.photos = document.querySelector('#photos');
+
     document.querySelector('.post-locals-article').addEventListener('click', e => {
       e.preventDefault();
       this.postLocalsArticle();
@@ -19,7 +24,16 @@ class LocalsArticle {
       if(e.target.tagName === 'LI') {
         this.toggleTheme(e);
       }
+    });
 
+    this.photos.addEventListener('click', e => {
+      if(e.target.classList.contains('add-photo-input')) {
+        e.preventDefault();
+        this.addPhotoInput(e);
+      } else if(e.target.classList.contains('remove-photo-input')) {
+        e.preventDefault();
+        this.removePhotoInput(e);
+      }
     });
   }
 
@@ -64,7 +78,6 @@ class LocalsArticle {
       }
       return res.json();
     }).then(json => {
-      console.log(themes);
       return fetch('/articles/locals/' + json.id + '/themes', {
         method: 'PUT',
         credentials: 'same-origin',
@@ -80,10 +93,47 @@ class LocalsArticle {
     }).then(res => {
       return res.json();
     }).then(json => {
-      let location = '/articles/localsDetail/' + json.id;
-      console.log(location);
-      window.location.replace(location);
+      let photos = document.querySelectorAll('.photo input');
+      let photoCount = photos.length;
+      for(let i in photos) {
+        let file = photos[i].files[0];
+
+        if(!file) {
+          return;
+        }
+
+        let formData = new FormData();
+        formData.append('file', file);
+        fetch('/uploads/photos/' + json.id, {
+          method: 'POST',
+          credentials: 'same-origin',
+          body: formData
+        }).then(res => {
+          return res.json();
+        }).then(res => {
+          if(--photoCount === 0) {
+
+          }
+          let location = '/articles/localsDetail/' + json.id;
+          console.log(location);
+          window.location.replace(location);
+        });
+      }
     });
+  }
+
+  addPhotoInput(e) {
+    let li = document.createElement('li');
+    li.innerHTML = this.photoInputTemplate;
+    li.classList.add('photo');
+    e.target.closest('UL').insertBefore(li, e.target.closest('LI').nextSibling);
+  }
+
+  removePhotoInput(e) {
+    if(document.querySelectorAll('.photo').length === 1) {
+      return;
+    }
+    e.target.closest('LI').remove();
   }
 }
 

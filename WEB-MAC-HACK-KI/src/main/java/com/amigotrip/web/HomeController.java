@@ -63,7 +63,7 @@ public class HomeController {
     @GetMapping("/test")
     public String test(Model model) {
         model.addAttribute("localsArticle", articleService.findLocalsOne(1L));
-        return "localsEditForm";
+        return "localsForm";
     }
 }
 
