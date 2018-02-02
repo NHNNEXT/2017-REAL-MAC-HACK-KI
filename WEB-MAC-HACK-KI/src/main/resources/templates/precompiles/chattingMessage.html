@@ -1,0 +1,29 @@
+<script id="entry-template" type="text/x-handlebars-template">
+    {{#if chatMessages}}
+    {{#each chatMessages}}
+    {{> chatMessage}}
+    {{/each}}
+    {{/if}}
+</script>
+
+<script id="mymessage-partial" type="text/x-handlebars-template">
+    <div class="my-message-container">
+        <span>{{time}}</span>
+        <div class="my-message">
+            <p>{{message}}</p>
+        </div>
+    </div>
+</script>
+
+<script id="partnermessage-partial" type="text/x-handlebars-template">
+    <div class="partner-message-form">
+        <div class="partner-thumbnail"></div>
+        <div class="partner-message-container">
+            <p class="partner-name">{{name}}</p>
+            <div class="partner-message">
+                <p>{{message}}</p>
+            </div>
+            <span>{{time}}</span>
+        </div>
+    </div>
+</script>
